@@ -1,0 +1,224 @@
+0|||EX|||icedpil|||to accept
+1|||EX|||yé icedpé|||I accept
+2|||EX|||pi icedpiz|||you accept
+3|||EX|||ák icedpi|||he accepts
+4|||EX|||ekki icedpi|||she accepts
+5|||EX|||yé icedpilá|||I will accept
+6|||EX|||ák icedpilí|||he will accept
+7|||EX|||ekki icedpilí|||she will accept
+8|||EX|||pi icedpizpe|||you accepted
+9|||EX|||ák icedpü|||he accepted
+10|||EX|||ekki icedpü|||she accepted
+11|||EX|||enplil|||to enter
+12|||EX|||yé enplé|||I enter
+13|||EX|||pi enpliz|||you enter
+14|||EX|||ák enpli|||he enters
+15|||EX|||ekki enpli|||she enters
+16|||EX|||yé enplilá|||I will enter
+17|||EX|||pi enplilíz|||you will enter
+18|||EX|||ák enplilí|||he will enter
+19|||EX|||ekki enplilí|||she will enter
+20|||EX|||yé enplá|||I entered
+21|||EX|||pi enplizpe|||you entered
+22|||EX|||ák enplü|||he entered
+23|||EX|||ekki enplü|||she entered
+24|||EX|||melil|||to watch
+25|||EX|||ekki meli|||she watches
+26|||EX|||yé melilá|||I will watch
+27|||EX|||ák melilí|||he will watch
+28|||EX|||ekki melilí|||she will watch
+29|||EX|||yé melá|||I watched
+30|||EX|||pi melizpe|||you watched
+31|||EX|||ekki melü|||she watched
+32|||MC|||icedpil|||to accept|||I enter|||I entered|||she accepted|||she entered
+33|||MC|||icedpil|||to accept|||he accepts|||she will enter|||you entered|||I watched
+34|||MC|||yé icedpé|||I accept|||I watched|||to accept|||he will accept|||he enters
+35|||MC|||yé icedpé|||I accept|||she watched|||he accepts|||I will accept|||she accepted
+36|||MC|||pi icedpiz|||you accept|||I watched|||she will enter|||she will watch|||she accepted
+37|||MC|||pi icedpiz|||you accept|||he will accept|||to enter|||he accepts|||I entered
+38|||MC|||ák icedpi|||he accepts|||she entered|||he enters|||you enter|||you entered
+39|||MC|||ák icedpi|||he accepts|||I watched|||he entered|||he will watch|||she enters
+40|||MC|||ekki icedpi|||she accepts|||she entered|||he accepted|||he entered|||you entered
+41|||MC|||ekki icedpi|||she accepts|||I will accept|||she accepted|||he will watch|||you enter
+42|||MC|||yé icedpilá|||I will accept|||she accepts|||she entered|||she will enter|||I entered
+43|||MC|||yé icedpilá|||I will accept|||he will watch|||he enters|||I accept|||I watched
+44|||MC|||ák icedpilí|||he will accept|||I accept|||she enters|||she will watch|||she will enter
+45|||MC|||ák icedpilí|||he will accept|||he will watch|||you accepted|||she accepts|||to accept
+46|||MC|||ekki icedpilí|||she will accept|||you accepted|||I watched|||I entered|||he enters
+47|||MC|||ekki icedpilí|||she will accept|||she watched|||I will watch|||I will accept|||to enter
+48|||MC|||pi icedpizpe|||you accepted|||she enters|||she entered|||I watched|||he entered
+49|||MC|||pi icedpizpe|||you accepted|||she will enter|||you will enter|||you entered|||she watches
+50|||MC|||ák icedpü|||he accepted|||you accept|||I accept|||he entered|||you entered
+51|||MC|||ák icedpü|||he accepted|||I watched|||to accept|||I entered|||you will enter
+52|||MC|||ekki icedpü|||she accepted|||you will enter|||she watched|||you entered|||I accept
+53|||MC|||ekki icedpü|||she accepted|||to accept|||she enters|||she will accept|||you accepted
+54|||MC|||enplil|||to enter|||he will watch|||you accepted|||she accepts|||she will watch
+55|||MC|||enplil|||to enter|||she will enter|||he accepted|||you enter|||she will accept
+56|||MC|||yé enplé|||I enter|||to enter|||to watch|||you accept|||he will watch
+57|||MC|||yé enplé|||I enter|||you enter|||he enters|||you accepted|||to accept
+58|||MC|||pi enpliz|||you enter|||she entered|||she will enter|||he accepts|||she accepts
+59|||MC|||pi enpliz|||you enter|||I will enter|||she watches|||she will accept|||to accept
+60|||MC|||ák enpli|||he enters|||you will enter|||I will accept|||to accept|||I enter
+61|||MC|||ák enpli|||he enters|||you accepted|||I will enter|||he accepts|||he entered
+62|||MC|||ekki enpli|||she enters|||she accepts|||he enters|||she will accept|||to accept
+63|||MC|||ekki enpli|||she enters|||he entered|||he accepts|||he will enter|||she will enter
+64|||MC|||yé enplilá|||I will enter|||she will accept|||she will enter|||you watched|||to watch
+65|||MC|||yé enplilá|||I will enter|||he enters|||I entered|||you will enter|||to accept
+66|||MC|||pi enplilíz|||you will enter|||you accept|||I enter|||he will watch|||she will accept
+67|||MC|||pi enplilíz|||you will enter|||you watched|||he accepted|||I will accept|||she entered
+68|||MC|||ák enplilí|||he will enter|||I accept|||I watched|||he entered|||to watch
+69|||MC|||ák enplilí|||he will enter|||you will enter|||I entered|||you accepted|||I will accept
+70|||MC|||ekki enplilí|||she will enter|||she will watch|||I will watch|||he accepts|||to enter
+71|||MC|||ekki enplilí|||she will enter|||she will accept|||you enter|||he accepted|||he enters
+72|||MC|||yé enplá|||I entered|||she accepted|||she will watch|||he will enter|||she watches
+73|||MC|||yé enplá|||I entered|||she entered|||he enters|||I will enter|||to watch
+74|||MC|||pi enplizpe|||you entered|||I will accept|||I will enter|||you watched|||I accept
+75|||MC|||pi enplizpe|||you entered|||he accepted|||he will enter|||she accepted|||he will accept
+76|||MC|||ák enplü|||he entered|||she entered|||I enter|||I will enter|||he will watch
+77|||MC|||ák enplü|||he entered|||he will accept|||he enters|||she will accept|||she accepted
+78|||MC|||ekki enplü|||she entered|||she accepts|||I will watch|||to enter|||he accepted
+79|||MC|||ekki enplü|||she entered|||she watched|||she will accept|||you watched|||he will watch
+80|||MC|||melil|||to watch|||I entered|||I watched|||she entered|||he accepted
+81|||MC|||melil|||to watch|||to accept|||he will enter|||I enter|||she watches
+82|||MC|||ekki meli|||she watches|||you accept|||she will enter|||he will watch|||she enters
+83|||MC|||ekki meli|||she watches|||she will watch|||she accepts|||he will enter|||she watched
+84|||MC|||yé melilá|||I will watch|||I will accept|||he accepted|||she accepted|||he accepts
+85|||MC|||yé melilá|||I will watch|||I watched|||she will watch|||you enter|||I accept
+86|||MC|||ák melilí|||he will watch|||to accept|||she accepted|||she will enter|||she watches
+87|||MC|||ák melilí|||he will watch|||he entered|||you entered|||you enter|||she will watch
+88|||MC|||ekki melilí|||she will watch|||you will enter|||he will watch|||she accepted|||she entered
+89|||MC|||ekki melilí|||she will watch|||I watched|||to enter|||she watches|||to watch
+90|||MC|||yé melá|||I watched|||he will accept|||you enter|||I enter|||she will enter
+91|||MC|||yé melá|||I watched|||you watched|||she watches|||to enter|||she accepts
+92|||MC|||pi melizpe|||you watched|||he entered|||she accepts|||to watch|||she enters
+93|||MC|||pi melizpe|||you watched|||I will accept|||he will enter|||she watched|||I will watch
+94|||MC|||ekki melü|||she watched|||he accepted|||I accept|||to accept|||I will watch
+95|||MC|||ekki melü|||she watched|||you watched|||she enters|||he will enter|||I enter
+96|||MCR|||icedpil|||to accept|||I enter|||I entered|||she accepted|||she entered
+97|||MCR|||icedpil|||to accept|||he accepts|||she will enter|||you entered|||I watched
+98|||MCR|||yé icedpé|||I accept|||I watched|||to accept|||he will accept|||he enters
+99|||MCR|||yé icedpé|||I accept|||she watched|||he accepts|||I will accept|||she accepted
+100|||MCR|||pi icedpiz|||you accept|||I watched|||she will enter|||she will watch|||she accepted
+101|||MCR|||pi icedpiz|||you accept|||he will accept|||to enter|||he accepts|||I entered
+102|||MCR|||ák icedpi|||he accepts|||she entered|||he enters|||you enter|||you entered
+103|||MCR|||ák icedpi|||he accepts|||I watched|||he entered|||he will watch|||she enters
+104|||MCR|||ekki icedpi|||she accepts|||she entered|||he accepted|||he entered|||you entered
+105|||MCR|||ekki icedpi|||she accepts|||I will accept|||she accepted|||he will watch|||you enter
+106|||MCR|||yé icedpilá|||I will accept|||she accepts|||she entered|||she will enter|||I entered
+107|||MCR|||yé icedpilá|||I will accept|||he will watch|||he enters|||I accept|||I watched
+108|||MCR|||ák icedpilí|||he will accept|||I accept|||she enters|||she will watch|||she will enter
+109|||MCR|||ák icedpilí|||he will accept|||he will watch|||you accepted|||she accepts|||to accept
+110|||MCR|||ekki icedpilí|||she will accept|||you accepted|||I watched|||I entered|||he enters
+111|||MCR|||ekki icedpilí|||she will accept|||she watched|||I will watch|||I will accept|||to enter
+112|||MCR|||pi icedpizpe|||you accepted|||she enters|||she entered|||I watched|||he entered
+113|||MCR|||pi icedpizpe|||you accepted|||she will enter|||you will enter|||you entered|||she watches
+114|||MCR|||ák icedpü|||he accepted|||you accept|||I accept|||he entered|||you entered
+115|||MCR|||ák icedpü|||he accepted|||I watched|||to accept|||I entered|||you will enter
+116|||MCR|||ekki icedpü|||she accepted|||you will enter|||she watched|||you entered|||I accept
+117|||MCR|||ekki icedpü|||she accepted|||to accept|||she enters|||she will accept|||you accepted
+118|||MCR|||enplil|||to enter|||he will watch|||you accepted|||she accepts|||she will watch
+119|||MCR|||enplil|||to enter|||she will enter|||he accepted|||you enter|||she will accept
+120|||MCR|||yé enplé|||I enter|||to enter|||to watch|||you accept|||he will watch
+121|||MCR|||yé enplé|||I enter|||you enter|||he enters|||you accepted|||to accept
+122|||MCR|||pi enpliz|||you enter|||she entered|||she will enter|||he accepts|||she accepts
+123|||MCR|||pi enpliz|||you enter|||I will enter|||she watches|||she will accept|||to accept
+124|||MCR|||ák enpli|||he enters|||you will enter|||I will accept|||to accept|||I enter
+125|||MCR|||ák enpli|||he enters|||you accepted|||I will enter|||he accepts|||he entered
+126|||MCR|||ekki enpli|||she enters|||she accepts|||he enters|||she will accept|||to accept
+127|||MCR|||ekki enpli|||she enters|||he entered|||he accepts|||he will enter|||she will enter
+128|||MCR|||yé enplilá|||I will enter|||she will accept|||she will enter|||you watched|||to watch
+129|||MCR|||yé enplilá|||I will enter|||he enters|||I entered|||you will enter|||to accept
+130|||MCR|||pi enplilíz|||you will enter|||you accept|||I enter|||he will watch|||she will accept
+131|||MCR|||pi enplilíz|||you will enter|||you watched|||he accepted|||I will accept|||she entered
+132|||MCR|||ák enplilí|||he will enter|||I accept|||I watched|||he entered|||to watch
+133|||MCR|||ák enplilí|||he will enter|||you will enter|||I entered|||you accepted|||I will accept
+134|||MCR|||ekki enplilí|||she will enter|||she will watch|||I will watch|||he accepts|||to enter
+135|||MCR|||ekki enplilí|||she will enter|||she will accept|||you enter|||he accepted|||he enters
+136|||MCR|||yé enplá|||I entered|||she accepted|||she will watch|||he will enter|||she watches
+137|||MCR|||yé enplá|||I entered|||she entered|||he enters|||I will enter|||to watch
+138|||MCR|||pi enplizpe|||you entered|||I will accept|||I will enter|||you watched|||I accept
+139|||MCR|||pi enplizpe|||you entered|||he accepted|||he will enter|||she accepted|||he will accept
+140|||MCR|||ák enplü|||he entered|||she entered|||I enter|||I will enter|||he will watch
+141|||MCR|||ák enplü|||he entered|||he will accept|||he enters|||she will accept|||she accepted
+142|||MCR|||ekki enplü|||she entered|||she accepts|||I will watch|||to enter|||he accepted
+143|||MCR|||ekki enplü|||she entered|||she watched|||she will accept|||you watched|||he will watch
+144|||MCR|||melil|||to watch|||I entered|||I watched|||she entered|||he accepted
+145|||MCR|||melil|||to watch|||to accept|||he will enter|||I enter|||she watches
+146|||MCR|||ekki meli|||she watches|||you accept|||she will enter|||he will watch|||she enters
+147|||MCR|||ekki meli|||she watches|||she will watch|||she accepts|||he will enter|||she watched
+148|||MCR|||yé melilá|||I will watch|||I will accept|||he accepted|||she accepted|||he accepts
+149|||MCR|||yé melilá|||I will watch|||I watched|||she will watch|||you enter|||I accept
+150|||MCR|||ák melilí|||he will watch|||to accept|||she accepted|||she will enter|||she watches
+151|||MCR|||ák melilí|||he will watch|||he entered|||you entered|||you enter|||she will watch
+152|||MCR|||ekki melilí|||she will watch|||you will enter|||he will watch|||she accepted|||she entered
+153|||MCR|||ekki melilí|||she will watch|||I watched|||to enter|||she watches|||to watch
+154|||MCR|||yé melá|||I watched|||he will accept|||you enter|||I enter|||she will enter
+155|||MCR|||yé melá|||I watched|||you watched|||she watches|||to enter|||she accepts
+156|||MCR|||pi melizpe|||you watched|||he entered|||she accepts|||to watch|||she enters
+157|||MCR|||pi melizpe|||you watched|||I will accept|||he will enter|||she watched|||I will watch
+158|||MCR|||ekki melü|||she watched|||he accepted|||I accept|||to accept|||I will watch
+159|||MCR|||ekki melü|||she watched|||you watched|||she enters|||he will enter|||I enter
+160|||TP|||icedpil|||to accept
+161|||TP|||yé icedpé|||I accept
+162|||TP|||pi icedpiz|||you accept
+163|||TP|||ák icedpi|||he accepts
+164|||TP|||ekki icedpi|||she accepts
+165|||TP|||yé icedpilá|||I will accept
+166|||TP|||ák icedpilí|||he will accept
+167|||TP|||ekki icedpilí|||she will accept
+168|||TP|||pi icedpizpe|||you accepted
+169|||TP|||ák icedpü|||he accepted
+170|||TP|||ekki icedpü|||she accepted
+171|||TP|||enplil|||to enter
+172|||TP|||yé enplé|||I enter
+173|||TP|||pi enpliz|||you enter
+174|||TP|||ák enpli|||he enters
+175|||TP|||ekki enpli|||she enters
+176|||TP|||yé enplilá|||I will enter
+177|||TP|||pi enplilíz|||you will enter
+178|||TP|||ák enplilí|||he will enter
+179|||TP|||ekki enplilí|||she will enter
+180|||TP|||yé enplá|||I entered
+181|||TP|||pi enplizpe|||you entered
+182|||TP|||ák enplü|||he entered
+183|||TP|||ekki enplü|||she entered
+184|||TP|||melil|||to watch
+185|||TP|||ekki meli|||she watches
+186|||TP|||yé melilá|||I will watch
+187|||TP|||ák melilí|||he will watch
+188|||TP|||ekki melilí|||she will watch
+189|||TP|||yé melá|||I watched
+190|||TP|||pi melizpe|||you watched
+191|||TP|||ekki melü|||she watched
+192|||TPR|||icedpil|||to accept
+193|||TPR|||yé icedpé|||I accept
+194|||TPR|||pi icedpiz|||you accept
+195|||TPR|||ák icedpi|||he accepts
+196|||TPR|||ekki icedpi|||she accepts
+197|||TPR|||yé icedpilá|||I will accept
+198|||TPR|||ák icedpilí|||he will accept
+199|||TPR|||ekki icedpilí|||she will accept
+200|||TPR|||pi icedpizpe|||you accepted
+201|||TPR|||ák icedpü|||he accepted
+202|||TPR|||ekki icedpü|||she accepted
+203|||TPR|||enplil|||to enter
+204|||TPR|||yé enplé|||I enter
+205|||TPR|||pi enpliz|||you enter
+206|||TPR|||ák enpli|||he enters
+207|||TPR|||ekki enpli|||she enters
+208|||TPR|||yé enplilá|||I will enter
+209|||TPR|||pi enplilíz|||you will enter
+210|||TPR|||ák enplilí|||he will enter
+211|||TPR|||ekki enplilí|||she will enter
+212|||TPR|||yé enplá|||I entered
+213|||TPR|||pi enplizpe|||you entered
+214|||TPR|||ák enplü|||he entered
+215|||TPR|||ekki enplü|||she entered
+216|||TPR|||melil|||to watch
+217|||TPR|||ekki meli|||she watches
+218|||TPR|||yé melilá|||I will watch
+219|||TPR|||ák melilí|||he will watch
+220|||TPR|||ekki melilí|||she will watch
+221|||TPR|||yé melá|||I watched
+222|||TPR|||pi melizpe|||you watched
+223|||TPR|||ekki melü|||she watched
