@@ -31,3 +31,8 @@ if __name__ == '__main__':
         anon_user_records.write(anon_items + '\n')
     anon_user_records.flush() 
     anon_user_records.close()
+    anon_map = codecs.open('anon_map.txt', 'w', 'utf8')
+    for k,v in user2uuid.iteritems():
+        anon_map.write(k + '\t' + v +'\n')
+    anon_map.flush()
+    anon_map.close()
