@@ -1,0 +1,852 @@
+AZEGZ5ZVM6P5A	0	EX	1.0	12	yé enplé	ALL	I enter	revealed
+AZEGZ5ZVM6P5A	0	MCR	2.0	119	enplil	you enter,she will accept,she will enter,he accepted,to enter	he accepted	incorrect
+AZEGZ5ZVM6P5A	0	MCR	2.1	119	enplil	you enter,she will accept,she will enter,to enter	you enter	incorrect
+AZEGZ5ZVM6P5A	0	MC	3.0	59	pi enpliz	you enter,I will enter,she watches,she will accept,to accept	I will enter	incorrect
+AZEGZ5ZVM6P5A	0	MC	4.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she accepted	incorrect
+AZEGZ5ZVM6P5A	0	MC	5.0	45	ák icedpilí	he will accept,he will watch,you accepted,she accepts,to accept	he will watch	incorrect
+AZEGZ5ZVM6P5A	0	MCR	6.0	155	yé melá	she watches,she accepts,you watched,to enter,I watched	I watched	correct
+AZEGZ5ZVM6P5A	0	TPR	7.0	212	yé enplá	ALL	I accept	incorrect
+AZEGZ5ZVM6P5A	0	TPR	7.0	212	yé enplá	ALL	I entered	revealed
+AZEGZ5ZVM6P5A	0	EX	8.0	27	ák melilí	ALL	he will watch	revealed
+AZEGZ5ZVM6P5A	0	MC	9.0	76	ák enplü	he entered,she entered,I enter,I will enter,he will watch	he will watch	incorrect
+AZEGZ5ZVM6P5A	0	TP	10.0	169	ák icedpü	ALL	he will watch	incorrect
+AZEGZ5ZVM6P5A	0	TP	11.0	191	ekki melü	ALL	she will watch	incorrect
+AZEGZ5ZVM6P5A	0	TP	12.0	173	pi enpliz	ALL	i enter	incorrect
+AZEGZ5ZVM6P5A	0	EX	13.0	13	pi enpliz	ALL	you enter	revealed
+AZEGZ5ZVM6P5A	0	MCR	14.0	143	ekki enplü	she entered,she will accept,he will watch,you watched,she watched	he will watch	incorrect
+AZEGZ5ZVM6P5A	0	MC	15.0	39	ák icedpi	he accepts,I watched,he entered,he will watch,she enters	he accepts	correct
+AZEGZ5ZVM6P5A	0	MCR	16.0	138	pi enplizpe	I will accept,I will enter,you entered,you watched,I accept	you entered	correct
+AZEGZ5ZVM6P5A	0	MCR	17.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	he will enter	correct
+AZEGZ5ZVM6P5A	0	TPR	18.0	203	enplil	ALL	he will enter	incorrect
+AZEGZ5ZVM6P5A	0	TPR	18.0	203	enplil	ALL	to enter	revealed
+AZEGZ5ZVM6P5A	0	MC	19.0	43	yé icedpilá	I will accept,he will watch,he enters,I accept,I watched	I watched	incorrect
+AZEGZ5ZVM6P5A	0	MC	20.0	76	ák enplü	he entered,she entered,I enter,I will enter,he will watch	he entered	correct
+AZEGZ5ZVM6P5A	0	EX	21.0	13	pi enpliz	ALL	you enter	revealed
+AZEGZ5ZVM6P5A	0	TP	22.0	187	ák melilí	ALL	he watches	incorrect
+AZEGZ5ZVM6P5A	0	TPR	23.0	207	ekki enpli	ALL	she enters	correct
+AZEGZ5ZVM6P5A	0	MC	24.0	73	yé enplá	I entered,she entered,he enters,I will enter,to watch	I will enter	incorrect
+AZEGZ5ZVM6P5A	0	MCR	25.0	137	yé enplá	she entered,I entered,I will enter,to watch,he enters	she entered	incorrect
+AZEGZ5ZVM6P5A	0	MCR	25.1	137	yé enplá	I entered,I will enter,to watch,he enters	I entered	correct
+AZEGZ5ZVM6P5A	0	TPR	26.0	212	yé enplá	ALL	I enter	incorrect
+AZEGZ5ZVM6P5A	0	TPR	26.0	212	yé enplá	ALL	I entered	revealed
+AZEGZ5ZVM6P5A	0	EX	27.0	10	ekki icedpü	ALL	she accepted	revealed
+AZEGZ5ZVM6P5A	0	TP	28.0	169	ák icedpü	ALL	he entered	incorrect
+AZEGZ5ZVM6P5A	0	EX	29.0	24	melil	ALL	to watch	revealed
+AZEGZ5ZVM6P5A	0	EX	30.0	26	yé melilá	ALL	I will watch	revealed
+AZEGZ5ZVM6P5A	0	TP	31.0	186	yé melilá	ALL	I will watch	correct
+AZEGZ5ZVM6P5A	0	MC	32.0	81	melil	to watch,to accept,he will enter,I enter,she watches	to watch	correct
+AZEGZ5ZVM6P5A	0	TP	33.0	163	ák icedpi	ALL	he accepted	incorrect
+AZEGZ5ZVM6P5A	0	MC	34.0	64	yé enplilá	I will enter,she will accept,she will enter,you watched,to watch	she will enter	incorrect
+AZEGZ5ZVM6P5A	0	MC	35.0	95	ekki melü	she watched,you watched,she enters,he will enter,I enter	he will enter	incorrect
+AF3LEU0Z2EMH4	2	EX	1.0	30	pi melizpe	ALL	you watched	revealed
+AF3LEU0Z2EMH4	2	MC	2.0	58	pi enpliz	you enter,she entered,she will enter,he accepts,she accepts	you enter	correct
+AF3LEU0Z2EMH4	2	MC	3.0	87	ák melilí	he will watch,he entered,you entered,you enter,she will watch	he will watch	correct
+AF3LEU0Z2EMH4	2	MC	4.0	44	ák icedpilí	he will accept,I accept,she enters,she will watch,she will enter	she will enter	incorrect
+AF3LEU0Z2EMH4	2	MCR	5.0	115	ák icedpü	I entered,he accepted,to accept,you will enter,I watched	he accepted	correct
+AF3LEU0Z2EMH4	2	MCR	6.0	154	yé melá	you enter,I enter,she will enter,I watched,he will accept	she will enter	incorrect
+AF3LEU0Z2EMH4	2	MCR	6.1	154	yé melá	you enter,I enter,I watched,he will accept	I enter	incorrect
+AF3LEU0Z2EMH4	2	MC	7.0	60	ák enpli	he enters,you will enter,I will accept,to accept,I enter	he enters	correct
+AF3LEU0Z2EMH4	2	EX	8.0	28	ekki melilí	ALL	she will watch	revealed
+AF3LEU0Z2EMH4	2	TPR	9.0	210	ák enplilí	ALL	he will enter	correct
+AF3LEU0Z2EMH4	2	EX	10.0	23	ekki enplü	ALL	she entered	revealed
+AF3LEU0Z2EMH4	2	EX	11.0	10	ekki icedpü	ALL	she accepted	revealed
+AF3LEU0Z2EMH4	2	MCR	12.0	128	yé enplilá	I will enter,she will enter,you watched,to watch,she will accept	I will enter	correct
+AF3LEU0Z2EMH4	2	EX	13.0	29	yé melá	ALL	I watched	revealed
+AF3LEU0Z2EMH4	2	MCR	14.0	109	ák icedpilí	you accepted,he will watch,to accept,she accepts,he will accept	he will accept	correct
+AF3LEU0Z2EMH4	2	MC	15.0	33	icedpil	to accept,he accepts,she will enter,you entered,I watched	to accept	correct
+AF3LEU0Z2EMH4	2	TPR	16.0	208	yé enplilá	ALL	I watched	incorrect
+AF3LEU0Z2EMH4	2	TPR	16.0	208	yé enplilá	ALL	I will enter	revealed
+AF3LEU0Z2EMH4	2	MCR	17.0	159	ekki melü	she enters,I enter,you watched,he will enter,she watched	she watched	correct
+AF3LEU0Z2EMH4	2	EX	18.0	29	yé melá	ALL	I watched	revealed
+AF3LEU0Z2EMH4	2	TPR	19.0	215	ekki enplü	ALL	She will enter	incorrect
+AF3LEU0Z2EMH4	2	TPR	19.0	215	ekki enplü	ALL	she entered	revealed
+AF3LEU0Z2EMH4	2	TP	20.0	180	yé enplá	ALL	I will enter	incorrect
+AF3LEU0Z2EMH4	2	MCR	21.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he accepts	correct
+AF3LEU0Z2EMH4	2	MCR	22.0	98	yé icedpé	he enters,he will accept,to accept,I watched,I accept	I accept	correct
+AF3LEU0Z2EMH4	2	MCR	23.0	138	pi enplizpe	I will accept,I will enter,you entered,you watched,I accept	you entered	correct
+AF3LEU0Z2EMH4	2	TP	24.0	185	ekki meli	ALL	She watched	incorrect
+AF3LEU0Z2EMH4	2	TP	25.0	176	yé enplilá	ALL	I entered	incorrect
+AF3LEU0Z2EMH4	2	MCR	26.0	111	ekki icedpilí	I will accept,she will accept,I will watch,to enter,she watched	she will accept	correct
+AF3LEU0Z2EMH4	2	EX	27.0	14	ák enpli	ALL	he enters	revealed
+AF3LEU0Z2EMH4	2	TPR	28.0	197	yé icedpilá	ALL	I accepted	incorrect
+AF3LEU0Z2EMH4	2	TPR	28.0	197	yé icedpilá	ALL	I will accept	revealed
+AF3LEU0Z2EMH4	2	TPR	29.0	213	pi enplizpe	ALL	You will enter	incorrect
+AF3LEU0Z2EMH4	2	TPR	29.0	213	pi enplizpe	ALL	you entered	revealed
+AF3LEU0Z2EMH4	2	TP	30.0	187	ák melilí	ALL	He will watch	correct
+AF3LEU0Z2EMH4	2	MC	31.0	47	ekki icedpilí	she will accept,she watched,I will watch,I will accept,to enter	she will accept	correct
+AF3LEU0Z2EMH4	2	EX	32.0	29	yé melá	ALL	I watched	revealed
+AF3LEU0Z2EMH4	2	EX	33.0	4	ekki icedpi	ALL	she accepts	revealed
+AF3LEU0Z2EMH4	2	EX	34.0	31	ekki melü	ALL	she watched	revealed
+AF3LEU0Z2EMH4	2	TP	35.0	176	yé enplilá	ALL	I will enter	correct
+A2C70CEYBGWK97	0	EX	1.0	6	ák icedpilí	ALL	he will accept	revealed
+A2C70CEYBGWK97	0	MCR	2.0	146	ekki meli	she watches,she enters,she will enter,you accept,he will watch	you accept	incorrect
+A2C70CEYBGWK97	0	MCR	2.1	146	ekki meli	she watches,she enters,she will enter,he will watch	she watches	correct
+A2C70CEYBGWK97	0	EX	3.0	8	pi icedpizpe	ALL	you accepted	revealed
+A2C70CEYBGWK97	0	EX	4.0	12	yé enplé	ALL	I enter	revealed
+A2C70CEYBGWK97	0	TP	5.0	185	ekki meli	ALL	I accept	incorrect
+A2C70CEYBGWK97	0	TPR	6.0	220	ekki melilí	ALL	You accept	incorrect
+A2C70CEYBGWK97	0	TPR	6.0	220	ekki melilí	ALL	she will watch	revealed
+A2C70CEYBGWK97	0	MCR	7.0	126	ekki enpli	she enters,she will accept,to accept,she accepts,he enters	she enters	correct
+A2C70CEYBGWK97	0	EX	8.0	16	yé enplilá	ALL	I will enter	revealed
+A2C70CEYBGWK97	0	EX	9.0	24	melil	ALL	to watch	revealed
+A2C70CEYBGWK97	0	EX	10.0	20	yé enplá	ALL	I entered	revealed
+A2C70CEYBGWK97	0	MC	11.0	55	enplil	to enter,she will enter,he accepted,you enter,she will accept	to enter	correct
+A2C70CEYBGWK97	0	EX	12.0	13	pi enpliz	ALL	you enter	revealed
+A2C70CEYBGWK97	0	TPR	13.0	223	ekki melü	ALL	she enters	incorrect
+A2C70CEYBGWK97	0	TPR	13.0	223	ekki melü	ALL	she watched	revealed
+A2C70CEYBGWK97	0	MCR	14.0	137	yé enplá	she entered,I entered,I will enter,to watch,he enters	I entered	correct
+A2C70CEYBGWK97	0	MCR	15.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	you will enter	incorrect
+A2C70CEYBGWK97	0	MCR	15.1	133	ák enplilí	you accepted,I entered,he will enter,I will accept	he will enter	correct
+A2C70CEYBGWK97	0	MCR	16.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	he will watch	incorrect
+A2C70CEYBGWK97	0	MCR	16.1	105	ekki icedpi	I will accept,she accepted,you enter,she accepts	she accepted	incorrect
+A2C70CEYBGWK97	0	MCR	17.0	96	icedpil	she accepted,I enter,to accept,she entered,I entered	to accept	correct
+A2C70CEYBGWK97	0	MC	18.0	35	yé icedpé	I accept,she watched,he accepts,I will accept,she accepted	I accept	correct
+A2C70CEYBGWK97	0	TP	19.0	161	yé icedpé	ALL	I accept	correct
+A2C70CEYBGWK97	0	EX	20.0	29	yé melá	ALL	I watched	revealed
+A2C70CEYBGWK97	0	EX	21.0	16	yé enplilá	ALL	I will enter	revealed
+A2C70CEYBGWK97	0	MCR	22.0	104	ekki icedpi	she entered,he accepted,you entered,he entered,she accepts	she accepts	correct
+A2C70CEYBGWK97	0	MC	23.0	82	ekki meli	she watches,you accept,she will enter,he will watch,she enters	she watches	correct
+A2C70CEYBGWK97	0	EX	24.0	12	yé enplé	ALL	I enter	revealed
+A2C70CEYBGWK97	0	MCR	25.0	155	yé melá	she watches,she accepts,you watched,to enter,I watched	I watched	correct
+A2C70CEYBGWK97	0	TPR	26.0	201	ák icedpü	ALL	he accepts	incorrect
+A2C70CEYBGWK97	0	TPR	26.0	201	ák icedpü	ALL	he accepted	revealed
+A2C70CEYBGWK97	0	TPR	27.0	196	ekki icedpi	ALL	she accepted	incorrect
+A2C70CEYBGWK97	0	TPR	27.0	196	ekki icedpi	ALL	she accepts	revealed
+A2C70CEYBGWK97	0	EX	28.0	9	ák icedpü	ALL	he accepted	revealed
+A2C70CEYBGWK97	0	MCR	29.0	106	yé icedpilá	I will accept,she entered,she will enter,she accepts,I entered	I will accept	correct
+A2C70CEYBGWK97	0	MCR	30.0	125	ák enpli	you accepted,I will enter,he accepts,he entered,he enters	he entered	incorrect
+A2C70CEYBGWK97	0	MCR	30.1	125	ák enpli	you accepted,I will enter,he accepts,he enters	he enters	correct
+A2C70CEYBGWK97	0	MCR	31.0	151	ák melilí	you enter,you entered,she will watch,he entered,he will watch	he will watch	correct
+A2C70CEYBGWK97	0	MC	32.0	46	ekki icedpilí	she will accept,you accepted,I watched,I entered,he enters	she will accept	correct
+A2C70CEYBGWK97	0	TP	33.0	162	pi icedpiz	ALL	you accepted	incorrect
+A2C70CEYBGWK97	0	TP	34.0	160	icedpil	ALL	to enter	incorrect
+A2C70CEYBGWK97	0	MCR	35.0	148	yé melilá	I will accept,she accepted,I will watch,he accepted,he accepts	I will watch	correct
+A26UIS59SY4NM6	3	EX	1.0	12	yé enplé	ALL	I enter	revealed
+A26UIS59SY4NM6	3	MC	2.0	75	pi enplizpe	you entered,he accepted,he will enter,she accepted,he will accept	he will enter	incorrect
+A26UIS59SY4NM6	3	MCR	3.0	112	pi icedpizpe	you accepted,she enters,he entered,she entered,I watched	you accepted	correct
+A26UIS59SY4NM6	3	TP	4.0	180	yé enplá	ALL	you entered	incorrect
+A26UIS59SY4NM6	3	MC	5.0	49	pi icedpizpe	you accepted,she will enter,you will enter,you entered,she watches	you accepted	correct
+A26UIS59SY4NM6	3	EX	6.0	4	ekki icedpi	ALL	she accepts	revealed
+A26UIS59SY4NM6	3	MCR	7.0	98	yé icedpé	he enters,he will accept,to accept,I watched,I accept	he will accept	incorrect
+A26UIS59SY4NM6	3	MCR	7.1	98	yé icedpé	he enters,to accept,I watched,I accept	I watched	incorrect
+A26UIS59SY4NM6	3	MCR	7.2	98	yé icedpé	he enters,to accept,I accept	to accept	incorrect
+A26UIS59SY4NM6	3	MC	8.0	85	yé melilá	I will watch,I watched,she will watch,you enter,I accept	I will watch	correct
+A26UIS59SY4NM6	3	MC	9.0	52	ekki icedpü	she accepted,you will enter,she watched,you entered,I accept	she accepted	correct
+A26UIS59SY4NM6	3	MCR	10.0	157	pi melizpe	I will accept,he will enter,I will watch,you watched,she watched	she watched	incorrect
+A26UIS59SY4NM6	3	MCR	10.1	157	pi melizpe	I will accept,he will enter,I will watch,you watched	I will accept	incorrect
+A26UIS59SY4NM6	3	MCR	11.0	122	pi enpliz	she entered,he accepts,you enter,she will enter,she accepts	she accepts	incorrect
+A26UIS59SY4NM6	3	MCR	11.1	122	pi enpliz	she entered,he accepts,you enter,she will enter	she will enter	incorrect
+A26UIS59SY4NM6	3	MCR	11.2	122	pi enpliz	she entered,he accepts,you enter	she entered	incorrect
+A26UIS59SY4NM6	3	MCR	12.0	151	ák melilí	you enter,you entered,she will watch,he entered,he will watch	he will watch	correct
+A26UIS59SY4NM6	3	MC	13.0	72	yé enplá	I entered,she accepted,she will watch,he will enter,she watches	she will watch	incorrect
+A26UIS59SY4NM6	3	EX	14.0	12	yé enplé	ALL	I enter	revealed
+A26UIS59SY4NM6	3	MC	15.0	66	pi enplilíz	you will enter,you accept,I enter,he will watch,she will accept	you accept	incorrect
+A26UIS59SY4NM6	3	EX	16.0	3	ák icedpi	ALL	he accepts	revealed
+A26UIS59SY4NM6	3	TPR	17.0	205	pi enpliz	ALL	i enter	incorrect
+A26UIS59SY4NM6	3	TPR	17.0	205	pi enpliz	ALL	you enter	revealed
+A26UIS59SY4NM6	3	TPR	18.0	221	yé melá	ALL	you watched	incorrect
+A26UIS59SY4NM6	3	TPR	18.0	221	yé melá	ALL	I watched	revealed
+A26UIS59SY4NM6	3	MCR	19.0	126	ekki enpli	she enters,she will accept,to accept,she accepts,he enters	she accepts	incorrect
+A26UIS59SY4NM6	3	MCR	19.1	126	ekki enpli	she enters,she will accept,to accept,he enters	she will accept	incorrect
+A26UIS59SY4NM6	3	MCR	19.2	126	ekki enpli	she enters,to accept,he enters	to accept	incorrect
+A26UIS59SY4NM6	3	TP	20.0	162	pi icedpiz	ALL	NO_ANSWER_MADE	incorrect
+A26UIS59SY4NM6	3	EX	21.0	9	ák icedpü	ALL	he accepted	revealed
+A26UIS59SY4NM6	3	MC	22.0	32	icedpil	to accept,I enter,I entered,she accepted,she entered	to accept	correct
+A26UIS59SY4NM6	3	TP	23.0	176	yé enplilá	ALL	you enter	incorrect
+A26UIS59SY4NM6	3	EX	24.0	7	ekki icedpilí	ALL	she will accept	revealed
+A26UIS59SY4NM6	3	TP	25.0	178	ák enplilí	ALL	i accept	incorrect
+A26UIS59SY4NM6	3	EX	26.0	13	pi enpliz	ALL	you enter	revealed
+A26UIS59SY4NM6	3	MCR	27.0	109	ák icedpilí	you accepted,he will watch,to accept,she accepts,he will accept	he will accept	correct
+A26UIS59SY4NM6	3	MCR	28.0	117	ekki icedpü	you accepted,she accepted,she will accept,to accept,she enters	she accepted	correct
+A26UIS59SY4NM6	3	TP	29.0	189	yé melá	ALL	i watched	correct
+A26UIS59SY4NM6	3	MC	30.0	80	melil	to watch,I entered,I watched,she entered,he accepted	to watch	correct
+A26UIS59SY4NM6	3	MCR	31.0	108	ák icedpilí	she enters,she will enter,I accept,she will watch,he will accept	he will accept	correct
+A26UIS59SY4NM6	3	EX	32.0	19	ekki enplilí	ALL	she will enter	revealed
+A26UIS59SY4NM6	3	EX	33.0	22	ák enplü	ALL	he entered	revealed
+A26UIS59SY4NM6	3	TPR	34.0	222	pi melizpe	ALL	he watched	incorrect
+A26UIS59SY4NM6	3	TPR	34.0	222	pi melizpe	ALL	you watched	revealed
+A26UIS59SY4NM6	3	MC	35.0	54	enplil	to enter,he will watch,you accepted,she accepts,she will watch	she accepts	incorrect
+AFRJKS3Z3H4CA	3	EX	1.0	31	ekki melü	ALL	she watched	revealed
+AFRJKS3Z3H4CA	3	EX	2.0	9	ák icedpü	ALL	he accepted	revealed
+AFRJKS3Z3H4CA	3	MC	3.0	73	yé enplá	I entered,she entered,he enters,I will enter,to watch	I will enter	incorrect
+AFRJKS3Z3H4CA	3	MCR	4.0	115	ák icedpü	I entered,he accepted,to accept,you will enter,I watched	he accepted	correct
+AFRJKS3Z3H4CA	3	TP	5.0	177	pi enplilíz	ALL	i watched	incorrect
+AFRJKS3Z3H4CA	3	MC	6.0	89	ekki melilí	she will watch,I watched,to enter,she watches,to watch	she watches	incorrect
+AFRJKS3Z3H4CA	3	MC	7.0	87	ák melilí	he will watch,he entered,you entered,you enter,she will watch	he entered	incorrect
+AFRJKS3Z3H4CA	3	MC	8.0	93	pi melizpe	you watched,I will accept,he will enter,she watched,I will watch	I will accept	incorrect
+AFRJKS3Z3H4CA	3	MC	9.0	59	pi enpliz	you enter,I will enter,she watches,she will accept,to accept	to accept	incorrect
+AFRJKS3Z3H4CA	3	MC	10.0	81	melil	to watch,to accept,he will enter,I enter,she watches	to accept	incorrect
+AFRJKS3Z3H4CA	3	MC	11.0	77	ák enplü	he entered,he will accept,he enters,she will accept,she accepted	he enters	incorrect
+AFRJKS3Z3H4CA	3	TPR	12.0	195	ák icedpi	ALL	he enters	incorrect
+AFRJKS3Z3H4CA	3	TPR	12.0	195	ák icedpi	ALL	he accepts	revealed
+AFRJKS3Z3H4CA	3	TPR	13.0	223	ekki melü	ALL	she watches	incorrect
+AFRJKS3Z3H4CA	3	TPR	13.0	223	ekki melü	ALL	she watched	revealed
+AFRJKS3Z3H4CA	3	MC	14.0	49	pi icedpizpe	you accepted,she will enter,you will enter,you entered,she watches	you accepted	correct
+AFRJKS3Z3H4CA	3	MC	15.0	42	yé icedpilá	I will accept,she accepts,she entered,she will enter,I entered	I entered	incorrect
+AFRJKS3Z3H4CA	3	TP	16.0	163	ák icedpi	ALL	he accepted	incorrect
+AFRJKS3Z3H4CA	3	MC	17.0	55	enplil	to enter,she will enter,he accepted,you enter,she will accept	to enter	correct
+AFRJKS3Z3H4CA	3	TP	18.0	174	ák enpli	ALL	he entered	incorrect
+AFRJKS3Z3H4CA	3	TPR	19.0	206	ák enpli	ALL	he enters	correct
+AFRJKS3Z3H4CA	3	MCR	20.0	142	ekki enplü	she entered,I will watch,he accepted,to enter,she accepts	she entered	correct
+AFRJKS3Z3H4CA	3	EX	21.0	7	ekki icedpilí	ALL	she will accept	revealed
+AFRJKS3Z3H4CA	3	TPR	22.0	194	pi icedpiz	ALL	you accept	correct
+AFRJKS3Z3H4CA	3	TP	23.0	185	ekki meli	ALL	she watches	correct
+AFRJKS3Z3H4CA	3	MCR	24.0	107	yé icedpilá	I will accept,he enters,I watched,I accept,he will watch	I will accept	correct
+AFRJKS3Z3H4CA	3	EX	25.0	0	icedpil	ALL	to accept	revealed
+AFRJKS3Z3H4CA	3	MCR	26.0	139	pi enplizpe	she accepted,you entered,he will enter,he accepted,he will accept	you entered	correct
+AFRJKS3Z3H4CA	3	TP	27.0	184	melil	ALL	to watch	correct
+AFRJKS3Z3H4CA	3	EX	28.0	3	ák icedpi	ALL	he accepts	revealed
+AFRJKS3Z3H4CA	3	TP	29.0	187	ák melilí	ALL	he accepts	incorrect
+AFRJKS3Z3H4CA	3	MC	30.0	66	pi enplilíz	you will enter,you accept,I enter,he will watch,she will accept	you accept	incorrect
+AFRJKS3Z3H4CA	3	MC	31.0	84	yé melilá	I will watch,I will accept,he accepted,she accepted,he accepts	I will watch	correct
+AFRJKS3Z3H4CA	3	TPR	32.0	209	pi enplilíz	ALL	you enter	incorrect
+AFRJKS3Z3H4CA	3	TPR	32.0	209	pi enplilíz	ALL	you will enter	revealed
+AFRJKS3Z3H4CA	3	TP	33.0	176	yé enplilá	ALL	he enters	incorrect
+AFRJKS3Z3H4CA	3	EX	34.0	12	yé enplé	ALL	I enter	revealed
+AFRJKS3Z3H4CA	3	MCR	35.0	152	ekki melilí	she entered,she accepted,you will enter,she will watch,he will watch	she will watch	correct
+A1JO6AY55FG7QU	3	EX	1.0	3	ák icedpi	ALL	he accepts	revealed
+A1JO6AY55FG7QU	3	EX	2.0	1	yé icedpé	ALL	I accept	revealed
+A1JO6AY55FG7QU	3	MC	3.0	76	ák enplü	he entered,she entered,I enter,I will enter,he will watch	I enter	incorrect
+A1JO6AY55FG7QU	3	TPR	4.0	201	ák icedpü	ALL	I will enter	incorrect
+A1JO6AY55FG7QU	3	TPR	4.0	201	ák icedpü	ALL	he accepted	revealed
+A1JO6AY55FG7QU	3	EX	5.0	4	ekki icedpi	ALL	she accepts	revealed
+A1JO6AY55FG7QU	3	EX	6.0	4	ekki icedpi	ALL	she accepts	revealed
+A1JO6AY55FG7QU	3	EX	7.0	5	yé icedpilá	ALL	I will accept	revealed
+A1JO6AY55FG7QU	3	MCR	8.0	147	ekki meli	she watches,he will enter,she will watch,she accepts,she watched	she will watch	incorrect
+A1JO6AY55FG7QU	3	MCR	8.1	147	ekki meli	she watches,he will enter,she accepts,she watched	she watched	incorrect
+A1JO6AY55FG7QU	3	EX	9.0	11	enplil	ALL	to enter	revealed
+A1JO6AY55FG7QU	3	MC	10.0	95	ekki melü	she watched,you watched,she enters,he will enter,I enter	she watched	correct
+A1JO6AY55FG7QU	3	EX	11.0	11	enplil	ALL	to enter	revealed
+A1JO6AY55FG7QU	3	EX	12.0	23	ekki enplü	ALL	she entered	revealed
+A1JO6AY55FG7QU	3	EX	13.0	25	ekki meli	ALL	she watches	revealed
+A1JO6AY55FG7QU	3	EX	14.0	16	yé enplilá	ALL	I will enter	revealed
+A1JO6AY55FG7QU	3	EX	15.0	27	ák melilí	ALL	he will watch	revealed
+A1JO6AY55FG7QU	3	EX	16.0	22	ák enplü	ALL	he entered	revealed
+A1JO6AY55FG7QU	3	EX	17.0	2	pi icedpiz	ALL	you accept	revealed
+A1JO6AY55FG7QU	3	EX	18.0	26	yé melilá	ALL	I will watch	revealed
+A1JO6AY55FG7QU	3	MCR	19.0	111	ekki icedpilí	I will accept,she will accept,I will watch,to enter,she watched	she will accept	correct
+A1JO6AY55FG7QU	3	EX	20.0	12	yé enplé	ALL	I enter	revealed
+A1JO6AY55FG7QU	3	MCR	21.0	154	yé melá	you enter,I enter,she will enter,I watched,he will accept	I enter	incorrect
+A1JO6AY55FG7QU	3	MCR	21.1	154	yé melá	you enter,she will enter,I watched,he will accept	I watched	correct
+A1JO6AY55FG7QU	3	TPR	22.0	199	ekki icedpilí	ALL	she will watch	incorrect
+A1JO6AY55FG7QU	3	TPR	22.0	199	ekki icedpilí	ALL	she will accept	revealed
+A1JO6AY55FG7QU	3	TPR	23.0	208	yé enplilá	ALL	i entered	incorrect
+A1JO6AY55FG7QU	3	TPR	23.0	208	yé enplilá	ALL	I will enter	revealed
+A1JO6AY55FG7QU	3	TP	24.0	178	ák enplilí	ALL	he entered	incorrect
+A1JO6AY55FG7QU	3	MC	25.0	70	ekki enplilí	she will enter,she will watch,I will watch,he accepts,to enter	she will watch	incorrect
+A1JO6AY55FG7QU	3	MC	26.0	48	pi icedpizpe	you accepted,she enters,she entered,I watched,he entered	you accepted	correct
+A1JO6AY55FG7QU	3	TPR	27.0	210	ák enplilí	ALL	he will enter	correct
+A1JO6AY55FG7QU	3	MC	28.0	73	yé enplá	I entered,she entered,he enters,I will enter,to watch	I entered	correct
+A1JO6AY55FG7QU	3	EX	29.0	22	ák enplü	ALL	he entered	revealed
+A1JO6AY55FG7QU	3	MCR	30.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepted	incorrect
+A1JO6AY55FG7QU	3	MCR	30.1	105	ekki icedpi	I will accept,you enter,she accepts,he will watch	she accepts	correct
+A1JO6AY55FG7QU	3	TP	31.0	169	ák icedpü	ALL	he will watch	incorrect
+A1JO6AY55FG7QU	3	EX	32.0	30	pi melizpe	ALL	you watched	revealed
+A1JO6AY55FG7QU	3	MC	33.0	44	ák icedpilí	he will accept,I accept,she enters,she will watch,she will enter	he will accept	correct
+A1JO6AY55FG7QU	3	MCR	34.0	122	pi enpliz	she entered,he accepts,you enter,she will enter,she accepts	you enter	correct
+A1JO6AY55FG7QU	3	MC	35.0	53	ekki icedpü	she accepted,to accept,she enters,she will accept,you accepted	she will accept	incorrect
+A3HNAJE7OJP66A	2	EX	1.0	27	ák melilí	ALL	he will watch	revealed
+A3HNAJE7OJP66A	2	MC	2.0	60	ák enpli	he enters,you will enter,I will accept,to accept,I enter	you will enter	incorrect
+A3HNAJE7OJP66A	2	EX	3.0	0	icedpil	ALL	to accept	revealed
+A3HNAJE7OJP66A	2	EX	4.0	8	pi icedpizpe	ALL	you accepted	revealed
+A3HNAJE7OJP66A	2	EX	5.0	5	yé icedpilá	ALL	I will accept	revealed
+A3HNAJE7OJP66A	2	MC	6.0	65	yé enplilá	I will enter,he enters,I entered,you will enter,to accept	you will enter	incorrect
+A3HNAJE7OJP66A	2	EX	7.0	19	ekki enplilí	ALL	she will enter	revealed
+A3HNAJE7OJP66A	2	TPR	8.0	206	ák enpli	ALL	NO_ANSWER_MADE	incorrect
+A3HNAJE7OJP66A	2	TPR	8.0	206	ák enpli	ALL	he enters	revealed
+A3HNAJE7OJP66A	2	MCR	9.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	you will enter	incorrect
+A3HNAJE7OJP66A	2	MCR	9.1	133	ák enplilí	you accepted,I entered,he will enter,I will accept	he will enter	correct
+A3HNAJE7OJP66A	2	MCR	10.0	104	ekki icedpi	she entered,he accepted,you entered,he entered,she accepts	he entered	incorrect
+A3HNAJE7OJP66A	2	MCR	10.1	104	ekki icedpi	she entered,he accepted,you entered,she accepts	she entered	incorrect
+A3HNAJE7OJP66A	2	MCR	10.2	104	ekki icedpi	he accepted,you entered,she accepts	he accepted	incorrect
+A3HNAJE7OJP66A	2	EX	11.0	20	yé enplá	ALL	I entered	revealed
+A3HNAJE7OJP66A	2	MCR	12.0	141	ák enplü	she accepted,she will accept,he enters,he entered,he will accept	he enters	incorrect
+A3HNAJE7OJP66A	2	MCR	12.1	141	ák enplü	she accepted,she will accept,he entered,he will accept	he entered	correct
+A3HNAJE7OJP66A	2	EX	13.0	13	pi enpliz	ALL	you enter	revealed
+A3HNAJE7OJP66A	2	TP	14.0	187	ák melilí	ALL	he will enter	incorrect
+A3HNAJE7OJP66A	2	MC	15.0	38	ák icedpi	he accepts,she entered,he enters,you enter,you entered	he enters	incorrect
+A3HNAJE7OJP66A	2	MCR	16.0	129	yé enplilá	I will enter,you will enter,to accept,I entered,he enters	I will enter	correct
+A3HNAJE7OJP66A	2	EX	17.0	7	ekki icedpilí	ALL	she will accept	revealed
+A3HNAJE7OJP66A	2	MC	18.0	61	ák enpli	he enters,you accepted,I will enter,he accepts,he entered	he entered	incorrect
+A3HNAJE7OJP66A	2	MCR	19.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	you will enter	incorrect
+A3HNAJE7OJP66A	2	MCR	19.1	133	ák enplilí	you accepted,I entered,he will enter,I will accept	he will enter	correct
+A3HNAJE7OJP66A	2	MCR	20.0	145	melil	she watches,he will enter,I enter,to accept,to watch	I enter	incorrect
+A3HNAJE7OJP66A	2	MCR	20.1	145	melil	she watches,he will enter,to accept,to watch	to accept	incorrect
+A3HNAJE7OJP66A	2	MCR	20.2	145	melil	she watches,he will enter,to watch	to watch	correct
+A3HNAJE7OJP66A	2	TP	21.0	191	ekki melü	ALL	he entered	incorrect
+A3HNAJE7OJP66A	2	MCR	22.0	127	ekki enpli	he accepts,she enters,she will enter,he will enter,he entered	he entered	incorrect
+A3HNAJE7OJP66A	2	MCR	22.1	127	ekki enpli	he accepts,she enters,she will enter,he will enter	he accepts	incorrect
+A3HNAJE7OJP66A	2	MC	23.0	66	pi enplilíz	you will enter,you accept,I enter,he will watch,she will accept	you accept	incorrect
+A3HNAJE7OJP66A	2	TPR	24.0	198	ák icedpilí	ALL	he will accept	correct
+A3HNAJE7OJP66A	2	TPR	25.0	213	pi enplizpe	ALL	he accepted	incorrect
+A3HNAJE7OJP66A	2	TPR	25.0	213	pi enplizpe	ALL	you entered	revealed
+A3HNAJE7OJP66A	2	EX	26.0	29	yé melá	ALL	I watched	revealed
+A3HNAJE7OJP66A	2	MC	27.0	95	ekki melü	she watched,you watched,she enters,he will enter,I enter	you watched	incorrect
+A3HNAJE7OJP66A	2	TP	28.0	173	pi enpliz	ALL	he watched	incorrect
+A3HNAJE7OJP66A	2	TPR	29.0	210	ák enplilí	ALL	he will enter	correct
+A3HNAJE7OJP66A	2	EX	30.0	14	ák enpli	ALL	he enters	revealed
+A3HNAJE7OJP66A	2	TP	31.0	179	ekki enplilí	ALL	he entered	incorrect
+A3HNAJE7OJP66A	2	TPR	32.0	209	pi enplilíz	ALL	he enters	incorrect
+A3HNAJE7OJP66A	2	TPR	32.0	209	pi enplilíz	ALL	you will enter	revealed
+A3HNAJE7OJP66A	2	TPR	33.0	223	ekki melü	ALL	he watched	incorrect
+A3HNAJE7OJP66A	2	TPR	33.0	223	ekki melü	ALL	she watched	revealed
+A3HNAJE7OJP66A	2	EX	34.0	17	pi enplilíz	ALL	you will enter	revealed
+A3HNAJE7OJP66A	2	MCR	35.0	157	pi melizpe	I will accept,he will enter,I will watch,you watched,she watched	I will watch	incorrect
+A3HNAJE7OJP66A	2	MCR	35.1	157	pi melizpe	I will accept,he will enter,you watched,she watched	I will accept	incorrect
+A13M79DZ3D0ONV	2	EX	1.0	24	melil	ALL	to watch	revealed
+A13M79DZ3D0ONV	2	MC	2.0	87	ák melilí	he will watch,he entered,you entered,you enter,she will watch	he will watch	correct
+A13M79DZ3D0ONV	2	EX	3.0	17	pi enplilíz	ALL	you will enter	revealed
+A13M79DZ3D0ONV	2	EX	4.0	5	yé icedpilá	ALL	I will accept	revealed
+A13M79DZ3D0ONV	2	MCR	5.0	146	ekki meli	she watches,she enters,she will enter,you accept,he will watch	she will enter	incorrect
+A13M79DZ3D0ONV	2	MCR	5.1	146	ekki meli	she watches,she enters,you accept,he will watch	you accept	incorrect
+A13M79DZ3D0ONV	2	EX	6.0	23	ekki enplü	ALL	she entered	revealed
+A13M79DZ3D0ONV	2	EX	7.0	20	yé enplá	ALL	I entered	revealed
+A13M79DZ3D0ONV	2	MCR	8.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he entered	correct
+A13M79DZ3D0ONV	2	MCR	9.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepted	incorrect
+A13M79DZ3D0ONV	2	MCR	9.1	105	ekki icedpi	I will accept,you enter,she accepts,he will watch	she accepts	correct
+A13M79DZ3D0ONV	2	MCR	10.0	126	ekki enpli	she enters,she will accept,to accept,she accepts,he enters	she enters	correct
+A13M79DZ3D0ONV	2	TP	11.0	176	yé enplilá	ALL	I accept	incorrect
+A13M79DZ3D0ONV	2	TPR	12.0	217	ekki meli	ALL	she enters	incorrect
+A13M79DZ3D0ONV	2	TPR	12.0	217	ekki meli	ALL	she watches	revealed
+A13M79DZ3D0ONV	2	TPR	13.0	217	ekki meli	ALL	he watches	incorrect
+A13M79DZ3D0ONV	2	TPR	13.0	217	ekki meli	ALL	she watches	revealed
+A13M79DZ3D0ONV	2	MCR	14.0	156	pi melizpe	to watch,she enters,you watched,she accepts,he entered	she accepts	incorrect
+A13M79DZ3D0ONV	2	MCR	14.1	156	pi melizpe	to watch,she enters,you watched,he entered	he entered	incorrect
+A13M79DZ3D0ONV	2	EX	15.0	1	yé icedpé	ALL	I accept	revealed
+A13M79DZ3D0ONV	2	TP	16.0	185	ekki meli	ALL	she watches	correct
+A13M79DZ3D0ONV	2	MCR	17.0	116	ekki icedpü	she accepted,you will enter,you entered,I accept,she watched	she accepted	correct
+A13M79DZ3D0ONV	2	MC	18.0	54	enplil	to enter,he will watch,you accepted,she accepts,she will watch	to enter	correct
+A13M79DZ3D0ONV	2	TPR	19.0	216	melil	ALL	NO_ANSWER_MADE	incorrect
+A13M79DZ3D0ONV	2	TPR	19.0	216	melil	ALL	to watch	revealed
+A13M79DZ3D0ONV	2	MCR	20.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he accepts	correct
+A13M79DZ3D0ONV	2	EX	21.0	0	icedpil	ALL	to accept	revealed
+A13M79DZ3D0ONV	2	EX	22.0	9	ák icedpü	ALL	he accepted	revealed
+A13M79DZ3D0ONV	2	TPR	23.0	193	yé icedpé	ALL	i accept	correct
+A13M79DZ3D0ONV	2	MCR	24.0	109	ák icedpilí	you accepted,he will watch,to accept,she accepts,he will accept	he will accept	correct
+A13M79DZ3D0ONV	2	MC	25.0	62	ekki enpli	she enters,she accepts,he enters,she will accept,to accept	she enters	correct
+A13M79DZ3D0ONV	2	EX	26.0	17	pi enplilíz	ALL	you will enter	revealed
+A13M79DZ3D0ONV	2	EX	27.0	7	ekki icedpilí	ALL	she will accept	revealed
+A13M79DZ3D0ONV	2	MC	28.0	85	yé melilá	I will watch,I watched,she will watch,you enter,I accept	I will watch	correct
+A13M79DZ3D0ONV	2	EX	29.0	14	ák enpli	ALL	he enters	revealed
+A13M79DZ3D0ONV	2	MC	30.0	78	ekki enplü	she entered,she accepts,I will watch,to enter,he accepted	she entered	correct
+A13M79DZ3D0ONV	2	TPR	31.0	208	yé enplilá	ALL	I will enter	correct
+A13M79DZ3D0ONV	2	TPR	32.0	221	yé melá	ALL	I will watch	incorrect
+A13M79DZ3D0ONV	2	TPR	32.0	221	yé melá	ALL	I watched	revealed
+A13M79DZ3D0ONV	2	MCR	33.0	157	pi melizpe	I will accept,he will enter,I will watch,you watched,she watched	I will watch	incorrect
+A13M79DZ3D0ONV	2	MCR	33.1	157	pi melizpe	I will accept,he will enter,you watched,she watched	she watched	incorrect
+A13M79DZ3D0ONV	2	EX	34.0	30	pi melizpe	ALL	you watched	revealed
+A13M79DZ3D0ONV	2	TPR	35.0	201	ák icedpü	ALL	He will enter	incorrect
+A13M79DZ3D0ONV	2	TPR	35.0	201	ák icedpü	ALL	he accepted	revealed
+APJJ1HHD2GGFS	0	MCR	1.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	NO_ANSWER_MADE	incorrect
+APJJ1HHD2GGFS	0	MC	2.0	39	ák icedpi	he accepts,I watched,he entered,he will watch,she enters	he entered	incorrect
+APJJ1HHD2GGFS	0	EX	3.0	12	yé enplé	ALL	I enter	revealed
+APJJ1HHD2GGFS	0	EX	4.0	26	yé melilá	ALL	I will watch	revealed
+APJJ1HHD2GGFS	0	MC	5.0	83	ekki meli	she watches,she will watch,she accepts,he will enter,she watched	he will enter	incorrect
+APJJ1HHD2GGFS	0	EX	6.0	21	pi enplizpe	ALL	you entered	revealed
+APJJ1HHD2GGFS	0	EX	7.0	15	ekki enpli	ALL	she enters	revealed
+APJJ1HHD2GGFS	0	MC	8.0	92	pi melizpe	you watched,he entered,she accepts,to watch,she enters	he entered	incorrect
+APJJ1HHD2GGFS	0	EX	9.0	24	melil	ALL	to watch	revealed
+APJJ1HHD2GGFS	0	MCR	10.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	I enter	incorrect
+APJJ1HHD2GGFS	0	MCR	10.1	140	ák enplü	she entered,I will enter,he entered,he will watch	she entered	incorrect
+APJJ1HHD2GGFS	0	MCR	10.2	140	ák enplü	I will enter,he entered,he will watch	he entered	correct
+APJJ1HHD2GGFS	0	MC	11.0	90	yé melá	I watched,he will accept,you enter,I enter,she will enter	she will enter	incorrect
+APJJ1HHD2GGFS	0	MC	12.0	86	ák melilí	he will watch,to accept,she accepted,she will enter,she watches	she will enter	incorrect
+APJJ1HHD2GGFS	0	TPR	13.0	210	ák enplilí	ALL	She entered	incorrect
+APJJ1HHD2GGFS	0	TPR	13.0	210	ák enplilí	ALL	he will enter	revealed
+APJJ1HHD2GGFS	0	MC	14.0	36	pi icedpiz	you accept,I watched,she will enter,she will watch,she accepted	I watched	incorrect
+APJJ1HHD2GGFS	0	MC	15.0	90	yé melá	I watched,he will accept,you enter,I enter,she will enter	I enter	incorrect
+APJJ1HHD2GGFS	0	EX	16.0	1	yé icedpé	ALL	I accept	revealed
+APJJ1HHD2GGFS	0	MC	17.0	95	ekki melü	she watched,you watched,she enters,he will enter,I enter	she enters	incorrect
+APJJ1HHD2GGFS	0	MC	18.0	69	ák enplilí	he will enter,you will enter,I entered,you accepted,I will accept	he will enter	correct
+APJJ1HHD2GGFS	0	TP	19.0	177	pi enplilíz	ALL	I will enter	incorrect
+APJJ1HHD2GGFS	0	TP	20.0	190	pi melizpe	ALL	He entered	incorrect
+APJJ1HHD2GGFS	0	MCR	21.0	117	ekki icedpü	you accepted,she accepted,she will accept,to accept,she enters	she will accept	incorrect
+APJJ1HHD2GGFS	0	MCR	21.1	117	ekki icedpü	you accepted,she accepted,to accept,she enters	she accepted	correct
+APJJ1HHD2GGFS	0	EX	22.0	11	enplil	ALL	to enter	revealed
+APJJ1HHD2GGFS	0	TP	23.0	174	ák enpli	ALL	He will enter	incorrect
+APJJ1HHD2GGFS	0	TPR	24.0	209	pi enplilíz	ALL	She entered	incorrect
+APJJ1HHD2GGFS	0	TPR	24.0	209	pi enplilíz	ALL	you will enter	revealed
+APJJ1HHD2GGFS	0	EX	25.0	4	ekki icedpi	ALL	she accepts	revealed
+APJJ1HHD2GGFS	0	MCR	26.0	106	yé icedpilá	I will accept,she entered,she will enter,she accepts,I entered	I will accept	correct
+APJJ1HHD2GGFS	0	MC	27.0	87	ák melilí	he will watch,he entered,you entered,you enter,she will watch	he will watch	correct
+APJJ1HHD2GGFS	0	MCR	28.0	101	pi icedpiz	to enter,he accepts,you accept,I entered,he will accept	he will accept	incorrect
+APJJ1HHD2GGFS	0	MCR	28.1	101	pi icedpiz	to enter,he accepts,you accept,I entered	I entered	incorrect
+APJJ1HHD2GGFS	0	EX	29.0	19	ekki enplilí	ALL	she will enter	revealed
+APJJ1HHD2GGFS	0	MCR	30.0	104	ekki icedpi	she entered,he accepted,you entered,he entered,she accepts	he accepted	incorrect
+APJJ1HHD2GGFS	0	MCR	30.1	104	ekki icedpi	she entered,you entered,he entered,she accepts	she accepts	correct
+APJJ1HHD2GGFS	0	TP	31.0	161	yé icedpé	ALL	I accept	correct
+APJJ1HHD2GGFS	0	MCR	32.0	131	pi enplilíz	I will accept,she entered,you will enter,you watched,he accepted	she entered	incorrect
+APJJ1HHD2GGFS	0	MCR	32.1	131	pi enplilíz	I will accept,you will enter,you watched,he accepted	you watched	incorrect
+APJJ1HHD2GGFS	0	MCR	32.2	131	pi enplilíz	I will accept,you will enter,he accepted	he accepted	incorrect
+APJJ1HHD2GGFS	0	MC	33.0	75	pi enplizpe	you entered,he accepted,he will enter,she accepted,he will accept	he accepted	incorrect
+APJJ1HHD2GGFS	0	TPR	34.0	210	ák enplilí	ALL	He accepts	incorrect
+APJJ1HHD2GGFS	0	TPR	34.0	210	ák enplilí	ALL	he will enter	revealed
+APJJ1HHD2GGFS	0	MCR	35.0	130	pi enplilíz	she will accept,you will enter,I enter,you accept,he will watch	I enter	incorrect
+APJJ1HHD2GGFS	0	MCR	35.1	130	pi enplilíz	she will accept,you will enter,you accept,he will watch	you will enter	correct
+A3O7X46E3REM7I	1	EX	1.0	17	pi enplilíz	ALL	you will enter	revealed
+A3O7X46E3REM7I	1	MCR	2.0	136	yé enplá	she watches,I entered,he will enter,she will watch,she accepted	she accepted	incorrect
+A3O7X46E3REM7I	1	MCR	2.1	136	yé enplá	she watches,I entered,he will enter,she will watch	I entered	correct
+A3O7X46E3REM7I	1	MCR	3.0	144	melil	she entered,I entered,he accepted,I watched,to watch	he accepted	incorrect
+A3O7X46E3REM7I	1	MCR	3.1	144	melil	she entered,I entered,I watched,to watch	I watched	incorrect
+A3O7X46E3REM7I	1	MCR	3.2	144	melil	she entered,I entered,to watch	I entered	incorrect
+A3O7X46E3REM7I	1	MC	4.0	72	yé enplá	I entered,she accepted,she will watch,he will enter,she watches	he will enter	incorrect
+A3O7X46E3REM7I	1	MC	5.0	41	ekki icedpi	she accepts,I will accept,she accepted,he will watch,you enter	he will watch	incorrect
+A3O7X46E3REM7I	1	TP	6.0	181	pi enplizpe	ALL	i will enter	incorrect
+A3O7X46E3REM7I	1	MCR	7.0	117	ekki icedpü	you accepted,she accepted,she will accept,to accept,she enters	she enters	incorrect
+A3O7X46E3REM7I	1	MCR	7.1	117	ekki icedpü	you accepted,she accepted,she will accept,to accept	you accepted	incorrect
+A3O7X46E3REM7I	1	MCR	7.2	117	ekki icedpü	she accepted,she will accept,to accept	she will accept	incorrect
+A3O7X46E3REM7I	1	MC	8.0	43	yé icedpilá	I will accept,he will watch,he enters,I accept,I watched	he enters	incorrect
+A3O7X46E3REM7I	1	MCR	9.0	144	melil	she entered,I entered,he accepted,I watched,to watch	I watched	incorrect
+A3O7X46E3REM7I	1	MCR	9.1	144	melil	she entered,I entered,he accepted,to watch	to watch	correct
+A3O7X46E3REM7I	1	MCR	10.0	151	ák melilí	you enter,you entered,she will watch,he entered,he will watch	he will watch	correct
+A3O7X46E3REM7I	1	MCR	11.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he entered	correct
+A3O7X46E3REM7I	1	MC	12.0	61	ák enpli	he enters,you accepted,I will enter,he accepts,he entered	he accepts	incorrect
+A3O7X46E3REM7I	1	TPR	13.0	193	yé icedpé	ALL	She accepts	incorrect
+A3O7X46E3REM7I	1	TPR	13.0	193	yé icedpé	ALL	I accept	revealed
+A3O7X46E3REM7I	1	MC	14.0	56	yé enplé	I enter,to enter,to watch,you accept,he will watch	I enter	correct
+A3O7X46E3REM7I	1	MCR	15.0	123	pi enpliz	she watches,I will enter,you enter,to accept,she will accept	she will accept	incorrect
+A3O7X46E3REM7I	1	MCR	15.1	123	pi enpliz	she watches,I will enter,you enter,to accept	she watches	incorrect
+A3O7X46E3REM7I	1	MCR	15.2	123	pi enpliz	I will enter,you enter,to accept	to accept	incorrect
+A3O7X46E3REM7I	1	MC	16.0	94	ekki melü	she watched,he accepted,I accept,to accept,I will watch	to accept	incorrect
+A3O7X46E3REM7I	1	MC	17.0	45	ák icedpilí	he will accept,he will watch,you accepted,she accepts,to accept	he will accept	correct
+A3O7X46E3REM7I	1	MC	18.0	91	yé melá	I watched,you watched,she watches,to enter,she accepts	she accepts	incorrect
+A3O7X46E3REM7I	1	TPR	19.0	202	ekki icedpü	ALL	i entered	incorrect
+A3O7X46E3REM7I	1	TPR	19.0	202	ekki icedpü	ALL	she accepted	revealed
+A3O7X46E3REM7I	1	MC	20.0	70	ekki enplilí	she will enter,she will watch,I will watch,he accepts,to enter	she will watch	incorrect
+A3O7X46E3REM7I	1	MCR	21.0	145	melil	she watches,he will enter,I enter,to accept,to watch	to watch	correct
+A3O7X46E3REM7I	1	TP	22.0	169	ák icedpü	ALL	he entered	incorrect
+A3O7X46E3REM7I	1	TP	23.0	165	yé icedpilá	ALL	she accepted	incorrect
+A3O7X46E3REM7I	1	TP	24.0	175	ekki enpli	ALL	he entered	incorrect
+A3O7X46E3REM7I	1	TPR	25.0	201	ák icedpü	ALL	he watched	incorrect
+A3O7X46E3REM7I	1	TPR	25.0	201	ák icedpü	ALL	he accepted	revealed
+A3O7X46E3REM7I	1	MCR	26.0	108	ák icedpilí	she enters,she will enter,I accept,she will watch,he will accept	he will accept	correct
+A3O7X46E3REM7I	1	MCR	27.0	129	yé enplilá	I will enter,you will enter,to accept,I entered,he enters	you will enter	incorrect
+A3O7X46E3REM7I	1	MCR	27.1	129	yé enplilá	I will enter,to accept,I entered,he enters	I will enter	correct
+A3O7X46E3REM7I	1	TP	28.0	176	yé enplilá	ALL	I will enter	correct
+A3O7X46E3REM7I	1	EX	29.0	9	ák icedpü	ALL	he accepted	revealed
+A3O7X46E3REM7I	1	TPR	30.0	197	yé icedpilá	ALL	I will watch	incorrect
+A3O7X46E3REM7I	1	TPR	30.0	197	yé icedpilá	ALL	I will accept	revealed
+A3O7X46E3REM7I	1	EX	31.0	1	yé icedpé	ALL	I accept	revealed
+A3O7X46E3REM7I	1	EX	32.0	16	yé enplilá	ALL	I will enter	revealed
+A3O7X46E3REM7I	1	TPR	33.0	215	ekki enplü	ALL	She entered	correct
+A3O7X46E3REM7I	1	MCR	34.0	100	pi icedpiz	she accepted,she will enter,you accept,I watched,she will watch	you accept	correct
+A3O7X46E3REM7I	1	TPR	35.0	197	yé icedpilá	ALL	I accept	incorrect
+A3O7X46E3REM7I	1	TPR	35.0	197	yé icedpilá	ALL	I will accept	revealed
+A2A0M30DSA7ZN	5	EX	1.0	20	yé enplá	ALL	I entered	revealed
+A2A0M30DSA7ZN	5	EX	2.0	11	enplil	ALL	to enter	revealed
+A2A0M30DSA7ZN	5	MC	3.0	36	pi icedpiz	you accept,I watched,she will enter,she will watch,she accepted	she accepted	incorrect
+A2A0M30DSA7ZN	5	MCR	4.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	you will enter	incorrect
+A2A0M30DSA7ZN	5	MCR	4.1	133	ák enplilí	you accepted,I entered,he will enter,I will accept	he will enter	correct
+A2A0M30DSA7ZN	5	MCR	5.0	148	yé melilá	I will accept,she accepted,I will watch,he accepted,he accepts	I will watch	correct
+A2A0M30DSA7ZN	5	EX	6.0	8	pi icedpizpe	ALL	you accepted	revealed
+A2A0M30DSA7ZN	5	MC	7.0	86	ák melilí	he will watch,to accept,she accepted,she will enter,she watches	she accepted	incorrect
+A2A0M30DSA7ZN	5	TP	8.0	189	yé melá	ALL	I entered	incorrect
+A2A0M30DSA7ZN	5	MCR	9.0	121	yé enplé	you accepted,to accept,you enter,I enter,he enters	I enter	correct
+A2A0M30DSA7ZN	5	EX	10.0	19	ekki enplilí	ALL	she will enter	revealed
+A2A0M30DSA7ZN	5	EX	11.0	7	ekki icedpilí	ALL	she will accept	revealed
+A2A0M30DSA7ZN	5	MCR	12.0	156	pi melizpe	to watch,she enters,you watched,she accepts,he entered	you watched	correct
+A2A0M30DSA7ZN	5	TPR	13.0	206	ák enpli	ALL	She entered	incorrect
+A2A0M30DSA7ZN	5	TPR	13.0	206	ák enpli	ALL	he enters	revealed
+A2A0M30DSA7ZN	5	EX	14.0	9	ák icedpü	ALL	he accepted	revealed
+A2A0M30DSA7ZN	5	TPR	15.0	205	pi enpliz	ALL	you enter	correct
+A2A0M30DSA7ZN	5	EX	16.0	20	yé enplá	ALL	I entered	revealed
+A2A0M30DSA7ZN	5	MCR	17.0	101	pi icedpiz	to enter,he accepts,you accept,I entered,he will accept	he accepts	incorrect
+A2A0M30DSA7ZN	5	MCR	17.1	101	pi icedpiz	to enter,you accept,I entered,he will accept	you accept	correct
+A2A0M30DSA7ZN	5	TPR	18.0	205	pi enpliz	ALL	you enter	correct
+A2A0M30DSA7ZN	5	EX	19.0	5	yé icedpilá	ALL	I will accept	revealed
+A2A0M30DSA7ZN	5	MCR	20.0	130	pi enplilíz	she will accept,you will enter,I enter,you accept,he will watch	you will enter	correct
+A2A0M30DSA7ZN	5	MCR	21.0	130	pi enplilíz	she will accept,you will enter,I enter,you accept,he will watch	you will enter	correct
+A2A0M30DSA7ZN	5	MC	22.0	35	yé icedpé	I accept,she watched,he accepts,I will accept,she accepted	I accept	correct
+A2A0M30DSA7ZN	5	TPR	23.0	201	ák icedpü	ALL	he accepted	correct
+A2A0M30DSA7ZN	5	MCR	24.0	97	icedpil	he accepts,she will enter,you entered,to accept,I watched	to accept	correct
+A2A0M30DSA7ZN	5	EX	25.0	31	ekki melü	ALL	she watched	revealed
+A2A0M30DSA7ZN	5	MC	26.0	37	pi icedpiz	you accept,he will accept,to enter,he accepts,I entered	you accept	correct
+A2A0M30DSA7ZN	5	MCR	27.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he accepts	correct
+A2A0M30DSA7ZN	5	MCR	28.0	129	yé enplilá	I will enter,you will enter,to accept,I entered,he enters	I entered	incorrect
+A2A0M30DSA7ZN	5	MCR	28.1	129	yé enplilá	I will enter,you will enter,to accept,he enters	I will enter	correct
+A2A0M30DSA7ZN	5	EX	29.0	22	ák enplü	ALL	he entered	revealed
+A2A0M30DSA7ZN	5	TPR	30.0	211	ekki enplilí	ALL	she accepted	incorrect
+A2A0M30DSA7ZN	5	TPR	30.0	211	ekki enplilí	ALL	she will enter	revealed
+A2A0M30DSA7ZN	5	MC	31.0	63	ekki enpli	she enters,he entered,he accepts,he will enter,she will enter	she enters	correct
+A2A0M30DSA7ZN	5	TPR	32.0	196	ekki icedpi	ALL	she accepted	incorrect
+A2A0M30DSA7ZN	5	TPR	32.0	196	ekki icedpi	ALL	she accepts	revealed
+A2A0M30DSA7ZN	5	MC	33.0	52	ekki icedpü	she accepted,you will enter,she watched,you entered,I accept	she accepted	correct
+A2A0M30DSA7ZN	5	EX	34.0	31	ekki melü	ALL	she watched	revealed
+A2A0M30DSA7ZN	5	TPR	35.0	220	ekki melilí	ALL	she watches	incorrect
+A2A0M30DSA7ZN	5	TPR	35.0	220	ekki melilí	ALL	she will watch	revealed
+A15RJPRX0KVUFS	1	EX	1.0	1	yé icedpé	ALL	I accept	revealed
+A15RJPRX0KVUFS	1	EX	2.0	28	ekki melilí	ALL	she will watch	revealed
+A15RJPRX0KVUFS	1	MCR	3.0	147	ekki meli	she watches,he will enter,she will watch,she accepts,she watched	she will watch	incorrect
+A15RJPRX0KVUFS	1	MCR	3.1	147	ekki meli	she watches,he will enter,she accepts,she watched	she watched	incorrect
+A15RJPRX0KVUFS	1	MCR	3.2	147	ekki meli	she watches,he will enter,she accepts	she watches	correct
+A15RJPRX0KVUFS	1	EX	4.0	21	pi enplizpe	ALL	you entered	revealed
+A15RJPRX0KVUFS	1	MC	5.0	45	ák icedpilí	he will accept,he will watch,you accepted,she accepts,to accept	he will accept	correct
+A15RJPRX0KVUFS	1	EX	6.0	3	ák icedpi	ALL	he accepts	revealed
+A15RJPRX0KVUFS	1	MCR	7.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepts	correct
+A15RJPRX0KVUFS	1	MCR	8.0	113	pi icedpizpe	you accepted,she watches,she will enter,you will enter,you entered	you accepted	correct
+A15RJPRX0KVUFS	1	TP	9.0	191	ekki melü	ALL	She watches	incorrect
+A15RJPRX0KVUFS	1	MC	10.0	70	ekki enplilí	she will enter,she will watch,I will watch,he accepts,to enter	she will enter	correct
+A15RJPRX0KVUFS	1	TP	11.0	177	pi enplilíz	ALL	He will enter	incorrect
+A15RJPRX0KVUFS	1	MC	12.0	93	pi melizpe	you watched,I will accept,he will enter,she watched,I will watch	he will enter	incorrect
+A15RJPRX0KVUFS	1	MCR	13.0	136	yé enplá	she watches,I entered,he will enter,she will watch,she accepted	I entered	correct
+A15RJPRX0KVUFS	1	TPR	14.0	223	ekki melü	ALL	She watches	incorrect
+A15RJPRX0KVUFS	1	TPR	14.0	223	ekki melü	ALL	she watched	revealed
+A15RJPRX0KVUFS	1	EX	15.0	31	ekki melü	ALL	she watched	revealed
+A15RJPRX0KVUFS	1	TPR	16.0	209	pi enplilíz	ALL	he will enter	incorrect
+A15RJPRX0KVUFS	1	TPR	16.0	209	pi enplilíz	ALL	you will enter	revealed
+A15RJPRX0KVUFS	1	TPR	17.0	209	pi enplilíz	ALL	you will enter	correct
+A15RJPRX0KVUFS	1	MCR	18.0	132	ák enplilí	to watch,he will enter,he entered,I watched,I accept	he will enter	correct
+A15RJPRX0KVUFS	1	EX	19.0	22	ák enplü	ALL	he entered	revealed
+A15RJPRX0KVUFS	1	MCR	20.0	96	icedpil	she accepted,I enter,to accept,she entered,I entered	to accept	correct
+A15RJPRX0KVUFS	1	TP	21.0	162	pi icedpiz	ALL	i will enter	incorrect
+A15RJPRX0KVUFS	1	MCR	22.0	111	ekki icedpilí	I will accept,she will accept,I will watch,to enter,she watched	she will accept	correct
+A15RJPRX0KVUFS	1	EX	23.0	29	yé melá	ALL	I watched	revealed
+A15RJPRX0KVUFS	1	MCR	24.0	120	yé enplé	he will watch,I enter,to enter,to watch,you accept	I enter	correct
+A15RJPRX0KVUFS	1	MCR	25.0	151	ák melilí	you enter,you entered,she will watch,he entered,he will watch	he will watch	correct
+A15RJPRX0KVUFS	1	TP	26.0	183	ekki enplü	ALL	she entered	correct
+A15RJPRX0KVUFS	1	TP	27.0	165	yé icedpilá	ALL	i will watch	incorrect
+A15RJPRX0KVUFS	1	MCR	28.0	128	yé enplilá	I will enter,she will enter,you watched,to watch,she will accept	I will enter	correct
+A15RJPRX0KVUFS	1	MC	29.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she will watch	correct
+A15RJPRX0KVUFS	1	EX	30.0	9	ák icedpü	ALL	he accepted	revealed
+A15RJPRX0KVUFS	1	EX	31.0	17	pi enplilíz	ALL	you will enter	revealed
+A15RJPRX0KVUFS	1	TP	32.0	186	yé melilá	ALL	you will enter	incorrect
+A15RJPRX0KVUFS	1	MCR	33.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he entered	correct
+A15RJPRX0KVUFS	1	EX	34.0	11	enplil	ALL	to enter	revealed
+A15RJPRX0KVUFS	1	EX	35.0	24	melil	ALL	to watch	revealed
+A3M43ST1JU11T9	4	EX	1.0	11	enplil	ALL	to enter	revealed
+A3M43ST1JU11T9	4	EX	2.0	30	pi melizpe	ALL	you watched	revealed
+A3M43ST1JU11T9	4	EX	3.0	27	ák melilí	ALL	he will watch	revealed
+A3M43ST1JU11T9	4	MCR	4.0	97	icedpil	he accepts,she will enter,you entered,to accept,I watched	to accept	correct
+A3M43ST1JU11T9	4	MCR	5.0	143	ekki enplü	she entered,she will accept,he will watch,you watched,she watched	she entered	correct
+A3M43ST1JU11T9	4	MCR	6.0	144	melil	she entered,I entered,he accepted,I watched,to watch	to watch	correct
+A3M43ST1JU11T9	4	EX	7.0	19	ekki enplilí	ALL	she will enter	revealed
+A3M43ST1JU11T9	4	MCR	8.0	148	yé melilá	I will accept,she accepted,I will watch,he accepted,he accepts	I will watch	correct
+A3M43ST1JU11T9	4	MCR	9.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepted	incorrect
+A3M43ST1JU11T9	4	MCR	9.1	105	ekki icedpi	I will accept,you enter,she accepts,he will watch	she accepts	correct
+A3M43ST1JU11T9	4	EX	10.0	5	yé icedpilá	ALL	I will accept	revealed
+A3M43ST1JU11T9	4	EX	11.0	28	ekki melilí	ALL	she will watch	revealed
+A3M43ST1JU11T9	4	MCR	12.0	124	ák enpli	I will accept,I enter,you will enter,to accept,he enters	he enters	correct
+A3M43ST1JU11T9	4	TPR	13.0	221	yé melá	ALL	I watch	incorrect
+A3M43ST1JU11T9	4	TPR	13.0	221	yé melá	ALL	I watched	revealed
+A3M43ST1JU11T9	4	MC	14.0	91	yé melá	I watched,you watched,she watches,to enter,she accepts	I watched	correct
+A3M43ST1JU11T9	4	TP	15.0	182	ák enplü	ALL	he enters	incorrect
+A3M43ST1JU11T9	4	MCR	16.0	110	ekki icedpilí	you accepted,she will accept,he enters,I watched,I entered	she will accept	correct
+A3M43ST1JU11T9	4	MC	17.0	57	yé enplé	I enter,you enter,he enters,you accepted,to accept	I enter	correct
+A3M43ST1JU11T9	4	MCR	18.0	137	yé enplá	she entered,I entered,I will enter,to watch,he enters	I will enter	incorrect
+A3M43ST1JU11T9	4	MCR	18.1	137	yé enplá	she entered,I entered,to watch,he enters	I entered	correct
+A3M43ST1JU11T9	4	TP	19.0	161	yé icedpé	ALL	I accept	correct
+A3M43ST1JU11T9	4	EX	20.0	7	ekki icedpilí	ALL	she will accept	revealed
+A3M43ST1JU11T9	4	MC	21.0	67	pi enplilíz	you will enter,you watched,he accepted,I will accept,she entered	you will enter	correct
+A3M43ST1JU11T9	4	MCR	22.0	127	ekki enpli	he accepts,she enters,she will enter,he will enter,he entered	she will enter	incorrect
+A3M43ST1JU11T9	4	MCR	22.1	127	ekki enpli	he accepts,she enters,he will enter,he entered	she enters	correct
+A3M43ST1JU11T9	4	MCR	23.0	130	pi enplilíz	she will accept,you will enter,I enter,you accept,he will watch	you will enter	correct
+A3M43ST1JU11T9	4	TPR	24.0	218	yé melilá	ALL	I watched	incorrect
+A3M43ST1JU11T9	4	TPR	24.0	218	yé melilá	ALL	I will watch	revealed
+A3M43ST1JU11T9	4	MCR	25.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he accepts	correct
+A3M43ST1JU11T9	4	MC	26.0	52	ekki icedpü	she accepted,you will enter,she watched,you entered,I accept	she accepted	correct
+A3M43ST1JU11T9	4	EX	27.0	16	yé enplilá	ALL	I will enter	revealed
+A3M43ST1JU11T9	4	MCR	28.0	145	melil	she watches,he will enter,I enter,to accept,to watch	to watch	correct
+A3M43ST1JU11T9	4	EX	29.0	30	pi melizpe	ALL	you watched	revealed
+A3M43ST1JU11T9	4	MCR	30.0	124	ák enpli	I will accept,I enter,you will enter,to accept,he enters	he enters	correct
+A3M43ST1JU11T9	4	MC	31.0	42	yé icedpilá	I will accept,she accepts,she entered,she will enter,I entered	I will accept	correct
+A3M43ST1JU11T9	4	MCR	32.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he will watch	incorrect
+A3M43ST1JU11T9	4	MCR	32.1	140	ák enplü	she entered,I will enter,I enter,he entered	he entered	correct
+A3M43ST1JU11T9	4	EX	33.0	22	ák enplü	ALL	he entered	revealed
+A3M43ST1JU11T9	4	MC	34.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she will watch	correct
+A3M43ST1JU11T9	4	TP	35.0	183	ekki enplü	ALL	she entered	correct
+A3AO2N7BNFDGF3	4	EX	1.0	23	ekki enplü	ALL	she entered	revealed
+A3AO2N7BNFDGF3	4	EX	2.0	1	yé icedpé	ALL	I accept	revealed
+A3AO2N7BNFDGF3	4	MC	3.0	48	pi icedpizpe	you accepted,she enters,she entered,I watched,he entered	you accepted	correct
+A3AO2N7BNFDGF3	4	MC	4.0	33	icedpil	to accept,he accepts,she will enter,you entered,I watched	to accept	correct
+A3AO2N7BNFDGF3	4	MCR	5.0	107	yé icedpilá	I will accept,he enters,I watched,I accept,he will watch	I will accept	correct
+A3AO2N7BNFDGF3	4	MCR	6.0	109	ák icedpilí	you accepted,he will watch,to accept,she accepts,he will accept	he will accept	correct
+A3AO2N7BNFDGF3	4	MCR	7.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepts	correct
+A3AO2N7BNFDGF3	4	MCR	8.0	114	ák icedpü	he accepted,you entered,you accept,he entered,I accept	he accepted	correct
+A3AO2N7BNFDGF3	4	MCR	9.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	he will enter	correct
+A3AO2N7BNFDGF3	4	MCR	10.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he will watch	incorrect
+A3AO2N7BNFDGF3	4	MCR	10.1	140	ák enplü	she entered,I will enter,I enter,he entered	he entered	correct
+A3AO2N7BNFDGF3	4	MCR	11.0	140	ák enplü	she entered,I will enter,I enter,he entered,he will watch	he entered	correct
+A3AO2N7BNFDGF3	4	TP	12.0	165	yé icedpilá	ALL	I accepted	incorrect
+A3AO2N7BNFDGF3	4	TPR	13.0	195	ák icedpi	ALL	he accepted	incorrect
+A3AO2N7BNFDGF3	4	TPR	13.0	195	ák icedpi	ALL	he accepts	revealed
+A3AO2N7BNFDGF3	4	EX	14.0	27	ák melilí	ALL	he will watch	revealed
+A3AO2N7BNFDGF3	4	MC	15.0	63	ekki enpli	she enters,he entered,he accepts,he will enter,she will enter	she will enter	incorrect
+A3AO2N7BNFDGF3	4	EX	16.0	16	yé enplilá	ALL	I will enter	revealed
+A3AO2N7BNFDGF3	4	TPR	17.0	199	ekki icedpilí	ALL	she will enter	incorrect
+A3AO2N7BNFDGF3	4	TPR	17.0	199	ekki icedpilí	ALL	she will accept	revealed
+A3AO2N7BNFDGF3	4	EX	18.0	11	enplil	ALL	to enter	revealed
+A3AO2N7BNFDGF3	4	EX	19.0	1	yé icedpé	ALL	I accept	revealed
+A3AO2N7BNFDGF3	4	EX	20.0	28	ekki melilí	ALL	she will watch	revealed
+A3AO2N7BNFDGF3	4	TPR	21.0	199	ekki icedpilí	ALL	she will accept	correct
+A3AO2N7BNFDGF3	4	MC	22.0	77	ák enplü	he entered,he will accept,he enters,she will accept,she accepted	he enters	incorrect
+A3AO2N7BNFDGF3	4	EX	23.0	18	ák enplilí	ALL	he will enter	revealed
+A3AO2N7BNFDGF3	4	TPR	24.0	217	ekki meli	ALL	she entered	incorrect
+A3AO2N7BNFDGF3	4	TPR	24.0	217	ekki meli	ALL	she watches	revealed
+A3AO2N7BNFDGF3	4	TP	25.0	170	ekki icedpü	ALL	she accepted	correct
+A3AO2N7BNFDGF3	4	EX	26.0	2	pi icedpiz	ALL	you accept	revealed
+A3AO2N7BNFDGF3	4	MCR	27.0	150	ák melilí	she watches,she accepted,she will enter,to accept,he will watch	he will watch	correct
+A3AO2N7BNFDGF3	4	MC	28.0	84	yé melilá	I will watch,I will accept,he accepted,she accepted,he accepts	I will watch	correct
+A3AO2N7BNFDGF3	4	TP	29.0	172	yé enplé	ALL	I watched	incorrect
+A3AO2N7BNFDGF3	4	TPR	30.0	221	yé melá	ALL	I watched	correct
+A3AO2N7BNFDGF3	4	MCR	31.0	147	ekki meli	she watches,he will enter,she will watch,she accepts,she watched	she watched	incorrect
+A3AO2N7BNFDGF3	4	MCR	31.1	147	ekki meli	she watches,he will enter,she will watch,she accepts	she watches	correct
+A3AO2N7BNFDGF3	4	EX	32.0	3	ák icedpi	ALL	he accepts	revealed
+A3AO2N7BNFDGF3	4	TPR	33.0	210	ák enplilí	ALL	he will enter	correct
+A3AO2N7BNFDGF3	4	TPR	34.0	211	ekki enplilí	ALL	she will enter	correct
+A3AO2N7BNFDGF3	4	TP	35.0	180	yé enplá	ALL	I will accept	incorrect
+AQHMXM5LLEP2N	1	EX	1.0	30	pi melizpe	ALL	you watched	revealed
+AQHMXM5LLEP2N	1	MCR	2.0	115	ák icedpü	I entered,he accepted,to accept,you will enter,I watched	I entered	incorrect
+AQHMXM5LLEP2N	1	MCR	2.1	115	ák icedpü	he accepted,to accept,you will enter,I watched	I watched	incorrect
+AQHMXM5LLEP2N	1	EX	3.0	11	enplil	ALL	to enter	revealed
+AQHMXM5LLEP2N	1	EX	4.0	7	ekki icedpilí	ALL	she will accept	revealed
+AQHMXM5LLEP2N	1	MCR	5.0	116	ekki icedpü	she accepted,you will enter,you entered,I accept,she watched	you will enter	incorrect
+AQHMXM5LLEP2N	1	MCR	5.1	116	ekki icedpü	she accepted,you entered,I accept,she watched	you entered	incorrect
+AQHMXM5LLEP2N	1	MCR	5.2	116	ekki icedpü	she accepted,I accept,she watched	she accepted	correct
+AQHMXM5LLEP2N	1	EX	6.0	28	ekki melilí	ALL	she will watch	revealed
+AQHMXM5LLEP2N	1	MCR	7.0	151	ák melilí	you enter,you entered,she will watch,he entered,he will watch	he will watch	correct
+AQHMXM5LLEP2N	1	EX	8.0	21	pi enplizpe	ALL	you entered	revealed
+AQHMXM5LLEP2N	1	MC	9.0	85	yé melilá	I will watch,I watched,she will watch,you enter,I accept	I accept	incorrect
+AQHMXM5LLEP2N	1	MC	10.0	85	yé melilá	I will watch,I watched,she will watch,you enter,I accept	you enter	incorrect
+AQHMXM5LLEP2N	1	MCR	11.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he accepts	correct
+AQHMXM5LLEP2N	1	MCR	12.0	99	yé icedpé	he accepts,I will accept,she accepted,she watched,I accept	I accept	correct
+AQHMXM5LLEP2N	1	MC	13.0	79	ekki enplü	she entered,she watched,she will accept,you watched,he will watch	she entered	correct
+AQHMXM5LLEP2N	1	TPR	14.0	221	yé melá	ALL	I watch	incorrect
+AQHMXM5LLEP2N	1	TPR	14.0	221	yé melá	ALL	I watched	revealed
+AQHMXM5LLEP2N	1	MCR	15.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	he will enter	correct
+AQHMXM5LLEP2N	1	MC	16.0	63	ekki enpli	she enters,he entered,he accepts,he will enter,she will enter	she enters	correct
+AQHMXM5LLEP2N	1	TPR	17.0	218	yé melilá	ALL	I entered	incorrect
+AQHMXM5LLEP2N	1	TPR	17.0	218	yé melilá	ALL	I will watch	revealed
+AQHMXM5LLEP2N	1	TP	18.0	178	ák enplilí	ALL	He will watch	incorrect
+AQHMXM5LLEP2N	1	EX	19.0	6	ák icedpilí	ALL	he will accept	revealed
+AQHMXM5LLEP2N	1	MCR	20.0	146	ekki meli	she watches,she enters,she will enter,you accept,he will watch	she watches	correct
+AQHMXM5LLEP2N	1	EX	21.0	5	yé icedpilá	ALL	I will accept	revealed
+AQHMXM5LLEP2N	1	EX	22.0	16	yé enplilá	ALL	I will enter	revealed
+AQHMXM5LLEP2N	1	EX	23.0	8	pi icedpizpe	ALL	you accepted	revealed
+AQHMXM5LLEP2N	1	MCR	24.0	148	yé melilá	I will accept,she accepted,I will watch,he accepted,he accepts	I will watch	correct
+AQHMXM5LLEP2N	1	TPR	25.0	199	ekki icedpilí	ALL	she will accept	correct
+AQHMXM5LLEP2N	1	TPR	26.0	203	enplil	ALL	i watched	incorrect
+AQHMXM5LLEP2N	1	TPR	26.0	203	enplil	ALL	to enter	revealed
+AQHMXM5LLEP2N	1	TPR	27.0	196	ekki icedpi	ALL	she entered	incorrect
+AQHMXM5LLEP2N	1	TPR	27.0	196	ekki icedpi	ALL	she accepts	revealed
+AQHMXM5LLEP2N	1	MCR	28.0	104	ekki icedpi	she entered,he accepted,you entered,he entered,she accepts	she accepts	correct
+AQHMXM5LLEP2N	1	EX	29.0	16	yé enplilá	ALL	I will enter	revealed
+AQHMXM5LLEP2N	1	TP	30.0	162	pi icedpiz	ALL	you accepted	incorrect
+AQHMXM5LLEP2N	1	TPR	31.0	206	ák enpli	ALL	he enters	correct
+AQHMXM5LLEP2N	1	MCR	32.0	158	ekki melü	I will watch,he accepted,to accept,I accept,she watched	she watched	correct
+AQHMXM5LLEP2N	1	TP	33.0	177	pi enplilíz	ALL	you entered	incorrect
+AQHMXM5LLEP2N	1	MC	34.0	68	ák enplilí	he will enter,I accept,I watched,he entered,to watch	he entered	incorrect
+AQHMXM5LLEP2N	1	TP	35.0	173	pi enpliz	ALL	you entered	incorrect
+APITQRRX2PADB	4	EX	1.0	12	yé enplé	ALL	I enter	revealed
+APITQRRX2PADB	4	MCR	2.0	129	yé enplilá	I will enter,you will enter,to accept,I entered,he enters	I entered	incorrect
+APITQRRX2PADB	4	MCR	2.1	129	yé enplilá	I will enter,you will enter,to accept,he enters	I will enter	correct
+APITQRRX2PADB	4	MCR	3.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepted	incorrect
+APITQRRX2PADB	4	MCR	3.1	105	ekki icedpi	I will accept,you enter,she accepts,he will watch	she accepts	correct
+APITQRRX2PADB	4	EX	4.0	26	yé melilá	ALL	I will watch	revealed
+APITQRRX2PADB	4	MCR	5.0	125	ák enpli	you accepted,I will enter,he accepts,he entered,he enters	he enters	correct
+APITQRRX2PADB	4	MCR	6.0	101	pi icedpiz	to enter,he accepts,you accept,I entered,he will accept	he will accept	incorrect
+APITQRRX2PADB	4	MCR	6.1	101	pi icedpiz	to enter,he accepts,you accept,I entered	you accept	correct
+APITQRRX2PADB	4	MCR	7.0	114	ák icedpü	he accepted,you entered,you accept,he entered,I accept	he accepted	correct
+APITQRRX2PADB	4	TP	8.0	167	ekki icedpilí	ALL	she accepts	incorrect
+APITQRRX2PADB	4	MC	9.0	85	yé melilá	I will watch,I watched,she will watch,you enter,I accept	I will watch	correct
+APITQRRX2PADB	4	MCR	10.0	145	melil	she watches,he will enter,I enter,to accept,to watch	to watch	correct
+APITQRRX2PADB	4	MCR	11.0	123	pi enpliz	she watches,I will enter,you enter,to accept,she will accept	you enter	correct
+APITQRRX2PADB	4	MCR	12.0	131	pi enplilíz	I will accept,she entered,you will enter,you watched,he accepted	you will enter	correct
+APITQRRX2PADB	4	MC	13.0	53	ekki icedpü	she accepted,to accept,she enters,she will accept,you accepted	she accepted	correct
+APITQRRX2PADB	4	MC	14.0	93	pi melizpe	you watched,I will accept,he will enter,she watched,I will watch	he will enter	incorrect
+APITQRRX2PADB	4	EX	15.0	31	ekki melü	ALL	she watched	revealed
+APITQRRX2PADB	4	EX	16.0	1	yé icedpé	ALL	I accept	revealed
+APITQRRX2PADB	4	MCR	17.0	126	ekki enpli	she enters,she will accept,to accept,she accepts,he enters	she enters	correct
+APITQRRX2PADB	4	MCR	18.0	139	pi enplizpe	she accepted,you entered,he will enter,he accepted,he will accept	you entered	correct
+APITQRRX2PADB	4	MCR	19.0	155	yé melá	she watches,she accepts,you watched,to enter,I watched	I watched	correct
+APITQRRX2PADB	4	EX	20.0	5	yé icedpilá	ALL	I will accept	revealed
+APITQRRX2PADB	4	TPR	21.0	194	pi icedpiz	ALL	you accept	correct
+APITQRRX2PADB	4	MCR	22.0	156	pi melizpe	to watch,she enters,you watched,she accepts,he entered	you watched	correct
+APITQRRX2PADB	4	TPR	23.0	214	ák enplü	ALL	he entered	correct
+APITQRRX2PADB	4	EX	24.0	19	ekki enplilí	ALL	she will enter	revealed
+APITQRRX2PADB	4	TP	25.0	166	ák icedpilí	ALL	he will accept	correct
+APITQRRX2PADB	4	EX	26.0	11	enplil	ALL	to enter	revealed
+APITQRRX2PADB	4	MCR	27.0	117	ekki icedpü	you accepted,she accepted,she will accept,to accept,she enters	she accepted	correct
+APITQRRX2PADB	4	TPR	28.0	195	ák icedpi	ALL	he accepts	correct
+APITQRRX2PADB	4	TPR	29.0	199	ekki icedpilí	ALL	she will accept	correct
+APITQRRX2PADB	4	TPR	30.0	204	yé enplé	ALL	I enter	correct
+APITQRRX2PADB	4	TPR	31.0	220	ekki melilí	ALL	she will watch	correct
+APITQRRX2PADB	4	EX	32.0	12	yé enplé	ALL	I enter	revealed
+APITQRRX2PADB	4	MC	33.0	84	yé melilá	I will watch,I will accept,he accepted,she accepted,he accepts	I will watch	correct
+APITQRRX2PADB	4	MC	34.0	77	ák enplü	he entered,he will accept,he enters,she will accept,she accepted	he entered	correct
+APITQRRX2PADB	4	TP	35.0	185	ekki meli	ALL	she watches	correct
+A1A1Z3SQVIEP4I	2	EX	1.0	22	ák enplü	ALL	he entered	revealed
+A1A1Z3SQVIEP4I	2	EX	2.0	21	pi enplizpe	ALL	you entered	revealed
+A1A1Z3SQVIEP4I	2	TP	3.0	174	ák enpli	ALL	he entered	incorrect
+A1A1Z3SQVIEP4I	2	MC	4.0	38	ák icedpi	he accepts,she entered,he enters,you enter,you entered	he enters	incorrect
+A1A1Z3SQVIEP4I	2	MCR	5.0	103	ák icedpi	he accepts,she enters,he entered,I watched,he will watch	he entered	incorrect
+A1A1Z3SQVIEP4I	2	MCR	5.1	103	ák icedpi	he accepts,she enters,I watched,he will watch	he accepts	correct
+A1A1Z3SQVIEP4I	2	MC	6.0	54	enplil	to enter,he will watch,you accepted,she accepts,she will watch	you accepted	incorrect
+A1A1Z3SQVIEP4I	2	MC	7.0	92	pi melizpe	you watched,he entered,she accepts,to watch,she enters	she enters	incorrect
+A1A1Z3SQVIEP4I	2	MCR	8.0	107	yé icedpilá	I will accept,he enters,I watched,I accept,he will watch	I will accept	correct
+A1A1Z3SQVIEP4I	2	MC	9.0	89	ekki melilí	she will watch,I watched,to enter,she watches,to watch	to watch	incorrect
+A1A1Z3SQVIEP4I	2	TPR	10.0	215	ekki enplü	ALL	to enter	incorrect
+A1A1Z3SQVIEP4I	2	TPR	10.0	215	ekki enplü	ALL	she entered	revealed
+A1A1Z3SQVIEP4I	2	MCR	11.0	146	ekki meli	she watches,she enters,she will enter,you accept,he will watch	she watches	correct
+A1A1Z3SQVIEP4I	2	EX	12.0	29	yé melá	ALL	I watched	revealed
+A1A1Z3SQVIEP4I	2	EX	13.0	0	icedpil	ALL	to accept	revealed
+A1A1Z3SQVIEP4I	2	MC	14.0	68	ák enplilí	he will enter,I accept,I watched,he entered,to watch	I watched	incorrect
+A1A1Z3SQVIEP4I	2	MC	15.0	91	yé melá	I watched,you watched,she watches,to enter,she accepts	she accepts	incorrect
+A1A1Z3SQVIEP4I	2	TPR	16.0	215	ekki enplü	ALL	she enters	incorrect
+A1A1Z3SQVIEP4I	2	TPR	16.0	215	ekki enplü	ALL	she entered	revealed
+A1A1Z3SQVIEP4I	2	TPR	17.0	209	pi enplilíz	ALL	he watches	incorrect
+A1A1Z3SQVIEP4I	2	TPR	17.0	209	pi enplilíz	ALL	you will enter	revealed
+A1A1Z3SQVIEP4I	2	MC	18.0	65	yé enplilá	I will enter,he enters,I entered,you will enter,to accept	I will enter	correct
+A1A1Z3SQVIEP4I	2	TPR	19.0	197	yé icedpilá	ALL	i entered	incorrect
+A1A1Z3SQVIEP4I	2	TPR	19.0	197	yé icedpilá	ALL	I will accept	revealed
+A1A1Z3SQVIEP4I	2	EX	20.0	14	ák enpli	ALL	he enters	revealed
+A1A1Z3SQVIEP4I	2	TPR	21.0	193	yé icedpé	ALL	i will accept	incorrect
+A1A1Z3SQVIEP4I	2	TPR	21.0	193	yé icedpé	ALL	I accept	revealed
+A1A1Z3SQVIEP4I	2	MC	22.0	40	ekki icedpi	she accepts,she entered,he accepted,he entered,you entered	he accepted	incorrect
+A1A1Z3SQVIEP4I	2	TPR	23.0	202	ekki icedpü	ALL	he accepts	incorrect
+A1A1Z3SQVIEP4I	2	TPR	23.0	202	ekki icedpü	ALL	she accepted	revealed
+A1A1Z3SQVIEP4I	2	EX	24.0	31	ekki melü	ALL	she watched	revealed
+A1A1Z3SQVIEP4I	2	TPR	25.0	211	ekki enplilí	ALL	she accepted	incorrect
+A1A1Z3SQVIEP4I	2	TPR	25.0	211	ekki enplilí	ALL	she will enter	revealed
+A1A1Z3SQVIEP4I	2	TP	26.0	191	ekki melü	ALL	she watches	incorrect
+A1A1Z3SQVIEP4I	2	MC	27.0	36	pi icedpiz	you accept,I watched,she will enter,she will watch,she accepted	you accept	correct
+A1A1Z3SQVIEP4I	2	MC	28.0	42	yé icedpilá	I will accept,she accepts,she entered,she will enter,I entered	I will accept	correct
+A1A1Z3SQVIEP4I	2	TPR	29.0	205	pi enpliz	ALL	you entered	incorrect
+A1A1Z3SQVIEP4I	2	TPR	29.0	205	pi enpliz	ALL	you enter	revealed
+A1A1Z3SQVIEP4I	2	EX	30.0	12	yé enplé	ALL	I enter	revealed
+A1A1Z3SQVIEP4I	2	MCR	31.0	115	ák icedpü	I entered,he accepted,to accept,you will enter,I watched	he accepted	correct
+A1A1Z3SQVIEP4I	2	MC	32.0	39	ák icedpi	he accepts,I watched,he entered,he will watch,she enters	he accepts	correct
+A1A1Z3SQVIEP4I	2	MC	33.0	90	yé melá	I watched,he will accept,you enter,I enter,she will enter	I watched	correct
+A1A1Z3SQVIEP4I	2	MC	34.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she will watch	correct
+A1A1Z3SQVIEP4I	2	MCR	35.0	133	ák enplilí	you accepted,I entered,you will enter,he will enter,I will accept	he will enter	correct
+A36J59FFWYQ6AK	5	EX	1.0	15	ekki enpli	ALL	she enters	revealed
+A36J59FFWYQ6AK	5	EX	2.0	21	pi enplizpe	ALL	you entered	revealed
+A36J59FFWYQ6AK	5	MC	3.0	73	yé enplá	I entered,she entered,he enters,I will enter,to watch	I will enter	incorrect
+A36J59FFWYQ6AK	5	EX	4.0	25	ekki meli	ALL	she watches	revealed
+A36J59FFWYQ6AK	5	EX	5.0	10	ekki icedpü	ALL	she accepted	revealed
+A36J59FFWYQ6AK	5	MC	6.0	61	ák enpli	he enters,you accepted,I will enter,he accepts,he entered	I will enter	incorrect
+A36J59FFWYQ6AK	5	EX	7.0	5	yé icedpilá	ALL	I will accept	revealed
+A36J59FFWYQ6AK	5	TP	8.0	179	ekki enplilí	ALL	she enters	incorrect
+A36J59FFWYQ6AK	5	MCR	9.0	129	yé enplilá	I will enter,you will enter,to accept,I entered,he enters	I will enter	correct
+A36J59FFWYQ6AK	5	MC	10.0	77	ák enplü	he entered,he will accept,he enters,she will accept,she accepted	he entered	correct
+A36J59FFWYQ6AK	5	EX	11.0	2	pi icedpiz	ALL	you accept	revealed
+A36J59FFWYQ6AK	5	MC	12.0	34	yé icedpé	I accept,I watched,to accept,he will accept,he enters	I accept	correct
+A36J59FFWYQ6AK	5	MC	13.0	93	pi melizpe	you watched,I will accept,he will enter,she watched,I will watch	he will enter	incorrect
+A36J59FFWYQ6AK	5	TPR	14.0	211	ekki enplilí	ALL	she enters	incorrect
+A36J59FFWYQ6AK	5	TPR	14.0	211	ekki enplilí	ALL	she will enter	revealed
+A36J59FFWYQ6AK	5	EX	15.0	7	ekki icedpilí	ALL	she will accept	revealed
+A36J59FFWYQ6AK	5	TP	16.0	164	ekki icedpi	ALL	she will accept	incorrect
+A36J59FFWYQ6AK	5	MCR	17.0	127	ekki enpli	he accepts,she enters,she will enter,he will enter,he entered	she enters	correct
+A36J59FFWYQ6AK	5	TP	18.0	164	ekki icedpi	ALL	she will accept	incorrect
+A36J59FFWYQ6AK	5	TPR	19.0	215	ekki enplü	ALL	she enters	incorrect
+A36J59FFWYQ6AK	5	TPR	19.0	215	ekki enplü	ALL	she entered	revealed
+A36J59FFWYQ6AK	5	MCR	20.0	136	yé enplá	she watches,I entered,he will enter,she will watch,she accepted	I entered	correct
+A36J59FFWYQ6AK	5	MCR	21.0	138	pi enplizpe	I will accept,I will enter,you entered,you watched,I accept	I will enter	incorrect
+A36J59FFWYQ6AK	5	MCR	21.1	138	pi enplizpe	I will accept,you entered,you watched,I accept	you entered	correct
+A36J59FFWYQ6AK	5	MC	22.0	94	ekki melü	she watched,he accepted,I accept,to accept,I will watch	she watched	correct
+A36J59FFWYQ6AK	5	TP	23.0	164	ekki icedpi	ALL	she will enter	incorrect
+A36J59FFWYQ6AK	5	TP	24.0	164	ekki icedpi	ALL	she will watch	incorrect
+A36J59FFWYQ6AK	5	MCR	25.0	121	yé enplé	you accepted,to accept,you enter,I enter,he enters	I enter	correct
+A36J59FFWYQ6AK	5	MCR	26.0	113	pi icedpizpe	you accepted,she watches,she will enter,you will enter,you entered	you will enter	incorrect
+A36J59FFWYQ6AK	5	MCR	26.1	113	pi icedpizpe	you accepted,she watches,she will enter,you entered	you entered	incorrect
+A36J59FFWYQ6AK	5	MCR	27.0	109	ák icedpilí	you accepted,he will watch,to accept,she accepts,he will accept	to accept	incorrect
+A36J59FFWYQ6AK	5	MCR	27.1	109	ák icedpilí	you accepted,he will watch,she accepts,he will accept	he will accept	correct
+A36J59FFWYQ6AK	5	MCR	28.0	136	yé enplá	she watches,I entered,he will enter,she will watch,she accepted	I entered	correct
+A36J59FFWYQ6AK	5	EX	29.0	4	ekki icedpi	ALL	she accepts	revealed
+A36J59FFWYQ6AK	5	EX	30.0	3	ák icedpi	ALL	he accepts	revealed
+A36J59FFWYQ6AK	5	TPR	31.0	215	ekki enplü	ALL	she enters	incorrect
+A36J59FFWYQ6AK	5	TPR	31.0	215	ekki enplü	ALL	she entered	revealed
+A36J59FFWYQ6AK	5	TP	32.0	173	pi enpliz	ALL	he entered	incorrect
+A36J59FFWYQ6AK	5	MC	33.0	48	pi icedpizpe	you accepted,she enters,she entered,I watched,he entered	he entered	incorrect
+A36J59FFWYQ6AK	5	EX	34.0	27	ák melilí	ALL	he will watch	revealed
+A36J59FFWYQ6AK	5	EX	35.0	26	yé melilá	ALL	I will watch	revealed
+A3L2UB07EZJAMD	0	EX	1.0	17	pi enplilíz	ALL	you will enter	revealed
+A3L2UB07EZJAMD	0	MC	2.0	48	pi icedpizpe	you accepted,she enters,she entered,I watched,he entered	she enters	incorrect
+A3L2UB07EZJAMD	0	MC	3.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she accepted	incorrect
+A3L2UB07EZJAMD	0	TP	4.0	173	pi enpliz	ALL	You will enter	incorrect
+A3L2UB07EZJAMD	0	EX	5.0	24	melil	ALL	to watch	revealed
+A3L2UB07EZJAMD	0	TP	6.0	181	pi enplizpe	ALL	NO_ANSWER_MADE	incorrect
+A3L2UB07EZJAMD	0	EX	7.0	7	ekki icedpilí	ALL	she will accept	revealed
+A3L2UB07EZJAMD	0	MCR	8.0	149	yé melilá	you enter,I will watch,she will watch,I watched,I accept	I accept	incorrect
+A3L2UB07EZJAMD	0	MCR	8.1	149	yé melilá	you enter,I will watch,she will watch,I watched	I watched	incorrect
+A3L2UB07EZJAMD	0	MCR	8.2	149	yé melilá	you enter,I will watch,she will watch	I will watch	correct
+A3L2UB07EZJAMD	0	MC	9.0	65	yé enplilá	I will enter,he enters,I entered,you will enter,to accept	I will enter	correct
+A3L2UB07EZJAMD	0	TPR	10.0	196	ekki icedpi	ALL	She watched	incorrect
+A3L2UB07EZJAMD	0	TPR	10.0	196	ekki icedpi	ALL	she accepts	revealed
+A3L2UB07EZJAMD	0	MCR	11.0	135	ekki enplilí	she will accept,she will enter,he accepted,you enter,he enters	she will accept	incorrect
+A3L2UB07EZJAMD	0	MCR	11.1	135	ekki enplilí	she will enter,he accepted,you enter,he enters	she will enter	correct
+A3L2UB07EZJAMD	0	MC	12.0	88	ekki melilí	she will watch,you will enter,he will watch,she accepted,she entered	she will watch	correct
+A3L2UB07EZJAMD	0	EX	13.0	9	ák icedpü	ALL	he accepted	revealed
+A3L2UB07EZJAMD	0	TP	14.0	164	ekki icedpi	ALL	She accepted	incorrect
+A3L2UB07EZJAMD	0	TP	15.0	179	ekki enplilí	ALL	She accepted	incorrect
+A3L2UB07EZJAMD	0	MCR	16.0	99	yé icedpé	he accepts,I will accept,she accepted,she watched,I accept	I accept	correct
+A3L2UB07EZJAMD	0	MC	17.0	54	enplil	to enter,he will watch,you accepted,she accepts,she will watch	to enter	correct
+A3L2UB07EZJAMD	0	TP	18.0	173	pi enpliz	ALL	He entered	incorrect
+A3L2UB07EZJAMD	0	TP	19.0	164	ekki icedpi	ALL	She entered	incorrect
+A3L2UB07EZJAMD	0	MCR	20.0	116	ekki icedpü	she accepted,you will enter,you entered,I accept,she watched	she accepted	correct
+A3L2UB07EZJAMD	0	EX	21.0	1	yé icedpé	ALL	I accept	revealed
+A3L2UB07EZJAMD	0	TPR	22.0	195	ák icedpi	ALL	You accept	incorrect
+A3L2UB07EZJAMD	0	TPR	22.0	195	ák icedpi	ALL	he accepts	revealed
+A3L2UB07EZJAMD	0	TP	23.0	181	pi enplizpe	ALL	He watched	incorrect
+A3L2UB07EZJAMD	0	MCR	24.0	100	pi icedpiz	she accepted,she will enter,you accept,I watched,she will watch	I watched	incorrect
+A3L2UB07EZJAMD	0	MCR	24.1	100	pi icedpiz	she accepted,she will enter,you accept,she will watch	you accept	correct
+A3L2UB07EZJAMD	0	MCR	25.0	105	ekki icedpi	I will accept,she accepted,you enter,she accepts,he will watch	she accepts	correct
+A3L2UB07EZJAMD	0	TP	26.0	189	yé melá	ALL	He entered	incorrect
+A3L2UB07EZJAMD	0	EX	27.0	0	icedpil	ALL	to accept	revealed
+A3L2UB07EZJAMD	0	TPR	28.0	204	yé enplé	ALL	He entered	incorrect
+A3L2UB07EZJAMD	0	TPR	28.0	204	yé enplé	ALL	I enter	revealed
+A3L2UB07EZJAMD	0	TP	29.0	164	ekki icedpi	ALL	She accepts	correct
+A3L2UB07EZJAMD	0	MC	30.0	76	ák enplü	he entered,she entered,I enter,I will enter,he will watch	I enter	incorrect
+A3L2UB07EZJAMD	0	TPR	31.0	221	yé melá	ALL	I enter	incorrect
+A3L2UB07EZJAMD	0	TPR	31.0	221	yé melá	ALL	I watched	revealed
+A3L2UB07EZJAMD	0	EX	32.0	22	ák enplü	ALL	he entered	revealed
+A3L2UB07EZJAMD	0	MCR	33.0	138	pi enplizpe	I will accept,I will enter,you entered,you watched,I accept	you watched	incorrect
+A3L2UB07EZJAMD	0	MCR	33.1	138	pi enplizpe	I will accept,I will enter,you entered,I accept	you entered	correct
+A3L2UB07EZJAMD	0	EX	34.0	2	pi icedpiz	ALL	you accept	revealed
+A3L2UB07EZJAMD	0	EX	35.0	28	ekki melilí	ALL	she will watch	revealed
+A2KW26KE43UBRS	0	EX	1.0	0	icedpil	ALL	to accept	revealed
+A2KW26KE43UBRS	0	EX	2.0	17	pi enplilíz	ALL	you will enter	revealed
+A2KW26KE43UBRS	0	EX	3.0	7	ekki icedpilí	ALL	she will accept	revealed
+A2KW26KE43UBRS	0	MC	4.0	48	pi icedpizpe	you accepted,she enters,she entered,I watched,he entered	she entered	incorrect
+A2KW26KE43UBRS	0	EX	5.0	3	ák icedpi	ALL	he accepts	revealed
+A2KW26KE43UBRS	0	EX	6.0	2	pi icedpiz	ALL	you accept	revealed
+A2KW26KE43UBRS	0	MCR	7.0	141	ák enplü	she accepted,she will accept,he enters,he entered,he will accept	she accepted	incorrect
+A2KW26KE43UBRS	0	MCR	7.1	141	ák enplü	she will accept,he enters,he entered,he will accept	he entered	correct
+A2KW26KE43UBRS	0	EX	8.0	26	yé melilá	ALL	I will watch	revealed
+A2KW26KE43UBRS	0	MCR	9.0	144	melil	she entered,I entered,he accepted,I watched,to watch	I watched	incorrect
+A2KW26KE43UBRS	0	MCR	9.1	144	melil	she entered,I entered,he accepted,to watch	to watch	correct
+A2KW26KE43UBRS	0	MCR	10.0	120	yé enplé	he will watch,I enter,to enter,to watch,you accept	to enter	incorrect
+A2KW26KE43UBRS	0	MCR	10.1	120	yé enplé	he will watch,I enter,to watch,you accept	you accept	incorrect
+A2KW26KE43UBRS	0	MC	11.0	53	ekki icedpü	she accepted,to accept,she enters,she will accept,you accepted	to accept	incorrect
+A2KW26KE43UBRS	0	MCR	12.0	158	ekki melü	I will watch,he accepted,to accept,I accept,she watched	I will watch	incorrect
+A2KW26KE43UBRS	0	MCR	12.1	158	ekki melü	he accepted,to accept,I accept,she watched	she watched	correct
+A2KW26KE43UBRS	0	MCR	13.0	156	pi melizpe	to watch,she enters,you watched,she accepts,he entered	she accepts	incorrect
+A2KW26KE43UBRS	0	MCR	13.1	156	pi melizpe	to watch,she enters,you watched,he entered	you watched	correct
+A2KW26KE43UBRS	0	MC	14.0	62	ekki enpli	she enters,she accepts,he enters,she will accept,to accept	she enters	correct
+A2KW26KE43UBRS	0	TP	15.0	170	ekki icedpü	ALL	she entered	incorrect
+A2KW26KE43UBRS	0	TPR	16.0	206	ák enpli	ALL	I watched	incorrect
+A2KW26KE43UBRS	0	TPR	16.0	206	ák enpli	ALL	he enters	revealed
+A2KW26KE43UBRS	0	EX	17.0	23	ekki enplü	ALL	she entered	revealed
+A2KW26KE43UBRS	0	EX	18.0	11	enplil	ALL	to enter	revealed
+A2KW26KE43UBRS	0	TP	19.0	170	ekki icedpü	ALL	I watched	incorrect
+A2KW26KE43UBRS	0	MC	20.0	89	ekki melilí	she will watch,I watched,to enter,she watches,to watch	I watched	incorrect
+A2KW26KE43UBRS	0	MCR	21.0	111	ekki icedpilí	I will accept,she will accept,I will watch,to enter,she watched	she watched	incorrect
+A2KW26KE43UBRS	0	MCR	21.1	111	ekki icedpilí	I will accept,she will accept,I will watch,to enter	to enter	incorrect
+A2KW26KE43UBRS	0	MCR	22.0	146	ekki meli	she watches,she enters,she will enter,you accept,he will watch	she enters	incorrect
+A2KW26KE43UBRS	0	MCR	22.1	146	ekki meli	she watches,she will enter,you accept,he will watch	she watches	correct
+A2KW26KE43UBRS	0	MCR	23.0	147	ekki meli	she watches,he will enter,she will watch,she accepts,she watched	she watched	incorrect
+A2KW26KE43UBRS	0	MCR	23.1	147	ekki meli	she watches,he will enter,she will watch,she accepts	she watches	correct
+A2KW26KE43UBRS	0	EX	24.0	29	yé melá	ALL	I watched	revealed
+A2KW26KE43UBRS	0	MCR	25.0	116	ekki icedpü	she accepted,you will enter,you entered,I accept,she watched	I accept	incorrect
+A2KW26KE43UBRS	0	MCR	25.1	116	ekki icedpü	she accepted,you will enter,you entered,she watched	she accepted	correct
+A2KW26KE43UBRS	0	EX	26.0	9	ák icedpü	ALL	he accepted	revealed
+A2KW26KE43UBRS	0	MC	27.0	44	ák icedpilí	he will accept,I accept,she enters,she will watch,she will enter	he will accept	correct
+A2KW26KE43UBRS	0	EX	28.0	26	yé melilá	ALL	I will watch	revealed
+A2KW26KE43UBRS	0	MC	29.0	89	ekki melilí	she will watch,I watched,to enter,she watches,to watch	I watched	incorrect
+A2KW26KE43UBRS	0	MC	30.0	89	ekki melilí	she will watch,I watched,to enter,she watches,to watch	she watches	incorrect
+A2KW26KE43UBRS	0	TPR	31.0	220	ekki melilí	ALL	She will watch	correct
+A2KW26KE43UBRS	0	EX	32.0	28	ekki melilí	ALL	she will watch	revealed
+A2KW26KE43UBRS	0	MCR	33.0	153	ekki melilí	she watches,to watch,she will watch,I watched,to enter	she will watch	correct
+A2KW26KE43UBRS	0	MCR	34.0	152	ekki melilí	she entered,she accepted,you will enter,she will watch,he will watch	she will watch	correct
+A2KW26KE43UBRS	0	MCR	35.0	132	ák enplilí	to watch,he will enter,he entered,I watched,I accept	I accept	incorrect
+A2KW26KE43UBRS	0	MCR	35.1	132	ák enplilí	to watch,he will enter,he entered,I watched	he entered	incorrect
+A2KW26KE43UBRS	0	MCR	35.2	132	ák enplilí	to watch,he will enter,I watched	to watch	incorrect

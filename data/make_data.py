@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import pdb
+import numpy as np
 import codecs
 import json
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     good_users = {}
     for i in codecs.open('good.users', 'r', 'utf8').readlines():
         good_users[i.strip()] = None
-
+    
     for line in codecs.open('vocab_training_user_table.csv', 'r', 'utf8').readlines()[1:]:
         if line.strip() != "":
             items = line.split('\t')
@@ -171,9 +172,31 @@ if __name__ == '__main__':
         else:
             pass
 
-    for k,v in user2data_lines.iteritems(): 
-        v = sorted(v)
-        for tsl,dll in v:
-            print dll
+    good_users_list = [k for k in good_users]
+    user_groups = []
+    user_groups_stats = []
+
+    for g in xrange(7):
+        if len(good_users_list) > 35:
+            ug = np.random.choice(good_users_list, 20, False)
+        else:
+            ug = [_ug for _ug in good_users_list] #remaining users...
+        ug_ts= []
+        for _ug in ug:
+            ug_ts.append(good_users[_ug])
+            good_users_list.remove(_ug)
+        user_groups.append(ug)
+        m = round(np.mean(ug_ts),2)
+        sd = round(np.std(ug_ts), 2)
+        user_groups_stats.append((m,sd))
+
+    for idx, (ug, ug_stats) in enumerate(zip(user_groups, user_groups_stats)):
+        w = codecs.open('./data_splits/group' + str(idx) + '.data', 'w', 'utf8')
+        print 'group:', idx, ',test_mean:', str(ug_stats[0]),',test_std:', str(ug_stats[1]),',num users:', len(ug)
+        for u in ug:
+            for ts, dll in sorted(user2data_lines[u]):
+                w.write(dll + '\n')
+        w.flush()
+        w.close()
 
     #print bad_c, c
