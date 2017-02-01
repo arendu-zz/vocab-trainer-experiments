@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import pdb
 import sys
 import codecs
 import json
@@ -30,7 +29,6 @@ if __name__ == '__main__':
         x_sigma.update(list(fr))
         y_sigma.update(list(en))
 
-    pdb.set_trace()
     completed_users = {}
     for line in user_table[1:]:
         items = line.strip().split('\t')
@@ -42,7 +40,7 @@ if __name__ == '__main__':
         items = line.split('\t')
         user = items[0].strip()
         if user in completed_users:
-            if items[5].strip() == "NO_ANSWER_MADE" or items[6].strip() == "" or items[6].strip() == "{}":
+            if items[5].strip() == "" or items[5].strip() == "NO_ANSWER_MADE" or items[6].strip() == "" or items[6].strip() == "{}":
                 count = user2no_answer_count.get(user, 0)
                 user2no_answer_count[user] = count + 1
             elif items[5].strip().lower() in y_sigma:
@@ -51,12 +49,12 @@ if __name__ == '__main__':
                 pass
         else:
             pass
-    pdb.set_trace()
     for k,v in user2no_answer_count.iteritems():
         print k, v, completed_users[k]
 
     good ={}
     bad ={}
+    good_users = codecs.open('good.users', 'w', 'utf8')
 
     for u in completed_users.iterkeys():
         if user2no_answer_count.get(u,0) > 1: 
@@ -66,9 +64,12 @@ if __name__ == '__main__':
     print '***************good**************'
     for k in good:
         print k
+        good_users.write(k + '\n')
     print len(good), 'good users'
     print '***************bad***************'
     for v,k in sorted([(v,k) for k,v in bad.iteritems()]):
         test_result = json.loads(completed_users[k][-1])
         print k,v, test_result[u'test_correct_num']
     print len(bad), 'bad users'
+    good_users.flush()
+    good_users.close()

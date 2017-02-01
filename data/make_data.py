@@ -1,0 +1,179 @@
+#!/usr/bin/env python
+import sys
+import pdb
+import codecs
+import json
+sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+__author__ = 'arenduchintala'
+global user2data_lines
+user2data_lines = {}
+
+def add_data_line(u, dl, ts):
+    global user2data_lines
+    dls = user2data_lines.get(u, [])
+    dls.append((ts, dl))
+    user2data_lines[u] = dls
+    #print 'added dl', dl
+    return True
+
+def fix_complex_obs(co):
+    fixed_complex_obs = {}
+    if co.strip() == "" or co.strip() == "{}":
+        return {"1": "NO_ANSWER_MADE"}
+    else:
+        json_complex_obs = json.loads(co)
+        vals = set([])
+        for k,v in json_complex_obs.iteritems():
+            if v[u'guess'] not in vals:
+                vals.add(v[u'guess'])
+                fixed_complex_obs[k] = v[u'guess']
+        return fixed_complex_obs
+
+
+if __name__ == '__main__':
+    good_users = {}
+    for i in codecs.open('good.users', 'r', 'utf8').readlines():
+        good_users[i.strip()] = None
+
+    for line in codecs.open('vocab_training_user_table.csv', 'r', 'utf8').readlines()[1:]:
+        if line.strip() != "":
+            items = line.split('\t')
+            if items[3].strip() != "" and items[3].strip() != "NULL":
+                test_result = json.loads(items[3])
+            user = items[1].strip()
+            if user in good_users:
+                good_users[user] = test_result[u'test_correct_num']
+    '''
+    list_s= []
+    test_score_hist = {}
+    for g,s in good_users.iteritems():
+        print g, s
+        list_s.append(int(s))
+        t = test_score_hist.get(int(s), 0)
+        test_score_hist[int(s)] = t + 1
+        assert s is not None
+    ls = np.array(list_s)
+    print 'mean', np.mean(ls)
+    print 'sd', np.std(ls)
+    print 'max', np.max(ls)
+    print 'score hist'
+    sum_v = 0
+    for k,v in sorted(test_score_hist.iteritems()):
+        print k, v
+        sum_v += v
+    print sum_v, 'total scores'
+    '''
+    fixed_records = codecs.open('fixed_vocab_training_user_records.csv', 'r', 'utf8').readlines()
+    c = 0
+    bad_c = 0
+    #0:username  1:training_step 2:prompt_type 3:current_action  4:current_action_id 5:current_observation 6:complex_observation
+    user2data_lines = {}
+    for line in fixed_records[1:]:
+        items= [i.strip() for i in line.split('\t')]
+        if items[0] in good_users:
+            user = items[0].strip()
+            training_step = float(items[1].strip())
+            prompt_type = items[2].strip()
+            user_test_score = str(good_users[user])
+            current_action = json.loads(items[3])
+            fr_str = current_action[2].strip()
+            current_action_id = items[4].strip()
+            current_obs = items[5].strip()
+            complex_obs = items[6].strip()
+
+            if current_obs.strip() == "":
+                current_obs = "NO_ANSWER_MADE"
+
+            if current_obs == "NO_ANSWER_MADE": 
+                #print 'good user bad answer', items
+                bad_c += 1
+            if prompt_type == "MCR" and (complex_obs.strip() == "{}" or complex_obs.strip() == ""):
+                #print 'good user bad answer', items
+                bad_c += 1
+            c += 1
+
+            if prompt_type == "EX":
+                en_selected = current_action[3].strip()
+                en_options = "ALL"
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, "revealed"])
+                add_data_line(user, data_line, training_step)
+            elif prompt_type == "TP":
+                #will only give indicative feedback i.e. does not show correct answer
+                en_selected = current_obs
+                en_true = current_action[3].strip()
+                en_options = "ALL"
+                feedback = en_selected.lower() == en_true.lower()
+                fb_str = "correct" if feedback else "incorrect"
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                add_data_line(user, data_line, training_step)
+            elif prompt_type == "TPR":
+                #will indicate and give correct answer
+                #2 rows.. 
+                en_selected = current_obs
+                en_true = current_action[3].strip()
+                en_options = "ALL"
+                feedback = en_selected.lower() == en_true.lower()
+                fb_str = "correct" if feedback else "incorrect"
+                if feedback:
+                    #if correct stop with one data line
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                    add_data_line(user, data_line, training_step)
+                else:
+                    #if wrong answer then 2 data lines
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                    add_data_line(user, data_line, training_step)
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_true, "revealed"])
+                    add_data_line(user, data_line, training_step + 0.1)
+                    pass
+                pass
+            elif prompt_type == "MC":
+                #will indicate ONLY
+                en_options = ','.join(current_action[3:])
+                en_selected = current_obs
+                en_true = current_action[3].strip()
+                feedback = en_true.lower() == en_selected.lower()
+                fb_str = "correct" if feedback else "incorrect"
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                add_data_line(user, data_line, training_step)
+                pass
+            elif prompt_type == "MCR":
+                # will let you retry but no correct answer.. i.e. lots of indicative feedback only...
+                # as many rows as guesses..
+                all_en_options = set(current_action[3:])
+                fixed_complex_obs = fix_complex_obs(complex_obs)
+                en_true = current_action[3].strip()
+                #print items
+                point = 0 
+                prev_en_selected = None
+                for k,v in sorted(fixed_complex_obs.iteritems()): 
+                    en_selected = v 
+                    if en_selected != prev_en_selected:
+                        feedback = en_true.lower() == en_selected.lower()
+                        fb_str = "correct" if feedback else "incorrect"
+                        en_options = ','.join(all_en_options)
+                        t_step = training_step + (point * 0.1)
+                        data_line = '\t'.join([user, user_test_score, prompt_type, str(t_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                        add_data_line(user, data_line, t_step)
+                        #print data_line
+                        if en_selected == "NO_ANSWER_MADE" or en_selected == "":
+                            pass
+                        else:
+                            #print 'trying to remove', en_selected
+                            all_en_options.remove(en_selected)
+                        point += 1
+                        prev_en_selected = en_selected
+                    else:
+                        #print "this is weird", items
+                        pdb.set_trace()
+                pass
+            else:
+                raise Exception("unknown prompt type")
+        else:
+            pass
+
+    for k,v in user2data_lines.iteritems(): 
+        v = sorted(v)
+        for tsl,dll in v:
+            print dll
+
+    #print bad_c, c
