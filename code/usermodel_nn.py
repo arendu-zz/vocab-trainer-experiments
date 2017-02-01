@@ -20,14 +20,12 @@ class UserModel(object):
     def __init__(self, event2feats_file, feat2id_file, actions_file, optimizer = None, extra_state_params = None):
         self.dh = DataHelper(event2feats_file, feat2id_file, actions_file)
         self.optimizer = optimizer
-        self.extra_state_params = extra_state_params
         self.reg_type = 'l2'
         self.l = 0.01
         self.lr = 0.1
         self._eps = 1e-10 # for fixing divide by 0
         self._eta = 0.01 # for RMSprop and adagrad
         self.decay = 0.9 # for RMSprop
-        self.last_seen_f_id = 0
         w = np.zeros((1,self.dh.FEAT_SIZE))
         self.weights = theano.shared(floatX(w), name='W')
         self.E_gW = theano.shared(floatX(np.zeros_like(w)), name='E_gW')
@@ -36,9 +34,6 @@ class UserModel(object):
         self.seen_actions = set([])
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi')
         self.__theano_init__()
-
-    def get_properties(self):
-        return 'Theano_usermodel properties:', 'reg type:', self.reg_type, 'reg_param:',self.l, 'weight update method:', self.optimizer, 'eta:', self._eta, 'decay:',self.decay
 
     def get_state(self):
         w = self.weights.get_value()
