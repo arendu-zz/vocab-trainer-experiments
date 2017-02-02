@@ -12,9 +12,6 @@ if theano.config.floatX == 'float32':
 else:
     floatX = np.float64
 
-def _get_zeros(name, *shape, **kwargs):
-    return theano.shared(np.zeros(shape=shape, dtype=floatX), name=name, borrow=True)
-
 class UserModel(object):
     def __init__(self, event2feats_file, feat2id_file, actions_file, optimizer=None):
         self.dh = DataHelper(event2feats_file, feat2id_file, actions_file)
@@ -24,26 +21,29 @@ class UserModel(object):
         self._eps = 1e-10 # for fixing divide by 0
         self._eta = 0.01 # for RMSprop and adagrad
         self.decay = 0.9 # for RMSprop
-        W = _get_zeros("W", 1, self.dh.FEAT_SIZE) #theano.shared(floatX(w), name='W')
-        b = _get_zeros("b", 1, self.dh.E_SIZE) #theano.shared(floatX(w), name='W')
-        self.params = [W, b]
-        self.reg_params = [W]
+        #self.W = theano.shared(floatX(0.01 * np.ones((1, self.dh.FEAT_SIZE))), name='W')
+        #self.b = theano.shared(floatX(0.01 * np.ones((1, self.dh.E_SIZE))), name='b')
+        #self.params = [W, b]
+        #self.reg_params = [W]
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi')
         self.__theano_init__()
 
     def __theano_init__(self):
         #lr = T.scalar('lr', dtype=theano.config.floatX) # learning rate scalar
         x = T.lvector('x') #(batch_size,) #index of the input string
-        o = T.fmatrix('o') #(batch_size, output_dim) #mask for possible Ys
-        y_selected = T.fmatrix('y_selected') #(batch_size, output_dim) #the Y that is selected by the user
+        o = T.lmatrix('o') #(batch_size, output_dim) #mask for possible Ys
+        y_selected = T.lmatrix('y_selected') #(batch_size, output_dim) #the Y that is selected by the user
         f = T.lvector('f') #(batch_size,) # was the answer marked as correct or incorrect?
+        W = T.fvector('W') #(1, feature_size)
+        b = T.fvector('b') #(1, output_dim)
         reg_l2 = 0.0
         reg_l1 = 0.0
-        for w in self.reg_params:
-            reg_l2 += T.sum(T.sqr(w)) 
-            reg_l1 += T.sum(abs(w))
+        #for w in self.reg_params:
+        reg_l2 += T.sum(T.sqr(W)) 
+        reg_l1 += T.sum(abs(W))
 
-        y_dot = self.phi[x,:,:].dot(self.params[0].T)[:,:,0] + self.params[1] # perform dot product of Phi(x) and self.weights
+        y_dot = self.phi[x,:,:].dot(W.T) + b
+        #y_dot = self.phi[x,:,:].dot(self.W.T)[:,:,0] + self.b
         y_dot_masked = self.masked(y_dot, o, -np.inf) #(batch_size, output_dim)
         y_hat  = T.nnet.softmax(y_dot_masked) #(batch_size, output_dim)
         y_target = self.create_target(y_selected, y_hat, f)
@@ -51,14 +51,14 @@ class UserModel(object):
 
         loss = T.mean(loss_vec) + (self.l * (reg_l2 + reg_l1))
 
-        dW = [T.grad(loss, p) for p in self.params]
-        self.y_dot_x = theano.function([x], y_dot)
-        self.y_dot_masked_x = theano.function([x, o], y_dot_masked)
-        self.y_given_x = theano.function([x, o], y_hat)
-        self.y_target_x = theano.function([x, o, y_selected, f], y_target)
-
-        self.get_loss = theano.function(inputs = [x,o,y_selected,f], outputs = loss)
-        self.get_grad = theano.function(inputs = [x, o, y_selected,f], outputs=dW)
+        dW = [T.grad(loss, param) for param in [W,b]]
+        self.y_dot_x = theano.function([W, b, x], y_dot)
+        self.get_phi_x = theano.function([x], self.phi[x,:,:])
+        self.y_dot_masked_x = theano.function([W, b, x, o], y_dot_masked)
+        self.y_given_x = theano.function([W, b, x, o], y_hat)
+        self.y_target_x = theano.function([W, b, x, o, y_selected, f], y_target)
+        self.get_loss = theano.function(inputs = [W, b, x, o, y_selected,f], outputs = loss)
+        self.get_grad = theano.function(inputs = [W, b, x, o, y_selected,f], outputs=dW)
 
         #self.do_sgd_update = theano.function(inputs =[x, y_selected,f, lr], outputs=[loss, loss_vec], 
         #        updates = [(self.weights, self.weights - (lr * dW))])
