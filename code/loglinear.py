@@ -13,7 +13,7 @@ else:
     floatX = np.float64
 
 def _get_zeros(name, *shape, **kwargs):
-    return theano.shared(np.ones(shape=shape, dtype=floatX), name=name, borrow=True)
+    return theano.shared(np.zeros(shape=shape, dtype=floatX), name=name, borrow=True)
 
 class UserModel(object):
     def __init__(self, event2feats_file, feat2id_file, actions_file, optimizer=None):

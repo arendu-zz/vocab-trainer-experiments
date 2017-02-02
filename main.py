@@ -43,6 +43,10 @@ if __name__ == '__main__':
                 print y_d
                 y_dm = um.y_dot_masked_x(x.astype(np.int64), o.astype(floatX)) 
                 print y_dm
+                y_h  = um.y_given_x(x.astype(np.int64), o.astype(floatX))
+                print y_h
                 y_t = um.y_target_x(x.astype(np.int64), o.astype(floatX), y_selected.astype(floatX), f.astype(np.int64))
                 print 'feedback', f
                 print y_t
+                loss = um.get_loss(x.astype(np.int64), o.astype(floatX), y_selected.astype(floatX), f.astype(np.int64))
+                print loss
