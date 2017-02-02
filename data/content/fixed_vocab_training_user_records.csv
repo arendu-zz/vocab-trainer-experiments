@@ -113,7 +113,7 @@ A1JO6AY55FG7QU	21	MCR	["154","MCR","yé melá","I watched","he will accept","you
 
 A1JO6AY55FG7QU	22	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she will watch	NULL
 
-A1JO6AY55FG7QU	23	TPR	["208","TPR","yé enplilá","I will enter"]	208	i entered	NULL
+A1JO6AY55FG7QU	23	TPR	["208","TPR","yé enplilá","I will enter"]	208	I entered	NULL
 
 A1JO6AY55FG7QU	24	TP	["178","TP","ák enplilí","he will enter"]	178	he entered	NULL
 
@@ -399,7 +399,7 @@ A3U21PUMQ6NGT2	6	MC	["71","MC","ekki enplilí","she will enter","she will accept
 
 A2GB0RI43KU4Z	5	MCR	["135","MCR","ekki enplilí","she will enter","she will accept","you enter","he accepted","he enters"]	135	she will enter	{"1":{"guess":"he enters","time":10},"2":{"guess":"you enter","time":8},"3":{"guess":"she will enter","time":7}}
 
-A1U8HCXVACOGJ8	5	TP	["173","TP","pi enpliz","you enter"]	173	He accepts	NULL
+A1U8HCXVACOGJ8	5	TP	["173","TP","pi enpliz","you enter"]	173	he accepts	NULL
 
 A14ADQ7RUN6TDY	3	MC	["80","MC","melil","to watch","I entered","I watched","she entered","he accepted"]	80	I entered	NULL
 
@@ -545,7 +545,7 @@ A1U8HCXVACOGJ8	18	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
 A14ADQ7RUN6TDY	15	TP	["178","TP","ák enplilí","he will enter"]	178	he will enter	NULL
 
-A3U21PUMQ6NGT2	24	TPR	["217","TPR","ekki meli","she watches"]	217	She watched	NULL
+A3U21PUMQ6NGT2	24	TPR	["217","TPR","ekki meli","she watches"]	217	she watched	NULL
 
 A1U8HCXVACOGJ8	19	MCR	["128","MCR","yé enplilá","I will enter","she will accept","she will enter","you watched","to watch"]	128	I will enter	{"1":{"guess":"I will enter","time":11}}
 
@@ -555,7 +555,7 @@ A1HRHFU7KTS0KW	12	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you acce
 
 A2GB0RI43KU4Z	24	MCR	["131","MCR","pi enplilíz","you will enter","you watched","he accepted","I will accept","she entered"]	131	you will enter	{"1":{"guess":"you will enter","time":12}}
 
-A3U21PUMQ6NGT2	25	TP	["181","TP","pi enplizpe","you entered"]	181	You enter	NULL
+A3U21PUMQ6NGT2	25	TP	["181","TP","pi enplizpe","you entered"]	181	you enter	NULL
 
 A14ADQ7RUN6TDY	16	MCR	["121","MCR","yé enplé","I enter","you enter","he enters","you accepted","to accept"]	121	I enter	{"1":{"guess":"you enter","time":6},"2":{"guess":"I enter","time":2}}
 
@@ -565,7 +565,7 @@ A3U21PUMQ6NGT2	26	TP	["178","TP","ák enplilí","he will enter"]	178	 I entered	
 
 A1HRHFU7KTS0KW	13	MCR	["140","MCR","ák enplü","he entered","she entered","I enter","I will enter","he will watch"]	140	he entered	{"1":{"guess":"he entered","time":9}}
 
-A1U8HCXVACOGJ8	20	TPR	["221","TPR","yé melá","I watched"]	221	i watch	NULL
+A1U8HCXVACOGJ8	20	TPR	["221","TPR","yé melá","I watched"]	221	I watch	NULL
 
 A14ADQ7RUN6TDY	17	MC	["80","MC","melil","to watch","I entered","I watched","she entered","he accepted"]	80	to watch	NULL
 
@@ -581,7 +581,7 @@ A1HRHFU7KTS0KW	14	TP	["162","TP","pi icedpiz","you accept"]	162	you watched	NULL
 
 A14ADQ7RUN6TDY	18	TPR	["212","TPR","yé enplá","I entered"]	212	I will enter	NULL
 
-A3U21PUMQ6NGT2	29	TPR	["213","TPR","pi enplizpe","you entered"]	213	He entered	NULL
+A3U21PUMQ6NGT2	29	TPR	["213","TPR","pi enplizpe","you entered"]	213	he entered	NULL
 
 A1U8HCXVACOGJ8	22	MC	["61","MC","ák enpli","he enters","you accepted","I will enter","he accepts","he entered"]	61	he enters	NULL
 
@@ -637,7 +637,7 @@ A1HRHFU7KTS0KW	19	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will ac
 
 A3JFIY1QXMX9ZF	5	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	you enter	{"1":{"guess":"he entered","time":5},"2":{"guess":"you enter","time":3}}
 
-A3U21PUMQ6NGT2	35	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You entered	NULL
+A3U21PUMQ6NGT2	35	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you entered	NULL
 
 A2GB0RI43KU4Z	31	TPR	["194","TPR","pi icedpiz","you accept"]	194	you accepted	NULL
 
@@ -729,7 +729,7 @@ A1HRHFU7KTS0KW	28	TPR	["202","TPR","ekki icedpü","she accepted"]	202	she accept
 
 A21SIPO89DP66I	8	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
-A3JFIY1QXMX9ZF	14	TP	["161","TP","yé icedpé","I accept"]	161	i will accept	NULL
+A3JFIY1QXMX9ZF	14	TP	["161","TP","yé icedpé","I accept"]	161	I will accept	NULL
 
 A1U8HCXVACOGJ8	34	MC	["88","MC","ekki melilí","she will watch","you will enter","he will watch","she accepted","she entered"]	88	she will watch	NULL
 
@@ -743,7 +743,7 @@ A3JFIY1QXMX9ZF	15	MC	["69","MC","ák enplilí","he will enter","you will enter",
 
 A21SIPO89DP66I	10	MCR	["119","MCR","enplil","to enter","she will enter","he accepted","you enter","she will accept"]	119	to enter	{"1":{"guess":"to enter","time":13}}
 
-A1HRHFU7KTS0KW	30	TP	["182","TP","ák enplü","he entered"]	182	He entered	NULL
+A1HRHFU7KTS0KW	30	TP	["182","TP","ák enplü","he entered"]	182	he entered	NULL
 
 A14ADQ7RUN6TDY	31	MCR	["106","MCR","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	106	I will accept	{"1":{"guess":"I will accept","time":7}}
 
@@ -755,7 +755,7 @@ A3JFIY1QXMX9ZF	16	TP	["191","TP","ekki melü","she watched"]	191	she entered	NUL
 
 A21SIPO89DP66I	12	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
-A1HRHFU7KTS0KW	31	TPR	["223","TPR","ekki melü","she watched"]	223	She watched	NULL
+A1HRHFU7KTS0KW	31	TPR	["223","TPR","ekki melü","she watched"]	223	she watched	NULL
 
 A14ADQ7RUN6TDY	32	TP	["180","TP","yé enplá","I entered"]	180	I accept	NULL
 
@@ -803,7 +803,7 @@ A21SIPO89DP66I	20	MCR	["141","MCR","ák enplü","he entered","he will accept","h
 
 A3JFIY1QXMX9ZF	23	MCR	["112","MCR","pi icedpizpe","you accepted","she enters","she entered","I watched","he entered"]	112	you accepted	{"1":{"guess":"you accepted","time":8}}
 
-A21SIPO89DP66I	21	TP	["189","TP","yé melá","I watched"]	189	i will watch	NULL
+A21SIPO89DP66I	21	TP	["189","TP","yé melá","I watched"]	189	I will watch	NULL
 
 A3JFIY1QXMX9ZF	24	TP	["187","TP","ák melilí","he will watch"]	187	you will watch	NULL
 
@@ -837,7 +837,7 @@ A21SIPO89DP66I	30	MC	["33","MC","icedpil","to accept","he accepts","she will ent
 
 A3JFIY1QXMX9ZF	30	MC	["75","MC","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	75	he accepted	NULL
 
-A21SIPO89DP66I	31	TP	["189","TP","yé melá","I watched"]	189	i watch	NULL
+A21SIPO89DP66I	31	TP	["189","TP","yé melá","I watched"]	189	I watch	NULL
 
 A3JFIY1QXMX9ZF	31	MC	["65","MC","yé enplilá","I will enter","he enters","I entered","you will enter","to accept"]	65	you will enter	NULL
 
@@ -847,9 +847,9 @@ A21SIPO89DP66I	33	MCR	["150","MCR","ák melilí","he will watch","to accept","sh
 
 A3JFIY1QXMX9ZF	32	TPR	["217","TPR","ekki meli","she watches"]	217	she watches	NULL
 
-A21SIPO89DP66I	34	TPR	["221","TPR","yé melá","I watched"]	221	i will watch	NULL
+A21SIPO89DP66I	34	TPR	["221","TPR","yé melá","I watched"]	221	I will watch	NULL
 
-A3JFIY1QXMX9ZF	33	TPR	["204","TPR","yé enplé","I enter"]	204	i will enter	NULL
+A3JFIY1QXMX9ZF	33	TPR	["204","TPR","yé enplé","I enter"]	204	I will enter	NULL
 
 A21SIPO89DP66I	35	MCR	["155","MCR","yé melá","I watched","you watched","she watches","to enter","she accepts"]	155	I watched	{"1":{"guess":"I watched","time":14}}
 
@@ -997,7 +997,7 @@ A37EV8RZ82WT8E	33	TPR	["194","TPR","pi icedpiz","you accept"]	194	you will accep
 
 A37EV8RZ82WT8E	34	MCR	["108","MCR","ák icedpilí","he will accept","I accept","she enters","she will watch","she will enter"]	108	he will accept	{"1":{"guess":"he will accept","time":8}}
 
-A37EV8RZ82WT8E	35	TPR	["208","TPR","yé enplilá","I will enter"]	208	i enter	NULL
+A37EV8RZ82WT8E	35	TPR	["208","TPR","yé enplilá","I will enter"]	208	NO_ANSWER_MADE	NULL
 
 A2T91F321UGZBX	1	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
@@ -1017,7 +1017,7 @@ A1XE1L4XWYHSYX	3	MCR	["108","MCR","ák icedpilí","he will accept","I accept","s
 
 AI45NDJPUIOEJ	1	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NULL
 
-A2G7N0X0PNX0EE	2	TPR	["208","TPR","yé enplilá","I will enter"]	208	i entered	NULL
+A2G7N0X0PNX0EE	2	TPR	["208","TPR","yé enplilá","I will enter"]	208	I entered	NULL
 
 A2T91F321UGZBX	5	EX	["17","EX","pi enplilíz","you will enter"]	17	you will enter	NULL
 
@@ -1029,7 +1029,7 @@ AI45NDJPUIOEJ	2	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NU
 
 A1XE1L4XWYHSYX	5	MCR	["96","MCR","icedpil","to accept","I enter","I entered","she accepted","she entered"]	96	she accepted	{"1":{"guess":"she entered","time":13},"2":{"guess":"she accepted","time":11}}
 
-A2G7N0X0PNX0EE	4	TPR	["208","TPR","yé enplilá","I will enter"]	208	i will enter	NULL
+A2G7N0X0PNX0EE	4	TPR	["208","TPR","yé enplilá","I will enter"]	208	I will enter	NULL
 
 AI45NDJPUIOEJ	3	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
@@ -1109,7 +1109,7 @@ A1EKUJGMFDI1RZ	6	MC	["93","MC","pi melizpe","you watched","I will accept","he wi
 
 AI45NDJPUIOEJ	8	MCR	["118","MCR","enplil","to enter","he will watch","you accepted","she accepts","she will watch"]	118	to enter	{"1":{"guess":"to enter","time":13}}
 
-A2T91F321UGZBX	10	TP	["191","TP","ekki melü","she watched"]	191	i will accept	NULL
+A2T91F321UGZBX	10	TP	["191","TP","ekki melü","she watched"]	191	I will accept	NULL
 
 A1XE1L4XWYHSYX	11	MC	["84","MC","yé melilá","I will watch","I will accept","he accepted","she accepted","he accepts"]	84	she accepted	NULL
 
@@ -1165,7 +1165,7 @@ A1EKUJGMFDI1RZ	10	MCR	["144","MCR","melil","to watch","I entered","I watched","s
 
 A2T91F321UGZBX	12	MCR	["150","MCR","ák melilí","he will watch","to accept","she accepted","she will enter","she watches"]	150	she watches	{"1":{"guess":"she will enter","time":7},"2":{"guess":"she watches","time":4},"3":{"guess":"she watches","time":4}}
 
-A2G7N0X0PNX0EE	12	TPR	["218","TPR","yé melilá","I will watch"]	218	i will watch	NULL
+A2G7N0X0PNX0EE	12	TPR	["218","TPR","yé melilá","I will watch"]	218	I will watch	NULL
 
 A1XE1L4XWYHSYX	14	TP	["160","TP","icedpil","to accept"]	160	to accept	NULL
 
@@ -1213,7 +1213,7 @@ A2XJH3WC02RMXQ	10	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 A1EKUJGMFDI1RZ	13	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
-A1XE1L4XWYHSYX	16	TP	["181","TP","pi enplizpe","you entered"]	181	She watched	NULL
+A1XE1L4XWYHSYX	16	TP	["181","TP","pi enplizpe","you entered"]	181	she watched	NULL
 
 AI45NDJPUIOEJ	14	MCR	["128","MCR","yé enplilá","I will enter","she will accept","she will enter","you watched","to watch"]	128	I will enter	{"1":{"guess":"I will enter","time":9}}
 
@@ -1235,7 +1235,7 @@ A3OMUSG91MTI3H	9	TP	["165","TP","yé icedpilá","I will accept"]	165	I entered	N
 
 AI45NDJPUIOEJ	15	MCR	["100","MCR","pi icedpiz","you accept","I watched","she will enter","she will watch","she accepted"]	100	you accept	{"1":{"guess":"she accepted","time":6},"2":{"guess":"you accept","time":4}}
 
-A2T91F321UGZBX	15	TPR	["204","TPR","yé enplé","I enter"]	204	i entered	NULL
+A2T91F321UGZBX	15	TPR	["204","TPR","yé enplé","I enter"]	204	I entered	NULL
 
 A2G7N0X0PNX0EE	18	EX	["12","EX","yé enplé","I enter"]	12	I enter	NULL
 
@@ -1255,7 +1255,7 @@ A1EKUJGMFDI1RZ	15	MC	["64","MC","yé enplilá","I will enter","she will accept",
 
 A3OMUSG91MTI3H	10	MCR	["156","MCR","pi melizpe","you watched","he entered","she accepts","to watch","she enters"]	156	to watch	{"1":{"guess":"she enters","time":12},"2":{"guess":"she accepts","time":8},"3":{"guess":"to watch","time":7}}
 
-A2G7N0X0PNX0EE	19	TPR	["218","TPR","yé melilá","I will watch"]	218	You will watch	NULL
+A2G7N0X0PNX0EE	19	TPR	["218","TPR","yé melilá","I will watch"]	218	you will watch	NULL
 
 A2XJH3WC02RMXQ	13	MCR	["121","MCR","yé enplé","I enter","you enter","he enters","you accepted","to accept"]	121	I enter	{"1":{"guess":"I enter","time":11}}
 
@@ -1287,13 +1287,13 @@ A2XJH3WC02RMXQ	14	MCR	["147","MCR","ekki meli","she watches","she will watch","s
 
 A3OMUSG91MTI3H	13	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
-A2T91F321UGZBX	17	TP	["172","TP","yé enplé","I enter"]	172	i accept	NULL
+A2T91F321UGZBX	17	TP	["172","TP","yé enplé","I enter"]	172	I accept	NULL
 
 A36Z8997ZHYFKC	1	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
 A1EKUJGMFDI1RZ	18	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
-A1XE1L4XWYHSYX	21	TP	["173","TP","pi enpliz","you enter"]	173	i watched	NULL
+A1XE1L4XWYHSYX	21	TP	["173","TP","pi enpliz","you enter"]	173	I watched	NULL
 
 ADKSME3J8B0PA	19	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
@@ -1349,7 +1349,7 @@ A2T91F321UGZBX	19	MCR	["124","MCR","ák enpli","he enters","you will enter","I w
 
 AUI3R928P63B0	4	EX	["16","EX","yé enplilá","I will enter"]	16	I will enter	NULL
 
-A2G7N0X0PNX0EE	24	TPR	["201","TPR","ák icedpü","he accepted"]	201	He will accept	NULL
+A2G7N0X0PNX0EE	24	TPR	["201","TPR","ák icedpü","he accepted"]	201	he will accept	NULL
 
 AI45NDJPUIOEJ	20	TPR	["201","TPR","ák icedpü","he accepted"]	201	NO_ANSWER_MADE	NULL
 
@@ -1363,7 +1363,7 @@ A2T91F321UGZBX	20	MCR	["121","MCR","yé enplé","I enter","you enter","he enters
 
 A1ZB2NY0F9QNP0	3	MCR	["100","MCR","pi icedpiz","you accept","I watched","she will enter","she will watch","she accepted"]	100	you accept	{"1":{"guess":"she accepted","time":6},"2":{"guess":"you accept","time":4}}
 
-A2XJH3WC02RMXQ	17	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	He accepts	NULL
+A2XJH3WC02RMXQ	17	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	he accepts	NULL
 
 A36Z8997ZHYFKC	3	MC	["70","MC","ekki enplilí","she will enter","she will watch","I will watch","he accepts","to enter"]	70	to enter	NULL
 
@@ -1373,7 +1373,7 @@ A3OMUSG91MTI3H	18	MCR	["113","MCR","pi icedpizpe","you accepted","she will enter
 
 ADKSME3J8B0PA	23	TP	["174","TP","ák enpli","he enters"]	174	he accepts	NULL
 
-A1XE1L4XWYHSYX	26	TP	["190","TP","pi melizpe","you watched"]	190	You entered 	NULL
+A1XE1L4XWYHSYX	26	TP	["190","TP","pi melizpe","you watched"]	190	you entered	NULL
 
 A1ZB2NY0F9QNP0	4	MC	["94","MC","ekki melü","she watched","he accepted","I accept","to accept","I will watch"]	94	she watched	NULL
 
@@ -1391,7 +1391,7 @@ AI45NDJPUIOEJ	21	TP	["185","TP","ekki meli","she watches"]	185	she watched	NULL
 
 A1EKUJGMFDI1RZ	22	TPR	["215","TPR","ekki enplü","she entered"]	215	she entered	NULL
 
-A1XE1L4XWYHSYX	27	TPR	["222","TPR","pi melizpe","you watched"]	222	To watch	NULL
+A1XE1L4XWYHSYX	27	TPR	["222","TPR","pi melizpe","you watched"]	222	to watch	NULL
 
 A2XJH3WC02RMXQ	19	MC	["35","MC","yé icedpé","I accept","she watched","he accepts","I will accept","she accepted"]	35	I will accept	NULL
 
@@ -1451,7 +1451,7 @@ A1XE1L4XWYHSYX	31	MC	["92","MC","pi melizpe","you watched","he entered","she acc
 
 A1EKUJGMFDI1RZ	25	MCR	["136","MCR","yé enplá","I entered","she accepted","she will watch","he will enter","she watches"]	136	I entered	{"1":{"guess":"I entered","time":15}}
 
-A2T91F321UGZBX	23	TP	["186","TP","yé melilá","I will watch"]	186	i will accept	NULL
+A2T91F321UGZBX	23	TP	["186","TP","yé melilá","I will watch"]	186	I will accept	NULL
 
 A3OMUSG91MTI3H	23	MCR	["136","MCR","yé enplá","I entered","she accepted","she will watch","he will enter","she watches"]	136	I entered	{"1":{"guess":"I entered","time":13}}
 
@@ -1463,13 +1463,13 @@ ADKSME3J8B0PA	28	MCR	["125","MCR","ák enpli","he enters","you accepted","I will
 
 AI45NDJPUIOEJ	24	MC	["76","MC","ák enplü","he entered","she entered","I enter","I will enter","he will watch"]	76	he entered	NULL
 
-A2XJH3WC02RMXQ	22	TPR	["220","TPR","ekki melilí","she will watch"]	220	She will watch	NULL
+A2XJH3WC02RMXQ	22	TPR	["220","TPR","ekki melilí","she will watch"]	220	she will watch	NULL
 
 A2T91F321UGZBX	24	EX	["30","EX","pi melizpe","you watched"]	30	you watched	NULL
 
 A3OMUSG91MTI3H	24	EX	["5","EX","yé icedpilá","I will accept"]	5	I will accept	NULL
 
-A1XE1L4XWYHSYX	32	TPR	["222","TPR","pi melizpe","you watched"]	222	She watched	NULL
+A1XE1L4XWYHSYX	32	TPR	["222","TPR","pi melizpe","you watched"]	222	she watched	NULL
 
 A2G7N0X0PNX0EE	29	MCR	["104","MCR","ekki icedpi","she accepts","she entered","he accepted","he entered","you entered"]	104	she accepts	{"1":{"guess":"she accepts","time":3}}
 
@@ -1503,11 +1503,11 @@ A2G7N0X0PNX0EE	31	EX	["28","EX","ekki melilí","she will watch"]	28	she will wat
 
 A3OMUSG91MTI3H	26	TPR	["196","TPR","ekki icedpi","she accepts"]	196	she accepts	NULL
 
-A1XE1L4XWYHSYX	34	TP	["190","TP","pi melizpe","you watched"]	190	She watched	NULL
+A1XE1L4XWYHSYX	34	TP	["190","TP","pi melizpe","you watched"]	190	she watched	NULL
 
 ADKSME3J8B0PA	31	TPR	["215","TPR","ekki enplü","she entered"]	215	she accepts	NULL
 
-A2T91F321UGZBX	25	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A2T91F321UGZBX	25	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
 AUI3R928P63B0	10	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he watched	NULL
 
@@ -1527,7 +1527,7 @@ A2T91F321UGZBX	26	MC	["76","MC","ák enplü","he entered","she entered","I enter
 
 A36Z8997ZHYFKC	7	TP	["186","TP","yé melilá","I will watch"]	186	I will enter	NULL
 
-A1XE1L4XWYHSYX	35	TP	["190","TP","pi melizpe","you watched"]	190	I Watched	NULL
+A1XE1L4XWYHSYX	35	TP	["190","TP","pi melizpe","you watched"]	190	I watched	NULL
 
 A1ZB2NY0F9QNP0	12	MCR	["142","MCR","ekki enplü","she entered","she accepts","I will watch","to enter","he accepted"]	142	she entered	{"1":{"guess":"she entered","time":11}}
 
@@ -1589,7 +1589,7 @@ A36Z8997ZHYFKC	9	MC	["46","MC","ekki icedpilí","she will accept","you accepted"
 
 A3OMUSG91MTI3H	32	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
-A2T91F321UGZBX	28	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A2T91F321UGZBX	28	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
 AUI3R928P63B0	15	MC	["92","MC","pi melizpe","you watched","he entered","she accepts","to watch","she enters"]	92	you watched	NULL
 
@@ -1617,11 +1617,11 @@ A3OMUSG91MTI3H	34	MCR	["114","MCR","ák icedpü","he accepted","you accept","I a
 
 AI45NDJPUIOEJ	32	MCR	["134","MCR","ekki enplilí","she will enter","she will watch","I will watch","he accepts","to enter"]	134	she will enter	{"1":{"guess":"she will enter","time":10}}
 
-A2T91F321UGZBX	29	TP	["189","TP","yé melá","I watched"]	189	i accept	NULL
+A2T91F321UGZBX	29	TP	["189","TP","yé melá","I watched"]	189	I accept	NULL
 
 A1EKUJGMFDI1RZ	32	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
-AUI3R928P63B0	16	TPR	["204","TPR","yé enplé","I enter"]	204	i will enter	NULL
+AUI3R928P63B0	16	TPR	["204","TPR","yé enplé","I enter"]	204	I will enter	NULL
 
 A2XJH3WC02RMXQ	30	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
@@ -1707,11 +1707,11 @@ AEHTP1POPUQMB	4	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
 A1ZB2NY0F9QNP0	26	MCR	["105","MCR","ekki icedpi","she accepts","I will accept","she accepted","he will watch","you enter"]	105	she accepts	{"1":{"guess":"she accepts","time":7}}
 
-AUI3R928P63B0	23	TPR	["205","TPR","pi enpliz","you enter"]	205	You will enter	NULL
+AUI3R928P63B0	23	TPR	["205","TPR","pi enpliz","you enter"]	205	you will enter	NULL
 
 A36Z8997ZHYFKC	16	EX	["10","EX","ekki icedpü","she accepted"]	10	she accepted	NULL
 
-A2T91F321UGZBX	35	TPR	["193","TPR","yé icedpé","I accept"]	193	i accept	NULL
+A2T91F321UGZBX	35	TPR	["193","TPR","yé icedpé","I accept"]	193	I accept	NULL
 
 AEHTP1POPUQMB	5	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he accepted	NULL
 
@@ -1721,7 +1721,7 @@ AEHTP1POPUQMB	6	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
 A36Z8997ZHYFKC	17	MC	["66","MC","pi enplilíz","you will enter","you accept","I enter","he will watch","she will accept"]	66	you accept	NULL
 
-AUI3R928P63B0	24	TP	["161","TP","yé icedpé","I accept"]	161	i will enter	NULL
+AUI3R928P63B0	24	TP	["161","TP","yé icedpé","I accept"]	161	I will enter	NULL
 
 A1ZB2NY0F9QNP0	28	TPR	["212","TPR","yé enplá","I entered"]	212	I entered	NULL
 
@@ -1999,7 +1999,7 @@ A3LRZX8477TYYZ	25	MCR	["146","MCR","ekki meli","she watches","you accept","she w
 
 A3GEL5PWFIK05S	18	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
-A20IA63WXHF683	6	TPR	["211","TPR","ekki enplilí","she will enter"]	211	She will enter	NULL
+A20IA63WXHF683	6	TPR	["211","TPR","ekki enplilí","she will enter"]	211	she will enter	NULL
 
 A20IA63WXHF683	7	MCR	["129","MCR","yé enplilá","I will enter","he enters","I entered","you will enter","to accept"]	129	I entered	{"1":{"guess":"he enters","time":15},"2":{"guess":"I entered","time":13}}
 
@@ -2035,7 +2035,7 @@ A03846191RWU57N8DCK2	25	MCR	["111","MCR","ekki icedpilí","she will accept","she
 
 A20IA63WXHF683	12	MC	["95","MC","ekki melü","she watched","you watched","she enters","he will enter","I enter"]	95	I enter	NULL
 
-A3LRZX8477TYYZ	29	TPR	["207","TPR","ekki enpli","she enters"]	207	She enters	NULL
+A3LRZX8477TYYZ	29	TPR	["207","TPR","ekki enpli","she enters"]	207	she enters	NULL
 
 A20IA63WXHF683	13	MC	["49","MC","pi icedpizpe","you accepted","she will enter","you will enter","you entered","she watches"]	49	she watches	NULL
 
@@ -2087,7 +2087,7 @@ A3LRZX8477TYYZ	34	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	you accept
 
 A3GEL5PWFIK05S	31	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
-A03846191RWU57N8DCK2	30	TPR	["194","TPR","pi icedpiz","you accept"]	194	i accept	NULL
+A03846191RWU57N8DCK2	30	TPR	["194","TPR","pi icedpiz","you accept"]	194	I accept	NULL
 
 A3GEL5PWFIK05S	32	MCR	["138","MCR","pi enplizpe","you entered","I will accept","I will enter","you watched","I accept"]	138	you entered	{"1":{"guess":"you entered","time":9}}
 
@@ -2109,7 +2109,7 @@ A3GEL5PWFIK05S	35	MCR	["133","MCR","ák enplilí","he will enter","you will ente
 
 A03846191RWU57N8DCK2	34	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
-A03846191RWU57N8DCK2	35	TP	["181","TP","pi enplizpe","you entered"]	181	i watch	NULL
+A03846191RWU57N8DCK2	35	TP	["181","TP","pi enplizpe","you entered"]	181	I watch	NULL
 
 A2CF2BD4Q0ZDJN	1	EX	["29","EX","yé melá","I watched"]	29	I watched	NULL
 
@@ -2165,7 +2165,7 @@ A2MWAXV1YRK5GH	8	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she ac
 
 A2MWAXV1YRK5GH	9	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
-A1BWR5RBQDZQ16	9	TP	["186","TP","yé melilá","I will watch"]	186	He Will Enter	NULL
+A1BWR5RBQDZQ16	9	TP	["186","TP","yé melilá","I will watch"]	186	he will enter	NULL
 
 A2CF2BD4Q0ZDJN	11	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
@@ -2227,7 +2227,7 @@ A1BWR5RBQDZQ16	20	MC	["88","MC","ekki melilí","she will watch","you will enter"
 
 A2CF2BD4Q0ZDJN	20	MCR	["112","MCR","pi icedpizpe","you accepted","she enters","she entered","I watched","he entered"]	112	you accepted	{"1":{"guess":"you accepted","time":11}}
 
-A1BWR5RBQDZQ16	21	TPR	["215","TPR","ekki enplü","she entered"]	215	She enters	NULL
+A1BWR5RBQDZQ16	21	TPR	["215","TPR","ekki enplü","she entered"]	215	she enters	NULL
 
 A2MWAXV1YRK5GH	19	TPR	["222","TPR","pi melizpe","you watched"]	222	I enter	NULL
 
@@ -2261,7 +2261,7 @@ A2MWAXV1YRK5GH	23	MCR	["140","MCR","ák enplü","he entered","she entered","I en
 
 A2CF2BD4Q0ZDJN	27	EX	["10","EX","ekki icedpü","she accepted"]	10	she accepted	NULL
 
-A1BWR5RBQDZQ16	26	TPR	["222","TPR","pi melizpe","you watched"]	222	He watched	NULL
+A1BWR5RBQDZQ16	26	TPR	["222","TPR","pi melizpe","you watched"]	222	he watched	NULL
 
 A2MWAXV1YRK5GH	24	MC	["84","MC","yé melilá","I will watch","I will accept","he accepted","she accepted","he accepts"]	84	I will watch	NULL
 
@@ -2287,7 +2287,7 @@ A2MWAXV1YRK5GH	27	MCR	["120","MCR","yé enplé","I enter","to enter","to watch",
 
 A2CF2BD4Q0ZDJN	31	MCR	["124","MCR","ák enpli","he enters","you will enter","I will accept","to accept","I enter"]	124	he enters	{"1":{"guess":"he enters","time":12}}
 
-A1BWR5RBQDZQ16	31	TPR	["197","TPR","yé icedpilá","I will accept"]	197	He accepted	NULL
+A1BWR5RBQDZQ16	31	TPR	["197","TPR","yé icedpilá","I will accept"]	197	he accepted	NULL
 
 A2CF2BD4Q0ZDJN	32	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
@@ -2499,7 +2499,7 @@ AKVDY8OXNMQED	18	TPR	["195","TPR","ák icedpi","he accepts"]	195	I will accept	N
 
 AKVDY8OXNMQED	19	TPR	["219","TPR","ák melilí","he will watch"]	219	he enters	NULL
 
-AKVDY8OXNMQED	20	TPR	["213","TPR","pi enplizpe","you entered"]	213	i will accept	NULL
+AKVDY8OXNMQED	20	TPR	["213","TPR","pi enplizpe","you entered"]	213	I will accept	NULL
 
 AKVDY8OXNMQED	21	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he entered	NULL
 
@@ -2729,7 +2729,7 @@ A10LVHTF26QHQC	25	EX	["28","EX","ekki melilí","she will watch"]	28	she will wat
 
 AIK7EGKYGQ1QK	4	MCR	["155","MCR","yé melá","I watched","you watched","she watches","to enter","she accepts"]	155	I watched	{"1":{"guess":"I watched","time":10}}
 
-A10LVHTF26QHQC	26	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You enter	NULL
+A10LVHTF26QHQC	26	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you enter	NULL
 
 AIK7EGKYGQ1QK	5	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will accept	NULL
 
@@ -2775,7 +2775,7 @@ AIK7EGKYGQ1QK	16	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
 AIK7EGKYGQ1QK	17	MC	["53","MC","ekki icedpü","she accepted","to accept","she enters","she will accept","you accepted"]	53	she will accept	NULL
 
-AIK7EGKYGQ1QK	18	TPR	["202","TPR","ekki icedpü","she accepted"]	202	She accepted	NULL
+AIK7EGKYGQ1QK	18	TPR	["202","TPR","ekki icedpü","she accepted"]	202	she accepted	NULL
 
 AIK7EGKYGQ1QK	19	EX	["28","EX","ekki melilí","she will watch"]	28	she will watch	NULL
 
@@ -2787,9 +2787,9 @@ AIK7EGKYGQ1QK	22	EX	["21","EX","pi enplizpe","you entered"]	21	you entered	NULL
 
 AIK7EGKYGQ1QK	23	MC	["42","MC","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	42	I will accept	NULL
 
-AIK7EGKYGQ1QK	24	TP	["185","TP","ekki meli","she watches"]	185	She watches	NULL
+AIK7EGKYGQ1QK	24	TP	["185","TP","ekki meli","she watches"]	185	she watches	NULL
 
-AIK7EGKYGQ1QK	25	TP	["164","TP","ekki icedpi","she accepts"]	164	She accepts	NULL
+AIK7EGKYGQ1QK	25	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepts	NULL
 
 AIK7EGKYGQ1QK	26	MCR	["114","MCR","ák icedpü","he accepted","you accept","I accept","he entered","you entered"]	114	he accepted	{"1":{"guess":"he accepted","time":13}}
 
@@ -2805,7 +2805,7 @@ AIK7EGKYGQ1QK	31	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
 AIK7EGKYGQ1QK	32	TPR	["211","TPR","ekki enplilí","she will enter"]	211	she enters	NULL
 
-AIK7EGKYGQ1QK	33	TPR	["215","TPR","ekki enplü","she entered"]	215	She enters	NULL
+AIK7EGKYGQ1QK	33	TPR	["215","TPR","ekki enplü","she entered"]	215	she enters	NULL
 
 AIK7EGKYGQ1QK	34	EX	["23","EX","ekki enplü","she entered"]	23	she entered	NULL
 
@@ -2917,7 +2917,7 @@ A1G0E6T0AYW4QG	17	MCR	["117","MCR","ekki icedpü","she accepted","to accept","sh
 
 A1G0E6T0AYW4QG	18	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter	NULL
 
-A1G0E6T0AYW4QG	19	TP	["175","TP","ekki enpli","she enters"]	175	i will enter	NULL
+A1G0E6T0AYW4QG	19	TP	["175","TP","ekki enpli","she enters"]	175	I will enter	NULL
 
 A1G0E6T0AYW4QG	20	MC	["62","MC","ekki enpli","she enters","she accepts","he enters","she will accept","to accept"]	62	she will accept	NULL
 
@@ -3213,7 +3213,7 @@ AQ5IPY5IZPZWK	3	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
 A1NS16PLRPJ3YW	3	MC	["75","MC","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	75	you entered	NULL
 
-A3I9FTHSULHPYS	8	TPR	["193","TPR","yé icedpé","I accept"]	193	i will enter	NULL
+A3I9FTHSULHPYS	8	TPR	["193","TPR","yé icedpé","I accept"]	193	I will enter	NULL
 
 A33AZCOKCCTUXV	1	EX	["6","EX","ák icedpilí","he will accept"]	6	he will accept	NULL
 
@@ -3439,7 +3439,7 @@ A2FI77833XNV3T	1	EX	["28","EX","ekki melilí","she will watch"]	28	she will watc
 
 A2A0M30DSA7ZN	7	MC	["86","MC","ák melilí","he will watch","to accept","she accepted","she will enter","she watches"]	86	she accepted	NULL
 
-AZEGZ5ZVM6P5A	12	TP	["173","TP","pi enpliz","you enter"]	173	i enter	NULL
+AZEGZ5ZVM6P5A	12	TP	["173","TP","pi enpliz","you enter"]	173	I enter	NULL
 
 A33AZCOKCCTUXV	5	EX	["9","EX","ák icedpü","he accepted"]	9	he accepted	NULL
 
@@ -3615,7 +3615,7 @@ AF3LEU0Z2EMH4	9	TPR	["210","TPR","ák enplilí","he will enter"]	210	he will ent
 
 A1A3TGZ7DKJWRW	12	MCR	["115","MCR","ák icedpü","he accepted","I watched","to accept","I entered","you will enter"]	115	I watched	{"1":{"guess":"you will enter","time":15},"2":{"guess":"to accept","time":14},"3":{"guess":"I watched","time":12}}
 
-A1LTAYZAMU1A4C	8	TP	["174","TP","ák enpli","he enters"]	174	He enters	NULL
+A1LTAYZAMU1A4C	8	TP	["174","TP","ák enpli","he enters"]	174	he enters	NULL
 
 A3HNAJE7OJP66A	7	EX	["19","EX","ekki enplilí","she will enter"]	19	she will enter	NULL
 
@@ -3659,7 +3659,7 @@ A1U5BE8XJRXKW3	2	EX	["23","EX","ekki enplü","she entered"]	23	she entered	NULL
 
 A2VRDE2FHCBMF8	12	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
-A3I9FTHSULHPYS	17	TP	["172","TP","yé enplé","I enter"]	172	i accept	NULL
+A3I9FTHSULHPYS	17	TP	["172","TP","yé enplé","I enter"]	172	I accept	NULL
 
 A1LRJ4U04532TM	8	TP	["182","TP","ák enplü","he entered"]	182	he enters	NULL
 
@@ -3733,7 +3733,7 @@ A2A0M30DSA7ZN	12	MCR	["156","MCR","pi melizpe","you watched","he entered","she a
 
 A1A3TGZ7DKJWRW	14	TP	["177","TP","pi enplilíz","you will enter"]	177	she watched	NULL
 
-A1LTAYZAMU1A4C	10	TP	["170","TP","ekki icedpü","she accepted"]	170	She enters	NULL
+A1LTAYZAMU1A4C	10	TP	["170","TP","ekki icedpü","she accepted"]	170	she enters	NULL
 
 A21G77FNPGRZBD	8	MC	["77","MC","ák enplü","he entered","he will accept","he enters","she will accept","she accepted"]	77	he will accept	NULL
 
@@ -3805,7 +3805,7 @@ A2F9V69F6TZIAB	4	MCR	["145","MCR","melil","to watch","to accept","he will enter"
 
 A1QUBLZCONL4QD	9	EX	["4","EX","ekki icedpi","she accepts"]	4	she accepts	NULL
 
-A2A0M30DSA7ZN	13	TPR	["206","TPR","ák enpli","he enters"]	206	She entered	NULL
+A2A0M30DSA7ZN	13	TPR	["206","TPR","ák enpli","he enters"]	206	she entered	NULL
 
 A2MZYC2OHHM76X	11	MC	["35","MC","yé icedpé","I accept","she watched","he accepts","I will accept","she accepted"]	35	he accepts	NULL
 
@@ -3823,7 +3823,7 @@ A1A1Z3SQVIEP4I	6	MC	["54","MC","enplil","to enter","he will watch","you accepted
 
 AR5OPTTGMTI9S	12	MCR	["130","MCR","pi enplilíz","you will enter","you accept","I enter","he will watch","she will accept"]	130	he will watch	{"1":{"guess":"she will accept","time":15},"2":{"guess":"you accept","time":14},"3":{"guess":"he will watch","time":12}}
 
-A3I9FTHSULHPYS	20	TP	["172","TP","yé enplé","I enter"]	172	i watch	NULL
+A3I9FTHSULHPYS	20	TP	["172","TP","yé enplé","I enter"]	172	I watch	NULL
 
 A9YQQIZRWVPIT	15	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
@@ -3939,7 +3939,7 @@ A1TMF8Z3VT364E	17	MC	["87","MC","ák melilí","he will watch","he entered","you 
 
 A2TDGWWPX6IMIZ	4	MCR	["146","MCR","ekki meli","she watches","you accept","she will enter","he will watch","she enters"]	146	you accept	{"1":{"guess":"she enters","time":9},"2":{"guess":"you accept","time":2},"3":{"guess":"you accept","time":0}}
 
-A3I9FTHSULHPYS	22	TP	["172","TP","yé enplé","I enter"]	172	i accept	NULL
+A3I9FTHSULHPYS	22	TP	["172","TP","yé enplé","I enter"]	172	I accept	NULL
 
 A24MFJ893DQKW1	12	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
@@ -4023,7 +4023,7 @@ AZEGZ5ZVM6P5A	19	MC	["43","MC","yé icedpilá","I will accept","he will watch","
 
 A2F9V69F6TZIAB	6	TPR	["205","TPR","pi enpliz","you enter"]	205	to enter	NULL
 
-A2MZYC2OHHM76X	13	TPR	["205","TPR","pi enpliz","you enter"]	205	He entered	NULL
+A2MZYC2OHHM76X	13	TPR	["205","TPR","pi enpliz","you enter"]	205	he entered	NULL
 
 A3LECJA9RVQQKZ	13	MCR	["146","MCR","ekki meli","she watches","you accept","she will enter","he will watch","she enters"]	146	she watches	{"1":{"guess":"she enters","time":11},"2":{"guess":"you accept","time":4},"3":{"guess":"she watches","time":2}}
 
@@ -4053,7 +4053,7 @@ A3L0DCUXI7X3A9	2	MCR	["125","MCR","ák enpli","he enters","you accepted","I will
 
 A2VRDE2FHCBMF8	16	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
-A1C3F2M4JLKYG1	5	TP	["177","TP","pi enplilíz","you will enter"]	177	She enters	NULL
+A1C3F2M4JLKYG1	5	TP	["177","TP","pi enplilíz","you will enter"]	177	she enters	NULL
 
 A1LRJ4U04532TM	13	MCR	["106","MCR","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	106	I will accept	{"1":{"guess":"I will accept","time":12}}
 
@@ -4131,7 +4131,7 @@ A1QUBLZCONL4QD	12	MCR	["140","MCR","ák enplü","he entered","she entered","I en
 
 A1QUBLZCONL4QD	12	MCR	["140","MCR","ák enplü","he entered","she entered","I enter","I will enter","he will watch"]	140	I will enter	{"1":{"guess":"she entered","time":5},"2":{"guess":"I will enter","time":4},"3":{"guess":"I will enter","time":0}}
 
-A33AZCOKCCTUXV	13	TP	["177","TP","pi enplilíz","you will enter"]	177	i entered	NULL
+A33AZCOKCCTUXV	13	TP	["177","TP","pi enplilíz","you will enter"]	177	I entered	NULL
 
 A2F9V69F6TZIAB	7	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
@@ -4329,7 +4329,7 @@ A1NS16PLRPJ3YW	20	MCR	["149","MCR","yé melilá","I will watch","I watched","she
 
 A1A1Z3SQVIEP4I	11	MCR	["146","MCR","ekki meli","she watches","you accept","she will enter","he will watch","she enters"]	146	she watches	{"1":{"guess":"she watches","time":10}}
 
-A3OV174HQJIJK8	6	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You accept	NULL
+A3OV174HQJIJK8	6	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you accept	NULL
 
 A13VIJ7G997ZCY	17	TP	["184","TP","melil","to watch"]	184	to enter	NULL
 
@@ -4385,7 +4385,7 @@ A13VIJ7G997ZCY	18	MCR	["124","MCR","ák enpli","he enters","you will enter","I w
 
 AC5UD8N187QD6	20	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepted	NULL
 
-A1TMF8Z3VT364E	22	TP	["176","TP","yé enplilá","I will enter"]	176	i accepted	NULL
+A1TMF8Z3VT364E	22	TP	["176","TP","yé enplilá","I will enter"]	176	I accepted	NULL
 
 A1QUBLZCONL4QD	14	TPR	["209","TPR","pi enplilíz","you will enter"]	209	NO_ANSWER_MADE	NULL
 
@@ -4473,7 +4473,7 @@ A39EH9228GV09X	26	TP	["185","TP","ekki meli","she watches"]	185	you watch	NULL
 
 A1A3TGZ7DKJWRW	28	MCR	["106","MCR","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	106	I will accept	{"1":{"guess":"I will accept","time":14}}
 
-A2MZYC2OHHM76X	19	TPR	["201","TPR","ák icedpü","he accepted"]	201	He watched	NULL
+A2MZYC2OHHM76X	19	TPR	["201","TPR","ák icedpü","he accepted"]	201	he watched	NULL
 
 AZEGZ5ZVM6P5A	23	TPR	["207","TPR","ekki enpli","she enters"]	207	she enters	NULL
 
@@ -4567,7 +4567,7 @@ AFXZKA9V4VHO7	15	MCR	["154","MCR","yé melá","I watched","he will accept","you 
 
 A1LRJ4U04532TM	21	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
-A1C3F2M4JLKYG1	11	TP	["165","TP","yé icedpilá","I will accept"]	165	She entered	NULL
+A1C3F2M4JLKYG1	11	TP	["165","TP","yé icedpilá","I will accept"]	165	she entered	NULL
 
 AR5OPTTGMTI9S	16	TP	["182","TP","ák enplü","he entered"]	182	NO_ANSWER_MADE	NULL
 
@@ -4631,7 +4631,7 @@ AAFAR49RN5TS7	12	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
 AZEGZ5ZVM6P5A	24	MC	["73","MC","yé enplá","I entered","she entered","he enters","I will enter","to watch"]	73	I will enter	NULL
 
-A1NS16PLRPJ3YW	23	TPR	["205","TPR","pi enpliz","you enter"]	205	i entered	NULL
+A1NS16PLRPJ3YW	23	TPR	["205","TPR","pi enpliz","you enter"]	205	I entered	NULL
 
 A1TMF8Z3VT364E	26	MCR	["132","MCR","ák enplilí","he will enter","I accept","I watched","he entered","to watch"]	132	he will enter	{"1":{"guess":"he will enter","time":13}}
 
@@ -4715,7 +4715,7 @@ A1A3TGZ7DKJWRW	32	EX	["28","EX","ekki melilí","she will watch"]	28	she will wat
 
 A216CHBAPARGRZ	1	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
-A2MZYC2OHHM76X	22	TP	["166","TP","ák icedpilí","he will accept"]	166	He entered	NULL
+A2MZYC2OHHM76X	22	TP	["166","TP","ák icedpilí","he will accept"]	166	he entered	NULL
 
 A1LTAYZAMU1A4C	19	MC	["36","MC","pi icedpiz","you accept","I watched","she will enter","she will watch","she accepted"]	36	you accept	NULL
 
@@ -4727,7 +4727,7 @@ A2A0M30DSA7ZN	28	MCR	["129","MCR","yé enplilá","I will enter","he enters","I e
 
 A3HNAJE7OJP66A	16	MCR	["129","MCR","yé enplilá","I will enter","he enters","I entered","you will enter","to accept"]	129	I will enter	{"1":{"guess":"I will enter","time":12}}
 
-A3I9FTHSULHPYS	28	TPR	["204","TPR","yé enplé","I enter"]	204	i accept	NULL
+A3I9FTHSULHPYS	28	TPR	["204","TPR","yé enplé","I enter"]	204	I accept	NULL
 
 A39EH9228GV09X	30	MCR	["139","MCR","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	139	you entered	{"1":{"guess":"you entered","time":8}}
 
@@ -4743,7 +4743,7 @@ A1PUHCEBSOWETV	13	MCR	["152","MCR","ekki melilí","she will watch","you will ent
 
 A3LECJA9RVQQKZ	22	EX	["28","EX","ekki melilí","she will watch"]	28	she will watch	NULL
 
-A1C3F2M4JLKYG1	14	TP	["164","TP","ekki icedpi","she accepts"]	164	She accepted	NULL
+A1C3F2M4JLKYG1	14	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepted	NULL
 
 A2FI77833XNV3T	16	MC	["61","MC","ák enpli","he enters","you accepted","I will enter","he accepts","he entered"]	61	he enters	NULL
 
@@ -4763,7 +4763,7 @@ AC5UD8N187QD6	26	MCR	["151","MCR","ák melilí","he will watch","he entered","yo
 
 A3T8J0PN3DLSTM	5	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
-A1TMF8Z3VT364E	28	TP	["189","TP","yé melá","I watched"]	189	i watch	NULL
+A1TMF8Z3VT364E	28	TP	["189","TP","yé melá","I watched"]	189	I watch	NULL
 
 A1G187YBG0DVMQ	24	TP	["169","TP","ák icedpü","he accepted"]	169	he accepted	NULL
 
@@ -4827,7 +4827,7 @@ ABX5OQLR6UNBC	8	MCR	["97","MCR","icedpil","to accept","he accepts","she will ent
 
 A1G187YBG0DVMQ	25	MC	["51","MC","ák icedpü","he accepted","I watched","to accept","I entered","you will enter"]	51	he accepted	NULL
 
-AC5UD8N187QD6	27	TPR	["220","TPR","ekki melilí","she will watch"]	220	She will watch	NULL
+AC5UD8N187QD6	27	TPR	["220","TPR","ekki melilí","she will watch"]	220	she will watch	NULL
 
 A1C3F2M4JLKYG1	15	MCR	["120","MCR","yé enplé","I enter","to enter","to watch","you accept","he will watch"]	120	you accept	{"1":{"guess":"to enter","time":9},"2":{"guess":"you accept","time":8}}
 
@@ -4849,7 +4849,7 @@ A1LTAYZAMU1A4C	21	TP	["168","TP","pi icedpizpe","you accepted"]	168	I entered	NU
 
 A1ITVW9X735K38	7	MCR	["107","MCR","yé icedpilá","I will accept","he will watch","he enters","I accept","I watched"]	107	I accept	{"1":{"guess":"I watched","time":10},"2":{"guess":"I accept","time":5}}
 
-AF3LEU0Z2EMH4	19	TPR	["215","TPR","ekki enplü","she entered"]	215	She will enter	NULL
+AF3LEU0Z2EMH4	19	TPR	["215","TPR","ekki enplü","she entered"]	215	she will enter	NULL
 
 A3OV174HQJIJK8	10	TP	["189","TP","yé melá","I watched"]	189	I watch	NULL
 
@@ -4861,7 +4861,7 @@ A33AZCOKCCTUXV	17	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NUL
 
 A216CHBAPARGRZ	3	EX	["16","EX","yé enplilá","I will enter"]	16	I will enter	NULL
 
-A2MZYC2OHHM76X	24	TP	["183","TP","ekki enplü","she entered"]	183	She entered	NULL
+A2MZYC2OHHM76X	24	TP	["183","TP","ekki enplü","she entered"]	183	she entered	NULL
 
 A1TMF8Z3VT364E	29	TP	["171","TP","enplil","to enter"]	171	to accept	NULL
 
@@ -4873,7 +4873,7 @@ A13M79DZ3D0ONV	18	MC	["54","MC","enplil","to enter","he will watch","you accepte
 
 A24MFJ893DQKW1	23	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
-A1NS16PLRPJ3YW	26	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A1NS16PLRPJ3YW	26	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
 A9YQQIZRWVPIT	33	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
@@ -4907,13 +4907,13 @@ A2WT6FV92737W6	1	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
 A216CHBAPARGRZ	4	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NULL
 
-A1G187YBG0DVMQ	26	TPR	["196","TPR","ekki icedpi","she accepts"]	196	i will enter	NULL
+A1G187YBG0DVMQ	26	TPR	["196","TPR","ekki icedpi","she accepts"]	196	I will enter	NULL
 
 A39EH9228GV09X	33	TP	["182","TP","ák enplü","he entered"]	182	he enters	NULL
 
-A1A1Z3SQVIEP4I	19	TPR	["197","TPR","yé icedpilá","I will accept"]	197	i entered	NULL
+A1A1Z3SQVIEP4I	19	TPR	["197","TPR","yé icedpilá","I will accept"]	197	I entered	NULL
 
-A1TMF8Z3VT364E	30	TPR	["221","TPR","yé melá","I watched"]	221	i enter	NULL
+A1TMF8Z3VT364E	30	TPR	["221","TPR","yé melá","I watched"]	221	I enter	NULL
 
 A2FI77833XNV3T	17	MCR	["120","MCR","yé enplé","I enter","to enter","to watch","you accept","he will watch"]	120	I enter	{"1":{"guess":"I enter","time":5}}
 
@@ -4923,7 +4923,7 @@ A1PUHCEBSOWETV	17	MCR	["97","MCR","icedpil","to accept","he accepts","she will e
 
 A24MFJ893DQKW1	24	TPR	["220","TPR","ekki melilí","she will watch"]	220	she watched	NULL
 
-A2MZYC2OHHM76X	25	TPR	["205","TPR","pi enpliz","you enter"]	205	You enter	NULL
+A2MZYC2OHHM76X	25	TPR	["205","TPR","pi enpliz","you enter"]	205	you enter	NULL
 
 AC5UD8N187QD6	29	MC	["41","MC","ekki icedpi","she accepts","I will accept","she accepted","he will watch","you enter"]	41	she accepts	NULL
 
@@ -4955,7 +4955,7 @@ A3LECJA9RVQQKZ	25	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you ente
 
 A3T8J0PN3DLSTM	8	EX	["17","EX","pi enplilíz","you will enter"]	17	you will enter	NULL
 
-A1LRJ4U04532TM	26	TPR	["198","TPR","ák icedpilí","he will accept"]	198	He will accept	NULL
+A1LRJ4U04532TM	26	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he will accept	NULL
 
 A2WT6FV92737W6	2	EX	["21","EX","pi enplizpe","you entered"]	21	you entered	NULL
 
@@ -4985,7 +4985,7 @@ A1MLC8HETIE13W	13	TPR	["215","TPR","ekki enplü","she entered"]	215	she accepts	
 
 A1C3F2M4JLKYG1	18	MC	["57","MC","yé enplé","I enter","you enter","he enters","you accepted","to accept"]	57	I enter	NULL
 
-A3I9FTHSULHPYS	30	TP	["175","TP","ekki enpli","she enters"]	175	i watch	NULL
+A3I9FTHSULHPYS	30	TP	["175","TP","ekki enpli","she enters"]	175	I watch	NULL
 
 A1PAY3X73PQ16S	9	MCR	["108","MCR","ák icedpilí","he will accept","I accept","she enters","she will watch","she will enter"]	108	he will accept	{"1":{"guess":"I accept","time":13},"2":{"guess":"she will watch","time":9},"3":{"guess":"he will accept","time":7}}
 
@@ -5041,7 +5041,7 @@ A21G77FNPGRZBD	20	TP	["191","TP","ekki melü","she watched"]	191	she watched	NUL
 
 A2VRDE2FHCBMF8	24	EX	["16","EX","yé enplilá","I will enter"]	16	I will enter	NULL
 
-A2UHF7UL7G0Y78	13	TP	["176","TP","yé enplilá","I will enter"]	176	She watches	NULL
+A2UHF7UL7G0Y78	13	TP	["176","TP","yé enplilá","I will enter"]	176	she watches	NULL
 
 A1C3F2M4JLKYG1	19	TPR	["213","TPR","pi enplizpe","you entered"]	213	you enter	NULL
 
@@ -5049,13 +5049,13 @@ A24MFJ893DQKW1	26	MCR	["103","MCR","ák icedpi","he accepts","I watched","he ent
 
 A3HNAJE7OJP66A	18	MC	["61","MC","ák enpli","he enters","you accepted","I will enter","he accepts","he entered"]	61	he entered	NULL
 
-A1A1Z3SQVIEP4I	21	TPR	["193","TPR","yé icedpé","I accept"]	193	i will accept	NULL
+A1A1Z3SQVIEP4I	21	TPR	["193","TPR","yé icedpé","I accept"]	193	I will accept	NULL
 
 A1PUHCEBSOWETV	20	TPR	["211","TPR","ekki enplilí","she will enter"]	211	I watched	NULL
 
 A2A0M30DSA7ZN	31	MC	["63","MC","ekki enpli","she enters","he entered","he accepts","he will enter","she will enter"]	63	she enters	NULL
 
-A2K56J9POYUFCA	7	TPR	["215","TPR","ekki enplü","she entered"]	215	She will enter	NULL
+A2K56J9POYUFCA	7	TPR	["215","TPR","ekki enplü","she entered"]	215	she will enter	NULL
 
 A1NS16PLRPJ3YW	29	MC	["58","MC","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	58	you enter	NULL
 
@@ -5123,7 +5123,7 @@ A2WT6FV92737W6	5	TP	["173","TP","pi enpliz","you enter"]	173	you accept	NULL
 
 A1LRJ4U04532TM	28	MCR	["156","MCR","pi melizpe","you watched","he entered","she accepts","to watch","she enters"]	156	you watched	{"1":{"guess":"you watched","time":11}}
 
-AAFAR49RN5TS7	16	TP	["182","TP","ák enplü","he entered"]	182	You entered	NULL
+AAFAR49RN5TS7	16	TP	["182","TP","ák enplü","he entered"]	182	you entered	NULL
 
 A1NS16PLRPJ3YW	30	MC	["83","MC","ekki meli","she watches","she will watch","she accepts","he will enter","she watched"]	83	she watches	NULL
 
@@ -5161,7 +5161,7 @@ AZEGZ5ZVM6P5A	27	EX	["10","EX","ekki icedpü","she accepted"]	10	she accepted	NU
 
 A1C3F2M4JLKYG1	21	MC	["40","MC","ekki icedpi","she accepts","she entered","he accepted","he entered","you entered"]	40	she accepts	NULL
 
-A2UHF7UL7G0Y78	14	TPR	["215","TPR","ekki enplü","she entered"]	215	He will enter	NULL
+A2UHF7UL7G0Y78	14	TPR	["215","TPR","ekki enplü","she entered"]	215	he will enter	NULL
 
 A2FI77833XNV3T	20	MC	["81","MC","melil","to watch","to accept","he will enter","I enter","she watches"]	81	she watches	NULL
 
@@ -5183,7 +5183,7 @@ A2WT6FV92737W6	6	EX	["30","EX","pi melizpe","you watched"]	30	you watched	NULL
 
 A2WGW5Y3ZFBDEC	9	TP	["168","TP","pi icedpizpe","you accepted"]	168	you will accept	NULL
 
-A1LRJ4U04532TM	29	TP	["178","TP","ák enplilí","he will enter"]	178	He enters	NULL
+A1LRJ4U04532TM	29	TP	["178","TP","ák enplilí","he will enter"]	178	he enters	NULL
 
 A3T8J0PN3DLSTM	11	TPR	["203","TPR","enplil","to enter"]	203	to enter	NULL
 
@@ -5229,7 +5229,7 @@ A3L0DCUXI7X3A9	16	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will ac
 
 A2WT6FV92737W6	7	MC	["37","MC","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	37	he will accept	NULL
 
-A2MZYC2OHHM76X	30	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	She watched	NULL
+A2MZYC2OHHM76X	30	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she watched	NULL
 
 A13M79DZ3D0ONV	21	EX	["0","EX","icedpil","to accept"]	0	to accept	NULL
 
@@ -5471,7 +5471,7 @@ A1QX1RYLCFXZJ9	15	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she w
 
 A1SJRFJWFXSDH4	17	TPR	["205","TPR","pi enpliz","you enter"]	205	you enter	NULL
 
-A13M79DZ3D0ONV	23	TPR	["193","TPR","yé icedpé","I accept"]	193	i accept	NULL
+A13M79DZ3D0ONV	23	TPR	["193","TPR","yé icedpé","I accept"]	193	I accept	NULL
 
 A1ITVW9X735K38	11	MC	["45","MC","ák icedpilí","he will accept","he will watch","you accepted","she accepts","to accept"]	45	he will accept	NULL
 
@@ -5505,7 +5505,7 @@ AEKOPV99Z7L85	24	MCR	["146","MCR","ekki meli","she watches","you accept","she wi
 
 A1C3F2M4JLKYG1	28	TP	["188","TP","ekki melilí","she will watch"]	188	she will watch	NULL
 
-A3I9FTHSULHPYS	35	TP	["165","TP","yé icedpilá","I will accept"]	165	i watch	NULL
+A3I9FTHSULHPYS	35	TP	["165","TP","yé icedpilá","I will accept"]	165	I watch	NULL
 
 A3L0DCUXI7X3A9	18	MCR	["97","MCR","icedpil","to accept","he accepts","she will enter","you entered","I watched"]	97	to accept	{"1":{"guess":"to accept","time":11}}
 
@@ -5553,7 +5553,7 @@ A1QX1RYLCFXZJ9	16	MCR	["116","MCR","ekki icedpü","she accepted","you will enter
 
 A36L5AJ4CF3WCK	6	EX	["12","EX","yé enplé","I enter"]	12	I enter	NULL
 
-A13VIJ7G997ZCY	31	TPR	["218","TPR","yé melilá","I will watch"]	218	i will watch	NULL
+A13VIJ7G997ZCY	31	TPR	["218","TPR","yé melilá","I will watch"]	218	I will watch	NULL
 
 A1PUHCEBSOWETV	30	MC	["47","MC","ekki icedpilí","she will accept","she watched","I will watch","I will accept","to enter"]	47	I will watch	NULL
 
@@ -5673,7 +5673,7 @@ A13VIJ7G997ZCY	33	TPR	["194","TPR","pi icedpiz","you accept"]	194	you accept	NUL
 
 AZEGZ5ZVM6P5A	31	TP	["186","TP","yé melilá","I will watch"]	186	I will watch	NULL
 
-A1G187YBG0DVMQ	33	TP	["163","TP","ák icedpi","he accepts"]	163	i will enter	NULL
+A1G187YBG0DVMQ	33	TP	["163","TP","ák icedpi","he accepts"]	163	I will enter	NULL
 
 AEKOPV99Z7L85	25	TP	["179","TP","ekki enplilí","she will enter"]	179	she watches	NULL
 
@@ -5681,7 +5681,7 @@ A2TDGWWPX6IMIZ	19	TPR	["220","TPR","ekki melilí","she will watch"]	220	she watc
 
 AFXZKA9V4VHO7	24	EX	["4","EX","ekki icedpi","she accepts"]	4	she accepts	NULL
 
-AF3LEU0Z2EMH4	24	TP	["185","TP","ekki meli","she watches"]	185	She watched	NULL
+AF3LEU0Z2EMH4	24	TP	["185","TP","ekki meli","she watches"]	185	she watched	NULL
 
 A33AZCOKCCTUXV	22	MCR	["148","MCR","yé melilá","I will watch","I will accept","he accepted","she accepted","he accepts"]	148		
 
@@ -5765,7 +5765,7 @@ A1A1Z3SQVIEP4I	31	MCR	["115","MCR","ák icedpü","he accepted","I watched","to a
 
 A3T8J0PN3DLSTM	18	TP	["166","TP","ák icedpilí","he will accept"]	166	he accepts	NULL
 
-A216CHBAPARGRZ	16	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	He accepted	NULL
+A216CHBAPARGRZ	16	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	he accepted	NULL
 
 A2WGW5Y3ZFBDEC	14	MCR	["99","MCR","yé icedpé","I accept","she watched","he accepts","I will accept","she accepted"]	99	I accept	{"1":{"guess":"I will accept","time":6},"2":{"guess":"I accept","time":4}}
 
@@ -5847,7 +5847,7 @@ A3L0DCUXI7X3A9	22	EX	["19","EX","ekki enplilí","she will enter"]	19	she will en
 
 A2WT6FV92737W6	16	MC	["87","MC","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	87	you enter	NULL
 
-A216CHBAPARGRZ	17	TPR	["196","TPR","ekki icedpi","she accepts"]	196	She will accept	NULL
+A216CHBAPARGRZ	17	TPR	["196","TPR","ekki icedpi","she accepts"]	196	she will accept	NULL
 
 A2F9V69F6TZIAB	22	EX	["12","EX","yé enplé","I enter"]	12	I enter	NULL
 
@@ -5917,9 +5917,9 @@ A1MLC8HETIE13W	24	MCR	["135","MCR","ekki enplilí","she will enter","she will ac
 
 A26UIS59SY4NM6	2	MC	["75","MC","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	75	he will enter	NULL
 
-A2VRDE2FHCBMF8	32	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A2VRDE2FHCBMF8	32	TP	["172","TP","yé enplé","I enter"]	172	NO_ANSWER_MADE	NULL
 
-A2F9V69F6TZIAB	23	TPR	["201","TPR","ák icedpü","he accepted"]	201	He accepts	NULL
+A2F9V69F6TZIAB	23	TPR	["201","TPR","ák icedpü","he accepted"]	201	he accepts	NULL
 
 AAFAR49RN5TS7	28	MC	["77","MC","ák enplü","he entered","he will accept","he enters","she will accept","she accepted"]	77	he entered	NULL
 
@@ -5943,7 +5943,7 @@ A1WL3NZ50YEOWP	7	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
 AEKOPV99Z7L85	28	MC	["85","MC","yé melilá","I will watch","I watched","she will watch","you enter","I accept"]	85	you enter	NULL
 
-ABX5OQLR6UNBC	21	TP	["173","TP","pi enpliz","you enter"]	173	i will enter	NULL
+ABX5OQLR6UNBC	21	TP	["173","TP","pi enpliz","you enter"]	173	I will enter	NULL
 
 A13M79DZ3D0ONV	29	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
@@ -5957,7 +5957,7 @@ A3OV174HQJIJK8	22	MCR	["135","MCR","ekki enplilí","she will enter","she will ac
 
 A3V2XOIEVMYEBQ	2	MCR	["98","MCR","yé icedpé","I accept","I watched","to accept","he will accept","he enters"]	98	I accept	{"1":{"guess":"I accept","time":10}}
 
-A1QX1RYLCFXZJ9	21	TP	["161","TP","yé icedpé","I accept"]	161	You accept	NULL
+A1QX1RYLCFXZJ9	21	TP	["161","TP","yé icedpé","I accept"]	161	you accept	NULL
 
 A2TDGWWPX6IMIZ	22	MCR	["96","MCR","icedpil","to accept","I enter","I entered","she accepted","she entered"]	96	to accept	{"1":{"guess":"to accept","time":9}}
 
@@ -5975,7 +5975,7 @@ A21G77FNPGRZBD	29	MCR	["154","MCR","yé melá","I watched","he will accept","you
 
 A2WGW5Y3ZFBDEC	17	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
-A2FI77833XNV3T	29	TPR	["203","TPR","enplil","to enter"]	203	i will enter	NULL
+A2FI77833XNV3T	29	TPR	["203","TPR","enplil","to enter"]	203	I will enter	NULL
 
 A2F9V69F6TZIAB	24	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	he will watch	{"1":{"guess":"he will watch","time":12}}
 
@@ -5985,7 +5985,7 @@ A1U5BE8XJRXKW3	22	TP	["178","TP","ák enplilí","he will enter"]	178	he enters	N
 
 AAFAR49RN5TS7	29	MCR	["134","MCR","ekki enplilí","she will enter","she will watch","I will watch","he accepts","to enter"]	134	she will enter	{"1":{"guess":"she will enter","time":9}}
 
-A1ITVW9X735K38	17	TPR	["193","TPR","yé icedpé","I accept"]	193	i accepted	NULL
+A1ITVW9X735K38	17	TPR	["193","TPR","yé icedpé","I accept"]	193	I accepted	NULL
 
 A2VRDE2FHCBMF8	33	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	he will watch	{"1":{"guess":"he will watch","time":9}}
 
@@ -6063,7 +6063,7 @@ AF3LEU0Z2EMH4	28	TPR	["197","TPR","yé icedpilá","I will accept"]	197	I accepte
 
 A3T8J0PN3DLSTM	23	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter	NULL
 
-A2TDGWWPX6IMIZ	23	TP	["161","TP","yé icedpé","I accept"]	161	i accept	NULL
+A2TDGWWPX6IMIZ	23	TP	["161","TP","yé icedpé","I accept"]	161	I accept	NULL
 
 A3OV174HQJIJK8	24	MCR	["112","MCR","pi icedpizpe","you accepted","she enters","she entered","I watched","he entered"]	112	you accepted	{"1":{"guess":"you accepted","time":9}}
 
@@ -6071,7 +6071,7 @@ A3L0DCUXI7X3A9	25	MCR	["126","MCR","ekki enpli","she enters","she accepts","he e
 
 A216CHBAPARGRZ	21	EX	["21","EX","pi enplizpe","you entered"]	21	you entered	NULL
 
-APJJ1HHD2GGFS	13	TPR	["210","TPR","ák enplilí","he will enter"]	210	She entered	NULL
+APJJ1HHD2GGFS	13	TPR	["210","TPR","ák enplilí","he will enter"]	210	she entered	NULL
 
 A1QX1RYLCFXZJ9	23	MCR	["118","MCR","enplil","to enter","he will watch","you accepted","she accepts","she will watch"]	118	to enter	{"1":{"guess":"to enter","time":13}}
 
@@ -6175,9 +6175,9 @@ A3OV174HQJIJK8	26	MC	["69","MC","ák enplilí","he will enter","you will enter",
 
 APJJ1HHD2GGFS	15	MC	["90","MC","yé melá","I watched","he will accept","you enter","I enter","she will enter"]	90	I enter	NULL
 
-AF3LEU0Z2EMH4	29	TPR	["213","TPR","pi enplizpe","you entered"]	213	You will enter	NULL
+AF3LEU0Z2EMH4	29	TPR	["213","TPR","pi enplizpe","you entered"]	213	you will enter	NULL
 
-A216CHBAPARGRZ	23	TP	["174","TP","ák enpli","he enters"]	174	He will enter	NULL
+A216CHBAPARGRZ	23	TP	["174","TP","ák enpli","he enters"]	174	he will enter	NULL
 
 A1WL3NZ50YEOWP	11	MCR	["158","MCR","ekki melü","she watched","he accepted","I accept","to accept","I will watch"]	158		{}
 
@@ -6205,7 +6205,7 @@ A3HNAJE7OJP66A	28	TP	["173","TP","pi enpliz","you enter"]	173	he watched	NULL
 
 A33CFLCMJNHHNC	31	TPR	["195","TPR","ák icedpi","he accepts"]	195	he will accept	NULL
 
-AAFAR49RN5TS7	33	TPR	["205","TPR","pi enpliz","you enter"]	205	You enter	NULL
+AAFAR49RN5TS7	33	TPR	["205","TPR","pi enpliz","you enter"]	205	you enter	NULL
 
 A1ITVW9X735K38	19	TPR	["223","TPR","ekki melü","she watched"]	223	you entered	NULL
 
@@ -6265,7 +6265,7 @@ A2F9V69F6TZIAB	27	TPR	["222","TPR","pi melizpe","you watched"]	222	NO_ANSWER_MAD
 
 A1SJRFJWFXSDH4	30	TP	["174","TP","ák enpli","he enters"]	174	you enter	NULL
 
-A1WL3NZ50YEOWP	12	TPR	["223","TPR","ekki melü","she watched"]	223	i entered	NULL
+A1WL3NZ50YEOWP	12	TPR	["223","TPR","ekki melü","she watched"]	223	I entered	NULL
 
 A33AZCOKCCTUXV	28	MC	["80","MC","melil","to watch","I entered","I watched","she entered","he accepted"]	80	NO_ANSWER_MADE	NULL
 
@@ -6291,7 +6291,7 @@ A1MLC8HETIE13W	32	MC	["79","MC","ekki enplü","she entered","she watched","she w
 
 A3OV174HQJIJK8	28	MC	["78","MC","ekki enplü","she entered","she accepts","I will watch","to enter","he accepted"]	78	she entered	NULL
 
-AF3LEU0Z2EMH4	30	TP	["187","TP","ák melilí","he will watch"]	187	He will watch	NULL
+AF3LEU0Z2EMH4	30	TP	["187","TP","ák melilí","he will watch"]	187	he will watch	NULL
 
 A1QUBLZCONL4QD	27	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
@@ -6383,7 +6383,7 @@ A1PAY3X73PQ16S	25	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
 A3HNAJE7OJP66A	30	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
-A216CHBAPARGRZ	27	TP	["167","TP","ekki icedpilí","she will accept"]	167	She will accept	NULL
+A216CHBAPARGRZ	27	TP	["167","TP","ekki icedpilí","she will accept"]	167	she will accept	NULL
 
 A1MLC8HETIE13W	34	MC	["46","MC","ekki icedpilí","she will accept","you accepted","I watched","I entered","he enters"]	46	she will accept	NULL
 
@@ -6481,7 +6481,7 @@ A33AZCOKCCTUXV	31	MCR	["145","MCR","melil","to watch","to accept","he will enter
 
 A3OV174HQJIJK8	31	MC	["37","MC","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	37	you accept	NULL
 
-A216CHBAPARGRZ	29	TPR	["195","TPR","ák icedpi","he accepts"]	195	He accepts	NULL
+A216CHBAPARGRZ	29	TPR	["195","TPR","ák icedpi","he accepts"]	195	he accepts	NULL
 
 A2WT6FV92737W6	28	MC	["89","MC","ekki melilí","she will watch","I watched","to enter","she watches","to watch"]	89	she watches	NULL
 
@@ -6495,7 +6495,7 @@ A3L0DCUXI7X3A9	31	EX	["12","EX","yé enplé","I enter"]	12	I enter	NULL
 
 AEKOPV99Z7L85	34	TP	["172","TP","yé enplé","I enter"]	172	you will enter	NULL
 
-A36L5AJ4CF3WCK	16	TPR	["212","TPR","yé enplá","I entered"]	212	i enter	NULL
+A36L5AJ4CF3WCK	16	TPR	["212","TPR","yé enplá","I entered"]	212	I enter	NULL
 
 A3609GDWR2JCCA	32	MCR	["119","MCR","enplil","to enter","she will enter","he accepted","you enter","she will accept"]	119	to enter	{"1":{"guess":"to enter","time":13}}
 
@@ -6509,7 +6509,7 @@ A1U5BE8XJRXKW3	31	EX	["19","EX","ekki enplilí","she will enter"]	19	she will en
 
 A1SJRFJWFXSDH4	34	MC	["44","MC","ák icedpilí","he will accept","I accept","she enters","she will watch","she will enter"]	44	she will enter	NULL
 
-A13M79DZ3D0ONV	35	TPR	["201","TPR","ák icedpü","he accepted"]	201	He will enter	NULL
+A13M79DZ3D0ONV	35	TPR	["201","TPR","ák icedpü","he accepted"]	201	he will enter	NULL
 
 A2K56J9POYUFCA	18	MCR	["101","MCR","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	101	you accept	{"1":{"guess":"you accept","time":5}}
 
@@ -6525,7 +6525,7 @@ A3T8J0PN3DLSTM	31	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	
 
 A2WT6FV92737W6	29	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
-APJJ1HHD2GGFS	20	TP	["190","TP","pi melizpe","you watched"]	190	He entered	NULL
+APJJ1HHD2GGFS	20	TP	["190","TP","pi melizpe","you watched"]	190	he entered	NULL
 
 AJWES6SFIP3AT	2	MCR	["105","MCR","ekki icedpi","she accepts","I will accept","she accepted","he will watch","you enter"]	105	I will accept	{"1":{"guess":"she accepted","time":4},"2":{"guess":"I will accept","time":2}}
 
@@ -6535,7 +6535,7 @@ ABX5OQLR6UNBC	30	MC	["70","MC","ekki enplilí","she will enter","she will watch"
 
 A2TDGWWPX6IMIZ	29	TPR	["195","TPR","ák icedpi","he accepts"]	195	you will enter	NULL
 
-A216CHBAPARGRZ	30	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	She accepted	NULL
+A216CHBAPARGRZ	30	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she accepted	NULL
 
 A3L0DCUXI7X3A9	32	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
@@ -6603,7 +6603,7 @@ A1SJRFJWFXSDH4	35	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she a
 
 A26UIS59SY4NM6	12	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	he will watch	{"1":{"guess":"he will watch","time":10}}
 
-A1QX1RYLCFXZJ9	33	TPR	["208","TPR","yé enplilá","I will enter"]	208	He will enter	NULL
+A1QX1RYLCFXZJ9	33	TPR	["208","TPR","yé enplilá","I will enter"]	208	he will enter	NULL
 
 A3IS28VQS5T5DE	3	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
@@ -6633,13 +6633,13 @@ A2TDGWWPX6IMIZ	31	MCR	["145","MCR","melil","to watch","to accept","he will enter
 
 A1WL3NZ50YEOWP	18	MCR	["101","MCR","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	101	you accept	{"1":{"guess":"you accept","time":12}}
 
-A36L5AJ4CF3WCK	18	TPR	["221","TPR","yé melá","I watched"]	221	i watched	NULL
+A36L5AJ4CF3WCK	18	TPR	["221","TPR","yé melá","I watched"]	221	I watched	NULL
 
 APJJ1HHD2GGFS	22	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
 A3L0DCUXI7X3A9	33	TP	["187","TP","ák melilí","he will watch"]	187	he watches	NULL
 
-AJWES6SFIP3AT	4	TPR	["202","TPR","ekki icedpü","she accepted"]	202	She will watch	NULL
+AJWES6SFIP3AT	4	TPR	["202","TPR","ekki icedpü","she accepted"]	202	she will watch	NULL
 
 A6ORRFI3XOACA	6	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
@@ -6687,7 +6687,7 @@ A26UIS59SY4NM6	14	EX	["12","EX","yé enplé","I enter"]	12	I enter	NULL
 
 A3HNAJE7OJP66A	33	TPR	["223","TPR","ekki melü","she watched"]	223	he watched	NULL
 
-A1QX1RYLCFXZJ9	34	TP	["181","TP","pi enplizpe","you entered"]	181	She accepts	NULL
+A1QX1RYLCFXZJ9	34	TP	["181","TP","pi enplizpe","you entered"]	181	she accepts	NULL
 
 A3609GDWR2JCCA	35	MCR	["131","MCR","pi enplilíz","you will enter","you watched","he accepted","I will accept","she entered"]	131	you will enter	{"1":{"guess":"you will enter","time":8}}
 
@@ -6695,7 +6695,7 @@ A1WL3NZ50YEOWP	19	TP	["169","TP","ák icedpü","he accepted"]	169	he watched	NUL
 
 A1QUBLZCONL4QD	32	MCR	["113","MCR","pi icedpizpe","you accepted","she will enter","you will enter","you entered","she watches"]	113		
 
-APJJ1HHD2GGFS	23	TP	["174","TP","ák enpli","he enters"]	174	He will enter	NULL
+APJJ1HHD2GGFS	23	TP	["174","TP","ák enpli","he enters"]	174	he will enter	NULL
 
 A36L5AJ4CF3WCK	19	MCR	["101","MCR","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	101	you accept	{"1":{"guess":"he will accept","time":9},"2":{"guess":"you accept","time":5}}
 
@@ -6743,7 +6743,7 @@ AJWES6SFIP3AT	7	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NU
 
 A2WGW5Y3ZFBDEC	29	TP	["165","TP","yé icedpilá","I will accept"]	165	I will accept	NULL
 
-APJJ1HHD2GGFS	24	TPR	["209","TPR","pi enplilíz","you will enter"]	209	She entered	NULL
+APJJ1HHD2GGFS	24	TPR	["209","TPR","pi enplilíz","you will enter"]	209	she entered	NULL
 
 A3IS28VQS5T5DE	7	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
@@ -6801,9 +6801,9 @@ A2WT6FV92737W6	35	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter
 
 A2TDGWWPX6IMIZ	34	MC	["44","MC","ák icedpilí","he will accept","I accept","she enters","she will watch","she will enter"]	44	he will accept	NULL
 
-A36L5AJ4CF3WCK	21	TPR	["193","TPR","yé icedpé","I accept"]	193	i accepted	NULL
+A36L5AJ4CF3WCK	21	TPR	["193","TPR","yé icedpé","I accept"]	193	I accepted	NULL
 
-A26UIS59SY4NM6	17	TPR	["205","TPR","pi enpliz","you enter"]	205	i enter	NULL
+A26UIS59SY4NM6	17	TPR	["205","TPR","pi enpliz","you enter"]	205	I enter	NULL
 
 A1PAY3X73PQ16S	33	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
@@ -6921,7 +6921,7 @@ A13I8ASC3JQ04P	3	EX	["30","EX","pi melizpe","you watched"]	30	you watched	NULL
 
 A3PT813GVSQMRY	5	MCR	["140","MCR","ák enplü","he entered","she entered","I enter","I will enter","he will watch"]	140	he entered	{"1":{"guess":"he entered","time":8}}
 
-AJWES6SFIP3AT	13	TPR	["212","TPR","yé enplá","I entered"]	212	i entered	NULL
+AJWES6SFIP3AT	13	TPR	["212","TPR","yé enplá","I entered"]	212	I entered	NULL
 
  A2WD7K61WGL37E	30	MCR	["117","MCR","ekki icedpü","she accepted","to accept","she enters","she will accept","you accepted"]	117	she accepted	{"1":{"guess":"she accepted","time":11}}
 
@@ -7029,7 +7029,7 @@ A2SBISQJE2ZPJQ	10	EX	["9","EX","ák icedpü","he accepted"]	9	he accepted	NULL
 
 A1ITVW9X735K38	34	TPR	["197","TPR","yé icedpilá","I will accept"]	197	you watched	NULL
 
-APJJ1HHD2GGFS	34	TPR	["210","TPR","ák enplilí","he will enter"]	210	He accepts	NULL
+APJJ1HHD2GGFS	34	TPR	["210","TPR","ák enplilí","he will enter"]	210	he accepts	NULL
 
 A1WL3NZ50YEOWP	31	MCR	["119","MCR","enplil","to enter","she will enter","he accepted","you enter","she will accept"]	119	to enter	{"1":{"guess":"to enter","time":12}}
 
@@ -7039,7 +7039,7 @@ A26UIS59SY4NM6	24	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will ac
 
 AJWES6SFIP3AT	17	MCR	["125","MCR","ák enpli","he enters","you accepted","I will enter","he accepts","he entered"]	125	he enters	{"1":{"guess":"he enters","time":8}}
 
-A36L5AJ4CF3WCK	28	TP	["176","TP","yé enplilá","I will enter"]	176	i entered	NULL
+A36L5AJ4CF3WCK	28	TP	["176","TP","yé enplilá","I will enter"]	176	I entered	NULL
 
 A3IS28VQS5T5DE	19	MC	["75","MC","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	75	you entered	NULL
 
@@ -7057,7 +7057,7 @@ A1WL3NZ50YEOWP	32	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 A2K56J9POYUFCA	28	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	you accepted	NULL
 
-AJWES6SFIP3AT	18	TP	["178","TP","ák enplilí","he will enter"]	178	He will enter	NULL
+AJWES6SFIP3AT	18	TP	["178","TP","ák enplilí","he will enter"]	178	he will enter	NULL
 
 APJJ1HHD2GGFS	35	MCR	["130","MCR","pi enplilíz","you will enter","you accept","I enter","he will watch","she will accept"]	130	you will enter	{"1":{"guess":"I enter","time":10},"2":{"guess":"you will enter","time":7}}
 
@@ -7069,7 +7069,7 @@ A3MXI2O3JZ0TZH	28	TPR	["210","TPR","ák enplilí","he will enter"]	210	NO_ANSWER
 
 A13I8ASC3JQ04P	9	MC	["91","MC","yé melá","I watched","you watched","she watches","to enter","she accepts"]	91	she accepts	NULL
 
-A26UIS59SY4NM6	25	TP	["178","TP","ák enplilí","he will enter"]	178	i accept	NULL
+A26UIS59SY4NM6	25	TP	["178","TP","ák enplilí","he will enter"]	178	I accept	NULL
 
 A6ORRFI3XOACA	16	MCR	["125","MCR","ák enpli","he enters","you accepted","I will enter","he accepts","he entered"]	125	he enters	{"1":{"guess":"he enters","time":3}}
 
@@ -7149,7 +7149,7 @@ A2SBISQJE2ZPJQ	14	MCR	["140","MCR","ák enplü","he entered","she entered","I en
 
 A6ORRFI3XOACA	20	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will accept	NULL
 
-A26UIS59SY4NM6	29	TP	["189","TP","yé melá","I watched"]	189	i watched	NULL
+A26UIS59SY4NM6	29	TP	["189","TP","yé melá","I watched"]	189	I watched	NULL
 
 A2K56J9POYUFCA	31	MC	["77","MC","ák enplü","he entered","he will accept","he enters","she will accept","she accepted"]	77	she accepted	NULL
 
@@ -7195,7 +7195,7 @@ A3IS28VQS5T5DE	26	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NUL
 
 A26UIS59SY4NM6	32	EX	["19","EX","ekki enplilí","she will enter"]	19	she will enter	NULL
 
-A13I8ASC3JQ04P	16	TPR	["217","TPR","ekki meli","she watches"]	217	She accepts	NULL
+A13I8ASC3JQ04P	16	TPR	["217","TPR","ekki meli","she watches"]	217	she accepts	NULL
 
 AJWES6SFIP3AT	25	EX	["13","EX","pi enpliz","you enter"]	13	you enter	NULL
 
@@ -7247,7 +7247,7 @@ A2SBISQJE2ZPJQ	19	EX	["10","EX","ekki icedpü","she accepted"]	10	she accepted	N
 
 AJWES6SFIP3AT	28	EX	["4","EX","ekki icedpi","she accepts"]	4	she accepts	NULL
 
-A3PT813GVSQMRY	18	TPR	["209","TPR","pi enplilíz","you will enter"]	209	i entered	NULL
+A3PT813GVSQMRY	18	TPR	["209","TPR","pi enplilíz","you will enter"]	209	I entered	NULL
 
 A6ORRFI3XOACA	26	MC	["32","MC","icedpil","to accept","I enter","I entered","she accepted","she entered"]	32	to accept	NULL
 
@@ -7263,11 +7263,11 @@ A2SBISQJE2ZPJQ	20	MCR	["140","MCR","ák enplü","he entered","she entered","I en
 
 A3PT813GVSQMRY	19	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepts	NULL
 
-AJWES6SFIP3AT	29	TP	["176","TP","yé enplilá","I will enter"]	176	i will enter	NULL
+AJWES6SFIP3AT	29	TP	["176","TP","yé enplilá","I will enter"]	176	I will enter	NULL
 
 A6ORRFI3XOACA	27	TP	["173","TP","pi enpliz","you enter"]	173	you will enter	NULL
 
-A13I8ASC3JQ04P	20	TPR	["201","TPR","ák icedpü","he accepted"]	201	You accept	NULL
+A13I8ASC3JQ04P	20	TPR	["201","TPR","ák icedpü","he accepted"]	201	you accept	NULL
 
 A3MXI2O3JZ0TZH	34	TP	["163","TP","ák icedpi","he accepts"]	163	NO_ANSWER_MADE	NULL
 
@@ -7319,7 +7319,7 @@ A3IS28VQS5T5DE	34	MCR	["141","MCR","ák enplü","he entered","he will accept","h
 
 A6ORRFI3XOACA	29	MC	["84","MC","yé melilá","I will watch","I will accept","he accepted","she accepted","he accepts"]	84	I will watch	NULL
 
-AJWES6SFIP3AT	32	TP	["161","TP","yé icedpé","I accept"]	161	i accepted	NULL
+AJWES6SFIP3AT	32	TP	["161","TP","yé icedpé","I accept"]	161	I accepted	NULL
 
 A13I8ASC3JQ04P	24	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
@@ -7375,7 +7375,7 @@ A3I6BRC06LZA5Z	11	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NUL
 
 A3PT813GVSQMRY	29	MCR	["103","MCR","ák icedpi","he accepts","I watched","he entered","he will watch","she enters"]	103	he accepts	{"1":{"guess":"he accepts","time":10}}
 
-A13I8ASC3JQ04P	29	TPR	["198","TPR","ák icedpilí","he will accept"]	198	He accepts	NULL
+A13I8ASC3JQ04P	29	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he accepts	NULL
 
 A6ORRFI3XOACA	33	MCR	["143","MCR","ekki enplü","she entered","she watched","she will accept","you watched","he will watch"]	143	she entered	{"1":{"guess":"she entered","time":7}}
 
@@ -7399,7 +7399,7 @@ A2SBISQJE2ZPJQ	29	MCR	["116","MCR","ekki icedpü","she accepted","you will enter
 
 A6ORRFI3XOACA	35	MC	["70","MC","ekki enplilí","she will enter","she will watch","I will watch","he accepts","to enter"]	70	she will enter	NULL
 
-A13I8ASC3JQ04P	31	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	You accept	NULL
+A13I8ASC3JQ04P	31	TPR	["200","TPR","pi icedpizpe","you accepted"]	200	you accept	NULL
 
 A3I6BRC06LZA5Z	14	MC	["62","MC","ekki enpli","she enters","she accepts","he enters","she will accept","to accept"]	62	she will accept	NULL
 
@@ -7573,7 +7573,7 @@ A3NHJPE6326P9V	9	MCR	["101","MCR","pi icedpiz","you accept","he will accept","to
 
 A3I6BRC06LZA5Z	33	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
-A3L2UB07EZJAMD	4	TP	["173","TP","pi enpliz","you enter"]	173	You will enter	NULL
+A3L2UB07EZJAMD	4	TP	["173","TP","pi enpliz","you enter"]	173	you will enter	NULL
 
 A319HGTKM0UY0V	13	MCR	["148","MCR","yé melilá","I will watch","I will accept","he accepted","she accepted","he accepts"]	148	I will watch	{"1":{"guess":"I will accept","time":7},"2":{"guess":"I will watch","time":6}}
 
@@ -7621,7 +7621,7 @@ A1FYTTGF0QACU9	1	EX	["16","EX","yé enplilá","I will enter"]	16	I will enter	NU
 
 A30J1AQYJ3YTQP	6	EX	["13","EX","pi enpliz","you enter"]	13	you enter	NULL
 
-A3NHJPE6326P9V	14	TP	["185","TP","ekki meli","she watches"]	185	i entered	NULL
+A3NHJPE6326P9V	14	TP	["185","TP","ekki meli","she watches"]	185	I entered	NULL
 
 A319HGTKM0UY0V	18	MCR	["132","MCR","ák enplilí","he will enter","I accept","I watched","he entered","to watch"]	132	he will enter	{"1":{"guess":"he entered","time":13},"2":{"guess":"he will enter","time":11}}
 
@@ -7665,7 +7665,7 @@ A319HGTKM0UY0V	21	EX	["5","EX","yé icedpilá","I will accept"]	5	I will accept	
 
 ARTSG66V2MOJ6	29	MCR	["139","MCR","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	139	you entered	{"1":{"guess":"you entered","time":5}}
 
-A3L2UB07EZJAMD	10	TPR	["196","TPR","ekki icedpi","she accepts"]	196	She watched	NULL
+A3L2UB07EZJAMD	10	TPR	["196","TPR","ekki icedpi","she accepts"]	196	she watched	NULL
 
 A30J1AQYJ3YTQP	11	EX	["2","EX","pi icedpiz","you accept"]	2	you accept	NULL
 
@@ -7695,7 +7695,7 @@ A319HGTKM0UY0V	23	EX	["16","EX","yé enplilá","I will enter"]	16	I will enter	N
 
 ARTSG66V2MOJ6	32	MCR	["136","MCR","yé enplá","I entered","she accepted","she will watch","he will enter","she watches"]	136	I entered	{"1":{"guess":"he will enter","time":14},"2":{"guess":"I entered","time":12}}
 
-A3NHJPE6326P9V	20	TPR	["217","TPR","ekki meli","she watches"]	217	i will accept	NULL
+A3NHJPE6326P9V	20	TPR	["217","TPR","ekki meli","she watches"]	217	I will accept	NULL
 
 A3L2UB07EZJAMD	12	MC	["88","MC","ekki melilí","she will watch","you will enter","he will watch","she accepted","she entered"]	88	she will watch	NULL
 
@@ -7719,7 +7719,7 @@ A319HGTKM0UY0V	25	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
 A3NHJPE6326P9V	22	MCR	["138","MCR","pi enplizpe","you entered","I will accept","I will enter","you watched","I accept"]	138	I accept	{"1":{"guess":"you watched","time":14},"2":{"guess":"I accept","time":13}}
 
-ARTSG66V2MOJ6	33	TPR	["192","TPR","icedpil","to accept"]	192	i entered	NULL
+ARTSG66V2MOJ6	33	TPR	["192","TPR","icedpil","to accept"]	192	I entered	NULL
 
 A3NHJPE6326P9V	23	MC	["95","MC","ekki melü","she watched","you watched","she enters","he will enter","I enter"]	95	she enters	NULL
 
@@ -7731,7 +7731,7 @@ ARTSG66V2MOJ6	34	TPR	["217","TPR","ekki meli","she watches"]	217	she watched	NUL
 
 A3NHJPE6326P9V	24	MC	["66","MC","pi enplilíz","you will enter","you accept","I enter","he will watch","she will accept"]	66	she will accept	NULL
 
-A3L2UB07EZJAMD	14	TP	["164","TP","ekki icedpi","she accepts"]	164	She accepted	NULL
+A3L2UB07EZJAMD	14	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepted	NULL
 
 AQ7RNVB2GZKUZ	1	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
@@ -7745,7 +7745,7 @@ A2RBNMRC6942T0	7	EX	["0","EX","icedpil","to accept"]	0	to accept	NULL
 
 A2IP3ZAFYGV8M9	2	EX	["0","EX","icedpil","to accept"]	0	to accept	NULL
 
-A3NHJPE6326P9V	25	TPR	["217","TPR","ekki meli","she watches"]	217	i accept	NULL
+A3NHJPE6326P9V	25	TPR	["217","TPR","ekki meli","she watches"]	217	I accept	NULL
 
 ARTSG66V2MOJ6	35	TP	["175","TP","ekki enpli","she enters"]	175	she watches	NULL
 
@@ -7759,7 +7759,7 @@ A2IP3ZAFYGV8M9	3	MC	["37","MC","pi icedpiz","you accept","he will accept","to en
 
 AQ7RNVB2GZKUZ	2	MCR	["98","MCR","yé icedpé","I accept","I watched","to accept","he will accept","he enters"]	98	he will accept	{"1":{"guess":"I watched","time":7},"2":{"guess":"he will accept","time":6}}
 
-A3L2UB07EZJAMD	15	TP	["179","TP","ekki enplilí","she will enter"]	179	She accepted	NULL
+A3L2UB07EZJAMD	15	TP	["179","TP","ekki enplilí","she will enter"]	179	she accepted	NULL
 
 A2RBNMRC6942T0	9	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
@@ -7783,7 +7783,7 @@ A1FYTTGF0QACU9	12	EX	["26","EX","yé melilá","I will watch"]	26	I will watch	NU
 
 AQ7RNVB2GZKUZ	4	MCR	["96","MCR","icedpil","to accept","I enter","I entered","she accepted","she entered"]	96	she accepted	{"1":{"guess":"I entered","time":13},"2":{"guess":"she accepted","time":11}}
 
-A3NHJPE6326P9V	27	TPR	["202","TPR","ekki icedpü","she accepted"]	202	i accept	NULL
+A3NHJPE6326P9V	27	TPR	["202","TPR","ekki icedpü","she accepted"]	202	I accept	NULL
 
 A319HGTKM0UY0V	29	TP	["166","TP","ák icedpilí","he will accept"]	166	he accepts	NULL
 
@@ -7813,29 +7813,29 @@ A1FYTTGF0QACU9	14	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
 A319HGTKM0UY0V	31	MCR	["98","MCR","yé icedpé","I accept","I watched","to accept","he will accept","he enters"]	98	I accept	{"1":{"guess":"I accept","time":8}}
 
-A3L2UB07EZJAMD	18	TP	["173","TP","pi enpliz","you enter"]	173	He entered	NULL
+A3L2UB07EZJAMD	18	TP	["173","TP","pi enpliz","you enter"]	173	he entered	NULL
 
 A2IP3ZAFYGV8M9	7	MCR	["132","MCR","ák enplilí","he will enter","I accept","I watched","he entered","to watch"]	132	he will enter	{"1":{"guess":"he entered","time":8},"2":{"guess":"he will enter","time":2}}
 
-A3NHJPE6326P9V	29	TPR	["192","TPR","icedpil","to accept"]	192	i watched	NULL
+A3NHJPE6326P9V	29	TPR	["192","TPR","icedpil","to accept"]	192	I watched	NULL
 
 AQ7RNVB2GZKUZ	7	MCR	["103","MCR","ák icedpi","he accepts","I watched","he entered","he will watch","she enters"]	103	she enters	{"1":{"guess":"he will watch","time":11},"2":{"guess":"she enters","time":7}}
 
 A1FYTTGF0QACU9	15	MC	["60","MC","ák enpli","he enters","you will enter","I will accept","to accept","I enter"]	60	he enters	NULL
 
-A2RBNMRC6942T0	13	TP	["165","TP","yé icedpilá","I will accept"]	165	i accept	NULL
+A2RBNMRC6942T0	13	TP	["165","TP","yé icedpilá","I will accept"]	165	I accept	NULL
 
 A30J1AQYJ3YTQP	17	TPR	["197","TPR","yé icedpilá","I will accept"]	197	you will accept	NULL
 
 AQ7RNVB2GZKUZ	8	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	he will watch	{"1":{"guess":"he will watch","time":12}}
 
-A3NHJPE6326P9V	30	TPR	["217","TPR","ekki meli","she watches"]	217	i accept	NULL
+A3NHJPE6326P9V	30	TPR	["217","TPR","ekki meli","she watches"]	217	I accept	NULL
 
 A30J1AQYJ3YTQP	18	MC	["56","MC","yé enplé","I enter","to enter","to watch","you accept","he will watch"]	56	I enter	NULL
 
 A319HGTKM0UY0V	32	TPR	["201","TPR","ák icedpü","he accepted"]	201	NO_ANSWER_MADE	NULL
 
-A3L2UB07EZJAMD	19	TP	["164","TP","ekki icedpi","she accepts"]	164	She entered	NULL
+A3L2UB07EZJAMD	19	TP	["164","TP","ekki icedpi","she accepts"]	164	she entered	NULL
 
 A3NHJPE6326P9V	31	MCR	["146","MCR","ekki meli","she watches","you accept","she will enter","he will watch","she enters"]	146	she watches	{"1":{"guess":"she watches","time":13}}
 
@@ -7865,7 +7865,7 @@ AQ7RNVB2GZKUZ	10	MCR	["129","MCR","yé enplilá","I will enter","he enters","I e
 
 A30J1AQYJ3YTQP	20	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
-A3NHJPE6326P9V	33	TPR	["198","TPR","ák icedpilí","he will accept"]	198	i accept	NULL
+A3NHJPE6326P9V	33	TPR	["198","TPR","ák icedpilí","he will accept"]	198	I accept	NULL
 
 A3L2UB07EZJAMD	21	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
@@ -7885,11 +7885,11 @@ A319HGTKM0UY0V	35	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 A30J1AQYJ3YTQP	22	TP	["169","TP","ák icedpü","he accepted"]	169	he accepts	NULL
 
-A2RBNMRC6942T0	17	TP	["173","TP","pi enpliz","you enter"]	173	i will enter	NULL
+A2RBNMRC6942T0	17	TP	["173","TP","pi enpliz","you enter"]	173	I will enter	NULL
 
 A3NHJPE6326P9V	34	TP	["166","TP","ák icedpilí","he will accept"]	166	she watched	NULL
 
-A3L2UB07EZJAMD	22	TPR	["195","TPR","ák icedpi","he accepts"]	195	You accept	NULL
+A3L2UB07EZJAMD	22	TPR	["195","TPR","ák icedpi","he accepts"]	195	you accept	NULL
 
 A1FYTTGF0QACU9	19	TP	["164","TP","ekki icedpi","she accepts"]	164	he accepts	NULL
 
@@ -7899,7 +7899,7 @@ A2RBNMRC6942T0	18	EX	["5","EX","yé icedpilá","I will accept"]	5	I will accept	
 
 AQ7RNVB2GZKUZ	12	MCR	["158","MCR","ekki melü","she watched","he accepted","I accept","to accept","I will watch"]	158	I accept	{"1":{"guess":"he accepted","time":11},"2":{"guess":"I accept","time":10},"3":{"guess":"I accept","time":0}}
 
-A2IP3ZAFYGV8M9	11	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You will enter	NULL
+A2IP3ZAFYGV8M9	11	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you will enter	NULL
 
 A3NHJPE6326P9V	35	MC	["44","MC","ák icedpilí","he will accept","I accept","she enters","she will watch","she will enter"]	44	I accept	NULL
 
@@ -7915,7 +7915,7 @@ A30J1AQYJ3YTQP	25	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
 AQ7RNVB2GZKUZ	14	MC	["43","MC","yé icedpilá","I will accept","he will watch","he enters","I accept","I watched"]	43	I accept	NULL
 
-A3L2UB07EZJAMD	23	TP	["181","TP","pi enplizpe","you entered"]	181	He watched	NULL
+A3L2UB07EZJAMD	23	TP	["181","TP","pi enplizpe","you entered"]	181	he watched	NULL
 
 A2IP3ZAFYGV8M9	13	EX	["19","EX","ekki enplilí","she will enter"]	19	she will enter	NULL
 
@@ -7963,7 +7963,7 @@ A1FYTTGF0QACU9	22	TPR	["213","TPR","pi enplizpe","you entered"]	213	I watch	NULL
 
 AQ7RNVB2GZKUZ	19	MCR	["138","MCR","pi enplizpe","you entered","I will accept","I will enter","you watched","I accept"]	138	you entered	{"1":{"guess":"I will enter","time":13},"2":{"guess":"you entered","time":8}}
 
-A3L2UB07EZJAMD	26	TP	["189","TP","yé melá","I watched"]	189	He entered	NULL
+A3L2UB07EZJAMD	26	TP	["189","TP","yé melá","I watched"]	189	he entered	NULL
 
 A30J1AQYJ3YTQP	30	MCR	["143","MCR","ekki enplü","she entered","she watched","she will accept","you watched","he will watch"]	143	she entered	{"1":{"guess":"she watched","time":9},"2":{"guess":"she entered","time":7}}
 
@@ -7989,7 +7989,7 @@ AQ7RNVB2GZKUZ	21	MCR	["106","MCR","yé icedpilá","I will accept","she accepts",
 
 A2RBNMRC6942T0	26	TP	["183","TP","ekki enplü","she entered"]	183	she enters	NULL
 
-A3L2UB07EZJAMD	28	TPR	["204","TPR","yé enplé","I enter"]	204	He entered	NULL
+A3L2UB07EZJAMD	28	TPR	["204","TPR","yé enplé","I enter"]	204	he entered	NULL
 
 A2IP3ZAFYGV8M9	20	MCR	["112","MCR","pi icedpizpe","you accepted","she enters","she entered","I watched","he entered"]	112	you accepted	{"1":{"guess":"you accepted","time":8}}
 
@@ -8005,9 +8005,9 @@ A2RBNMRC6942T0	27	MC	["49","MC","pi icedpizpe","you accepted","she will enter","
 
 AQ7RNVB2GZKUZ	23	TP	["168","TP","pi icedpizpe","you accepted"]	168	you accepted	NULL
 
-A3L2UB07EZJAMD	29	TP	["164","TP","ekki icedpi","she accepts"]	164	She accepts	NULL
+A3L2UB07EZJAMD	29	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepts	NULL
 
-A2IP3ZAFYGV8M9	21	TP	["186","TP","yé melilá","I will watch"]	186	i watched	NULL
+A2IP3ZAFYGV8M9	21	TP	["186","TP","yé melilá","I will watch"]	186	I watched	NULL
 
 AQ7RNVB2GZKUZ	24	TP	["191","TP","ekki melü","she watched"]	191	she watched	NULL
 
@@ -8033,7 +8033,7 @@ AQ7RNVB2GZKUZ	26	TPR	["212","TPR","yé enplá","I entered"]	212	you watched	NULL
 
 A3L2UB07EZJAMD	31	TPR	["221","TPR","yé melá","I watched"]	221	I enter	NULL
 
-A2IP3ZAFYGV8M9	24	TP	["172","TP","yé enplé","I enter"]	172	i will enter	NULL
+A2IP3ZAFYGV8M9	24	TP	["172","TP","yé enplé","I enter"]	172	I will enter	NULL
 
 A2RBNMRC6942T0	31	EX	["7","EX","ekki icedpilí","she will accept"]	7	she will accept	NULL
 
@@ -8091,7 +8091,7 @@ AQ7RNVB2GZKUZ	33	MC	["86","MC","ák melilí","he will watch","to accept","she ac
 
 AQ7RNVB2GZKUZ	34	TP	["170","TP","ekki icedpü","she accepted"]	170	she watched	NULL
 
-A2IP3ZAFYGV8M9	31	TP	["176","TP","yé enplilá","I will enter"]	176	i entered	NULL
+A2IP3ZAFYGV8M9	31	TP	["176","TP","yé enplilá","I will enter"]	176	I entered	NULL
 
 A1FYTTGF0QACU9	31	TPR	["210","TPR","ák enplilí","he will enter"]	210	he accepted	NULL
 
@@ -8447,9 +8447,9 @@ A3CYV47MM7OA6M	13	MCR	["153","MCR","ekki melilí","she will watch","I watched","
 
 A3CYV47MM7OA6M	14	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
-A3CYV47MM7OA6M	15	TPR	["215","TPR","ekki enplü","she entered"]	215	She will enter	NULL
+A3CYV47MM7OA6M	15	TPR	["215","TPR","ekki enplü","she entered"]	215	she will enter	NULL
 
-A3CYV47MM7OA6M	16	TP	["168","TP","pi icedpizpe","you accepted"]	168	You enter	NULL
+A3CYV47MM7OA6M	16	TP	["168","TP","pi icedpizpe","you accepted"]	168	you enter	NULL
 
 A3CYV47MM7OA6M	17	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
@@ -8487,7 +8487,7 @@ A3CYV47MM7OA6M	33	MCR	["114","MCR","ák icedpü","he accepted","you accept","I a
 
 A3CYV47MM7OA6M	34	TP	["172","TP","yé enplé","I enter"]	172	I entered	NULL
 
-A3CYV47MM7OA6M	35	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You will enter	NULL
+A3CYV47MM7OA6M	35	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you will enter	NULL
 
 A38DXFI1TZA295	1	EX	["0","EX","icedpil","to accept"]	0	to accept	NULL
 
@@ -8853,7 +8853,7 @@ A1CX684F5TEO5W	2	EX	["3","EX","ák icedpi","he accepts"]	3	he accepts	NULL
 
 A3GPTSDDHJ2DBV	18	MC	["70","MC","ekki enplilí","she will enter","she will watch","I will watch","he accepts","to enter"]	70	she will enter	NULL
 
-AS1QMPXIT1EGX	15	TPR	["220","TPR","ekki melilí","she will watch"]	220	She watches	NULL
+AS1QMPXIT1EGX	15	TPR	["220","TPR","ekki melilí","she will watch"]	220	she watches	NULL
 
 A2AJ5QFNC9KF43	10	MCR	["106","MCR","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	106	I will accept	{"1":{"guess":"I entered","time":13},"2":{"guess":"I will accept","time":11}}
 
@@ -8929,11 +8929,11 @@ A3AZJGI9D7C0PD	27	EX	["10","EX","ekki icedpü","she accepted"]	10	she accepted	N
 
 A1CX684F5TEO5W	4	TPR	["198","TPR","ák icedpilí","he will accept"]	198	he accepts	NULL
 
-A2V2I8HXL9EHQ1	14	TPR	["207","TPR","ekki enpli","she enters"]	207	She will enter	NULL
+A2V2I8HXL9EHQ1	14	TPR	["207","TPR","ekki enpli","she enters"]	207	she will enter	NULL
 
 A3OXSIR9YH1FT6	18	MC	["77","MC","ák enplü","he entered","he will accept","he enters","she will accept","she accepted"]	77	he will accept	NULL
 
-A1VZSFHTU51JP0	12	TPR	["208","TPR","yé enplilá","I will enter"]	208	i will enter	NULL
+A1VZSFHTU51JP0	12	TPR	["208","TPR","yé enplilá","I will enter"]	208	I will enter	NULL
 
 APITQRRX2PADB	14	MC	["93","MC","pi melizpe","you watched","I will accept","he will enter","she watched","I will watch"]	93	he will enter	NULL
 
@@ -8989,7 +8989,7 @@ A1GRPIBHW72HDU	17	TP	["163","TP","ák icedpi","he accepts"]	163	he accepts	NULL
 
 A1VZSFHTU51JP0	14	EX	["8","EX","pi icedpizpe","you accepted"]	8	you accepted	NULL
 
-A2V2I8HXL9EHQ1	17	TP	["175","TP","ekki enpli","she enters"]	175	She enters	NULL
+A2V2I8HXL9EHQ1	17	TP	["175","TP","ekki enpli","she enters"]	175	she enters	NULL
 
 A3GPTSDDHJ2DBV	24	TPR	["212","TPR","yé enplá","I entered"]	212	I entered	NULL
 
@@ -9149,7 +9149,7 @@ ADKKDK6P4MS1Z	1	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
 APITQRRX2PADB	23	TPR	["214","TPR","ák enplü","he entered"]	214	he entered	NULL
 
-A3554U8JNGM904	21	TPR	["208","TPR","yé enplilá","I will enter"]	208	i entered	NULL
+A3554U8JNGM904	21	TPR	["208","TPR","yé enplilá","I will enter"]	208	I entered	NULL
 
 A1GRPIBHW72HDU	23	MC	["62","MC","ekki enpli","she enters","she accepts","he enters","she will accept","to accept"]	62	she enters	NULL
 
@@ -9159,7 +9159,7 @@ A2AJ5QFNC9KF43	26	MC	["88","MC","ekki melilí","she will watch","you will enter"
 
 A363K42LE9BAT5	12	EX	["21","EX","pi enplizpe","you entered"]	21	you entered	NULL
 
-A1VZSFHTU51JP0	19	TPR	["220","TPR","ekki melilí","she will watch"]	220	She watched	NULL
+A1VZSFHTU51JP0	19	TPR	["220","TPR","ekki melilí","she will watch"]	220	she watched	NULL
 
 APGX2WZ59OWDN	7	MC	["69","MC","ák enplilí","he will enter","you will enter","I entered","you accepted","I will accept"]	69	you will enter	NULL
 
@@ -9325,7 +9325,7 @@ A2AJ5QFNC9KF43	34	EX	["28","EX","ekki melilí","she will watch"]	28	she will wat
 
 APGX2WZ59OWDN	13	MCR	["159","MCR","ekki melü","she watched","you watched","she enters","he will enter","I enter"]	159	she watched	{"1":{"guess":"she watched","time":12}}
 
-A3OXSIR9YH1FT6	33	TP	["169","TP","ák icedpü","he accepted"]	169	He will accept	NULL
+A3OXSIR9YH1FT6	33	TP	["169","TP","ák icedpü","he accepted"]	169	he will accept	NULL
 
 ACNID00UIEL1T	1	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
@@ -9353,7 +9353,7 @@ ADKKDK6P4MS1Z	8	TP	["174","TP","ák enpli","he enters"]	174	he entered	NULL
 
 APITQRRX2PADB	29	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she will accept	NULL
 
-A1VZSFHTU51JP0	24	TP	["185","TP","ekki meli","she watches"]	185	She enters	NULL
+A1VZSFHTU51JP0	24	TP	["185","TP","ekki meli","she watches"]	185	she enters	NULL
 
 ACNID00UIEL1T	2	MCR	["116","MCR","ekki icedpü","she accepted","you will enter","she watched","you entered","I accept"]	116	she accepted	{"1":{"guess":"she watched","time":8},"2":{"guess":"she accepted","time":6}}
 
@@ -9453,7 +9453,7 @@ A1CX684F5TEO5W	23	MC	["43","MC","yé icedpilá","I will accept","he will watch",
 
 A3AO2N7BNFDGF3	10	MCR	["140","MCR","ák enplü","he entered","she entered","I enter","I will enter","he will watch"]	140	he entered	{"1":{"guess":"he will watch","time":14},"2":{"guess":"he entered","time":12}}
 
-A363K42LE9BAT5	19	TP	["161","TP","yé icedpé","I accept"]	161	i enter	NULL
+A363K42LE9BAT5	19	TP	["161","TP","yé icedpé","I accept"]	161	I enter	NULL
 
 ADKKDK6P4MS1Z	12	TP	["163","TP","ák icedpi","he accepts"]	163	he entered	NULL
 
@@ -9555,7 +9555,7 @@ A1CX684F5TEO5W	27	TPR	["220","TPR","ekki melilí","she will watch"]	220	she watc
 
 AGVUHOBSCP6YC	6	EX	["0","EX","icedpil","to accept"]	0	to accept	NULL
 
-ADKKDK6P4MS1Z	17	TP	["173","TP","pi enpliz","you enter"]	173	i entered	NULL
+ADKKDK6P4MS1Z	17	TP	["173","TP","pi enpliz","you enter"]	173	I entered	NULL
 
 A1YVMDRR9W1LZ1	19	MCR	["126","MCR","ekki enpli","she enters","she accepts","he enters","she will accept","to accept"]	126	she enters	{"1":{"guess":"she enters","time":9}}
 
@@ -9653,7 +9653,7 @@ AGVUHOBSCP6YC	10	TP	["187","TP","ák melilí","he will watch"]	187	he watched	NU
 
 A1C59M3HPCO503	4	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
-A363K42LE9BAT5	28	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A363K42LE9BAT5	28	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
 A3AO2N7BNFDGF3	21	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she will accept	NULL
 
@@ -9695,7 +9695,7 @@ A1C59M3HPCO503	6	MCR	["121","MCR","yé enplé","I enter","you enter","he enters"
 
 A3AO2N7BNFDGF3	23	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter	NULL
 
-A1CX684F5TEO5W	33	TP	["176","TP","yé enplilá","I will enter"]	176	i will enter	NULL
+A1CX684F5TEO5W	33	TP	["176","TP","yé enplilá","I will enter"]	176	I will enter	NULL
 
 APGX2WZ59OWDN	30	MCR	["143","MCR","ekki enplü","she entered","she watched","she will accept","you watched","he will watch"]	143	she entered	{"1":{"guess":"she entered","time":12}}
 
@@ -9795,7 +9795,7 @@ AGVUHOBSCP6YC	17	EX	["9","EX","ák icedpü","he accepted"]	9	he accepted	NULL
 
 ADKKDK6P4MS1Z	27	TPR	["202","TPR","ekki icedpü","she accepted"]	202	she will accept	NULL
 
-A1YVMDRR9W1LZ1	31	TP	["172","TP","yé enplé","I enter"]	172	i enter	NULL
+A1YVMDRR9W1LZ1	31	TP	["172","TP","yé enplé","I enter"]	172	I enter	NULL
 
 A3FR7HHX2IS2FG	12	MCR	["122","MCR","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	122	you enter	{"1":{"guess":"you enter","time":11}}
 
@@ -9813,7 +9813,7 @@ A3FR7HHX2IS2FG	13	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 A1C59M3HPCO503	13	TP	["176","TP","yé enplilá","I will enter"]	176	you entered	NULL
 
-A1YVMDRR9W1LZ1	32	TP	["180","TP","yé enplá","I entered"]	180	i entered	NULL
+A1YVMDRR9W1LZ1	32	TP	["180","TP","yé enplá","I entered"]	180	I entered	NULL
 
 AGVUHOBSCP6YC	18	MCR	["122","MCR","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	122	you enter	{"1":{"guess":"you enter","time":7}}
 
@@ -9887,7 +9887,7 @@ ACNID00UIEL1T	29	MC	["51","MC","ák icedpü","he accepted","I watched","to accep
 
 A1K8QNLYYYX21W	11	MC	["69","MC","ák enplilí","he will enter","you will enter","I entered","you accepted","I will accept"]	69	you will enter	NULL
 
-AGVUHOBSCP6YC	23	TP	["164","TP","ekki icedpi","she accepts"]	164	She accepted	NULL
+AGVUHOBSCP6YC	23	TP	["164","TP","ekki icedpi","she accepts"]	164	she accepted	NULL
 
 Tester	2	EX	["1","EX","yé icedpé","I accept"]	1	I accept	NULL
 
@@ -9925,7 +9925,7 @@ A1C59M3HPCO503	22	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
 ADKKDK6P4MS1Z	34	MC	["94","MC","ekki melü","she watched","he accepted","I accept","to accept","I will watch"]	94	she watched	NULL
 
-ACNID00UIEL1T	32	TP	["190","TP","pi melizpe","you watched"]	190	i entered	NULL
+ACNID00UIEL1T	32	TP	["190","TP","pi melizpe","you watched"]	190	I entered	NULL
 
 A1K8QNLYYYX21W	14	EX	["14","EX","ák enpli","he enters"]	14	he enters	NULL
 
@@ -10205,7 +10205,7 @@ A2KW26KE43UBRS	18	EX	["11","EX","enplil","to enter"]	11	to enter	NULL
 
 A3T9LVCYQIS4UT	35	TP	["163","TP","ák icedpi","he accepts"]	163	you accepted	NULL
 
-A3GIIL73GE2CBQ	34	TP	["176","TP","yé enplilá","I will enter"]	176	i will enter	NULL
+A3GIIL73GE2CBQ	34	TP	["176","TP","yé enplilá","I will enter"]	176	I will enter	NULL
 
 A1H053T5EXI6EP	3	MCR	["151","MCR","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	151	he will watch	{"1":{"guess":"he entered","time":10},"2":{"guess":"he will watch","time":7}}
 
@@ -10253,7 +10253,7 @@ A1H053T5EXI6EP	12	TPR	["211","TPR","ekki enplilí","she will enter"]	211	she ent
 
 A2KW26KE43UBRS	30	MC	["89","MC","ekki melilí","she will watch","I watched","to enter","she watches","to watch"]	89	she watches	NULL
 
-A2KW26KE43UBRS	31	TPR	["220","TPR","ekki melilí","she will watch"]	220	She will watch	NULL
+A2KW26KE43UBRS	31	TPR	["220","TPR","ekki melilí","she will watch"]	220	she will watch	NULL
 
 A1H053T5EXI6EP	13	MC	["37","MC","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	37	I entered	NULL
 
@@ -10351,7 +10351,7 @@ A3O5EU9QQV2OS1	13	MCR	["159","MCR","ekki melü","she watched","you watched","she
 
 A318M33K2896OL	4	MC	["33","MC","icedpil","to accept","he accepts","she will enter","you entered","I watched"]	33	she will enter	NULL
 
-AKRFNRKI1IMJ1	5	TP	["161","TP","yé icedpé","I accept"]	161	i will accept	NULL
+AKRFNRKI1IMJ1	5	TP	["161","TP","yé icedpé","I accept"]	161	I will accept	NULL
 
 A3O5EU9QQV2OS1	14	TPR	["199","TPR","ekki icedpilí","she will accept"]	199	she watches	NULL
 
@@ -10403,7 +10403,7 @@ AKRFNRKI1IMJ1	14	MC	["36","MC","pi icedpiz","you accept","I watched","she will e
 
 A3O5EU9QQV2OS1	23	EX	["3","EX","ák icedpi","he accepts"]	3	he accepts	NULL
 
-AKRFNRKI1IMJ1	15	TPR	["211","TPR","ekki enplilí","she will enter"]	211	i will enter	NULL
+AKRFNRKI1IMJ1	15	TPR	["211","TPR","ekki enplilí","she will enter"]	211	I will enter	NULL
 
 A3O5EU9QQV2OS1	24	MCR	["122","MCR","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	122	you enter	{"1":{"guess":"you enter","time":13}}
 
@@ -10449,7 +10449,7 @@ A318M33K2896OL	16	TPR	["202","TPR","ekki icedpü","she accepted"]	202	NO_ANSWER_
 
 A3O5EU9QQV2OS1	32	EX	["19","EX","ekki enplilí","she will enter"]	19	she will enter	NULL
 
-AKRFNRKI1IMJ1	23	TPR	["210","TPR","ák enplilí","he will enter"]	210	He watched	NULL
+AKRFNRKI1IMJ1	23	TPR	["210","TPR","ák enplilí","he will enter"]	210	he watched	NULL
 
 A3O5EU9QQV2OS1	33	MC	["58","MC","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	58	you enter	NULL
 
@@ -10491,7 +10491,7 @@ A318M33K2896OL	22	MCR	["116","MCR","ekki icedpü","she accepted","you will enter
 
 AKRFNRKI1IMJ1	34	EX	["6","EX","ák icedpilí","he will accept"]	6	he will accept	NULL
 
-A318M33K2896OL	23	TPR	["218","TPR","yé melilá","I will watch"]	218	i will watch	NULL
+A318M33K2896OL	23	TPR	["218","TPR","yé melilá","I will watch"]	218	I will watch	NULL
 
 AKRFNRKI1IMJ1	35	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you watched	NULL
 
@@ -11055,7 +11055,7 @@ A2USG1JP96FTV	21	TP	["177","TP","pi enplilíz","you will enter"]	177	you enter	N
 
 AO7BT9MVEYB2M	25	TPR	["194","TPR","pi icedpiz","you accept"]	194	I will accept	NULL
 
-AFRJKS3Z3H4CA	5	TP	["177","TP","pi enplilíz","you will enter"]	177	i watched	NULL
+AFRJKS3Z3H4CA	5	TP	["177","TP","pi enplilíz","you will enter"]	177	I watched	NULL
 
 A2USG1JP96FTV	22	MCR	["135","MCR","ekki enplilí","she will enter","she will accept","you enter","he accepted","he enters"]	135	she will enter	{"1":{"guess":"she will enter","time":13}}
 
@@ -11363,7 +11363,7 @@ AQHMXM5LLEP2N	16	MC	["63","MC","ekki enpli","she enters","he entered","he accept
 
 A10ZOUOZZ3EOAJ	5	MC	["35","MC","yé icedpé","I accept","she watched","he accepts","I will accept","she accepted"]	35	I accept	NULL
 
-A1SL65Z68BK1UT	12	TPR	["213","TPR","pi enplizpe","you entered"]	213	i will enter	NULL
+A1SL65Z68BK1UT	12	TPR	["213","TPR","pi enplizpe","you entered"]	213	I will enter	NULL
 
 AEHRL61KFSZ73	9	TP	["172","TP","yé enplé","I enter"]	172	he enters	NULL
 
@@ -11401,7 +11401,7 @@ A340UGIDGIF4W6	9	EX	["19","EX","ekki enplilí","she will enter"]	19	she will ent
 
 A1SL65Z68BK1UT	14	MC	["42","MC","yé icedpilá","I will accept","she accepts","she entered","she will enter","I entered"]	42	I will accept	NULL
 
-AQHMXM5LLEP2N	18	TP	["178","TP","ák enplilí","he will enter"]	178	He will watch	NULL
+AQHMXM5LLEP2N	18	TP	["178","TP","ák enplilí","he will enter"]	178	he will watch	NULL
 
 A1G5BALVLNHTPU	11	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
@@ -11613,9 +11613,9 @@ A1CH3TODZNQCES	7	MCR	["129","MCR","yé enplilá","I will enter","he enters","I e
 
 A3A45JLSQM0P1E	6	MC	["91","MC","yé melá","I watched","you watched","she watches","to enter","she accepts"]	91	she watches	NULL
 
-A77K8W55MJEKX	16	TP	["174","TP","ák enpli","he enters"]	174	i entered	NULL
+A77K8W55MJEKX	16	TP	["174","TP","ák enpli","he enters"]	174	I entered	NULL
 
-AQHMXM5LLEP2N	26	TPR	["203","TPR","enplil","to enter"]	203	i watched	NULL
+AQHMXM5LLEP2N	26	TPR	["203","TPR","enplil","to enter"]	203	I watched	NULL
 
 A1G5BALVLNHTPU	20	MC	["59","MC","pi enpliz","you enter","I will enter","she watches","she will accept","to accept"]	59	you enter	NULL
 
@@ -11651,7 +11651,7 @@ A2YRYS17DU3A8R	23	MCR	["123","MCR","pi enpliz","you enter","I will enter","she w
 
 A2QB999SQBS8Z6	20	TP	["173","TP","pi enpliz","you enter"]	173	you enter	NULL
 
-A10ZOUOZZ3EOAJ	16	TPR	["205","TPR","pi enpliz","you enter"]	205	i enter	NULL
+A10ZOUOZZ3EOAJ	16	TPR	["205","TPR","pi enpliz","you enter"]	205	I enter	NULL
 
 AQHMXM5LLEP2N	28	MCR	["104","MCR","ekki icedpi","she accepts","she entered","he accepted","he entered","you entered"]	104	she accepts	{"1":{"guess":"she accepts","time":10}}
 
@@ -11707,7 +11707,7 @@ A2HGZOXZ36XKRI	19	TPR	["207","TPR","ekki enpli","she enters"]	207	she enters	NUL
 
 A1G5BALVLNHTPU	23	MCR	["98","MCR","yé icedpé","I accept","I watched","to accept","he will accept","he enters"]	98	I accept	{"1":{"guess":"I accept","time":11}}
 
-A1SL65Z68BK1UT	29	TP	["165","TP","yé icedpilá","I will accept"]	165	i accept	NULL
+A1SL65Z68BK1UT	29	TP	["165","TP","yé icedpilá","I will accept"]	165	I accept	NULL
 
 A1CH3TODZNQCES	12	MC	["87","MC","ák melilí","he will watch","he entered","you entered","you enter","she will watch"]	87	she will watch	NULL
 
@@ -11795,7 +11795,7 @@ A2EOOF9D135HQ1	18	MC	["92","MC","pi melizpe","you watched","he entered","she acc
 
 AEHRL61KFSZ73	27	MC	["40","MC","ekki icedpi","she accepts","she entered","he accepted","he entered","you entered"]	40	he entered	NULL
 
-A3A45JLSQM0P1E	9	TPR	["211","TPR","ekki enplilí","she will enter"]	211	SHE ACCEPTS	NULL
+A3A45JLSQM0P1E	9	TPR	["211","TPR","ekki enplilí","she will enter"]	211	she accepts	NULL
 
 A2HGZOXZ36XKRI	22	EX	["26","EX","yé melilá","I will watch"]	26	I will watch	NULL
 
@@ -12073,7 +12073,7 @@ A2HGZOXZ36XKRI	35	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter
 
 A1K8QNLYYYX21W	35	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter	NULL
 
-A15RJPRX0KVUFS	9	TP	["191","TP","ekki melü","she watched"]	191	She watches	NULL
+A15RJPRX0KVUFS	9	TP	["191","TP","ekki melü","she watched"]	191	she watches	NULL
 
 A1CH3TODZNQCES	33	EX	["30","EX","pi melizpe","you watched"]	30	you watched	NULL
 
@@ -12095,7 +12095,7 @@ A3CFBT2CBQQIZY	7	MCR	["149","MCR","yé melilá","I will watch","I watched","she 
 
 AY5QUURIR136D	4	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
-A15RJPRX0KVUFS	11	TP	["177","TP","pi enplilíz","you will enter"]	177	He will enter	NULL
+A15RJPRX0KVUFS	11	TP	["177","TP","pi enplilíz","you will enter"]	177	he will enter	NULL
 
 A2EOOF9D135HQ1	34	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NULL
 
@@ -12117,7 +12117,7 @@ AY5QUURIR136D	7	TP	["188","TP","ekki melilí","she will watch"]	188	she entered	
 
 A3CFBT2CBQQIZY	9	TP	["177","TP","pi enplilíz","you will enter"]	177	I accept	NULL
 
-A15RJPRX0KVUFS	14	TPR	["223","TPR","ekki melü","she watched"]	223	She watches	NULL
+A15RJPRX0KVUFS	14	TPR	["223","TPR","ekki melü","she watched"]	223	she watches	NULL
 
 AY5QUURIR136D	8	TP	["173","TP","pi enpliz","you enter"]	173	you entered	NULL
 
@@ -12153,7 +12153,7 @@ A3CFBT2CBQQIZY	13	TPR	["217","TPR","ekki meli","she watches"]	217	she watched	NU
 
 AY5QUURIR136D	14	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
-A15RJPRX0KVUFS	21	TP	["162","TP","pi icedpiz","you accept"]	162	i will enter	NULL
+A15RJPRX0KVUFS	21	TP	["162","TP","pi icedpiz","you accept"]	162	I will enter	NULL
 
 A3CFBT2CBQQIZY	14	MC	["45","MC","ák icedpilí","he will accept","he will watch","you accepted","she accepts","to accept"]	45	he will accept	NULL
 
@@ -12201,9 +12201,9 @@ A3CFBT2CBQQIZY	18	MC	["54","MC","enplil","to enter","he will watch","you accepte
 
 A3O7X46E3REM7I	4	MC	["72","MC","yé enplá","I entered","she accepted","she will watch","he will enter","she watches"]	72	he will enter	NULL
 
-A11W7R2O4RQSSS	5	TP	["173","TP","pi enpliz","you enter"]	173	i enter	NULL
+A11W7R2O4RQSSS	5	TP	["173","TP","pi enpliz","you enter"]	173	I enter	NULL
 
-A15RJPRX0KVUFS	27	TP	["165","TP","yé icedpilá","I will accept"]	165	i will watch	NULL
+A15RJPRX0KVUFS	27	TP	["165","TP","yé icedpilá","I will accept"]	165	I will watch	NULL
 
 AY5QUURIR136D	20	MC	["38","MC","ák icedpi","he accepts","she entered","he enters","you enter","you entered"]	38	he accepts	NULL
 
@@ -12217,13 +12217,13 @@ A15RJPRX0KVUFS	28	MCR	["128","MCR","yé enplilá","I will enter","she will accep
 
 A11W7R2O4RQSSS	7	MCR	["118","MCR","enplil","to enter","he will watch","you accepted","she accepts","she will watch"]	118	to enter	{"1":{"guess":"you accepted","time":15},"2":{"guess":"she will watch","time":14},"3":{"guess":"to enter","time":13}}
 
-A3O7X46E3REM7I	6	TP	["181","TP","pi enplizpe","you entered"]	181	i will enter	NULL
+A3O7X46E3REM7I	6	TP	["181","TP","pi enplizpe","you entered"]	181	I will enter	NULL
 
 AY5QUURIR136D	21	MC	["36","MC","pi icedpiz","you accept","I watched","she will enter","she will watch","she accepted"]	36	you accept	NULL
 
 A3CFBT2CBQQIZY	20	MCR	["112","MCR","pi icedpizpe","you accepted","she enters","she entered","I watched","he entered"]	112	you accepted	{"1":{"guess":"I watched","time":8},"2":{"guess":"you accepted","time":5}}
 
-A11W7R2O4RQSSS	8	TPR	["209","TPR","pi enplilíz","you will enter"]	209	You will enter	NULL
+A11W7R2O4RQSSS	8	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you will enter	NULL
 
 A15RJPRX0KVUFS	29	MC	["88","MC","ekki melilí","she will watch","you will enter","he will watch","she accepted","she entered"]	88	she will watch	NULL
 
@@ -12287,7 +12287,7 @@ A2CGIO3YQYJ92M	1	EX	["3","EX","ák icedpi","he accepts"]	3	he accepts	NULL
 
 A11W7R2O4RQSSS	14	EX	["28","EX","ekki melilí","she will watch"]	28	she will watch	NULL
 
-A3O7X46E3REM7I	13	TPR	["193","TPR","yé icedpé","I accept"]	193	She accepts	NULL
+A3O7X46E3REM7I	13	TPR	["193","TPR","yé icedpé","I accept"]	193	she accepts	NULL
 
 A3CFBT2CBQQIZY	27	EX	["24","EX","melil","to watch"]	24	to watch	NULL
 
@@ -12307,7 +12307,7 @@ AY5QUURIR136D	28	TPR	["209","TPR","pi enplilíz","you will enter"]	209	you will 
 
 A3O7X46E3REM7I	15	MCR	["123","MCR","pi enpliz","you enter","I will enter","she watches","she will accept","to accept"]	123	to accept	{"1":{"guess":"she will accept","time":8},"2":{"guess":"she watches","time":6},"3":{"guess":"to accept","time":4}}
 
-A11W7R2O4RQSSS	16	TPR	["213","TPR","pi enplizpe","you entered"]	213	i enter	NULL
+A11W7R2O4RQSSS	16	TPR	["213","TPR","pi enplizpe","you entered"]	213	I enter	NULL
 
 A2CGIO3YQYJ92M	4	MCR	["150","MCR","ák melilí","he will watch","to accept","she accepted","she will enter","she watches"]	150	she watches	{"1":{"guess":"to accept","time":7},"2":{"guess":"she accepted","time":4},"3":{"guess":"she watches","time":3}}
 
@@ -12365,7 +12365,7 @@ A2CGIO3YQYJ92M	8	MC	["74","MC","pi enplizpe","you entered","I will accept","I wi
 
 A11W7R2O4RQSSS	20	MCR	["122","MCR","pi enpliz","you enter","she entered","she will enter","he accepts","she accepts"]	122	she will enter	{"1":{"guess":"she accepts","time":16},"2":{"guess":"she will enter","time":15}}
 
-A3O7X46E3REM7I	19	TPR	["202","TPR","ekki icedpü","she accepted"]	202	i entered	NULL
+A3O7X46E3REM7I	19	TPR	["202","TPR","ekki icedpü","she accepted"]	202	I entered	NULL
 
 A3CFBT2CBQQIZY	32	TP	["190","TP","pi melizpe","you watched"]	190	NO_ANSWER_MADE	NULL
 
@@ -12395,7 +12395,7 @@ AV22FQTJNBUZT	2	EX	["27","EX","ák melilí","he will watch"]	27	he will watch	NU
 
 A3O7X46E3REM7I	21	MCR	["145","MCR","melil","to watch","to accept","he will enter","I enter","she watches"]	145	to watch	{"1":{"guess":"to watch","time":13}}
 
-A2C70CEYBGWK97	6	TPR	["220","TPR","ekki melilí","she will watch"]	220	You accept	NULL
+A2C70CEYBGWK97	6	TPR	["220","TPR","ekki melilí","she will watch"]	220	you accept	NULL
 
 A11W7R2O4RQSSS	23	MC	["38","MC","ák icedpi","he accepts","she entered","he enters","you enter","you entered"]	38	he accepts	NULL
 
@@ -12449,7 +12449,7 @@ A2CGIO3YQYJ92M	13	MCR	["118","MCR","enplil","to enter","he will watch","you acce
 
 AV22FQTJNBUZT	6	MC	["79","MC","ekki enplü","she entered","she watched","she will accept","you watched","he will watch"]	79	she watched	NULL
 
-A11W7R2O4RQSSS	28	TP	["173","TP","pi enpliz","you enter"]	173	i enter	NULL
+A11W7R2O4RQSSS	28	TP	["173","TP","pi enpliz","you enter"]	173	I enter	NULL
 
 A2C70CEYBGWK97	10	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
@@ -12467,7 +12467,7 @@ AV22FQTJNBUZT	7	MC	["63","MC","ekki enpli","she enters","he entered","he accepts
 
 A2CGIO3YQYJ92M	15	EX	["28","EX","ekki melilí","she will watch"]	28	she will watch	NULL
 
-A2JJHLWZKVOPQQ	9	TPR	["214","TPR","ák enplü","he entered"]	214	He entered	NULL
+A2JJHLWZKVOPQQ	9	TPR	["214","TPR","ák enplü","he entered"]	214	he entered	NULL
 
 A11W7R2O4RQSSS	30	MCR	["116","MCR","ekki icedpü","she accepted","you will enter","she watched","you entered","I accept"]	116	she accepted	{"1":{"guess":"she accepted","time":14}}
 
@@ -12483,7 +12483,7 @@ A2JJHLWZKVOPQQ	10	MCR	["128","MCR","yé enplilá","I will enter","she will accep
 
 A3O7X46E3REM7I	24	TP	["175","TP","ekki enpli","she enters"]	175	he entered	NULL
 
-A11W7R2O4RQSSS	31	TP	["161","TP","yé icedpé","I accept"]	161	i accept	NULL
+A11W7R2O4RQSSS	31	TP	["161","TP","yé icedpé","I accept"]	161	I accept	NULL
 
 AV22FQTJNBUZT	9	MC	["45","MC","ák icedpilí","he will accept","he will watch","you accepted","she accepts","to accept"]	45	he will accept	NULL
 
@@ -12531,7 +12531,7 @@ A3O7X46E3REM7I	27	MCR	["129","MCR","yé enplilá","I will enter","he enters","I 
 
 A2JJHLWZKVOPQQ	14	MC	["71","MC","ekki enplilí","she will enter","she will accept","you enter","he accepted","he enters"]	71	she will accept	NULL
 
-A11W7R2O4RQSSS	35	TP	["168","TP","pi icedpizpe","you accepted"]	168	i enter	NULL
+A11W7R2O4RQSSS	35	TP	["168","TP","pi icedpizpe","you accepted"]	168	I enter	NULL
 
 A2C70CEYBGWK97	16	MCR	["105","MCR","ekki icedpi","she accepts","I will accept","she accepted","he will watch","you enter"]	105	she accepted	{"1":{"guess":"he will watch","time":12},"2":{"guess":"she accepted","time":9}}
 
@@ -12591,7 +12591,7 @@ A2C70CEYBGWK97	22	MCR	["104","MCR","ekki icedpi","she accepts","she entered","he
 
 AV22FQTJNBUZT	17	TP	["182","TP","ák enplü","he entered"]	182	he enters	NULL
 
-A3O7X46E3REM7I	33	TPR	["215","TPR","ekki enplü","she entered"]	215	She entered	NULL
+A3O7X46E3REM7I	33	TPR	["215","TPR","ekki enplü","she entered"]	215	she entered	NULL
 
 A2CGIO3YQYJ92M	25	TPR	["208","TPR","yé enplilá","I will enter"]	208	you enter	NULL
 
@@ -12641,7 +12641,7 @@ A2UHF7UL7G0Y78	32	EX	["3","EX","ák icedpi","he accepts"]	3	he accepts	NULL
 
 A2C70CEYBGWK97	27	TPR	["196","TPR","ekki icedpi","she accepts"]	196	she accepted	NULL
 
-A2CGIO3YQYJ92M	30	TP	["189","TP","yé melá","I watched"]	189	i watch	NULL
+A2CGIO3YQYJ92M	30	TP	["189","TP","yé melá","I watched"]	189	I watch	NULL
 
 A2UHF7UL7G0Y78	33	EX	["19","EX","ekki enplilí","she will enter"]	19	she will enter	NULL
 
@@ -12775,7 +12775,7 @@ AVXEDARJC5HLU	3	EX	["25","EX","ekki meli","she watches"]	25	she watches	NULL
 
 AVXEDARJC5HLU	4	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
-A39Q4SNT7SRK94	21	TP	["180","TP","yé enplá","I entered"]	180	He accepted	NULL
+A39Q4SNT7SRK94	21	TP	["180","TP","yé enplá","I entered"]	180	he accepted	NULL
 
 A39Q4SNT7SRK94	22	MC	["66","MC","pi enplilíz","you will enter","you accept","I enter","he will watch","she will accept"]	66	you will enter	NULL
 
@@ -12803,7 +12803,7 @@ A39Q4SNT7SRK94	28	EX	["6","EX","ák icedpilí","he will accept"]	6	he will accep
 
 AVXEDARJC5HLU	10	EX	["6","EX","ák icedpilí","he will accept"]	6	he will accept	NULL
 
-A39Q4SNT7SRK94	29	TP	["166","TP","ák icedpilí","he will accept"]	166	He entered	NULL
+A39Q4SNT7SRK94	29	TP	["166","TP","ák icedpilí","he will accept"]	166	he entered	NULL
 
 AVXEDARJC5HLU	11	TP	["191","TP","ekki melü","she watched"]	191	she watched	NULL
 
@@ -12817,7 +12817,7 @@ A39Q4SNT7SRK94	32	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 AVXEDARJC5HLU	13	MCR	["139","MCR","pi enplizpe","you entered","he accepted","he will enter","she accepted","he will accept"]	139	he accepted	{"1":{"guess":"he will accept","time":12},"2":{"guess":"he will enter","time":10},"3":{"guess":"he accepted","time":8}}
 
-A39Q4SNT7SRK94	33	TPR	["196","TPR","ekki icedpi","she accepts"]	196	He accepted	NULL
+A39Q4SNT7SRK94	33	TPR	["196","TPR","ekki icedpi","she accepts"]	196	he accepted	NULL
 
 AVXEDARJC5HLU	14	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
@@ -12825,7 +12825,7 @@ A39Q4SNT7SRK94	34	MCR	["122","MCR","pi enpliz","you enter","she entered","she wi
 
 A39Q4SNT7SRK94	35	MCR	["152","MCR","ekki melilí","she will watch","you will enter","he will watch","she accepted","she entered"]	152	she will watch	{"1":{"guess":"she entered","time":16},"2":{"guess":"she will watch","time":15}}
 
-AVXEDARJC5HLU	15	TPR	["203","TPR","enplil","to enter"]	203	i watched	NULL
+AVXEDARJC5HLU	15	TPR	["203","TPR","enplil","to enter"]	203	I watched	NULL
 
 AVXEDARJC5HLU	16	MCR	["145","MCR","melil","to watch","to accept","he will enter","I enter","she watches"]	145	to watch	{"1":{"guess":"I enter","time":13},"2":{"guess":"to watch","time":11}}
 
@@ -12931,7 +12931,7 @@ A29P6YNXQBBFCM	6	EX	["20","EX","yé enplá","I entered"]	20	I entered	NULL
 
 A2VD133723IZR8	19	MC	["69","MC","ák enplilí","he will enter","you will enter","I entered","you accepted","I will accept"]	69	he will enter	NULL
 
-A29P6YNXQBBFCM	7	TP	["167","TP","ekki icedpilí","she will accept"]	167	i accepted	NULL
+A29P6YNXQBBFCM	7	TP	["167","TP","ekki icedpilí","she will accept"]	167	I accepted	NULL
 
 A2VD133723IZR8	20	MC	["89","MC","ekki melilí","she will watch","I watched","to enter","she watches","to watch"]	89	she watches	NULL
 
@@ -12939,7 +12939,7 @@ A2LVPGEPC1EUOW	1	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ente
 
 A2VD133723IZR8	21	MC	["88","MC","ekki melilí","she will watch","you will enter","he will watch","she accepted","she entered"]	88	she will watch	NULL
 
-A29P6YNXQBBFCM	8	TP	["182","TP","ák enplü","he entered"]	182	i entered	NULL
+A29P6YNXQBBFCM	8	TP	["182","TP","ák enplü","he entered"]	182	I entered	NULL
 
 A2LVPGEPC1EUOW	2	MCR	["146","MCR","ekki meli","she watches","you accept","she will enter","he will watch","she enters"]	146	she watches	{"1":{"guess":"you accept","time":13},"2":{"guess":"she enters","time":12},"3":{"guess":"she watches","time":10}}
 
@@ -12971,7 +12971,7 @@ A2LVPGEPC1EUOW	8	EX	["3","EX","ák icedpi","he accepts"]	3	he accepts	NULL
 
 A2LVPGEPC1EUOW	9	MC	["51","MC","ák icedpü","he accepted","I watched","to accept","I entered","you will enter"]	51	he accepted	NULL
 
-A29P6YNXQBBFCM	13	TP	["185","TP","ekki meli","she watches"]	185	i entered	NULL
+A29P6YNXQBBFCM	13	TP	["185","TP","ekki meli","she watches"]	185	I entered	NULL
 
 A2VD133723IZR8	25	TP	["179","TP","ekki enplilí","she will enter"]	179	she accepted	NULL
 
@@ -13173,7 +13173,7 @@ A1CE2XPYCDRHVZ	31	TP	["183","TP","ekki enplü","she entered"]	183	she enters	NUL
 
 A1CE2XPYCDRHVZ	32	MCR	["110","MCR","ekki icedpilí","she will accept","you accepted","I watched","I entered","he enters"]	110	she will accept	{"1":{"guess":"she will accept","time":12}}
 
-A289D98Z4GAZ28	10	TP	["165","TP","yé icedpilá","I will accept"]	165	She watched	NULL
+A289D98Z4GAZ28	10	TP	["165","TP","yé icedpilá","I will accept"]	165	she watched	NULL
 
 A1CE2XPYCDRHVZ	33	TP	["189","TP","yé melá","I watched"]	189	I watched	NULL
 
@@ -13189,17 +13189,17 @@ A289D98Z4GAZ28	13	EX	["17","EX","pi enplilíz","you will enter"]	17	you will ent
 
 A289D98Z4GAZ28	14	EX	["15","EX","ekki enpli","she enters"]	15	she enters	NULL
 
-A289D98Z4GAZ28	15	TP	["174","TP","ák enpli","he enters"]	174	She enters	NULL
+A289D98Z4GAZ28	15	TP	["174","TP","ák enpli","he enters"]	174	she enters	NULL
 
 A289D98Z4GAZ28	16	MCR	["96","MCR","icedpil","to accept","I enter","I entered","she accepted","she entered"]	96	she entered	{"1":{"guess":"I enter","time":14},"2":{"guess":"she entered","time":11}}
 
-A289D98Z4GAZ28	17	TP	["183","TP","ekki enplü","she entered"]	183	She enters	NULL
+A289D98Z4GAZ28	17	TP	["183","TP","ekki enplü","she entered"]	183	she enters	NULL
 
 A289D98Z4GAZ28	18	TPR	["214","TPR","ák enplü","he entered"]	214	I enter	NULL
 
 A289D98Z4GAZ28	19	MCR	["114","MCR","ák icedpü","he accepted","you accept","I accept","he entered","you entered"]	114	he accepted	{"1":{"guess":"I accept","time":11},"2":{"guess":"he accepted","time":9}}
 
-A289D98Z4GAZ28	20	TPR	["208","TPR","yé enplilá","I will enter"]	208	He entered	NULL
+A289D98Z4GAZ28	20	TPR	["208","TPR","yé enplilá","I will enter"]	208	he entered	NULL
 
 A289D98Z4GAZ28	21	MC	["37","MC","pi icedpiz","you accept","he will accept","to enter","he accepts","I entered"]	37	he accepts	NULL
 
@@ -13335,7 +13335,7 @@ A9HQ3E0F2AGVO	28	EX	["22","EX","ák enplü","he entered"]	22	he entered	NULL
 
 A9HQ3E0F2AGVO	29	EX	["18","EX","ák enplilí","he will enter"]	18	he will enter	NULL
 
-A1F3IJU2HXZ0PQ	33	TP	["176","TP","yé enplilá","I will enter"]	176	i watched	NULL
+A1F3IJU2HXZ0PQ	33	TP	["176","TP","yé enplilá","I will enter"]	176	I watched	NULL
 
 A9HQ3E0F2AGVO	30	EX	["31","EX","ekki melü","she watched"]	31	she watched	NULL
 
@@ -13343,7 +13343,7 @@ A1F3IJU2HXZ0PQ	34	TP	["175","TP","ekki enpli","she enters"]	175	she will watch	N
 
 A9HQ3E0F2AGVO	31	TPR	["206","TPR","ák enpli","he enters"]	206	he enters	NULL
 
-A1F3IJU2HXZ0PQ	35	TPR	["212","TPR","yé enplá","I entered"]	212	i entered	NULL
+A1F3IJU2HXZ0PQ	35	TPR	["212","TPR","yé enplá","I entered"]	212	I entered	NULL
 
 A9HQ3E0F2AGVO	32	TPR	["201","TPR","ák icedpü","he accepted"]	201	he accepts	NULL
 
