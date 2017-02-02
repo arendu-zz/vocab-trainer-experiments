@@ -18,14 +18,14 @@ def get_nearest(incomplete_answer, y_sigma):
 
 
 if __name__ == '__main__':
-    user_records = codecs.open('fixed_vocab_training_user_records.csv', 'r', 'utf8').readlines()
-    user_table = codecs.open('vocab_training_user_table.csv', 'r', 'utf8').readlines()
-    content = codecs.open('fake-en-medium.vocab', 'r', 'utf8').readlines()
+    user_records = codecs.open('./content/fixed_vocab_training_user_records.csv', 'r', 'utf8').readlines()
+    user_table = codecs.open('./content/vocab_training_user_table.csv', 'r', 'utf8').readlines()
+    content = codecs.open('./content/fake-en-medium.vocab', 'r', 'utf8').readlines()
     x_sigma = set([])
     y_sigma = set([])
     for line in content[1:]:
         items = line.strip().split(',')
-        fr,en = zip(*[tuple(i.lower().strip().split('/')) for i in items])
+        fr,en = zip(*[tuple(i.strip().split('/')) for i in items])
         x_sigma.update(list(fr))
         y_sigma.update(list(en))
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             if items[5].strip() == "" or items[5].strip() == "NO_ANSWER_MADE" or items[6].strip() == "" or items[6].strip() == "{}":
                 count = user2no_answer_count.get(user, 0)
                 user2no_answer_count[user] = count + 1
-            elif items[5].strip().lower() in y_sigma:
+            elif items[5].strip() in y_sigma:
                 pass
             else:
                 pass
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
     good ={}
     bad ={}
-    good_users = codecs.open('good.users', 'w', 'utf8')
+    good_users = codecs.open('new-good.users', 'w', 'utf8')
 
     for u in completed_users.iterkeys():
         if user2no_answer_count.get(u,0) > 1: 

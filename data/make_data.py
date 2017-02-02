@@ -33,10 +33,10 @@ def fix_complex_obs(co):
 
 if __name__ == '__main__':
     good_users = {}
-    for i in codecs.open('good.users', 'r', 'utf8').readlines():
+    for i in codecs.open('new-good.users', 'r', 'utf8').readlines():
         good_users[i.strip()] = None
     
-    for line in codecs.open('vocab_training_user_table.csv', 'r', 'utf8').readlines()[1:]:
+    for line in codecs.open('./content/vocab_training_user_table.csv', 'r', 'utf8').readlines()[1:]:
         if line.strip() != "":
             items = line.split('\t')
             if items[3].strip() != "" and items[3].strip() != "NULL":
@@ -64,7 +64,7 @@ if __name__ == '__main__':
         sum_v += v
     print sum_v, 'total scores'
     '''
-    fixed_records = codecs.open('fixed_vocab_training_user_records.csv', 'r', 'utf8').readlines()
+    fixed_records = codecs.open('./content/fixed_vocab_training_user_records.csv', 'r', 'utf8').readlines()
     c = 0
     bad_c = 0
     #0:username  1:training_step 2:prompt_type 3:current_action  4:current_action_id 5:current_observation 6:complex_observation
@@ -103,7 +103,7 @@ if __name__ == '__main__':
                 en_selected = current_obs
                 en_true = current_action[3].strip()
                 en_options = "ALL"
-                feedback = en_selected.lower() == en_true.lower()
+                feedback = en_selected == en_true
                 fb_str = "correct" if feedback else "incorrect"
                 data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
                 add_data_line(user, data_line, training_step)
@@ -113,7 +113,7 @@ if __name__ == '__main__':
                 en_selected = current_obs
                 en_true = current_action[3].strip()
                 en_options = "ALL"
-                feedback = en_selected.lower() == en_true.lower()
+                feedback = en_selected == en_true
                 fb_str = "correct" if feedback else "incorrect"
                 if feedback:
                     #if correct stop with one data line
@@ -132,7 +132,7 @@ if __name__ == '__main__':
                 en_options = ','.join(current_action[3:])
                 en_selected = current_obs
                 en_true = current_action[3].strip()
-                feedback = en_true.lower() == en_selected.lower()
+                feedback = en_true == en_selected
                 fb_str = "correct" if feedback else "incorrect"
                 data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
                 add_data_line(user, data_line, training_step)
@@ -149,7 +149,7 @@ if __name__ == '__main__':
                 for k,v in sorted(fixed_complex_obs.iteritems()): 
                     en_selected = v 
                     if en_selected != prev_en_selected:
-                        feedback = en_true.lower() == en_selected.lower()
+                        feedback = en_true == en_selected
                         fb_str = "correct" if feedback else "incorrect"
                         en_options = ','.join(all_en_options)
                         t_step = training_step + (point * 0.1)
@@ -191,7 +191,7 @@ if __name__ == '__main__':
         user_groups_stats.append((m,sd))
 
     for idx, (ug, ug_stats) in enumerate(zip(user_groups, user_groups_stats)):
-        w = codecs.open('./data_splits/group' + str(idx) + '.data', 'w', 'utf8')
+        w = codecs.open('./data_splits/new-group' + str(idx) + '.data', 'w', 'utf8')
         print 'group:', idx, ',test_mean:', str(ug_stats[0]),',test_std:', str(ug_stats[1]),',num users:', len(ug)
         for u in ug:
             for ts, dll in sorted(user2data_lines[u]):

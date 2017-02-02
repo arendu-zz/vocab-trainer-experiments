@@ -27,7 +27,7 @@ if __name__ == '__main__':
         user, uts, ptype, tstep, a_idx, fr, en_options, en_selected, fb  = [i.strip() for i in line.split('\t')]
         if en_selected != "NO_ANSWER_MADE":
             x = np.array([um.dh.f2id[fr]]) #x
-            e_id = um.dh.e2id[en_selected.lower()] #y
+            e_id = um.dh.e2id[en_selected] #y
             y_selected = np.zeros((1, um.dh.E_SIZE))
             y_selected[0, e_id] = 1.0
             if en_options == "ALL":
