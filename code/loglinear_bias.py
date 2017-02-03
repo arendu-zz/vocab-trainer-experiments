@@ -36,6 +36,7 @@ class UserModel(object):
         y_selected = T.imatrix('y_selected') #(batch_size, output_dim) #the Y that is selected by the user
         f = T.ivector('f') #(batch_size,) # was the answer marked as correct or incorrect?
         W = T.fvector('W') #(1, feature_size)
+        b = T.fvector('b') #(1, output_dim)
         if self.reg_type == 'l2':
             reg = T.sum(T.sqr(W)) 
         elif self.reg_type == 'l1':
@@ -45,7 +46,7 @@ class UserModel(object):
         else:
             raise Exception("unknown reg_type")
 
-        y_dot = self.phi[x,:,:].dot(W.T) 
+        y_dot = self.phi[x,:,:].dot(W.T) + b
         #y_dot = self.phi[x,:,:].dot(self.W.T)[:,:,0] + self.b
         y_dot_masked = self.masked(y_dot, o, -np.inf) #(batch_size, output_dim)
         y_hat  = T.nnet.softmax(y_dot_masked) #(batch_size, output_dim)
@@ -53,22 +54,19 @@ class UserModel(object):
         y_target = self.create_target(y_selected, y_hat, f)
         loss_vec = -T.sum(y_target * T.log(y_hat + self._eps), axis=1) #(batch_size,) #cross-entropy
 
-        loss = T.mean(loss_vec) #+ (self.l * reg) 
-        my_grad = -(y_target.dot(self.phi[x,:,:]) - y_hat.dot(self.phi[x,:,:]))
+        loss = T.mean(loss_vec) + (self.l * reg) 
 
-
-        g_params = T.grad(loss, W)
-        self.y_dot_x = theano.function([W, x], y_dot)
+        g_params = [T.grad(loss, param) for param in [W,b]]
+        self.y_dot_x = theano.function([W, b, x], y_dot)
         self.get_reg = theano.function([W], reg)
         self.get_phi_x = theano.function([x], self.phi[x,:,:])
-        self.y_dot_masked_x = theano.function([W, x, o], y_dot_masked)
-        self.y_given_x = theano.function([W, x, o], y_hat)
-        #self.y_given_x_unmasked = theano.function([W, x, o], y_hat_unmasked)
-        self.y_target_x = theano.function([W, x, o, y_selected, f], y_target)
-        self.get_loss = theano.function(inputs = [W, x, o, y_selected,f], outputs=loss)
-        self.get_grad = theano.function(inputs = [W, x, o, y_selected,f], outputs=g_params)
-        self.get_my_grad = theano.function(inputs = [W, x, o, y_selected,f], outputs=my_grad)
-        #self.get_next_params = theano.function(inputs = [W, x, o, y_selected, f, lr], outputs=[W, b], 
+        self.y_dot_masked_x = theano.function([W, b, x, o], y_dot_masked)
+        self.y_given_x = theano.function([W, b, x, o], y_hat)
+        #self.y_given_x_unmasked = theano.function([W, b, x, o], y_hat_unmasked)
+        self.y_target_x = theano.function([W, b, x, o, y_selected, f], y_target)
+        self.get_loss = theano.function(inputs = [W, b, x, o, y_selected,f], outputs=loss)
+        self.get_grad = theano.function(inputs = [W, b, x, o, y_selected,f], outputs=g_params)
+        #self.get_next_params = theano.function(inputs = [W, b, x, o, y_selected, f, lr], outputs=[W, b], 
         #                                     updates = [(p, p - lr * g) for p,g in zip([W,b], g_params)])
 
         #self.do_sgd_update = theano.function(inputs =[x, y_selected,f, lr], outputs=[loss, loss_vec], 

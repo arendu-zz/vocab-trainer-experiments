@@ -4,15 +4,11 @@ import argparse
 import sys
 import codecs
 import numpy as np
-import theano
-import sys
 import pdb
-from code.my_utils import cosine_sim
-from scipy.stats.mstats import rankdata as get_ranks
+import theano
 
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 __author__ = 'arenduchintala'
-
 if theano.config.floatX == 'float32':
     floatX = np.float32
     intX = np.int32
@@ -20,17 +16,38 @@ else:
     floatX = np.float64
     intX = np.int64
 
+global _eps, decay, _eta
+_eps = np.finfo(floatX).eps
+decay = 0.9
+_eta = 0.01
 
-def create_target(y_selected, y_predicted, feedback):
-    #y_selected is a one-hot vector
-    #y_predicted is the output based on current set of weights
-    #feedback is the indication that the system gives the user i.e. correct or incorrect.
-    y_neg_selected = -(y_selected - 1.0)  #flips 1s to 0s and 0s to 1s
-    y_predicted = y_predicted * y_neg_selected
-    y_predicted = y_predicted / y_predicted.sum(axis=1)[:, np.newaxis]
-    y_target = np.where(feedback[:, None], y_selected, y_predicted)
-    return y_target
 
+def rms(v):
+    global _eps
+    return np.sqrt(v + _eps)
+
+def adapt_grad(adapt, g, E_g, E_dx):
+    global decay, _eps, _eta
+    if adapt == "adadelta":
+        E_g = (decay * E_g) + ((1.0 - decay) * (g ** 2))
+        E_g[np.absolute(E_g) < _eps] = 0.0
+        grad = (rms(E_dx) / rms(E_g)) * g
+        grad[np.absolute(grad) < _eps] = 0.0
+        E_dx = (decay * E_dx) + ((1.0 - decay) * (grad ** 2))
+        return grad, E_g, E_dx
+    elif adapt == "adagrad":
+        g[np.absolute(g) < _eps] = 0.0
+        E_g += g ** 2
+        E_g[np.absolute(E_g) < _eps] = 0.0
+        grad = (_eta / rms(E_g)) * g
+        return grad, E_g, E_dx #E_dx does nothing...
+    elif adapt == "rmsprop":
+        E_g = (decay * E_g) + ((1.0 - decay) * (g ** 2))
+        E_g[np.absolute(E_g) < _eps] = 0.0
+        grad = (_eta / rms(E_g)) * g
+        return grad, E_g, E_dx
+    else:
+        raise Exception("unknown adapt grad")
 
 
 if __name__ == '__main__':
@@ -38,33 +55,29 @@ if __name__ == '__main__':
     opt.add_argument('-f', action='store', dest='feature', default='p.w.c')
     opt.add_argument('-r', action='store', dest='regularization', default=0.01, type=float)
     opt.add_argument('-t', action='store', dest='regularization_type', default='l2')
-    opt.add_argument('-l', action='store', dest='learning_rate', default=1.8, type=float)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
     feats_file = './data/content/fake-en-medium.' + options.feature  +'.feat2id'
     actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions'
-    #data_lines = codecs.open('./data/data_splits/train.data', 'r', 'utf8').readlines()
-    data_lines = []
-    data_lines += codecs.open('./data/data_splits/train.data', 'r', 'utf8').readlines()
+    data_lines = codecs.open('./data/data_splits/train.data', 'r', 'utf8').readlines()
+    data_lines += codecs.open('./data/data_splits/dev.data', 'r', 'utf8').readlines()
     reg = options.regularization / float(len(data_lines))
+    decay = 0.9 #adadelta
     um = UserModel(events_file, feats_file, actions_file, reg, options.regularization_type)
     user2ave_prob = {}
     ave_prob = []
     user2ave_rank = {}
     prev_user = None
-    W = None
-    #b = None
     for line in data_lines: 
         user, uts, ptype, tstep, a_idx, fr, en_options, en_selected, fb  = [i.strip() for i in line.split('\t')]
         if user != prev_user:
             sys.stderr.write('.')
-            #print b
             #print 'new user', user
             W = np.zeros((um.dh.FEAT_SIZE,)).astype(floatX)
-            b = np.zeros((um.dh.E_SIZE,)).astype(floatX)
+            E_g = np.zeros_like(W).astype(floatX)
+            E_dx = np.zeros_like(W).astype(floatX)
         else:
             pass
-
         if en_selected != "NO_ANSWER_MADE":
             x = np.array([um.dh.f2id[fr]]) #x
             e_id = um.dh.e2id[en_selected] #y index
@@ -87,21 +100,6 @@ if __name__ == '__main__':
             if np.isnan(loss):
                 raise Exception("loss is nan")
             dW = um.get_grad(W, x, o, y_selected, f)
-            #dW = np.reshape(um.get_my_grad(W, x, o, y_selected, f), W.shape)
-            #TODO: is this gradient ok in theano??
-            phi_x = um.get_phi_x(x)
-            print phi_x.shape
-            pdb.set_trace()
-            #y_hat = um.y_given_x(W, x, o)
-            #my_target = create_target(y_selected, y_hat, f)
-            #my_dW = np.reshape(um.get_my_grad(W, x, o, y_selected, f), dW.shape)
-            #my_dW_py = -(my_target.dot(phi_x) - y_hat.dot(phi_x))
-            #my_dW_py = np.reshape(my_dW_py, dW.shape)
-            #print "f", f, ptype, "cosine_sim", cosine_sim(dW, my_dW)
-            #print "f", f, ptype, "cosine_sim", cosine_sim(dW, my_dW_py)
-            #print "f", f, ptype, "cosine_sim", cosine_sim(my_dW_py, my_dW)
-            #pdb.set_trace()
-            #dW, db = um.get_grad(W, x, o, y_selected, f)
             if np.isnan(dW).any(): 
                 raise Exception("grad W has nan")
             #if np.isnan(db).any():
@@ -125,17 +123,10 @@ if __name__ == '__main__':
                 #print '\t max p(e|f)', np.max(y_hat)
                 #print '\trank e', y_hat_ranks[0, e_id]
                 #print '\ty_hat', y_hat[0,:]
-            if ptype == "EX":
-                W -= options.learning_rate * dW
-                #b -= options.learning_rate * db
-            elif ptype == "MC" or ptype == "MCR":
-                W -= options.learning_rate * dW
-                #b -= options.learning_rate * db
-            elif ptype == "TP" or ptype == "TPR":
-                W -= options.learning_rate * dW
-                #b -= options.learning_rate * db
-            else:
-                raise Exception("unknown ptype")
+            adapted_grad, E_g, E_dx = adapt_grad("adadelta", dW, E_g, E_dx)
+            W -= adapted_grad 
+            if np.isnan(W).any():
+                raise Exception(" updated W has nan")
             prev_user = user
         else:
             pass

@@ -1,9 +1,7 @@
 #!/usr/bin/env python
-__author__ = 'arenduchintala'
-import sys
-import logging
 import numpy as np
 import codecs
+__author__ = 'arenduchintala'
 
 class DataHelper(object):
     def __init__(self, event2feats_path, feat2id_path, actions_path):
@@ -20,6 +18,8 @@ class DataHelper(object):
         self.E_SIZE = 0
         self.F_SIZE = 0
         self.FEAT_SIZE = 0
+        self.true_f2e = {}
+        self.true_e2f = {}
         self.load_event2feats(event2feats_path)
         self.load_feats(feat2id_path)
         self.load_actions(actions_path)
@@ -33,6 +33,8 @@ class DataHelper(object):
             self.actions.append(tuple(items))
             if len(items) == 4:
                 self.examples.append((items[2], items[3]))
+                self.true_f2e[items[2]] = items[3]
+                self.true_e2f[items[3]] = items[2]
             else:
                 pass
         return True
