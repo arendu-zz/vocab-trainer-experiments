@@ -35,23 +35,31 @@ def sgd(cost, params, learning_rate):
 class GatedLogLinear(object):
     def __init__(self, dh, regularization = 0.1, reg_type = 'l2'):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
-        self.reg_type = reg_type 
+        self.reg_type = reg_type
+        self.low_rank_dim = 20
         self.l = regularization #regularization parameter
         self._eps = np.finfo(np.float32).tiny #1e-10 # for fixing divide by 0
         self._eta = 0.01 # for RMSprop and adagrad
         self.decay = 0.9 # for RMSprop
-        self.W_zw_l1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 20))), name='W_zw')
-        self.W_zw_l2 = theano.shared(floatX(np.zeros((20, self.dh.FEAT_SIZE))), name='W_zw')
+        self.W_zw_l1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank_dim))), name='W_zw')
+        self.W_zw_l2 = theano.shared(floatX(np.zeros((self.low_rank_dim, self.dh.FEAT_SIZE))), name='W_zw')
         self.W_zx = theano.shared(floatX(np.zeros((1, self.dh.E_SIZE))), name='W_zx')
         self.b_z = theano.shared(floatX(np.zeros((1, self.dh.FEAT_SIZE))), name='b_z')
 
-        self.W_rw_l1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 20))), name='W_rw')
-        self.W_rw_l2 = theano.shared(floatX(np.zeros((20, self.dh.FEAT_SIZE))), name='W_rw')
+        self.W_rw_l1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank_dim))), name='W_rw')
+        self.W_rw_l2 = theano.shared(floatX(np.zeros((self.low_rank_dim, self.dh.FEAT_SIZE))), name='W_rw')
         self.W_rx = theano.shared(floatX(np.zeros((1, self.dh.E_SIZE))), name='W_rx')
         self.b_r = theano.shared(floatX(np.zeros((1, self.dh.FEAT_SIZE))), name='b_r')
         self.params = [self.W_zw_l1, self.W_zw_l2, self.W_zx, self.b_z, self.W_rw_l1, self.W_rw_l2, self.W_rx, self.b_r]
+        self.reg_params = [self.W_zw_l1, self.W_zw_l2, self.W_zx, self.W_rw_l1, self.W_rw_l2, self.W_rx] #dont regularize the bias
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         self.make_graph()
+
+    def load_params(self, new_params):
+        assert len(self.params) == len(new_params)
+        for shared_param, new_param in zip(self.params, new_params):
+            shared_param.set_value(floatX(new_param))
+        return True
 
     def _phi(self, f_idx, e_idx):
         ff = np.zeros(self.dh.FEAT_SIZE)
@@ -92,13 +100,14 @@ class GatedLogLinear(object):
             #reg = T.sum(T.sqr(theta_t))  #TODO:add to gradient..
             y_dot = Phi_x_t.dot(theta_t.T) #(Y,D,) dot (D,)
             y_dot_masked = masked(y_dot, o_t, -np.inf) #(batch_size, output_dim)
-            y_hat  = T.nnet.softmax(y_dot_masked) #(batch_size, output_dim)
+            y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(batch_size, output_dim)
+            y_hat = T.clip(y_hat_unsafe, self._eps, 0.9999999)
             y_target = create_target(y_t, y_hat, f_t)
             ll_loss_vec = -T.sum(y_target * T.log(y_hat + self._eps), axis=1)  #cross-entropy
             ll_loss = T.mean(ll_loss_vec) #+ (self.l * reg) 
             theta_t_grad = -(y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t))
             theta_t_grad = T.reshape(theta_t_grad, theta_t.shape)
-            #theta_t_grad = T.grad(ll_loss, theta_t)
+            y_hat = T.reshape(y_hat, (self.dh.E_SIZE,))
             return theta_t_grad, y_hat, ll_loss
 
         def recurrence(x_t, y_t, o_t, f_t, theta_t):
@@ -107,7 +116,6 @@ class GatedLogLinear(object):
             #o_t (Y,)
             #f_t (scalar)
             #theta_t (D,)
-
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
             z_t = T.nnet.sigmoid(self.W_zw_l1.dot(self.W_zw_l2.dot(theta_t)) + self.W_zx.dot(Phi_x_t) + self.b_z) #(D,)
@@ -120,12 +128,16 @@ class GatedLogLinear(object):
         
         [seq_thetas, seq_y_hats, losses], _ = theano.scan(fn=recurrence, sequences=[X,Y,O,F], outputs_info=[theta_0, None, None])
         seq_loss = T.sum(losses)
-        grad_params = [T.grad(seq_loss, p) for p in self.params]
-        w_updates = rmsprop(seq_loss, self.params, lr)
-        #self.train = theano.function(inputs=[X,Y,O,F, theta_0], outputs=[seq_loss, thetas], updates = w_updates)
+        reg_loss = 0.0
+        for reg_param in self.reg_params:
+            reg_loss += T.sum(T.sqr(reg_param))
+        total_loss = seq_loss + (self.l * reg_loss)
+        grad_params = [T.grad(total_loss, p) for p in self.params]
         self.get_params = theano.function(inputs = [], outputs = self.params)
         self.get_seq_loss = theano.function([X, Y, O, F, theta_0], outputs = seq_loss)
+        self.get_total_loss = theano.function([X, Y, O, F, theta_0], outputs = total_loss)
         self.get_seq_y_hats = theano.function([X, Y, O, F, theta_0], outputs = seq_y_hats)
         self.get_seq_thetas = theano.function([X, Y, O, F, theta_0], outputs = seq_thetas)
-        self.get_seq_grad = theano.function([X, Y, O, F, theta_0], outputs= grad_params)
-        self.do_update = theano.function([X, Y, O, F, theta_0, lr], outputs= [seq_loss,seq_thetas],updates = w_updates)
+        self.get_seq_grad = theano.function([X, Y, O, F, theta_0], outputs = grad_params)
+        self.do_sgd_update = theano.function([X, Y, O, F, theta_0, lr], outputs= [seq_loss, seq_thetas, seq_y_hats], updates = rmsprop(total_loss, self.params, lr))
+        self.do_rms_update = theano.function([X, Y, O, F, theta_0, lr], outputs= [seq_loss, seq_thetas, seq_y_hats], updates = sgd(total_loss, self.params, lr))
