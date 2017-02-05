@@ -16,18 +16,22 @@ else:
 
 def read_data(file_path, dh):
     data_lines = []
-    data_lines += codecs.open('./data/data_splits/train.data', 'r', 'utf8').readlines()
+    data_lines += codecs.open(file_path, 'r', 'utf8').readlines()
     TRAINING_SEQ = []
     prev_user = None
-    X, Y, O, F = None, None, None, None 
+    X, Y, O, F, T = None, None, None, None, None
     for line in data_lines:
         user, uts, ptype, tstep, a_idx, fr, en_options, en_selected, fb  = [i.strip() for i in line.split('\t')]
         if user != prev_user:
-            if X is not None and Y is not None and O is not None and F is not None:
-                TRAINING_SEQ.append((np.array(X, dtype=np.int32),np.array(Y, dtype=np.int32),np.array(O, dtype=np.int32),np.array(F, dtype=np.int32)))
+            if X is not None and Y is not None and O is not None and F is not None and T is not None:
+                TRAINING_SEQ.append((np.array(X, dtype=np.int32),
+                    np.array(Y, dtype=np.int32),
+                    np.array(O, dtype=np.int32),
+                    np.array(F, dtype=np.int32),
+                    np.array(T, dtype=np.int32)))
             else:
                 pass
-            X, Y, O, F = [],[],[],[] #clearing out 
+            X, Y, O, F, T = [],[],[],[],[] #clearing out 
         if en_selected != "NO_ANSWER_MADE":
             x = dh.f2id[fr] #x
             e_id = dh.e2id[en_selected] #y index
@@ -43,12 +47,29 @@ def read_data(file_path, dh):
             f = 0 if fb == 'incorrect' else 1
             o = o.astype(intX)
             y_selected = y_selected.astype(intX)
+            t = np.array([0,0,0,0,0,0]).astype(intX)
+            t[3] = 1 if fb == 'revealed' else 0
+            t[4] = 1 if fb == 'correct' else 0
+            t[5] = 1 if fb == 'incorrect' else 0
+            if ptype == "EX":
+                t[0] = 1
+            elif ptype in ["MC", "MCR"]:
+                t[1] = 1
+            elif ptype in ["TP", "TPR"]:
+                t[2] = 1
+            else:
+                raise Exception("unknown prompt type:" + ptype)
 
             X.append(x)
             Y.append(y_selected)
             O.append(o)
             F.append(f)
+            T.append(t)
         prev_user = user
 
-    TRAINING_SEQ.append((np.array(X, dtype=np.int32),np.array(Y, dtype=np.int32),np.array(O, dtype=np.int32),np.array(F, dtype=np.int32)))
+    TRAINING_SEQ.append((np.array(X, dtype=np.int32),
+        np.array(Y, dtype=np.int32),
+        np.array(O, dtype=np.int32),
+        np.array(F, dtype=np.int32),
+        np.array(T, dtype=np.int32)))
     return TRAINING_SEQ

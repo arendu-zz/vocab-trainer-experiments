@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import argparse
 import sys
-import pdb
 import codecs
 import numpy as np
 import theano
@@ -31,8 +30,12 @@ if __name__ == '__main__':
     actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions'
     dh = DataHelper(events_file, feats_file, actions_file)
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
-    DEV_SEQ= read_data('./data/data_splits/dev.data', dh)
-    for _lr in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+    assert len(TRAINING_SEQ) == 100
+    DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
+    assert len(DEV_SEQ) == 20
+    lrs = np.arange(16.0) * 0.1 if options.update_method == "simple" else [0]
+    for _lr in lrs: 
+        _lr = floatX(_lr)
         if options.update_method in ["simple", "adagrad", "adadelta", "rmsprop"]:
             sll = SimpleLoglinear(dh, _lr, adapt = options.update_method)
         else:
@@ -40,29 +43,16 @@ if __name__ == '__main__':
         theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
         E_g_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
         E_dx_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
-        for _ in xrange(0): #nothing to learn!!
-            #shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
-            shuffle_ids = range(len(TRAINING_SEQ))
-            for r_idx in shuffle_ids:
-                _X, _Y, _O, _F = TRAINING_SEQ[r_idx]
-                seq_losses = sll.get_seq_losses(_X, _Y, _O, _F, theta_0)
-                seq_loss = sll.get_seq_loss(_X, _Y, _O, _F, theta_0)
-                #print seq_losses
-                print seq_loss
-                seq_y_hats = sll.get_seq_y_hats(_X, _Y, _O, _F, theta_0)
-                seq_thetas = sll.get_seq_thetas(_X, _Y, _O, _F, theta_0)
-                if np.isnan(seq_loss):
-                    raise Exception("loss is nan")
-                if np.isnan(seq_y_hats).any():
-                    raise Exception("y_hat has nan")
-                if np.isnan(seq_thetas).any():
-                    raise Exception("thetas has nan")
-                print r_idx, seq_loss
         sum_dev_losses = 0.0
+        ave_p_y = 0.0
         for dev_idx in xrange(len(DEV_SEQ)):
-            _devX, _devY, _devO, _devF = DEV_SEQ[dev_idx]
+            _devX, _devY, _devO, _devF, _devT = DEV_SEQ[dev_idx]
             dev_loss = sll.get_seq_loss(_devX, _devY, _devO, _devF, theta_0, E_g_0, E_dx_0)
+            dev_y_hats = sll.get_seq_y_hats(_devX, _devY, _devO, _devF, theta_0, E_g_0, E_dx_0)
+            p_y = dev_y_hats[_devY == 1]
+            p_y = p_y[_devT[:,(0,3)].sum(axis=1) == 0]
+            ave_p_y += np.mean(p_y)
             sum_dev_losses += dev_loss
-        msg = "learning rate:" + str(sll.lr) + " dev:" + str(sum_dev_losses)
+        msg = "learning rate:" + str(sll.lr) + " ave_dev_loss per seq:" + str(sum_dev_losses / len(DEV_SEQ)) + "sum_ave_p_y:" + str(ave_p_y)
         sys.stdout.write(msg +'\n')
         sys.stdout.flush()
