@@ -13,14 +13,16 @@ else:
     floatX = np.float64
 
 class SimpleLoglinear(object):
-    def __init__(self, dh, learning_rate, regularization = 0.1, reg_type = 'l2'):
+    def __init__(self, dh, learning_rate, regularization = 0.1, reg_type = 'l2', adapt = "adagrad"):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.reg_type = reg_type
         self.l = regularization #regularization parameter
         self.lr = learning_rate
         self._eps = np.finfo(np.float32).tiny #1e-10 # for fixing divide by 0
+        self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self._eta = 0.01 # for RMSprop and adagrad
-        self.decay = 0.9 # for RMSprop
+        self._decay = 0.9 # for RMSprop
+        self.adapt = adapt 
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         self.make_graph()
 
@@ -43,7 +45,37 @@ class SimpleLoglinear(object):
         Y = T.imatrix('Y') #(sequence_size, output_dim) #the Y that is selected by the user
         F = T.ivector('F') #(sequence_size,) # was the answer marked as correct or incorrect?
         theta_0 = T.fvector('theta_0') #(feature_size,)
+        E_g_0 = T.fvector('E_g_0') #(feature_size,)
+        E_dx_0 = T.fvector('E_dx_0') #(feature_size,)
 
+        def rms(v):
+            return T.sqrt(v + self._eps)
+
+        def adapt_grad(g, E_g, E_dx):
+            if self.adapt == "adadelta":
+                E_g = (self._decay * E_g) + ((1.0 - self._decay) * T.sqr(g))
+                #E_g[T.abs_(E_g) < self._mult_eps] = 0.0
+                grad = (rms(E_dx) / rms(E_g)) * g
+                #grad[T.abs_(grad) < self._mult_eps] = 0.0
+                E_dx = (self._decay * E_dx) + ((1.0 - self._decay) * T.sqr(grad))
+                return grad, E_g, E_dx
+            elif self.adapt == "adagrad":
+                #g[T.abs_(g) < self._mult_eps] = 0.0
+                E_g += g ** 2
+                #E_g[T.abs_(E_g) < self._mult_eps] = 0.0
+                grad = (self._eta / rms(E_g)) * g
+                return grad, E_g, E_dx #E_dx does nothing...
+            elif self.adapt == "rmsprop":
+                E_g = (self._decay * E_g) + ((1.0 - self._decay) * T.sqr(g))
+                #E_g[T.abs_(E_g) < self._mult_eps] = 0.0
+                grad = (self._eta / rms(E_g)) * g
+                return grad, E_g, E_dx
+            elif self.adapt == "simple":
+                grad = self.lr * g
+                return grad, E_g, E_dx
+            else:
+                raise Exception("unknown adapt grad")
+        
         def create_target(y_selected, y_predicted, feedback):
             #y_selected is a one-hot vector
             #y_predicted is the output based on current set of weights
@@ -65,14 +97,14 @@ class SimpleLoglinear(object):
             y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(Y,)
             y_hat = T.clip(y_hat_unsafe, self._eps, 0.9999999)
             y_target = create_target(y_t, y_hat, f_t)
-            ll_loss_vec = -T.sum(y_target * T.log(y_hat + self._eps), axis=1)  #cross-entropy
-            ll_loss = T.mean(ll_loss_vec) 
+            ll_loss_vec = -T.sum(y_target * T.log(y_hat), axis=1)  #cross-entropy
+            ll_loss = T.mean(ll_loss_vec) #+ (self.l * reg)
             theta_t_grad = -(y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t))
             theta_t_grad = T.reshape(theta_t_grad, theta_t.shape) #(D,)
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
             return theta_t_grad, y_hat, ll_loss
 
-        def recurrence(x_t, y_t, o_t, f_t, theta_t):
+        def recurrence(x_t, y_t, o_t, f_t, theta_t, E_g_t, E_dx_t):
             #x_t (scalar)
             #y_t (Y,)
             #o_t (Y,)
@@ -80,16 +112,18 @@ class SimpleLoglinear(object):
             #theta_t (D,)
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
-            grad_theta_tm1, y_hat, loss_tm1 = log_linear_t(Phi_x_t, y_t, o_t, f_t, theta_t) #(D,) and scalar
+            grad_theta_t, y_hat, loss_t = log_linear_t(Phi_x_t, y_t, o_t, f_t, theta_t) #(D,) and scalar
             #theta_tp1 = T.clip(theta_t + self.lr * grad_theta_tm1, -1.0, 1.0)
-            theta_tp1 = theta_t - self.lr * grad_theta_tm1
-            return theta_tp1, y_hat, loss_tm1
+            adapt_grad_t, E_g_tp1, E_dx_tp1 = adapt_grad(grad_theta_t, E_g_t, E_dx_t)
+            #theta_tp1 = theta_t - self.lr * grad_theta_tm1
+            theta_tp1 = theta_t - adapt_grad_t
+            return theta_tp1, E_g_tp1, E_dx_tp1, y_hat, loss_t
 
-        [seq_thetas, seq_y_hats, seq_losses], _ = theano.scan(fn=recurrence, sequences=[X,Y,O,F], outputs_info=[theta_0, None, None])
+        [seq_thetas, seq_E_gs, seq_E_dxs, seq_y_hats, seq_losses], _ = theano.scan(fn=recurrence, sequences=[X,Y,O,F], outputs_info=[theta_0, E_g_0, E_dx_0, None, None])
         seq_loss = T.sum(seq_losses)
         total_loss = seq_loss #+ (self.l * reg_loss)
-        self.get_seq_losses = theano.function([X, Y, O, F, theta_0], outputs = seq_losses)
-        self.get_seq_loss = theano.function([X, Y, O, F, theta_0], outputs = seq_loss)
-        self.get_total_loss = theano.function([X, Y, O, F, theta_0], outputs = total_loss)
-        self.get_seq_y_hats = theano.function([X, Y, O, F, theta_0], outputs = seq_y_hats)
-        self.get_seq_thetas = theano.function([X, Y, O, F, theta_0], outputs = seq_thetas)
+        self.get_seq_losses = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_losses)
+        self.get_seq_loss = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_loss)
+        self.get_total_loss = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = total_loss)
+        self.get_seq_y_hats = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_y_hats)
+        self.get_seq_thetas = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_thetas)

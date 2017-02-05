@@ -2,7 +2,6 @@
 import numpy as np
 import theano
 import theano.tensor as T
-from datahelper import DataHelper
 
 __author__ = 'arenduchintala'
 
@@ -33,7 +32,7 @@ def sgd(cost, params, learning_rate):
 
 
 class GatedLogLinear(object):
-    def __init__(self, dh, regularization = 0.1, user_regularization = 0.1, reg_type = 'l2', diag=False, low_rank_dim = 20):
+    def __init__(self, dh, regularization = 0.1, reg_type = 'l2', diag=False, low_rank_dim = 20):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.reg_type = reg_type
         self.diag = diag
@@ -110,7 +109,7 @@ class GatedLogLinear(object):
             y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(batch_size, output_dim)
             y_hat = T.clip(y_hat_unsafe, self._eps, 0.9999999)
             y_target = create_target(y_t, y_hat, f_t)
-            ll_loss_vec = -T.sum(y_target * T.log(y_hat + self._eps), axis=1)  #cross-entropy
+            ll_loss_vec = -T.sum(y_target * T.log(y_hat), axis=1)  #cross-entropy
             ll_loss = T.mean(ll_loss_vec) #+ (self.l * reg) 
             theta_t_grad = -(y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t))
             theta_t_grad = T.reshape(theta_t_grad, theta_t.shape)
@@ -126,8 +125,8 @@ class GatedLogLinear(object):
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
             if self.diag:
-                z_t = T.nnet.sigmoid(self.W_zw * theta_t + self.W_zx.dot(Phi_x_t) + self.b_z) #(D,)
-                r_t = T.nnet.sigmoid(self.W_rw * theta_t + self.W_rx.dot(Phi_x_t) + self.b_r)
+                z_t = T.nnet.sigmoid(self.W_zw_l1 * theta_t + self.W_zx.dot(Phi_x_t) + self.b_z) #(D,)
+                r_t = T.nnet.sigmoid(self.W_rw_l1 * theta_t + self.W_rx.dot(Phi_x_t) + self.b_r)
             else:
                 z_t = T.nnet.sigmoid(self.W_zw_l1.dot(self.W_zw_l2.dot(theta_t)) + self.W_zx.dot(Phi_x_t) + self.b_z) #(D,)
                 r_t = T.nnet.sigmoid(self.W_rw_l1.dot(self.W_rw_l2.dot(theta_t)) + self.W_rx.dot(Phi_x_t) + self.b_r)
@@ -137,7 +136,7 @@ class GatedLogLinear(object):
             grad_theta_t, y_hat, loss_t = log_linear_t(Phi_x_t, y_t, o_t, f_t, theta_t) #(D,) and scalar
             theta_tp1 = (r_t * theta_t) - (z_t * grad_theta_t)
             return theta_tp1, y_hat, loss_t
-        
+
         [seq_thetas, seq_y_hats, seq_losses], _ = theano.scan(fn=recurrence, sequences=[X,Y,O,F], outputs_info=[theta_0, None, None])
         seq_loss = T.sum(seq_losses)
         reg_loss = 0.0
