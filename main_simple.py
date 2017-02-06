@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import pdb
 import sys
 import codecs
 import numpy as np
@@ -43,16 +44,30 @@ if __name__ == '__main__':
         theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
         E_g_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
         E_dx_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
-        sum_dev_losses = 0.0
-        ave_p_y = 0.0
+        user_mean_dev_loss = []
+        user_mean_p_y_u = []
+        user_mean_p_y_c = []
+        user_mean_p_y_ic = []
+        user_traces = []
         for dev_idx in xrange(len(DEV_SEQ)):
             _devX, _devY, _devO, _devF, _devT = DEV_SEQ[dev_idx]
-            dev_loss = sll.get_seq_loss(_devX, _devY, _devO, _devF, theta_0, E_g_0, E_dx_0)
+            mean_dev_loss = sll.get_seq_loss(_devX, _devY, _devO, _devF, theta_0, E_g_0, E_dx_0)
             dev_y_hats = sll.get_seq_y_hats(_devX, _devY, _devO, _devF, theta_0, E_g_0, E_dx_0)
-            p_y = dev_y_hats[_devY == 1]
-            p_y = p_y[_devT[:,(0,3)].sum(axis=1) == 0]
-            ave_p_y += np.mean(p_y)
-            sum_dev_losses += dev_loss
-        msg = "learning rate:" + str(sll.lr) + " ave_dev_loss per seq:" + str(sum_dev_losses / len(DEV_SEQ)) + "sum_ave_p_y:" + str(ave_p_y)
+            p_y_all = dev_y_hats[_devY == 1]
+            idx_u = np.arange(_devT.shape[0])[_devT[:,(4,5)].any(axis=1)] #index of row when 4 or 5 is 1
+            idx_u_c = np.arange(_devT.shape[0])[_devT[:,(4,)].any(axis=1)] #index of row when 4 is 1 i.e. correct
+            idx_u_ic = np.arange(_devT.shape[0])[_devT[:,(5,)].any(axis=1)] #index of row when 5 is 1 i.e. incorrect
+            p_y_u = p_y_all[_devT[:,(4,5)].any(axis=1)] #select prob is either col 4 or 5 is 1 in T
+            p_y_u_c = p_y_all[idx_u_c]
+            p_y_u_ic = p_y_all[idx_u_ic]
+            f_u = _devT[:,4][_devT[:,(4,5)].any(axis=1)] #select the 4th col if either col 4 or 5 is 1
+            user_mean_p_y_c.append(p_y_u_c.mean())
+            user_mean_p_y_ic.append(p_y_u_ic.mean())
+            user_mean_p_y_u.append(p_y_u.mean())
+            user_plot = np.concatenate((idx_u[:,np.newaxis], p_y_u[:, np.newaxis], f_u[:,np.newaxis]), axis=1)
+            user_traces.append(user_plot)
+
+            user_mean_dev_loss.append(mean_dev_loss)
+        msg = "learning rate:" + "%.3f" % sll.lr + " mean_loss:"  + "%.3f" % np.mean(user_mean_dev_loss) + " mean_p_u:" +"%.3f" % np.mean(user_mean_p_y_u) + " mean_p_c:" + "%.3f" % np.mean(user_mean_p_y_c) + " mean_p_ic:" + "%.3f" % np.mean(user_mean_p_y_ic) 
         sys.stdout.write(msg +'\n')
         sys.stdout.flush()

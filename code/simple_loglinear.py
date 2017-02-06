@@ -120,7 +120,7 @@ class SimpleLoglinear(object):
             return theta_tp1, E_g_tp1, E_dx_tp1, y_hat, loss_t
 
         [seq_thetas, seq_E_gs, seq_E_dxs, seq_y_hats, seq_losses], _ = theano.scan(fn=recurrence, sequences=[X,Y,O,F], outputs_info=[theta_0, E_g_0, E_dx_0, None, None])
-        seq_loss = T.sum(seq_losses)
+        seq_loss = T.mean(seq_losses) 
         total_loss = seq_loss #+ (self.l * reg_loss)
         self.get_seq_losses = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_losses)
         self.get_seq_loss = theano.function([X, Y, O, F, theta_0, E_g_0, E_dx_0], outputs = seq_loss)

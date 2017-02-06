@@ -19,19 +19,19 @@ def read_data(file_path, dh):
     data_lines += codecs.open(file_path, 'r', 'utf8').readlines()
     TRAINING_SEQ = []
     prev_user = None
-    X, Y, O, F, T = None, None, None, None, None
+    X, Y, O, F, S = None, None, None, None, None
     for line in data_lines:
         user, uts, ptype, tstep, a_idx, fr, en_options, en_selected, fb  = [i.strip() for i in line.split('\t')]
         if user != prev_user:
-            if X is not None and Y is not None and O is not None and F is not None and T is not None:
+            if X is not None and Y is not None and O is not None and F is not None and S is not None:
                 TRAINING_SEQ.append((np.array(X, dtype=np.int32),
                     np.array(Y, dtype=np.int32),
                     np.array(O, dtype=np.int32),
                     np.array(F, dtype=np.int32),
-                    np.array(T, dtype=np.int32)))
+                    np.array(S, dtype=np.int32)))
             else:
                 pass
-            X, Y, O, F, T = [],[],[],[],[] #clearing out 
+            X, Y, O, F, S = [],[],[],[],[] #clearing out 
         if en_selected != "NO_ANSWER_MADE":
             x = dh.f2id[fr] #x
             e_id = dh.e2id[en_selected] #y index
@@ -44,7 +44,7 @@ def read_data(file_path, dh):
                 for os in en_options.split(','):
                     o_id = dh.e2id[os.strip()]
                     o[o_id] = 1.0
-            f = 0 if fb == 'incorrect' else 1
+            f = 0 if fb == 'incorrect' else 1 #both corrent and reveal go to 1
             o = o.astype(intX)
             y_selected = y_selected.astype(intX)
             t = np.array([0,0,0,0,0,0]).astype(intX)
@@ -64,12 +64,12 @@ def read_data(file_path, dh):
             Y.append(y_selected)
             O.append(o)
             F.append(f)
-            T.append(t)
+            S.append(t)
         prev_user = user
 
     TRAINING_SEQ.append((np.array(X, dtype=np.int32),
         np.array(Y, dtype=np.int32),
         np.array(O, dtype=np.int32),
         np.array(F, dtype=np.int32),
-        np.array(T, dtype=np.int32)))
+        np.array(S, dtype=np.int32)))
     return TRAINING_SEQ
