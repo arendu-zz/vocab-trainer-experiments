@@ -161,7 +161,7 @@ class GatedLogLinear(object):
         reg_loss = 0.0
         for reg_param in self.reg_params:
             reg_loss += T.sum(T.sqr(reg_param))
-        total_loss = seq_loss #+ (self.l * reg_loss)
+        total_loss = seq_loss + (self.l * reg_loss)
         grad_params = [T.grad(total_loss, p) for p in self.params]
         self.get_params = theano.function(inputs = [], outputs = self.params)
         self.get_seq_loss = theano.function([X, Y, O, F, S, S_M1, theta_0], outputs = seq_loss)
