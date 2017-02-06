@@ -6,8 +6,18 @@ import codecs
 import json
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 __author__ = 'arenduchintala'
-global user2data_lines
+global user2data_lines, en2fr, user2test_q
 user2data_lines = {}
+user2test_data_lines = {}
+en2fr = {}
+user2test_q = {}
+
+def add_test_data_line(u, dl, ts):
+    global user2test_data_lines
+    dls = user2test_data_lines.get(u, [])
+    dls.append((ts, dl))
+    user2test_data_lines[u] = dls
+    return True
 
 def add_data_line(u, dl, ts):
     global user2data_lines
@@ -30,9 +40,41 @@ def fix_complex_obs(co):
                 fixed_complex_obs[k] = v[u'guess']
         return fixed_complex_obs
 
+def load_user2test():
+    global user2test_data_lines, en2fr
+    for line in codecs.open("./content/fixed_vocab_training_user_table.csv","r", "utf8").readlines()[1:]:
+        items = line.strip().split('\t')
+        user = items[1].strip()
+        if items[3].strip() != "" and int(items[2]) == 35 and items[3].strip() != 'NULL':
+            test_result = json.loads(items[3])
+        t_step = 36.0
+        for k,v in test_result.iteritems():
+            if k == u'test_correct_num' or k == u'test_total_num':
+                pass
+            else:
+                en_true = str(v[u'reference'])
+                fr_str = en2fr[en_true]
+                en_selected = v[u'user_answer']
+                if en_selected != "NO_ANSWER_MADE":
+                    test_data_line = '\t'.join([user, str(test_result[u'test_correct_num']), "TP", str(t_step), 'XX', fr_str, en_true, 'ALL', en_selected, "nofeedback"])
+                    add_test_data_line(user, test_data_line, t_step)
+                    t_step += 0.1
+                else:
+                    pass
+    return True
+
 
 if __name__ == '__main__':
+    content = codecs.open('./content/fake-en-medium.vocab', 'r', 'utf8').readlines()
+    user2test_q = {}
+    en2fr = {}
+    for line in content[1:]:
+        items = line.strip().split(',')
+        fr,en = zip(*[tuple(i.strip().split('/')) for i in items])
+        for f,e, in zip(fr, en):
+            en2fr[e] = f
     good_users = {}
+    good_users_test_qa = {}
     for i in codecs.open('new-good.users', 'r', 'utf8').readlines():
         good_users[i.strip()] = None
     
@@ -95,8 +137,9 @@ if __name__ == '__main__':
 
             if prompt_type == "EX":
                 en_selected = current_action[3].strip()
+                en_true = en_selected
                 en_options = "ALL"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, "revealed"])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, "revealed"])
                 add_data_line(user, data_line, training_step)
             elif prompt_type == "TP":
                 #will only give indicative feedback i.e. does not show correct answer
@@ -105,7 +148,7 @@ if __name__ == '__main__':
                 en_options = "ALL"
                 feedback = en_selected == en_true
                 fb_str = "correct" if feedback else "incorrect"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
                 add_data_line(user, data_line, training_step)
             elif prompt_type == "TPR":
                 #will indicate and give correct answer
@@ -117,13 +160,13 @@ if __name__ == '__main__':
                 fb_str = "correct" if feedback else "incorrect"
                 if feedback:
                     #if correct stop with one data line
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
                     add_data_line(user, data_line, training_step)
                 else:
                     #if wrong answer then 2 data lines
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
                     add_data_line(user, data_line, training_step)
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_true, "revealed"])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_true, "revealed"])
                     add_data_line(user, data_line, training_step + 0.1)
                     pass
                 pass
@@ -134,7 +177,7 @@ if __name__ == '__main__':
                 en_true = current_action[3].strip()
                 feedback = en_true == en_selected
                 fb_str = "correct" if feedback else "incorrect"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
                 add_data_line(user, data_line, training_step)
                 pass
             elif prompt_type == "MCR":
@@ -153,7 +196,7 @@ if __name__ == '__main__':
                         fb_str = "correct" if feedback else "incorrect"
                         en_options = ','.join(all_en_options)
                         t_step = training_step + (point * 0.1)
-                        data_line = '\t'.join([user, user_test_score, prompt_type, str(t_step), current_action_id, fr_str, en_options, en_selected, fb_str])
+                        data_line = '\t'.join([user, user_test_score, prompt_type, str(t_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
                         add_data_line(user, data_line, t_step)
                         #print data_line
                         if en_selected == "NO_ANSWER_MADE" or en_selected == "":
@@ -175,7 +218,7 @@ if __name__ == '__main__':
     good_users_list = [k for k in good_users]
     user_groups = []
     user_groups_stats = []
-
+    
     for g in xrange(7):
         if len(good_users_list) > 35:
             ug = np.random.choice(good_users_list, 20, False)
@@ -190,12 +233,19 @@ if __name__ == '__main__':
         sd = round(np.std(ug_ts), 2)
         user_groups_stats.append((m,sd))
 
+    load_user2test() 
+
     for idx, (ug, ug_stats) in enumerate(zip(user_groups, user_groups_stats)):
-        w = codecs.open('./data_splits/new-group' + str(idx) + '.data', 'w', 'utf8')
+        w = codecs.open('./data_splits/group' + str(idx) + '.data', 'w', 'utf8')
         print 'group:', idx, ',test_mean:', str(ug_stats[0]),',test_std:', str(ug_stats[1]),',num users:', len(ug)
         for u in ug:
             for ts, dll in sorted(user2data_lines[u]):
                 w.write(dll + '\n')
+            if u in user2test_data_lines:
+                for ts, dll in sorted(user2test_data_lines[u]):
+                    w.write(dll + '\n')
+            else:
+                print u,'not in user test'
         w.flush()
         w.close()
 
