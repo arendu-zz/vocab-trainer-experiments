@@ -25,7 +25,6 @@ def rmsprop(cost, params, learning_rate, rho=0.9, epsilon=1e-6):
 def sgd(cost, params, learning_rate):
     return [(param, param - learning_rate * T.grad(cost, param)) for param in params]
 
-
 def momentum(cost, params, learning_rate, momentum=0.9, type='nesterov'):
     assert type in ['std', 'nesterov'], 'Possible momentum types: `std`, `nesterov`'
     assert 0 <= momentum < 1

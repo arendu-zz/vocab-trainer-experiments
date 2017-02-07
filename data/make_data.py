@@ -55,8 +55,9 @@ def load_user2test():
                 en_true = str(v[u'reference'])
                 fr_str = en2fr[en_true]
                 en_selected = v[u'user_answer']
+                test_correct = "test_correct" if en_selected.lower() == en_true.lower() else "test_incorrect"
                 if en_selected != "NO_ANSWER_MADE":
-                    test_data_line = '\t'.join([user, str(test_result[u'test_correct_num']), "TP", str(t_step), 'XX', fr_str, en_true, 'ALL', en_selected, "nofeedback"])
+                    test_data_line = '\t'.join([user, str(test_result[u'test_correct_num']), "TP", str(t_step), 'XX', fr_str, en_true, 'ALL', en_selected, "nofeedback", test_correct])
                     add_test_data_line(user, test_data_line, t_step)
                     t_step += 0.1
                 else:
@@ -139,7 +140,7 @@ if __name__ == '__main__':
                 en_selected = current_action[3].strip()
                 en_true = en_selected
                 en_options = "ALL"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, "revealed"])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, "revealed", "NULL"])
                 add_data_line(user, data_line, training_step)
             elif prompt_type == "TP":
                 #will only give indicative feedback i.e. does not show correct answer
@@ -148,7 +149,7 @@ if __name__ == '__main__':
                 en_options = "ALL"
                 feedback = en_selected == en_true
                 fb_str = "correct" if feedback else "incorrect"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str, "NULL"])
                 add_data_line(user, data_line, training_step)
             elif prompt_type == "TPR":
                 #will indicate and give correct answer
@@ -160,13 +161,13 @@ if __name__ == '__main__':
                 fb_str = "correct" if feedback else "incorrect"
                 if feedback:
                     #if correct stop with one data line
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str, "NULL"])
                     add_data_line(user, data_line, training_step)
                 else:
                     #if wrong answer then 2 data lines
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str, "NULL"])
                     add_data_line(user, data_line, training_step)
-                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_true, "revealed"])
+                    data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_true, "revealed", "NULL"])
                     add_data_line(user, data_line, training_step + 0.1)
                     pass
                 pass
@@ -177,7 +178,7 @@ if __name__ == '__main__':
                 en_true = current_action[3].strip()
                 feedback = en_true == en_selected
                 fb_str = "correct" if feedback else "incorrect"
-                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
+                data_line = '\t'.join([user, user_test_score, prompt_type, str(training_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str, "NULL"])
                 add_data_line(user, data_line, training_step)
                 pass
             elif prompt_type == "MCR":
@@ -196,7 +197,7 @@ if __name__ == '__main__':
                         fb_str = "correct" if feedback else "incorrect"
                         en_options = ','.join(all_en_options)
                         t_step = training_step + (point * 0.1)
-                        data_line = '\t'.join([user, user_test_score, prompt_type, str(t_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str])
+                        data_line = '\t'.join([user, user_test_score, prompt_type, str(t_step), current_action_id, fr_str, en_true, en_options, en_selected, fb_str, "NULL"])
                         add_data_line(user, data_line, t_step)
                         #print data_line
                         if en_selected == "NO_ANSWER_MADE" or en_selected == "":
