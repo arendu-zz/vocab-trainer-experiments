@@ -36,6 +36,7 @@ if __name__ == '__main__':
     _decay = 0.001
     _learning_rate = 0.3 #only used for sgd
     sll = SimpleLoglinear(dh, regularization = options.regularization / 100.0)
+    _params = sll.get_params()
     for epoch_idx in xrange(75):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
@@ -49,20 +50,21 @@ if __name__ == '__main__':
                 seq_losses, seq_thetas, seq_y_hats = sll.do_sgd_update(_X, _Y, _O, floatX(_S), theta_0, lr)
             else:
                 raise Exception("unknown grad update:" + options.grad_update)
+            _params = sll.get_params()
+            _params = np.array(_params)
             if np.isnan(seq_losses):
                 raise Exception("loss is nan")
             if np.isnan(seq_y_hats).any():
                 raise Exception("y_hat has nan")
-            if np.isnan(sll.get_params()).any():
-                raise Exception("params is nan")
+            if np.isnan(_params).any():
+                raise Exception("_params is nan")
 
         user_mean_dev_loss = []
         user_mean_p_y_u = []
         user_mean_p_y_u_c = []
         user_mean_p_y_u_ic = []
         user_traces = []
-        p = sll.get_params()
-        param_str = np.array2string(p, formatter={'float_kind':lambda p: "%.3f" % p})
+        param_str = np.array2string(_params, formatter={'float_kind':lambda p: "%.3f" % p})
         for dev_idx in xrange(len(DEV_SEQ)):
             _devX, _devY, _devYT, _devO, _devS = DEV_SEQ[dev_idx]
             _devS = floatX(_devS)
