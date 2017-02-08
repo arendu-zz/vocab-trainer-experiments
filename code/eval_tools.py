@@ -18,7 +18,7 @@ else:
 
 __author__ = 'arenduchintala'
 
-def disp_eval(SEQ, seq_model, dh, trace_file = None):
+def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
     ave_total_loss = []
     ave_p_y_u_all = []
     ave_p_y_u = []
@@ -33,8 +33,8 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None):
 
     for p in _params:
         _max_p.append("%.3f" % np.max(p) + "," + "%.3f" % np.min(p))
-    if trace_file is not None: 
-        _trace_file = open(trace_file, 'w')
+    if trace_file is not None and epoch_idx is not None:
+        _trace_file = open(trace_file + '.iter.' + str(epoch_idx), 'w')
     else:
         pass
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
@@ -85,11 +85,10 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None):
         #user_traces.append(user_plot)
         ave_total_loss.append(total_loss)
     msg = "ave total loss:"  + "%.3f" % np.mean(ave_total_loss) +\
-        " p_r:" +"%.3f" % np.mean(ave_p_y_r) +\
-        " p_u:" +"%.3f" % np.mean(ave_p_y_u) +\
-        " p_c:" + "%.3f" % np.mean(ave_p_y_u_c) +\
-        " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic) +\
-        " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict) +\
+        " p_u:" +"%.3f" % np.mean(ave_p_y_u) + ",%.3f" % np.std(ave_p_y_u) + \
+        " p_c:" + "%.3f" % np.mean(ave_p_y_u_c)+ ",%.3f" % np.std(ave_p_y_u_c) + \
+        " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + \
+        " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict)+ ",%.3f" % np.std(ave_p_y_u_ict) + \
         " params:" + '--'.join(_max_p)
     sys.stdout.write(msg +'\n')
     sys.stdout.flush()

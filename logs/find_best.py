@@ -2,6 +2,9 @@
 import glob
 import re
 __author__ = 'arenduchintala'
+"""
+ave total loss:174.348 p_u:0.303,0.401 p_c:0.504,0.426 p_ic:0.135,0.285 p_ict:0.340,0.399 params:4.334,4.332--5.001,4.999--0.471,0.463--5.004,4.996
+"""
 def scan_file(fs):
     min_loss = (1000000, None, None) 
     max_p_r = (0, None, None)
@@ -16,6 +19,7 @@ def scan_file(fs):
         for idx,dc in enumerate(dev_content):
             items = re.split(r'(\s+|:)', dc)
             items = [i for i in items if i.strip() != '' and i.strip() !=':']
+            items = [i.split(',')[0] for i in items]
             loss = float(items[3])
             if loss < min_loss[0]:
                 min_loss = (loss, idx, f)
