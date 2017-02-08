@@ -25,10 +25,10 @@ def read_data(file_path, dh):
         if user != prev_user:
             if X is not None and Y is not None and O is not None and S is not None and YT is not None:
                 TRAINING_SEQ.append((np.array(X, dtype=np.int32),
-                    np.array(Y, dtype=np.int32),
-                    np.array(YT, dtype=np.int32),
-                    np.array(O, dtype=np.int32),
-                    np.array(S, dtype=np.int32)))
+                    np.array(Y, dtype=np.float32),
+                    np.array(YT, dtype=np.float32),
+                    np.array(O, dtype=np.float32),
+                    np.array(S, dtype=np.float32)))
             else:
                 pass
             X, Y, YT, O, S = [],[],[],[],[] #clearing out 
@@ -57,8 +57,8 @@ def read_data(file_path, dh):
             t[4] = 1 if fb == 'correct' else 0
             t[5] = 1 if fb == 'incorrect' else 0
             t[6] = 1 if fb == 'nofeedback' else 0
-            t[7] = 1 if fb == 'test_correct' else 0
-            t[8] = 1 if fb == 'test_incorrect' else 0
+            t[7] = 1 if is_qc == 'test_correct' else 0
+            t[8] = 1 if is_qc == 'test_incorrect' else 0
 
             X.append(x)
             Y.append(y_selected)
@@ -68,8 +68,8 @@ def read_data(file_path, dh):
         prev_user = user
 
     TRAINING_SEQ.append((np.array(X, dtype=np.int32),
-        np.array(Y, dtype=np.int32),
-        np.array(YT, dtype=np.int32),
-        np.array(O, dtype=np.int32),
-        np.array(S, dtype=np.int32)))
+        np.array(Y, dtype=np.float32),
+        np.array(YT, dtype=np.float32),
+        np.array(O, dtype=np.float32),
+        np.array(S, dtype=np.float32)))
     return TRAINING_SEQ
