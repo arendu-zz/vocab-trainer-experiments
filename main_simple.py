@@ -26,6 +26,7 @@ if __name__ == '__main__':
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
     opt.add_argument('--ur', action='store', dest='learner_reg', default=0.5, type=float, required=True)
+    opt.add_argument('--bl', action='store', dest='use_bin_loss', default=0, type=int, required=True)
     opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=True)
     opt.add_argument('-m', action='store', dest='model', default="scalar", required=True)
     opt.add_argument('-c', action='store', dest='clip', default="clip", required=True)
@@ -36,6 +37,7 @@ if __name__ == '__main__':
     actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions'
     dh = DataHelper(events_file, feats_file, actions_file)
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
+    TRAINING_SEQ = TRAINING_SEQ[:4]
     DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
     _adapt = options.model == "adapt"
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
@@ -48,7 +50,8 @@ if __name__ == '__main__':
                         x1 = 0.9,
                         x2 = 0.1,
                         adapt = _adapt,
-                        clip = _clip)
+                        clip = _clip,
+                        use_bin_loss = options.use_bin_loss)
     for epoch_idx in xrange(50 if _adapt else 10):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
@@ -57,9 +60,9 @@ if __name__ == '__main__':
             sys.stderr.write('.')
             _X, _Y, _YT, _O, _S = TRAINING_SEQ[r_idx]
             if options.grad_update == "rms":
-                seq_losses, seq_thetas, seq_y_hats = sll.do_rms_update(_X, _Y, _O, _S, _theta_0, 1.0)
+                seq_losses, seq_thetas, seq_y_hats = sll.do_rms_update(_X, _Y, _YT, _O, _S, _theta_0, 1.0)
             elif options.grad_update == "sgd":
-                seq_losses, seq_thetas, seq_y_hats = sll.do_sgd_update(_X, _Y, _O, _S, _theta_0, lr)
+                seq_losses, seq_thetas, seq_y_hats = sll.do_sgd_update(_X, _Y, _YT, _O, _S, _theta_0, lr)
             else:
                 raise Exception("unknown grad update:" + options.grad_update)
             _params = sll.get_params()
@@ -73,6 +76,6 @@ if __name__ == '__main__':
                     raise Exception("_params is nan")
                 _max_p.append(np.max(_p))
         print 'dev'
-        disp_eval(DEV_SEQ, sll, dh, options.save_trace + '.iter.' + str(epoch_idx)) 
+        disp_eval(DEV_SEQ, sll, dh, options.save_trace, epoch_idx) 
         print 'train'
-        disp_eval(TRAINING_SEQ[:2], sll, dh, None) 
+        disp_eval(TRAINING_SEQ[:2], sll, dh, None, None)

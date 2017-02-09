@@ -41,9 +41,9 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
     for idx in xrange(len(SEQ)):
         _devX, _devY, _devYT, _devO, _devS = SEQ[idx]
         #seq_model = SimpleLoglinear(dh, reg = options.reg / 100.0, x1=_x1, x2=_x2, adapt = _adapt)
-        total_loss,all_loss,r_loss,c_loss,ic_loss = seq_model.get_loss(_devX, _devY, _devO, _devS, _theta_0)
-        seq_losses,r_losses, c_losses, ic_losses = seq_model.get_seq_losses(_devX, _devY, _devO, _devS, _theta_0)
-        y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devO, _devS, _theta_0)
+        total_loss,all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _theta_0)
+        seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _theta_0)
+        y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _theta_0)
         log_y_hats = np.log(y_hats)
         ll = -np.sum(_devY * log_y_hats, axis=1)
         unrevealed = -(_devS[:,3] - 1)
