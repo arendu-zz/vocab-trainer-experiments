@@ -37,7 +37,6 @@ if __name__ == '__main__':
     actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions'
     dh = DataHelper(events_file, feats_file, actions_file)
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
-    TRAINING_SEQ = TRAINING_SEQ[:4]
     DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
     _adapt = options.model == "adapt"
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
