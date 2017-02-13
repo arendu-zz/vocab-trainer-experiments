@@ -18,6 +18,13 @@ else:
 
 __author__ = 'arenduchintala'
 
+def pad_start(_s):
+    z = np.zeros((1, _s.shape[1])).astype(floatX)
+    sm1 = np.concatenate((z, _s), axis=0)
+    sm1 = sm1[:_s.shape[0], :]
+    sm1 = floatX(sm1)
+    return sm1
+
 def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
     ave_total_loss = []
     ave_p_y_u_all = []
@@ -40,10 +47,11 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     for idx in xrange(len(SEQ)):
         _devX, _devY, _devYT, _devO, _devS = SEQ[idx]
+        _devSM1 = pad_start(_devS)
         #seq_model = SimpleLoglinear(dh, reg = options.reg / 100.0, x1=_x1, x2=_x2, adapt = _adapt)
-        total_loss,all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _theta_0)
-        seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _theta_0)
-        y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _theta_0)
+        total_loss,all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         log_y_hats = np.log(y_hats)
         ll = -np.sum(_devY * log_y_hats, axis=1)
         unrevealed = -(_devS[:,3] - 1)

@@ -26,7 +26,7 @@ def read_data(file_path, dh):
             if X is not None and Y is not None and O is not None and S is not None and YT is not None:
                 TRAINING_SEQ.append((np.array(X, dtype=np.int32),
                     np.array(Y, dtype=np.float32),
-                    np.array(YT, dtype=np.float32),
+                    np.array(YT, dtype=np.int32),
                     np.array(O, dtype=np.float32),
                     np.array(S, dtype=np.float32)))
             else:
@@ -69,7 +69,7 @@ def read_data(file_path, dh):
 
     TRAINING_SEQ.append((np.array(X, dtype=np.int32),
         np.array(Y, dtype=np.float32),
-        np.array(YT, dtype=np.float32),
+        np.array(YT, dtype=np.int32),
         np.array(O, dtype=np.float32),
         np.array(S, dtype=np.float32)))
     return TRAINING_SEQ
