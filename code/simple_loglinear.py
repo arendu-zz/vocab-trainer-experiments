@@ -40,15 +40,15 @@ def ortho_weight(ndim):
 
 
 class SimpleLoglinear(object):
-    def __init__(self, dh, reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, use_bin_loss = 0, use_mean_loss = 0):
+    def __init__(self, dh, reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_sum_loss = 0):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
         self.clip = clip
         self.l = reg #reg parameter
-        self.use_bin_loss = use_bin_loss
-        self.use_mean_loss = use_mean_loss
-        assert self.use_bin_loss == 0 or self.use_bin_loss  == 1
-        assert self.use_mean_loss == 0 or self.use_mean_loss == 1
+        self.interpolate_bin_loss = interpolate_bin_loss
+        self.use_sum_loss = use_sum_loss
+        assert 0< self.interpolate_bin_loss < 1 
+        assert self.use_sum_loss == 0 or self.use_sum_loss == 1
         self.ul = learner_reg #reg parameter for the learner model
         self._eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
@@ -204,21 +204,21 @@ class SimpleLoglinear(object):
         c_loss_mean = T.mean(T.nonzero_values(c_losses))
         ic_loss_mean = T.mean(T.nonzero_values(ic_losses))
         bin_loss_mean = T.mean(T.nonzero_values(bin_losses))
-        sum_loss = c_loss_mean + ic_loss_mean + (self.use_bin_loss * bin_loss_mean)
+        mean_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss_mean + ic_loss_mean)) + (self.interpolate_bin_loss * bin_loss_mean)
         #r_loss = T.sum(r_losses)
         c_loss = T.sum(c_losses)
         ic_loss = T.sum(ic_losses)
         bin_loss = T.sum(bin_losses)
-        mean_loss = c_loss + ic_loss + (self.use_bin_loss * bin_loss)
+        sum_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss + ic_loss)) + (self.interpolate_bin_loss * bin_loss)
         reg_loss = 0.0
         for reg_param in self.reg_params:
             reg_loss += T.sum(T.abs_(reg_param + self._eps))
             reg_loss += T.sum(T.sqr(reg_param))
-        total_loss = (self.use_mean_loss * mean_loss) + ((1 - self.use_mean_loss) * sum_loss) + (self.l * reg_loss)
-        #self.get_seq_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = all_loss)
+        model_loss = (self.use_sum_loss * sum_loss) + ((1.0 - self.use_sum_loss) * mean_loss)  
+        total_loss = model_loss + (self.l * reg_loss)
         self.get_params = theano.function(inputs = [], outputs = self.params)
         self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
-        self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, all_loss, c_loss, ic_loss, bin_loss])
+        self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])
         self.get_seq_y_hats = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_y_hats)
         self.get_seq_thetas = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_thetas)
         self.do_sgd_update = theano.function([X, Y, YT, O, S, SM1, theta_0, lr], 

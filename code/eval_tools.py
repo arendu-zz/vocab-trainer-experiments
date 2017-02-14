@@ -33,7 +33,6 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
     ave_p_y_u_c = []
     ave_p_y_u_ic = []
     ave_p_y_u_ict = []
-    #user_traces = []
     _params = seq_model.get_params()
     _max_p = []
     _trace_file = None
@@ -49,7 +48,7 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
         _devX, _devY, _devYT, _devO, _devS = SEQ[idx]
         _devSM1 = pad_start(_devS)
         #seq_model = SimpleLoglinear(dh, reg = options.reg / 100.0, x1=_x1, x2=_x2, adapt = _adapt)
-        total_loss,all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        total_loss, model_loss, all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         log_y_hats = np.log(y_hats)
@@ -79,25 +78,20 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
             np.savetxt(_trace_file, user_plot.T, fmt="%.3f") 
         else:
             pass
-        #summary  = np.concatenate((ll[:,np.newaxis], seq_losses[:,np.newaxis], r_losses[:,np.newaxis], c_losses[:,np.newaxis], ic_losses[:,np.newaxis], p_y_u_all[:,np.newaxis], _devS[:,[3,4,5,6,7,8]]), axis=1)
-        #print summary
-        #print p_y_u.mean(), p_y_u_c.mean(), p_y_u_ic.mean(), 
-        #pdb.set_trace()
         ave_p_y_u_all+=p_y_u_all.tolist()
         ave_p_y_u+=p_y_u.tolist()
         ave_p_y_r+=p_y_r.tolist()
         ave_p_y_u_c+=p_y_u_c.tolist()
         ave_p_y_u_ic+=p_y_u_ic.tolist()
         ave_p_y_u_ict+=p_y_u_ict.tolist()
-        #user_plot = np.concatenate((idx_u[:,np.newaxis], p_y_u[:, np.newaxis], f_u[:,np.newaxis]), axis=1)
-        #user_traces.append(user_plot)
-        ave_total_loss.append(total_loss)
-    msg = "ave total loss:"  + "%.3f" % np.mean(ave_total_loss) +\
-        " p_u:" +"%.3f" % np.mean(ave_p_y_u) + ",%.3f" % np.std(ave_p_y_u) + \
-        " p_c:" + "%.3f" % np.mean(ave_p_y_u_c)+ ",%.3f" % np.std(ave_p_y_u_c) + \
-        " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + \
-        " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict)+ ",%.3f" % np.std(ave_p_y_u_ict) + \
-        " params:" + '--'.join(_max_p)
+        #ave_total_loss.append(total_loss)
+        ave_total_loss.append(model_loss)
+    msg = "ave model loss:"  + "%.3f" % np.mean(ave_total_loss) +\
+        " p_u:" +"%.3f" % np.mean(ave_p_y_u) + ",%.3f" % np.std(ave_p_y_u) + "," + str(len(ave_p_y_u)) + \
+        " p_c:" + "%.3f" % np.mean(ave_p_y_u_c)+ ",%.3f" % np.std(ave_p_y_u_c) + "," + str(len(ave_p_y_u_c)) + \
+        " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + "," + str(len(ave_p_y_u_ic)) + \
+        " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict)+ ",%.3f" % np.std(ave_p_y_u_ict) + "," + str(len(ave_p_y_u_ict)) + \
+        " params:" + ' '.join(_max_p)
     sys.stdout.write(msg +'\n')
     sys.stdout.flush()
     if _trace_file is not None:

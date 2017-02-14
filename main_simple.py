@@ -25,11 +25,12 @@ if __name__ == '__main__':
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
-    opt.add_argument('--ur', action='store', dest='learner_reg', default=0.5, type=float, required=True)
-    opt.add_argument('--bl', action='store', dest='use_bin_loss', default=0, type=int, required=True)
-    opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=True)
+    opt.add_argument('--ur', action='store', dest='learner_reg', default=0.1, type=float, required=True)
+    opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float, required=True)
+    opt.add_argument('--sl', action='store', dest='use_sum_loss', default=1, type=int, required=True)
+    opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=False)
     opt.add_argument('-m', action='store', dest='model', default="m0", required=True)
-    opt.add_argument('-c', action='store', dest='clip', default="clip", required=True)
+    opt.add_argument('-c', action='store', dest='clip', default="free", required=False)
     opt.add_argument('--st', action='store', dest='save_trace', default=None)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
@@ -47,8 +48,9 @@ if __name__ == '__main__':
                         learner_reg = options.learner_reg,
                         learning_model = options.model,
                         clip = _clip,
-                        use_bin_loss = options.use_bin_loss)
-    for epoch_idx in xrange(50 if options.model == "m1" else 10):
+                        use_sum_loss = options.use_sum_loss,
+                        interpolate_bin_loss = options.interpolate_bin_loss)
+    for epoch_idx in xrange(10 if options.model == "m0" else 100):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
         sys.stderr.write('-')
