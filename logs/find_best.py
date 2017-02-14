@@ -49,9 +49,12 @@ def scan_file(fs):
 
 
 if __name__ == '__main__':
-    fs = "./simple.scalar.*1.log"
-    print 'best scalar'
+    fs = "./simple.m.m0.*.log"
+    print '\nbest m0'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.adapt.*1.log"
-    print '\nbest adapt'
+    fs = "./simple.m.m1.*.log"
+    print '\nbest m1'
+    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
+    fs = "./simple.m.m2.*.log"
+    print '\nbest m2'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
