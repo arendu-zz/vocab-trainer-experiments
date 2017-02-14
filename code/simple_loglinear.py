@@ -214,7 +214,7 @@ class SimpleLoglinear(object):
         for reg_param in self.reg_params:
             reg_loss += T.sum(T.abs_(reg_param + self._eps))
             reg_loss += T.sum(T.sqr(reg_param))
-        total_loss = (self.use_mean_loss * mean_loss) + ((1 - self.use_mean_loss) * sum_loss) + (self.use_bin_loss * bin_loss) + (self.l * reg_loss)
+        total_loss = (self.use_mean_loss * mean_loss) + ((1 - self.use_mean_loss) * sum_loss) + (self.l * reg_loss)
         #self.get_seq_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = all_loss)
         self.get_params = theano.function(inputs = [], outputs = self.params)
         self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
