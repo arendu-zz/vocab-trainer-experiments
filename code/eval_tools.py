@@ -92,9 +92,10 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
         " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + "," + str(len(ave_p_y_u_ic)) + \
         " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict)+ ",%.3f" % np.std(ave_p_y_u_ict) + "," + str(len(ave_p_y_u_ict)) + \
         " params:" + ' '.join(_max_p)
-    sys.stdout.write(msg +'\n')
+    #print _params
+    #sys.stdout.write(msg +'\n')
     sys.stdout.flush()
     if _trace_file is not None:
         _trace_file.flush()
         _trace_file.close()
-    return True
+    return msg, np.mean(ave_total_loss), np.mean(ave_p_y_u)

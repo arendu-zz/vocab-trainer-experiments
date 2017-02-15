@@ -14,12 +14,13 @@ def scan_file(fs):
     max_p_c_ict = (0, None, None)
     for f in glob.glob(fs):
         content = open(f, 'r').readlines()
-        content = [c for c in content if c.startswith('ave')]
-        dev_content = [c for idx,c in enumerate(content) if idx % 2 ==0]
+        dev_content = [c for c in content if c.startswith('dev:')]
+        #dev_content = [c for idx,c in enumerate(content) if idx % 2 ==0]
         #train_content = [c for idx,c in enumerate(content) if idx % 2 ==0]
         for idx,dc in enumerate(dev_content):
             items = re.split(r'(\s+|:)', dc)
             items = [i for i in items if i.strip() != '' and i.strip() !=':']
+            items.pop(0)
             items = [i.split(',')[0] for i in items]
             loss = float(items[3])
             if loss < min_loss[0]:
@@ -49,12 +50,12 @@ def scan_file(fs):
 
 
 if __name__ == '__main__':
-    fs = "./simple.m.m0.*.log"
+    fs = "./simple.m.m0.*.r.*.ur.*.log"
     print '\nbest m0'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m1.*.log"
+    fs = "./simple.m.m1.*.r.*.ur.*.log"
     print '\nbest m1'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m2.*.log"
+    fs = "./simple.m.m2.*.r.*.ur.*.log"
     print '\nbest m2'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
