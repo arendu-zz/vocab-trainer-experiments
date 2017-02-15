@@ -1,7 +1,6 @@
 ##!/usr/bin/env python
 import numpy as np
-from optimizers import sgd
-from optimizers import momentum
+from optimizers import sgd, rmsprop, momentum
 import theano
 import theano.tensor as T
 
@@ -40,40 +39,53 @@ def ortho_weight(ndim):
 
 
 class SimpleLoglinear(object):
-    def __init__(self, dh, reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_sum_loss = 0):
+    def __init__(self, dh, u = "sgd", reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_sum_loss = 0):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
         self.clip = clip
+        self._update = None
+        if u == "sgd":
+            self._update = sgd
+        elif u == "rms":
+            self._update = rmsprop
+        elif u == 'mom':
+            self._update = momentum
+        else:
+            raise Exception("unknown grad update:" + u)
         self.l = reg #reg parameter
         self.interpolate_bin_loss = interpolate_bin_loss
         self.use_sum_loss = use_sum_loss
-        assert 0< self.interpolate_bin_loss < 1 
+        assert 0 <= self.interpolate_bin_loss <= 1 
         assert self.use_sum_loss == 0 or self.use_sum_loss == 1
         self.ul = learner_reg #reg parameter for the learner model
         self._eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         if self.learning_model == "m1":
-            x = np.ones((self.dh.FEAT_SIZE,))
-            self.b_z = theano.shared(floatX(x), name='b_z')
-            self.b_r = theano.shared(floatX(x), name='b_r')
+            x = 0.1 * np.random.rand(self.dh.FEAT_SIZE,)
+            x = np.zeros((self.dh.FEAT_SIZE,)) 
+            b_x = 0.0 #np.zeros((1,))
+            self.b_z = theano.shared(floatX(b_x), name='b_z')
+            self.b_r = theano.shared(floatX(b_x), name='b_r')
             self.W_r = theano.shared(floatX(x), name='W_r')
             self.W_z = theano.shared(floatX(x), name='W_z')
             self.params = [self.W_r, self.b_r, self.W_z, self.b_z]
             self.reg_params = [self.W_r, self.W_z]
         elif self.learning_model == "m2":
-            b_x = np.zeros((self.dh.FEAT_SIZE,))
+            #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE, 9) #9 is the size of the s_t context vector 
+            x = np.zeros((self.dh.FEAT_SIZE, 9)) #9 is the size of the s_t context vector 
+            b_x = 0.0 #np.zeros((1,))
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
-            self.W_r = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, 9)), name='W_r') #9 is the size of the s_t context vector
-            self.W_z = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, 9)), name='W_z') #9 is the size of the s_t context vector
+            self.W_r = theano.shared(floatX(x), name='W_r') 
+            self.W_z = theano.shared(floatX(x), name='W_z') 
             self.params = [self.W_r, self.b_r, self.W_z, self.b_z]
             self.reg_params = [self.W_r, self.W_z]
         elif self.learning_model == "m0":
-            x = 1.0
+            x = 0.0 #0.1  * np.random.rand(1,)
             self.W_r = theano.shared(floatX(x), name='W_r')
             self.W_z = theano.shared(floatX(x), name='W_z')
-            self.params = [self.W_r, self.W_z]
+            self.params = [self.W_r, self.W_z] #9 is the size of the s_t context vector
             self.reg_params = [self.W_r, self.W_z]
         else: 
             raise BaseException("unknown learning model")
@@ -149,7 +161,7 @@ class SimpleLoglinear(object):
                 model_bin_loss = -T.log(1.0 - y_hat[0, yt_t])
 
             y_target = create_target(y_t, y_hat, s_t)
-            #user_loss = -T.sum(y_target * T.log(y_hat), axis=1) + self.ul * T.sum(T.sqr(theta_t))
+            #user_loss = -T.sum(y_target * T.log(y_hat)) + self.ul * T.sum(T.sqr(theta_t))
             #theta_t_grad = T.grad(user_loss, theta_t)
             theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
             if self.ul >= 0.0:
@@ -157,7 +169,6 @@ class SimpleLoglinear(object):
             else:
                 norm2 = T.sqrt(T.sum(T.sqr(self._eps + theta_t_grad)))
                 theta_t_grad = theta_t_grad / norm2
-
             theta_t_grad = T.reshape(theta_t_grad, theta_t.shape) #(D,)
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
             return theta_t_grad, y_hat, model_loss, model_bin_loss
@@ -221,9 +232,6 @@ class SimpleLoglinear(object):
         self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])
         self.get_seq_y_hats = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_y_hats)
         self.get_seq_thetas = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_thetas)
-        self.do_sgd_update = theano.function([X, Y, YT, O, S, SM1, theta_0, lr], 
+        self.do_update = theano.function([X, Y, YT, O, S, SM1, theta_0, lr], 
                 outputs= [total_loss, seq_thetas, seq_y_hats], 
-                updates = momentum(total_loss, self.params, lr))
-        self.do_rms_update = theano.function([X, Y, YT, O, S, SM1, theta_0, lr], 
-                outputs= [total_loss, seq_thetas, seq_y_hats], 
-                updates = sgd(total_loss, self.params, lr))
+                updates = self._update(total_loss, self.params, lr))
