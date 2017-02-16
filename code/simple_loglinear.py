@@ -42,6 +42,7 @@ class SimpleLoglinear(object):
     def __init__(self, dh, u = "sgd", reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_sum_loss = 0):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
+        self.low_rank = 10
         self.clip = clip
         self._update = None
         if u == "sgd":
@@ -62,7 +63,7 @@ class SimpleLoglinear(object):
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         if self.learning_model == "m1":
-            x = 0.1 * np.random.rand(self.dh.FEAT_SIZE,)
+            #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE,)
             x = np.zeros((self.dh.FEAT_SIZE,)) 
             b_x = 0.0 #np.zeros((1,))
             self.b_z = theano.shared(floatX(b_x), name='b_z')
@@ -77,16 +78,33 @@ class SimpleLoglinear(object):
             b_x = 0.0 #np.zeros((1,))
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
-            self.W_r = theano.shared(floatX(x), name='W_r') 
-            self.W_z = theano.shared(floatX(x), name='W_z') 
-            self.params = [self.W_r, self.b_r, self.W_z, self.b_z]
-            self.reg_params = [self.W_r, self.W_z]
+            self.W_rs = theano.shared(floatX(x), name='W_rs') 
+            self.W_zs = theano.shared(floatX(x), name='W_zs') 
+            self.params = [self.W_rs, self.b_r, self.W_zs, self.b_z]
+            self.reg_params = [self.W_rs, self.W_zs]
         elif self.learning_model == "m0":
             x = 0.0 #0.1  * np.random.rand(1,)
             self.W_r = theano.shared(floatX(x), name='W_r')
             self.W_z = theano.shared(floatX(x), name='W_z')
             self.params = [self.W_r, self.W_z] #9 is the size of the s_t context vector
             self.reg_params = [self.W_r, self.W_z]
+        elif self.learning_model == "m3":
+            self.W_rt1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank))), name='W_rt1')
+            self.W_rt2 = theano.shared(floatX(np.zeros((self.low_rank, self.dh.FEAT_SIZE))), name='W_rt2')
+            self.W_zt1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank))), name='W_zt1')
+            self.W_zt2 = theano.shared(floatX(np.zeros((self.low_rank, self.dh.FEAT_SIZE))), name='W_zt2')
+
+            self.W_rx = theano.shared(floatX(np.zeros((self.dh.E_SIZE,))), name='W_rx1')
+            self.W_zx = theano.shared(floatX(np.zeros((self.dh.E_SIZE,))), name='W_zx1')
+
+            self.W_rs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 9))), name='W_rs') 
+            self.W_zs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 9))), name='W_zs') 
+
+            b_x = 0.0 
+            self.b_z = theano.shared(floatX(b_x), name='b_z')
+            self.b_r = theano.shared(floatX(b_x), name='b_r')
+            self.params = [self.W_rx, self.W_rt1, self.W_rt2, self.W_zt1, self.W_zt2, self.W_zx, self.W_zs, self.W_rs, self.b_r, self.b_z] 
+            self.reg_params = [self.W_rx, self.W_rt1, self.W_rt2, self.W_zt1, self.W_zt2, self.W_zx, self.W_zs, self.W_rs]
         else: 
             raise BaseException("unknown learning model")
         self.make_graph()
@@ -194,8 +212,12 @@ class SimpleLoglinear(object):
                 elif self.learning_model == "m0":
                     theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * grad_theta_t
                 elif self.learning_model == "m2":
-                    g_r = T.nnet.sigmoid(self.W_r.dot(s_tm1)  + self.b_r)  
-                    g_z = T.nnet.sigmoid(self.W_z.dot(s_t) + self.b_z)  
+                    g_r = T.nnet.sigmoid(self.W_rs.dot(s_tm1)  + self.b_r)  
+                    g_z = T.nnet.sigmoid(self.W_zs.dot(s_t) + self.b_z)  
+                    theta_tp1 = g_r * theta_t + g_z * grad_theta_t
+                elif self.learning_model == "m3":
+                    g_r = T.nnet.sigmoid(self.W_rt1.dot(self.W_rt2.dot(theta_t)) + self.W_rs.dot(s_tm1) + self.W_rx.dot(Phi_x_t) + self.b_r)
+                    g_z = T.nnet.sigmoid(self.W_zt1.dot(self.W_zt2.dot(theta_t)) + self.W_zs.dot(s_t) + self.W_zx.dot(Phi_x_t) + self.b_z)
                     theta_tp1 = g_r * theta_t + g_z * grad_theta_t
                 else:
                     raise BaseException("unknown learning model")
