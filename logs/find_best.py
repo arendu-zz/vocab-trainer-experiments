@@ -44,18 +44,22 @@ def scan_file(fs):
     print 'max_p_u:'.ljust(20), "%.4f" % max_p_u[0], max_p_u[1], max_p_u[2]
     print 'max_p_c:'.ljust(20), "%.4f" % max_p_c[0], max_p_c[1], max_p_c[2]
     print 'max_p_ic:'.ljust(20), "%.4f" % max_p_ic[0], max_p_ic[1], max_p_ic[2]
+    print 'min_p_ict:'.ljust(20), "%.4f" % min_p_ict[0], min_p_ict[1], min_p_ict[2]
     print 'max_p_c_diff_ict:'.ljust(20), "%.4f" % max_p_c_ict[0], max_p_c_ict[1], max_p_c_ict[2]
-    print 'min_p_ictt:'.ljust(20), "%.4f" % min_p_ict[0], min_p_ict[1], min_p_ict[2]
     return min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict
 
 
 if __name__ == '__main__':
-    fs = "./simple.m.m0.*.r.*.ur.*.log"
+    fs = "./simple.m.m0.*.r.*.ur.*.bl.0.0.*log"
     print '\nbest m0'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m1.*.r.*.ur.*.log"
+    fs = "./simple.m.m1.*.r.*.ur.*.bl.0.0.*log"
     print '\nbest m1'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m2.*.r.*.ur.*.log"
+    fs = "./simple.m.m2.*.r.*.ur.*.bl.0.0.*log"
     print '\nbest m2'
     min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
+    fs = "./simple.m.m3.*.r.*.ur.*.bl.0.0.*log"
+    print '\nbest m3'
+    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
+

@@ -3,6 +3,7 @@ import sys
 import codecs
 import argparse
 import matplotlib.pyplot as plt
+import seaborn as sns
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 __author__ = 'arenduchintala'
 
@@ -85,10 +86,12 @@ if __name__ == '__main__':
     #insert options here
     #d_a = "logs/traces/simple.adapt.sgd.0.01.0.1.free.1.ut.iter.1"
     #d_s = "logs/traces/simple.scalar.sgd.0.1.0.01.free.1.ut.iter.1"
-    flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
-    d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.13", flatui[1], "m2")
-    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.3", flatui[3], "m1")
-    d_m0 = ("logs/traces/simple.m.m0.u.sgd.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.0", flatui[5], "m0")
+    #print sns.palplot(sns.color_palette("Blues"))
+    #flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
+    colors = sns.color_palette(n_colors=3).as_hex()
+    d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.13", colors[0], "m2")
+    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.3", colors[1], "m1")
+    d_m0 = ("logs/traces/simple.m.m0.u.sgd.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.0", colors[2], "m0")
     file_data2users = {}
     users2p_data = {}
     for file_path,color,mod in [d_m2, d_m1, d_m0]:
