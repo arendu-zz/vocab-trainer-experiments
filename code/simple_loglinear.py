@@ -37,12 +37,13 @@ def ortho_weight(ndim):
     u, s, v = np.linalg.svd(W)
     return u.astype(theano.config.floatX)
 
-
 class SimpleLoglinear(object):
-    def __init__(self, dh, u = "sgd", reg = 0.1, learner_reg = 0.5, learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_sum_loss = 0):
+    def __init__(self, dh, u = "sgd", reg = 0.1, learner_reg = 0.5, grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, use_temp = 0):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
+        self.grad_model = grad_model
         self.low_rank = 10
+        self.context_size = 10
         self.clip = clip
         self._update = None
         if u == "sgd":
@@ -55,9 +56,11 @@ class SimpleLoglinear(object):
             raise Exception("unknown grad update:" + u)
         self.l = reg #reg parameter
         self.interpolate_bin_loss = interpolate_bin_loss
-        self.use_sum_loss = use_sum_loss
+        self.use_sum_loss = 1
+        self.use_temp = use_temp
         assert 0 <= self.interpolate_bin_loss <= 1 
         assert self.use_sum_loss == 0 or self.use_sum_loss == 1
+        assert self.use_temp == 0 or self.use_temp == 1
         self.ul = learner_reg #reg parameter for the learner model
         self._eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
@@ -73,8 +76,8 @@ class SimpleLoglinear(object):
             self.params = [self.W_r, self.b_r, self.W_z, self.b_z]
             self.reg_params = [self.W_r, self.W_z]
         elif self.learning_model == "m2":
-            #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE, 9) #9 is the size of the s_t context vector 
-            x = np.zeros((self.dh.FEAT_SIZE, 9)) #9 is the size of the s_t context vector 
+            #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
+            x = np.zeros((self.dh.FEAT_SIZE, self.context_size)) #self.context_size is the size of the s_t context vector 
             b_x = 0.0 #np.zeros((1,))
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
@@ -86,7 +89,7 @@ class SimpleLoglinear(object):
             x = 0.0 #0.1  * np.random.rand(1,)
             self.W_r = theano.shared(floatX(x), name='W_r')
             self.W_z = theano.shared(floatX(x), name='W_z')
-            self.params = [self.W_r, self.W_z] #9 is the size of the s_t context vector
+            self.params = [self.W_r, self.W_z] #self.context_size is the size of the s_t context vector
             self.reg_params = [self.W_r, self.W_z]
         elif self.learning_model == "m3":
             self.W_rt1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank))), name='W_rt1')
@@ -97,8 +100,8 @@ class SimpleLoglinear(object):
             self.W_rx = theano.shared(floatX(np.zeros((self.dh.E_SIZE,))), name='W_rx1')
             self.W_zx = theano.shared(floatX(np.zeros((self.dh.E_SIZE,))), name='W_zx1')
 
-            self.W_rs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 9))), name='W_rs') 
-            self.W_zs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, 9))), name='W_zs') 
+            self.W_rs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.context_size))), name='W_rs') 
+            self.W_zs = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.context_size))), name='W_zs') 
 
             b_x = 0.0 
             self.b_z = theano.shared(floatX(b_x), name='b_z')
@@ -107,6 +110,23 @@ class SimpleLoglinear(object):
             self.reg_params = [self.W_rx, self.W_rt1, self.W_rt2, self.W_zt1, self.W_zt2, self.W_zx, self.W_zs, self.W_rs]
         else: 
             raise BaseException("unknown learning model")
+        if self.grad_model == "g0":
+            pass
+        elif self.grad_model == "g1":
+            self.W_g1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE, self.low_rank))), name='W_g1')
+            self.W_g2 = theano.shared(floatX(np.zeros((self.low_rank, self.dh.FEAT_SIZE))), name='W_g2')
+            self.b_g1 = theano.shared(floatX(np.zeros((self.dh.FEAT_SIZE,))), name= 'b_g1')
+            self.b_g2 = theano.shared(floatX(np.zeros((self.low_rank,))), name= 'b_g2')
+            self.reg_params += [self.W_g1, self.W_g2]
+            self.params += [self.W_g1, self.W_g2, self.b_g2, self.b_g1]
+        else:
+            raise BaseException("unknown grad model")
+        self.temp = theano.shared(floatX(1.0), name='temp')
+        if use_temp == 1:
+            self.params.append(self.temp)
+            self.reg_params.append(self.temp)
+        else:
+            pass
         self.make_graph()
 
     def _phi(self, f_idx, e_idx):
@@ -128,8 +148,8 @@ class SimpleLoglinear(object):
         O = T.fmatrix('O') #(sequence_size, output_dim) #mask for possible Ys
         Y = T.fmatrix('Y') #(sequence_size, output_dim) #the Y that is selected by the user
         YT = T.ivector('YT') #(sequence_size,) #index of the input string
-        S = T.fmatrix('S') #(sequence_size,9) # was the answer marked as correct or incorrect?
-        SM1 = T.fmatrix('SM1') #(sequence_size,9) # was the answer marked as correct or incorrect?
+        S = T.fmatrix('S') #(sequence_size,self.context_size) # was the answer marked as correct or incorrect?
+        SM1 = T.fmatrix('SM1') #(sequence_size,self.context_size) # was the answer marked as correct or incorrect?
         theta_0 = T.fvector('theta_0') #(feature_size,)
 
         def rms(v):
@@ -150,6 +170,11 @@ class SimpleLoglinear(object):
             a_m = T.switch(mask, a, val)
             return a_m
 
+        def new_softmax(v):
+            s_v = T.reshape(v, (1, self.dh.E_SIZE))
+            e_v = T.exp(s_v / (10 * T.nnet.sigmoid(self.temp)))
+            return e_v / T.sum(e_v)
+
         def assign_losses(loss_t, bin_loss_t, s_t):
             r_loss_t = T.switch(s_t[3], loss_t, 0)
             bin_loss_t = T.switch(s_t[3], 0, bin_loss_t)
@@ -159,8 +184,9 @@ class SimpleLoglinear(object):
 
         def log_linear_t(Phi_x_t, y_t, yt_t, o_t, s_t, theta_t):
             y_dot = Phi_x_t.dot(theta_t.T) #(Y,D,) dot (D,)
-            y_dot_masked = masked(y_dot, o_t, -100000000.0000) #(Y,)
-            y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(Y,)
+            y_dot_masked = masked(y_dot, o_t, -100000000.0000) #(1,Y)
+            #y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(1,Y)
+            y_hat_unsafe  = new_softmax(y_dot_masked) #T.nnet.softmax(y_dot_masked) #(1,Y)
             y_hat = T.clip(y_hat_unsafe, self._eps, 0.9999999)
             model_loss = -T.sum(y_t * T.log(y_hat)) 
             m_t = T.argmax(y_hat) #model's prediction
@@ -195,30 +221,37 @@ class SimpleLoglinear(object):
             #x_t (scalar)
             #y_t (Y,)
             #o_t (Y,)
-            #s_t (9,)
+            #s_t (self.context_size,)
             #theta_t (D,)
-            s_t = T.reshape(s_t, (9,))
-            s_tm1 = T.reshape(s_tm1, (9,))
+            s_t = T.reshape(s_t, (self.context_size,))
+            s_tm1 = T.reshape(s_tm1, (self.context_size,))
             theta_t = T.reshape(theta_t, (self.dh.FEAT_SIZE,))
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
-            grad_theta_t, y_hat, loss_t, bin_loss_t = log_linear_t(Phi_x_t, y_t, yt_t, o_t, s_t, theta_t) #(D,) and scalar
+            o_gtheta_t, y_hat, loss_t, bin_loss_t = log_linear_t(Phi_x_t, y_t, yt_t, o_t, s_t, theta_t) #(D,) and scalar
             r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, s_t)
             if s_t[6] == 1: #nofeeback no knowledge change...
                 theta_tp1 = theta_t
             else:
+                if self.grad_model == "g0":
+                    gtheta_t = o_gtheta_t
+                elif self.grad_model == "g1":
+                    gtheta_t = T.tanh(self.W_g1.dot((T.tanh(self.W_g2.dot(o_gtheta_t) + self.b_g2))) + self.b_g1)
+                else:
+                    raise BaseException("unknown grad model")
+
                 if self.learning_model == "m1":
-                    theta_tp1 = T.nnet.sigmoid(self.W_r + self.b_r) * theta_t + T.nnet.sigmoid(self.W_z + self.b_z) * grad_theta_t
+                    theta_tp1 = T.nnet.sigmoid(self.W_r + self.b_r) * theta_t + T.nnet.sigmoid(self.W_z + self.b_z) * gtheta_t
                 elif self.learning_model == "m0":
-                    theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * grad_theta_t
+                    theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * gtheta_t
                 elif self.learning_model == "m2":
                     g_r = T.nnet.sigmoid(self.W_rs.dot(s_tm1)  + self.b_r)  
                     g_z = T.nnet.sigmoid(self.W_zs.dot(s_t) + self.b_z)  
-                    theta_tp1 = g_r * theta_t + g_z * grad_theta_t
+                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
                 elif self.learning_model == "m3":
                     g_r = T.nnet.sigmoid(self.W_rt1.dot(self.W_rt2.dot(theta_t)) + self.W_rs.dot(s_tm1) + self.W_rx.dot(Phi_x_t) + self.b_r)
                     g_z = T.nnet.sigmoid(self.W_zt1.dot(self.W_zt2.dot(theta_t)) + self.W_zs.dot(s_t) + self.W_zx.dot(Phi_x_t) + self.b_z)
-                    theta_tp1 = g_r * theta_t + g_z * grad_theta_t
+                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
                 else:
                     raise BaseException("unknown learning model")
 

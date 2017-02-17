@@ -70,11 +70,20 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
         p_y_u_ic = p_y_u_all[idx_u_ic] #models prob on all of users incorrect answers
         p_y_u_ict = p_y_t_all[idx_u_ic] #models prob on all of users incorrect answers
         if _trace_file is not None:
+            _mc = _devS[:,2]
+            _tp = _devS[:,1]  + _devS[:,7] + _devS[:,8]
             _u_correct = _devS[:,4] + _devS[:,7]
             _u_correct = np.reshape(_u_correct, p_y_u_all.shape)
             _u_incorrect = _devS[:,5] + _devS[:,8]
             _u_incorrect = np.reshape(_u_incorrect, p_y_u_all.shape)
-            user_plot = np.concatenate((p_y_t_all[:,np.newaxis],p_y_u_all[:,np.newaxis], _u_correct[:, np.newaxis], _u_incorrect[:,np.newaxis]), axis=1) 
+            _chance = _devS[:, 9]
+            user_plot = np.concatenate((p_y_t_all[:,np.newaxis],
+                                        p_y_u_all[:,np.newaxis],
+                                        _u_correct[:, np.newaxis],
+                                        _u_incorrect[:,np.newaxis],
+                                        _mc[:, np.newaxis],
+                                        _tp[:,np.newaxis],
+                                        _chance[:, np.newaxis]), axis=1) 
             np.savetxt(_trace_file, user_plot.T, fmt="%.3f") 
         else:
             pass

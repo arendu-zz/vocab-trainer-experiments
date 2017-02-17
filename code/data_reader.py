@@ -42,14 +42,16 @@ def read_data(file_path, dh):
             y_selected[e_id] = 1.0 #set what the user selected to 1, and the rest to zero
             if en_options == "ALL":
                 o = np.ones((dh.E_SIZE,)).astype(floatX)
+                r_choice = dh.E_SIZE
             else:
                 o = np.zeros((dh.E_SIZE,)).astype(floatX)
+                r_choice = len(en_options.split(','))
                 for os in en_options.split(','):
                     o_id = dh.e2id[os.strip()]
                     o[o_id] = 1.0
             o = o.astype(intX)
             y_selected = y_selected.astype(intX)
-            t = np.array([0,0,0,0,0,0,0,0,0]).astype(intX)
+            t = np.array([0,0,0,0,0,0,0,0,0,0]).astype(intX)
             t[0] = 1 if ptype in ["EX"] else 0
             t[1] = 1 if ptype in ["TP", "TPR"] else 0
             t[2] = 1 if ptype in ["MC", "MCR"] else 0
@@ -59,6 +61,8 @@ def read_data(file_path, dh):
             t[6] = 1 if fb == 'nofeedback' else 0
             t[7] = 1 if is_qc == 'test_correct' else 0
             t[8] = 1 if is_qc == 'test_incorrect' else 0
+            t[9] = r_choice
+            assert r_choice > 0.0
 
             X.append(x)
             Y.append(y_selected)
