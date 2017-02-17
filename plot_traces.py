@@ -92,17 +92,24 @@ if __name__ == '__main__':
     d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.13", colors[0], "m2")
     d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.3", colors[1], "m1")
     d_m0 = ("logs/traces/simple.m.m0.u.sgd.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.0", colors[2], "m0")
+    test_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.0.ut.iter.4", colors[0], "m0")
+    test_m1 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g1.t.1.ut.iter.5", colors[1], "g0")
     file_data2users = {}
     users2p_data = {}
-    for file_path,color,mod in [d_m2, d_m1, d_m0]:
+    for file_path,color,mod in [test_m0, test_m1]:
         _file = open(file_path, 'r').read().strip().split('\n')
-        for idx in range(0, len(_file), 4):
+        for idx in range(0, len(_file), 7):
             _p_y_t = [float(i) for i in _file[idx + 0].split()] 
             _p_y_u = [float(i) for i in _file[idx + 1].split()] 
             _u_c = [int(float(i)) for i in _file[idx + 2].split()] 
             _u_ic = [int(float(i)) for i in _file[idx + 3].split()] 
+            _is_mc = [int(float(i)) for i in _file[idx + 4].split()] 
+            _is_tp = [int(float(i)) for i in _file[idx + 5].split()] 
+            print idx + 6
+            print _file[idx + 6]
+            _chance = [(1.0 / float(i)) for i in _file[idx + 6].split()] 
             p_datas = users2p_data.get(idx, [])
-            p_datas.append((file_path, color, mod, _p_y_t, _p_y_u, _u_c, _u_ic))
+            p_datas.append((file_path, color, mod, _p_y_t, _p_y_u, _u_c, _u_ic, _is_mc, _is_tp, _chance))
             users2p_data[idx] = p_datas
 
         pass
@@ -120,39 +127,41 @@ if __name__ == '__main__':
     #    scalar_u_ic = [int(float(i)) for i in scalar_trace_file[idx + 3].split()] 
     #    users[len(users)] = (adapt_p_y_t, adapt_p_y_u, adapt_u_c, adapt_u_ic, scalar_p_y_t, scalar_p_y_u, scalar_u_c, scalar_u_ic)
 
-    for u_idx in users2p_data.keys()[:2]:
+    for u_idx in users2p_data.keys()[:20]:
         lines = []
         for p_data in users2p_data[u_idx]:
-            file_path, color, mod, _pyt, _pyu, _uc, _uic = p_data
+            file_path, color, mod, _pyt, _pyu, _uc, _uic, _is_mc, _is_tp, _chance = p_data
             _yt_line = []
             _yu_line = []
             _yt_markers = []
             _yu_markers = []
             x_line = []
-            for x_idx, (_yt, _yu, _uc, _uic) in enumerate(zip(_pyt, _pyu, _uc, _uic)):
+            _chance_line = []
+            for x_idx, (_yt, _yu, _uc, _uic, _mc, _tp, _c) in enumerate(zip(_pyt, _pyu, _uc, _uic, _is_mc, _is_tp, _chance)):
                 assert not (_uc == 1 and _uic == 1)
                 if _uc  == 1 or _uic == 1:
                     x_line.append(x_idx)
+                    _chance_line.append(_c)
                     if _uc == 1:
-                        _yt_markers.append(('o', color))
+                        _yt_markers.append(('o' if _mc == 1 else 's', color))
                         _yt_line.append(_yt)
-                        _yu_markers.append(('o', color))
+                        _yu_markers.append(('o' if _mc == 1 else 's', color))
                         _yu_line.append(_yu)
                     elif _uic == 1:
-                        _yt_markers.append(('o', 'white'))
+                        _yt_markers.append(('o' if _mc == 1 else 's', 'white'))
                         _yt_line.append(_yt)
-                        _yu_markers.append(('o', 'white'))
+                        _yu_markers.append(('o' if _mc == 1 else 's', 'white'))
                         _yu_line.append(_yu)
                     pass
                 else:
                     pass
-            plt.plot(x_line, _yt_line, lw=1.0, ls=':', c = color)
+            plt.plot(x_line, _yt_line, lw=0.5, ls=':', c = color)
             pl, = plt.plot(x_line, _yu_line, lw=1.0, c = color, label=mod)
             lines.append(pl)
             for _s, _x, _y in zip(_yu_markers, x_line, _yu_line):
                 plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=8, mew=1.0)
 
         plt.legend(handles=lines, loc=1)
-        plt.ylim(-0.2, 1.2)
+        plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
         plt.xlim(0, 58)
         plt.show()
