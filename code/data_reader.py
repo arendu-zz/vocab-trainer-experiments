@@ -51,7 +51,7 @@ def read_data(file_path, dh):
                     o[o_id] = 1.0
             o = o.astype(intX)
             y_selected = y_selected.astype(intX)
-            t = np.array([0,0,0,0,0,0,0,0,0,0]).astype(intX)
+            t = np.array([0,0,0,0,0,0,0,0,0,0]).astype(floatX)
             t[0] = 1 if ptype in ["EX"] else 0
             t[1] = 1 if ptype in ["TP", "TPR"] else 0
             t[2] = 1 if ptype in ["MC", "MCR"] else 0
@@ -61,7 +61,7 @@ def read_data(file_path, dh):
             t[6] = 1 if fb == 'nofeedback' else 0
             t[7] = 1 if is_qc == 'test_correct' else 0
             t[8] = 1 if is_qc == 'test_incorrect' else 0
-            t[9] = r_choice
+            t[9] = 1.0 / float(r_choice)
             assert r_choice > 0.0
 
             X.append(x)

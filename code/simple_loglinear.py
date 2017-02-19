@@ -66,8 +66,8 @@ class SimpleLoglinear(object):
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         if self.learning_model == "m1":
             #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE,)
-            x = 0.01 * np.random.rand.rand(self.dh.FEAT_SIZE,) 
-            b_x = 0.0 #0.01 * np.random.rand.rand(1,)
+            x = 0.01 * np.random.rand(self.dh.FEAT_SIZE,) 
+            b_x = 0.0 #0.01 * np.random.rand(1,)
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
             self.W_r = theano.shared(floatX(x), name='W_r')
@@ -76,8 +76,8 @@ class SimpleLoglinear(object):
             self.reg_params = [self.W_r, self.W_z]
         elif self.learning_model == "m2":
             #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
-            x = 0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
-            b_x = 0.0 #0.01 * np.random.rand.rand(1,))
+            x = 0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
+            b_x = 0.0 #0.01 * np.random.rand(1,))
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
             self.W_rc = theano.shared(floatX(x), name='W_rc') 
@@ -94,21 +94,21 @@ class SimpleLoglinear(object):
             _b_x = 0.0
             self.b_z = theano.shared(floatX(_b_x), name="b_z") 
             self.b_r = theano.shared(floatX(_b_x), name="b_r")
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-            self.W_rx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_rx')
-            self.W_zx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_zx')
+            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
+            self.W_rx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_rx')
+            self.W_zx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_zx')
             self.params = [self.W_zc, self.W_rc, self.W_zx, self.W_rx, self.b_r, self.b_z]
             self.reg_params = [self.W_zc, self.W_rc, self.W_zx, self.W_rx]
         elif self.learning_model == "m4":
-            self.W_rt = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt')
-            self.b_r_t = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank,)), name="b_r_t")
+            self.W_rt = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt')
+            self.b_r_t = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="b_r_t")
 
-            self.W_zt = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt')
-            self.b_z_t = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank,)), name="b_z_t")
+            self.W_zt = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt')
+            self.b_z_t = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="b_z_t")
 
-            self.W_rm = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_rm') 
-            self.W_zm = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_zm') 
+            self.W_rm = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_rm') 
+            self.W_zm = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_zm') 
             _b_x = 0.0
             self.b_z = theano.shared(floatX(_b_x), name="b_z") 
             self.b_r = theano.shared(floatX(_b_x), name="b_r")
@@ -119,28 +119,28 @@ class SimpleLoglinear(object):
             _b_x = 0.0
             self.b_z = theano.shared(floatX(_b_x), name="b_z") 
             self.b_r = theano.shared(floatX(_b_x), name="b_r")
-            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
-            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
-            self.W_zg1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zg1')
-            self.W_zg2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zg2')
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-            self.W_rx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_rx')
-            self.W_zx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_zx')
+            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
+            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
+            self.W_zg1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zg1')
+            self.W_zg2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zg2')
+            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
+            self.W_rx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_rx')
+            self.W_zx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_zx')
             self.params = [self.W_rx, self.W_zx, self.W_rt1, self.W_rt2, self.W_zg1, self.W_zg2, self.W_zc, self.W_rc, self.b_r, self.b_z]
             self.reg_params = [self.W_rx, self.W_zx, self.W_rt1, self.W_rt2, self.W_zg1, self.W_zg2, self.W_zc, self.W_rc]
         elif self.learning_model == "m6":
             b_x = 0.0 
-            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
-            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
-            self.W_zt1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zt1')
-            self.W_zt2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt2')
+            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
+            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
+            self.W_zt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zt1')
+            self.W_zt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt2')
 
-            self.W_rx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_rx1')
-            self.W_zx = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.E_SIZE,)), name='W_zx1')
+            self.W_rx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_rx1')
+            self.W_zx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_zx1')
 
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
+            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
 
             self.b_z = theano.shared(floatX(b_x), name='b_z')
             self.b_r = theano.shared(floatX(b_x), name='b_r')
@@ -151,10 +151,10 @@ class SimpleLoglinear(object):
         if self.grad_model == "g0":
             pass
         elif self.grad_model == "g1":
-            self.W_g1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_g1')
-            self.W_g2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_g2')
-            self.b_g1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.dh.FEAT_SIZE,)), name= 'b_g1')
-            self.b_g2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank,)), name= 'b_g2')
+            self.W_g1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_g1')
+            self.W_g2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_g2')
+            self.b_g1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE,)), name= 'b_g1')
+            self.b_g2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name= 'b_g2')
             self.reg_params += [self.W_g1, self.W_g2]
             self.params += [self.W_g1, self.W_g2, self.b_g2, self.b_g1]
         else:
@@ -166,14 +166,14 @@ class SimpleLoglinear(object):
             self.b_temp = theano.shared(floatX(0.0), name='b_temp')
             self.params += [self.b_temp]
         elif self.temp_model == "t2":
-            self.W_temp_c = theano.shared(floatX(0.01 * np.random.rand.rand(4,)), name="W_temp_c")
+            self.W_temp_c = theano.shared(floatX(0.01 * np.random.rand(4,)), name="W_temp_c")
             self.b_temp = theano.shared(floatX(0.0), name="b_temp")
             self.params += [self.W_temp_c, self.b_temp]
             self.reg_params += [self.W_temp_c]
         elif self.temp_model == "t3":
-            self.W_temp_c = theano.shared(floatX(0.01 * np.random.rand.rand(4,)), name="W_temp_c")
-            self.W_temp_theta1 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank, self.dh.FEAT_SIZE)), name="W_temp_theta1")
-            self.W_temp_theta2 = theano.shared(floatX(0.01 * np.random.rand.rand(self.low_rank,)), name="W_temp_theta2")
+            self.W_temp_c = theano.shared(floatX(0.01 * np.random.rand(4,)), name="W_temp_c")
+            self.W_temp_theta1 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name="W_temp_theta1")
+            self.W_temp_theta2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="W_temp_theta2")
             self.b_temp = theano.shared(floatX(0.0), name="b_temp")
             self.b_temp_2 = theano.shared(floatX(np.zeros(self.low_rank,)), name="b_temp_2")
             self.params += [self.W_temp_c, self.W_temp_theta1, self.W_temp_theta2, self.b_temp, self.b_temp_2]
@@ -282,12 +282,12 @@ class SimpleLoglinear(object):
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
             if self.temp_model == "t0":
-                temp = self.b_temp
+                temp = self.b_temp #always 1.0
             elif self.temp_model == "t1":
-                temp = 3 * T.nnet.sigmoid(self.b_temp)
+                temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp), 0.1, 1.0)
             elif self.temp_model == "t2":
                 c_temp = self.W_temp_c.dot(T.concatenate((s_t[:3], s_t[-1:])))
-                temp = 3 * T.nnet.sigmoid(self.b_temp + c_temp)
+                temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp + c_temp), 0.1, 1.0)
             elif self.temp_model == "t3":
                 c_temp = self.W_temp_c.dot(T.concatenate((s_t[:3], s_t[-1:])))
                 t_temp = self.W_temp_theta2.dot(T.nnet.sigmoid(self.b_temp_2 + self.W_temp_theta1.dot(theta_t)))
@@ -320,7 +320,7 @@ class SimpleLoglinear(object):
                     theta_tp1 = g_r * theta_t + g_z * gtheta_t
                 elif self.learning_model == "m4":
                     lr_theta_r = T.nnet.sigmoid(self.W_rt.dot(theta_t) + self.b_r_t) #(low_rank,)
-                    lr_theta_z = T.nnet.sigmoid(self.W_zt.dot(gtheta_t) + self.b_z_t) #(low_rank,)
+                    lr_theta_z = T.nnet.sigmoid(self.W_zt.dot(theta_t) + self.b_z_t) #(low_rank,)
                     g_r = T.nnet.sigmoid(self.W_rm.dot(T.concatenate((lr_theta_r, s_tm1))) + self.b_r) 
                     g_z = T.nnet.sigmoid(self.W_zm.dot(T.concatenate((lr_theta_z, s_t))) + self.b_z) 
                     theta_tp1 = g_r * theta_t + g_z * gtheta_t
