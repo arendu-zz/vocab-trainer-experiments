@@ -27,10 +27,11 @@ if __name__ == '__main__':
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
     opt.add_argument('--ur', action='store', dest='learner_reg', default=0.1, type=float, required=True)
     opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float, required=True)
-    opt.add_argument('--sl', action='store', dest='use_sum_loss', default=1, type=int, required=True)
     opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=False)
     opt.add_argument('-m', action='store', dest='model', default="m0", required=True)
+    opt.add_argument('-g', action='store', dest='grad_model', default="g0", required=True)
     opt.add_argument('-c', action='store', dest='clip', default="free", required=False)
+    opt.add_argument('-t', action='store', dest='temp', default="t1", required=True)
     opt.add_argument('--st', action='store', dest='save_trace', default=None)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
@@ -48,8 +49,9 @@ if __name__ == '__main__':
                         reg = (options.reg / len(TRAINING_SEQ)), 
                         learner_reg = options.learner_reg,
                         learning_model = options.model,
+                        grad_model = options.grad_model,
                         clip = _clip,
-                        use_sum_loss = options.use_sum_loss,
+                        temp_model = options.temp,
                         interpolate_bin_loss = options.interpolate_bin_loss)
     prev_dl = 1000000.0000
     prev_dpu = 0.0
