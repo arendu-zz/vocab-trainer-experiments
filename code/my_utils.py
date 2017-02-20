@@ -1,6 +1,14 @@
 import numpy as np
+from six.moves import cPickle
 import copy
-from math import exp, log, pi, sqrt
+def load_obj(path): 
+    f = open(path, 'rb')
+    return cPickle.load(f)
+
+def save_obj(obj, path):
+    f = open(path, 'wb')
+    cPickle.dump(obj, f, protocol=cPickle.HIGHEST_PROTOCOL)
+    f.close()
 
 
 def rargmax(vec):

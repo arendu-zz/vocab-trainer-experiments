@@ -8,6 +8,7 @@ from code.data_reader import read_data
 from code.datahelper import DataHelper
 from code.simple_loglinear import SimpleLoglinear
 from code.eval_tools import disp_eval, pad_start
+from code.my_utils import save_obj
 
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 
@@ -21,7 +22,8 @@ else:
     intX = np.int64
 
 if __name__ == '__main__':
-    np.random.seed(1234)
+    np.random.seed(124)
+    sys.setrecursionlimit(50000)
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
@@ -33,6 +35,7 @@ if __name__ == '__main__':
     opt.add_argument('-c', action='store', dest='clip', default="free", required=False)
     opt.add_argument('-t', action='store', dest='temp', default="t1", required=True)
     opt.add_argument('--st', action='store', dest='save_trace', default=None)
+    opt.add_argument('--sm', action='store', dest='save_model', default=None)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
     feats_file = './data/content/fake-en-medium.' + options.feature  +'.feat2id'
@@ -40,9 +43,10 @@ if __name__ == '__main__':
     dh = DataHelper(events_file, feats_file, actions_file)
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
     DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
+    T_SEQ = read_data('./data/data_splits/test.data', dh)
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     _decay = 0.001
-    _learning_rate = 0.3 #only used for sgd
+    _learning_rate = 0.1 #only used for sgd
     _clip = options.clip == "clip"
     sll = SimpleLoglinear(dh, 
                         u = options.grad_update,
@@ -54,11 +58,12 @@ if __name__ == '__main__':
                         temp_model = options.temp,
                         interpolate_bin_loss = options.interpolate_bin_loss)
     prev_dl = 1000000.0000
+    best_dl = 1000000.000
     prev_dpu = 0.0
     improvement = []
     for epoch_idx in xrange(100):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
-        lr = lr if options.grad_update == "sgd" else (1.0 / len(TRAINING_SEQ))
+        lr = lr if options.grad_update == "sgd" else (0.5 / len(TRAINING_SEQ))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
         sys.stderr.write('-')
         for r_idx in shuffle_ids[:]:
@@ -80,6 +85,11 @@ if __name__ == '__main__':
         print 'dev:', msg
         msg, tl, tpu = disp_eval(TRAINING_SEQ[:20], sll, dh, None, None)
         print 'train:', msg
+        msg,testl,testpu = disp_eval(T_SEQ, sll, dh, options.save_trace + '.test', epoch_idx) 
+        print 'test:', msg
+        if dl < best_dl and options.save_model is not None:
+            save_obj(sll, options.save_model) 
+            best_dl = dl
         improvement.append((1 if dl < prev_dl else 0))
         if np.sum(improvement[-2:]) == 0 and len(improvement) > 5:
             break

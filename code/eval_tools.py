@@ -25,7 +25,7 @@ def pad_start(_s):
     sm1 = floatX(sm1)
     return sm1
 
-def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None):
+def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_model=False):
     ave_total_loss = []
     ave_p_y_u_all = []
     ave_p_y_u = []

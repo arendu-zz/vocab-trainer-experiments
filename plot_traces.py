@@ -79,6 +79,30 @@ max_p_c:             0.5040 13 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.s
 max_p_ic:            0.1240 12 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.2.sl.1.log
 max_p_c_diff_ict:    0.1690 13 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.log
 min_p_ictt:          0.1070 1 ./simple.m.m2.u.sgd.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.log
+===========================================================================================
+best m 0 0
+min_loss:            72.9150 25 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 74.659
+
+best m 1 0
+min_loss:            67.0420 24 ./simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 68.842
+
+best m 2 0
+min_loss:            65.7970 17 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 68.232
+
+best m 3 0
+min_loss:            65.5380 55 ./simple.m.m3.u.rms.r.0.01.ur.-1.c.free.bl.0.0.gm.g0.t.t0.log 67.743
+
+best m 0 2
+min_loss:            71.9500 26 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 74.151
+
+best m 1 2
+min_loss:            66.0140 19 ./simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 68.661
+
+best m 2 2
+min_loss:            64.3760 17 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 67.603
+
+best m 3 2
+min_loss:            65.3730 5 ./simple.m.m3.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 68.28
 """
 
 if __name__ == '__main__':
@@ -89,14 +113,12 @@ if __name__ == '__main__':
     #print sns.palplot(sns.color_palette("Blues"))
     #flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
     colors = sns.color_palette(n_colors=3).as_hex()
-    d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.13", colors[0], "m2")
-    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.3", colors[1], "m1")
-    d_m0 = ("logs/traces/simple.m.m0.u.sgd.r.0.01.ur.0.0.c.free.bl.0.0.sl.1.ut.iter.0", colors[2], "m0")
-    test_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.0.ut.iter.4", colors[0], "m0")
-    test_m1 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g1.t.1.ut.iter.5", colors[1], "g0")
+    d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.17", colors[0], "m2")
+    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.24", colors[1], "m1")
+    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.25", colors[2], "m0")
     file_data2users = {}
     users2p_data = {}
-    for file_path,color,mod in [test_m0, test_m1]:
+    for file_path,color,mod in [d_m0, d_m2]:
         _file = open(file_path, 'r').read().strip().split('\n')
         for idx in range(0, len(_file), 7):
             _p_y_t = [float(i) for i in _file[idx + 0].split()] 
@@ -105,9 +127,7 @@ if __name__ == '__main__':
             _u_ic = [int(float(i)) for i in _file[idx + 3].split()] 
             _is_mc = [int(float(i)) for i in _file[idx + 4].split()] 
             _is_tp = [int(float(i)) for i in _file[idx + 5].split()] 
-            print idx + 6
-            print _file[idx + 6]
-            _chance = [(1.0 / float(i)) for i in _file[idx + 6].split()] 
+            _chance = [float(i) for i in _file[idx + 6].split()] 
             p_datas = users2p_data.get(idx, [])
             p_datas.append((file_path, color, mod, _p_y_t, _p_y_u, _u_c, _u_ic, _is_mc, _is_tp, _chance))
             users2p_data[idx] = p_datas
@@ -127,7 +147,7 @@ if __name__ == '__main__':
     #    scalar_u_ic = [int(float(i)) for i in scalar_trace_file[idx + 3].split()] 
     #    users[len(users)] = (adapt_p_y_t, adapt_p_y_u, adapt_u_c, adapt_u_ic, scalar_p_y_t, scalar_p_y_u, scalar_u_c, scalar_u_ic)
 
-    for u_idx in users2p_data.keys()[:20]:
+    for u_idx in users2p_data.keys()[:12]:
         lines = []
         for p_data in users2p_data[u_idx]:
             file_path, color, mod, _pyt, _pyu, _uc, _uic, _is_mc, _is_tp, _chance = p_data
@@ -142,26 +162,26 @@ if __name__ == '__main__':
                 if _uc  == 1 or _uic == 1:
                     x_line.append(x_idx)
                     _chance_line.append(_c)
+                    _yu = 0.001 if _yu < 0.001 else _yu
+                    _ratio = (_yu / _c) if _yu > _c else -1 * (_c/ _yu)
+                    _yu_line.append(_ratio)
+                    _yt_line.append(_yt)
                     if _uc == 1:
                         _yt_markers.append(('o' if _mc == 1 else 's', color))
-                        _yt_line.append(_yt)
                         _yu_markers.append(('o' if _mc == 1 else 's', color))
-                        _yu_line.append(_yu)
                     elif _uic == 1:
                         _yt_markers.append(('o' if _mc == 1 else 's', 'white'))
-                        _yt_line.append(_yt)
                         _yu_markers.append(('o' if _mc == 1 else 's', 'white'))
-                        _yu_line.append(_yu)
                     pass
                 else:
                     pass
-            plt.plot(x_line, _yt_line, lw=0.5, ls=':', c = color)
+            #plt.plot(x_line, _yt_line, lw=0.5, ls=':', c = color)
             pl, = plt.plot(x_line, _yu_line, lw=1.0, c = color, label=mod)
             lines.append(pl)
             for _s, _x, _y in zip(_yu_markers, x_line, _yu_line):
                 plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=8, mew=1.0)
 
         plt.legend(handles=lines, loc=1)
-        plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
+        #plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
         plt.xlim(0, 58)
         plt.show()

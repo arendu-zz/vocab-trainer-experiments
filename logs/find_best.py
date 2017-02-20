@@ -7,6 +7,7 @@ ave total loss:174.348 p_u:0.303,0.401 p_c:0.504,0.426 p_ic:0.135,0.285 p_ict:0.
 """
 def scan_file(fs):
     min_loss = (1000000, None, None) 
+    t_loss = (1000000, None, None) 
     max_p_u = (0, None, None)
     max_p_c = (0, None, None)
     max_p_ic = (0, None, None)
@@ -15,16 +16,22 @@ def scan_file(fs):
     for f in glob.glob(fs):
         content = open(f, 'r').readlines()
         dev_content = [c for c in content if c.startswith('dev:')]
+        t_content = [c for c in content if c.startswith('test:')]
         #dev_content = [c for idx,c in enumerate(content) if idx % 2 ==0]
         #train_content = [c for idx,c in enumerate(content) if idx % 2 ==0]
         for idx,dc in enumerate(dev_content):
             items = re.split(r'(\s+|:)', dc)
+            t_items = re.split(r'(\s+|:)', t_content[idx])
             items = [i for i in items if i.strip() != '' and i.strip() !=':']
+            t_items = [i for i in t_items if i.strip() != '' and i.strip() !=':']
             items.pop(0)
+            t_items.pop(0)
             items = [i.split(',')[0] for i in items]
-            loss = float(items[3])
+            t_items = [i.split(',')[0] for i in t_items]
+            t_loss = float(items[3])
+            loss = float(t_items[3])
             if loss < min_loss[0]:
-                min_loss = (loss, idx, f)
+                min_loss = (loss, idx, f, t_loss)
             p_u = float(items[5])
             if p_u > max_p_u[0]:
                 max_p_u = (p_u, idx, f)
@@ -40,26 +47,20 @@ def scan_file(fs):
             p_c_ict = p_c - p_ict
             if p_c_ict > max_p_c_ict[0]:
                 max_p_c_ict = (p_c_ict, idx, f)
-    print 'min_loss:'.ljust(20), "%.4f" % min_loss[0], min_loss[1], min_loss[2]
-    print 'max_p_u:'.ljust(20), "%.4f" % max_p_u[0], max_p_u[1], max_p_u[2]
-    print 'max_p_c:'.ljust(20), "%.4f" % max_p_c[0], max_p_c[1], max_p_c[2]
-    print 'max_p_ic:'.ljust(20), "%.4f" % max_p_ic[0], max_p_ic[1], max_p_ic[2]
-    print 'min_p_ict:'.ljust(20), "%.4f" % min_p_ict[0], min_p_ict[1], min_p_ict[2]
-    print 'max_p_c_diff_ict:'.ljust(20), "%.4f" % max_p_c_ict[0], max_p_c_ict[1], max_p_c_ict[2]
+    print 'min_loss:'.ljust(20), "%.4f" % min_loss[0], min_loss[1], min_loss[2], min_loss[3]
+    #print 'max_p_u:'.ljust(20), "%.4f" % max_p_u[0], max_p_u[1], max_p_u[2]
+    #print 'max_p_c:'.ljust(20), "%.4f" % max_p_c[0], max_p_c[1], max_p_c[2]
+    #print 'max_p_ic:'.ljust(20), "%.4f" % max_p_ic[0], max_p_ic[1], max_p_ic[2]
+    #print 'min_p_ict:'.ljust(20), "%.4f" % min_p_ict[0], min_p_ict[1], min_p_ict[2]
+    #print 'max_p_c_diff_ict:'.ljust(20), "%.4f" % max_p_c_ict[0], max_p_c_ict[1], max_p_c_ict[2]
     return min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict
 
 
 if __name__ == '__main__':
-    fs = "./simple.m.m0.*.r.*.ur.*.bl.0.0.*log"
-    print '\nbest m0'
-    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m1.*.r.*.ur.*.bl.0.0.*log"
-    print '\nbest m1'
-    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m2.*.r.*.ur.*.bl.0.0.*log"
-    print '\nbest m2'
-    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    fs = "./simple.m.m3.*.r.*.ur.*.bl.0.0.*log"
-    print '\nbest m3'
-    min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-
+    for t in [0,2]:
+        for i in range(4):
+            i = str(i)
+            t = str(t)
+            fs = "./simple.m.m" + i + ".*.r.*.ur.*.*bl.0.0.*t.t" + t + "*log"
+            print '\nbest m', i, t
+            min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)

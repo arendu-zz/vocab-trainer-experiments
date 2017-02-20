@@ -4,7 +4,6 @@ from optimizers import sgd, rmsprop, momentum
 import theano
 import theano.tensor as T
 
-
 __author__ = 'arenduchintala'
 
 if theano.config.floatX == 'float32':
@@ -13,29 +12,18 @@ if theano.config.floatX == 'float32':
 else:
     intX = np.int64
     floatX = np.float64
-
+"""
 def norm_init(n_in, n_out, scale=0.01, ortho=True):
-    """
-    Initialize weights from a scaled standard normal distribution
-    Falls back to orthogonal weights if n_in = n_out
-    n_in : The input dimension
-    n_out : The output dimension
-    scale : Scale for the normal distribution
-    ortho : Fall back to ortho weights when n_in = n_out
-    """
     if n_in == n_out and ortho:
         return ortho_weight(n_in)
     else:
         return floatX(scale * np.random.randn(n_in, n_out))
 
 def ortho_weight(ndim):
-    """
-    Returns an orthogonal matrix via SVD decomp
-    Used for initializing weight matrices of an LSTM
-    """
     W = np.random.randn(ndim, ndim)
     u, s, v = np.linalg.svd(W)
     return u.astype(theano.config.floatX)
+"""
 
 class SimpleLoglinear(object):
     def __init__(self, dh, u = "sgd", reg = 0.1, learner_reg = 0.5, grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, temp_model = "t0"):
@@ -181,6 +169,7 @@ class SimpleLoglinear(object):
         else:
             raise BaseException("unknown temp model")
         self.make_graph()
+
 
     def _phi(self, f_idx, e_idx):
         ff = np.zeros(self.dh.FEAT_SIZE)
