@@ -103,6 +103,24 @@ min_loss:            64.3760 17 ./simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.
 
 best m 3 2
 min_loss:            65.3730 5 ./simple.m.m3.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 68.28
+=========================================================================================================
+best m 0 0
+min_loss:            72.5520 34 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 76.272
+
+best m 1 0
+min_loss:            66.2700 29 ./simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 68.335
+
+best m 3 0
+min_loss:            65.1620 4 ./simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 67.084
+
+best m 0 2
+min_loss:            71.6510 50 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 75.798
+
+best m 1 2
+min_loss:            65.7450 13 ./simple.m.m1.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 68.3
+
+best m 3 2
+min_loss:            64.2370 4 ./simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 66.145
 """
 
 if __name__ == '__main__':
@@ -113,9 +131,9 @@ if __name__ == '__main__':
     #print sns.palplot(sns.color_palette("Blues"))
     #flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
     colors = sns.color_palette(n_colors=3).as_hex()
-    d_m2 = ("logs/traces/simple.m.m2.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.17", colors[0], "m2")
-    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.24", colors[1], "m1")
-    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.ut.iter.25", colors[2], "m0")
+    d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.4", colors[0], "m2")
+    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.001.ur.-1.c.free.bl.0.0.gm.g0.t.t2.ut.iter.13", colors[1], "m1")
+    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.50", colors[2], "m0")
     file_data2users = {}
     users2p_data = {}
     for file_path,color,mod in [d_m0, d_m2]:
@@ -147,7 +165,7 @@ if __name__ == '__main__':
     #    scalar_u_ic = [int(float(i)) for i in scalar_trace_file[idx + 3].split()] 
     #    users[len(users)] = (adapt_p_y_t, adapt_p_y_u, adapt_u_c, adapt_u_ic, scalar_p_y_t, scalar_p_y_u, scalar_u_c, scalar_u_ic)
 
-    for u_idx in users2p_data.keys()[:12]:
+    for u_idx in users2p_data.keys()[:5]:
         lines = []
         for p_data in users2p_data[u_idx]:
             file_path, color, mod, _pyt, _pyu, _uc, _uic, _is_mc, _is_tp, _chance = p_data

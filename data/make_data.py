@@ -220,9 +220,9 @@ if __name__ == '__main__':
     user_groups = []
     user_groups_stats = []
     
-    for g in xrange(7):
+    for g in xrange(6):
         if len(good_users_list) > 35:
-            ug = np.random.choice(good_users_list, 20, False)
+            ug = np.random.choice(good_users_list, 25, False)
         else:
             ug = [_ug for _ug in good_users_list] #remaining users...
         ug_ts= []
