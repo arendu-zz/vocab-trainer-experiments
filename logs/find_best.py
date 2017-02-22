@@ -63,10 +63,3 @@ if __name__ == '__main__':
             fs = "./simple.m.m" + i + ".*.r.*.ur.0.0.*bl.0.0.*t.t" + t + "*log"
             print '\nbest m', i, t
             min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)
-    for t in [0,2]:
-        for i in [0,1,3]:
-            i = str(i)
-            t = str(t)
-            fs = "./simple.m.m" + i + ".*.r.*.ur.-1.*bl.0.0.*t.t" + t + "*log"
-            print '\nbest m', i, t
-            min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict = scan_file(fs)

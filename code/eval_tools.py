@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
+import pdb
 import sys
 import codecs
 import theano
@@ -24,6 +25,38 @@ def pad_start(_s):
     sm1 = sm1[:_s.shape[0], :]
     sm1 = floatX(sm1)
     return sm1
+
+def eval_losses(SEQ, seq_model, dh):
+    l_per_seq = []
+    l_per_user_guess = []
+    l_per_user_guess_c = []
+    l_per_user_guess_ic = []
+    l_per_user_guess_tp = []
+    l_per_user_guess_mc = []
+
+    _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
+    for idx in xrange(len(SEQ)):
+        _devX, _devY, _devYT, _devO, _devS = SEQ[idx]
+        _devSM1 = pad_start(_devS)
+        #seq_model = SimpleLoglinear(dh, reg = options.reg / 100.0, x1=_x1, x2=_x2, adapt = _adapt)
+        seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        u_losses = c_losses + ic_losses
+        u_losses= u_losses[u_losses > 0.0]
+        c_losses = c_losses[c_losses > 0.0]
+        ic_losses = ic_losses[ic_losses > 0.0]
+        tp_idx = _devS[:,1] + _devS[:,7] + _devS[:,8]
+        mc_idx = _devS[:,1]
+        tp_losses = seq_losses[tp_idx == 1]
+        mc_losses = seq_losses[mc_idx == 1]
+        sum_u_losses = np.sum(u_losses)
+        l_per_seq.append(sum_u_losses)
+        l_per_user_guess += u_losses.tolist()
+        l_per_user_guess_c += c_losses.tolist()
+        l_per_user_guess_ic += ic_losses.tolist()
+        l_per_user_guess_tp += tp_losses.tolist()
+        l_per_user_guess_mc += mc_losses.tolist()
+    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp
+
 
 def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_model=False):
     ave_total_loss = []
@@ -83,7 +116,8 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
                                         _u_incorrect[:,np.newaxis],
                                         _mc[:, np.newaxis],
                                         _tp[:,np.newaxis],
-                                        _chance[:, np.newaxis]), axis=1) 
+                                        _chance[:, np.newaxis],
+                                        seq_losses[:, np.newaxis]), axis=1) 
             np.savetxt(_trace_file, user_plot.T, fmt="%.3f") 
         else:
             pass
@@ -95,7 +129,7 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
         ave_p_y_u_ict+=p_y_u_ict.tolist()
         #ave_total_loss.append(total_loss)
         ave_total_loss.append(model_loss)
-    msg = "ave model loss:"  + "%.3f" % np.mean(ave_total_loss) +\
+    msg = "ave model loss:"  + "%.3f" % np.mean(ave_total_loss) + ",%.3f" % np.std(ave_total_loss) + "," + str(len(ave_total_loss)) + "," + str(len(ave_p_y_u)) +\
         " p_u:" +"%.3f" % np.mean(ave_p_y_u) + ",%.3f" % np.std(ave_p_y_u) + "," + str(len(ave_p_y_u)) + \
         " p_c:" + "%.3f" % np.mean(ave_p_y_u_c)+ ",%.3f" % np.std(ave_p_y_u_c) + "," + str(len(ave_p_y_u_c)) + \
         " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + "," + str(len(ave_p_y_u_ic)) + \
