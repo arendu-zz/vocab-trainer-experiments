@@ -54,17 +54,20 @@ if __name__ == '__main__':
     #d_s = "logs/traces/simple.scalar.sgd.0.1.0.01.free.1.ut.iter.1"
     #print sns.palplot(sns.color_palette("Blues"))
     #flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
-    sns.set_style("whitegrid")
+    #sns.set_style("whitegrid")
     #colors = sns.color_palette("Set2", n_colors=3).as_hex() #palette="Set2"
-    colors = sns.color_palette("bright", n_colors=3).as_hex() #palette="Set2"
-    d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.4", colors[0], "m2")
-    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.13", colors[1], "m1")
-    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.50", colors[2], "m0")
+    colors = sns.color_palette(n_colors=3).as_hex() #palette="Set2"
+    #d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.4", colors[0], "m2")
+    #d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.13", colors[1], "m1")
+    #d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.50", colors[2], "m0")
+    d_m2 = ("logs/results/traces.m3_t2.dev.traces.iter.0",colors[0], "m3")
+    d_m1 = ("logs/results/traces.m1_t0.dev.traces.iter.0", colors[1], "m1")
+    d_m0 = ("logs/results/traces.m0_t0.dev.traces.iter.0", colors[2], "m0")
     file_data2users = {}
     users2p_data = {}
     for file_path,color,mod in [d_m0, d_m1, d_m2]:
         _file = open(file_path, 'r').read().strip().split('\n')
-        for idx in range(0, len(_file), 7):
+        for idx in range(0, len(_file), 8):
             _p_y_t = [float(i) for i in _file[idx + 0].split()] 
             _p_y_u = [float(i) for i in _file[idx + 1].split()] 
             _u_c = [int(float(i)) for i in _file[idx + 2].split()] 
@@ -72,6 +75,10 @@ if __name__ == '__main__':
             _is_mc = [int(float(i)) for i in _file[idx + 4].split()] 
             _is_tp = [int(float(i)) for i in _file[idx + 5].split()] 
             _chance = [float(i) for i in _file[idx + 6].split()] 
+            if 0.0 in _chance:
+                print file_path, idx + 6
+                print _chance
+                raise BaseException("zero in _chance")
             p_datas = users2p_data.get(idx, [])
             p_datas.append((file_path, color, mod, _p_y_t, _p_y_u, _u_c, _u_ic, _is_mc, _is_tp, _chance))
             users2p_data[idx] = p_datas
@@ -90,7 +97,7 @@ if __name__ == '__main__':
     #    scalar_u_c = [int(float(i)) for i in scalar_trace_file[idx + 2].split()] 
     #    scalar_u_ic = [int(float(i)) for i in scalar_trace_file[idx + 3].split()] 
     #    users[len(users)] = (adapt_p_y_t, adapt_p_y_u, adapt_u_c, adapt_u_ic, scalar_p_y_t, scalar_p_y_u, scalar_u_c, scalar_u_ic)
-    for u_idx in users2p_data.keys()[:5]:
+    for u_idx in users2p_data.keys()[:]:
         lines = []
         for p_data in users2p_data[u_idx]:
             file_path, color, mod, _pyt, _pyu, _uc, _uic, _is_mc, _is_tp, _chance = p_data
@@ -104,9 +111,9 @@ if __name__ == '__main__':
                 assert not (_uc == 1 and _uic == 1)
                 if _uc  == 1 or _uic == 1:
                     x_line.append(x_idx)
-                    _chance_line.append(_c)
+                    _chance_line.append(1.0)
                     _yu = 0.001 if _yu < 0.001 else _yu
-                    _ratio = (_yu / _c) if _yu > _c else -1 * (_c/ _yu)
+                    _ratio = (_yu / _c) #if _yu > _c else -1 * (_c/ _yu)
                     _yu_line.append(_ratio)
                     _yt_line.append(_yt)
                     if _uc == 1:
@@ -119,12 +126,20 @@ if __name__ == '__main__':
                 else:
                     pass
             #plt.plot(x_line, _yt_line, lw=0.5, ls=':', c = color)
-            pl, = plt.plot(x_line, _yu_line, lw=1.0, c = color, label=mod)
+            min_x_line = min(x_line)
+            x_line = [x_ - min_x_line for x_ in x_line]
+            pl, = plt.plot(x_line, _yu_line, lw=0.5, c = color, label=mod)
             lines.append(pl)
             for _s, _x, _y in zip(_yu_markers, x_line, _yu_line):
-                plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=8, mew=1.0)
+                plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=7, mew=1.0)
 
-        plt.legend(handles=lines, loc=1)
-        #plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
-        plt.xlim(0, 58)
-        plt.show()
+        plt.legend(handles=lines, loc=2)
+        plt.plot(x_line, _chance_line, lw=0.25, ls='-', c = 'black')
+        #plt.show()
+        plt.xlim(xmin=0)
+        plt.ylabel("P(u) over chance")
+        plt.xlabel("training steps")
+        plt.title("Model Comparison (single user)")
+        plt.savefig("./images/fig" + str(u_idx) + ".png",dpi=200, bbox_inches='tight', pad_inches=0)
+        plt.gcf().clear()
+

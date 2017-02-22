@@ -44,6 +44,7 @@ if __name__ == '__main__':
     sys.setrecursionlimit(50000)
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
+    opt.add_argument('--st', action='store', dest='save_trace', default='./', required=True)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
     feats_file = './data/content/fake-en-medium.' + options.feature  +'.feat2id'
@@ -136,8 +137,10 @@ if __name__ == '__main__':
         print 'ug_tp 10 vs 12:', stats.ttest_rel(l10_ug_tp, l12_ug_tp)
         print 'ug_mc 30 vs 32:', stats.ttest_rel(l30_ug_mc, l32_ug_mc)
     print 'done\n'
-    for m in [m0_t0_sll, m1_t0_sll, m3_t0_sll, m0_t2_sll, m1_t2_sll, m3_t2_sll]:
-        loaded_msg,loaded_dl,loaded_dpu = disp_eval(DEV_SEQ, m, dh, None, -1) 
+    m_names = ["m0_t0", "m1_t0", "m3_t0", "m0_t2", "m1_t2", "m3_t2"]
+    models = [m0_t0_sll, m1_t0_sll, m3_t0_sll, m0_t2_sll, m1_t2_sll, m3_t2_sll]
+    for m_name, m in zip(m_names, models):
+        loaded_msg,loaded_dl,loaded_dpu = disp_eval(DEV_SEQ, m, dh, options.save_trace + '.' + m_name + '.dev.traces', 0) 
         print 'loaded dev:', loaded_msg
-        loaded_msg,loaded_testl,loaded_testpu = disp_eval(TEST_SEQ, m, dh, None, -1) 
+        loaded_msg,loaded_testl,loaded_testpu = disp_eval(TEST_SEQ, m, dh, options.save_trace + '.' + m_name + 'test.traces', 0) 
         print 'loaded test:', loaded_msg

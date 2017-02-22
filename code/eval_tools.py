@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import numpy as np
-import pdb
 import sys
 import codecs
 import theano
@@ -44,10 +43,10 @@ def eval_losses(SEQ, seq_model, dh):
         u_losses= u_losses[u_losses > 0.0]
         c_losses = c_losses[c_losses > 0.0]
         ic_losses = ic_losses[ic_losses > 0.0]
-        tp_idx = _devS[:,1] + _devS[:,7] + _devS[:,8]
-        mc_idx = _devS[:,1]
-        tp_losses = seq_losses[tp_idx == 1]
-        mc_losses = seq_losses[mc_idx == 1]
+        tp_idx = np.where(np.logical_and(_devS[:,1] == 1, _devS[:,3] == 0)) 
+        mc_idx = np.where(_devS[:,2] == 1) 
+        tp_losses = seq_losses[tp_idx]
+        mc_losses = seq_losses[mc_idx]
         sum_u_losses = np.sum(u_losses)
         l_per_seq.append(sum_u_losses)
         l_per_user_guess += u_losses.tolist()
@@ -104,7 +103,9 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
         p_y_u_ict = p_y_t_all[idx_u_ic] #models prob on all of users incorrect answers
         if _trace_file is not None:
             _mc = _devS[:,2]
-            _tp = _devS[:,1]  + _devS[:,7] + _devS[:,8]
+            tp_idx = np.where(np.logical_and(_devS[:,1] == 1, _devS[:,3] == 0)) 
+            _tp = np.zeros(_devS.shape[0])
+            _tp[tp_idx] = 1 
             _u_correct = _devS[:,4] + _devS[:,7]
             _u_correct = np.reshape(_u_correct, p_y_u_all.shape)
             _u_incorrect = _devS[:,5] + _devS[:,8]
