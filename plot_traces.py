@@ -9,42 +9,35 @@ sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 __author__ = 'arenduchintala'
 
 """
-=============================================================================
 best m 0 0
-min_loss:            72.5520 34 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 76.272
+min_loss:            69.6760 17 ./simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 69.443
+max_acc:             0.3510 15 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.361
+max_pu:              0.2540 15 ./simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.256
 
 best m 1 0
-min_loss:            66.2700 29 ./simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 68.335
+min_loss:            61.3760 16 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 63.274
+max_acc:             0.4230 14 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.42
+max_pu:              0.3220 14 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.325
 
 best m 3 0
-min_loss:            65.1620 4 ./simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t0.log 67.084
-
-best m 0 2
-min_loss:            71.6510 50 ./simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 75.798
-
-best m 1 2
-min_loss:            65.7450 13 ./simple.m.m1.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 68.3
-
-best m 3 2
-min_loss:            64.2370 4 ./simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.log 66.145
+min_loss:            60.3020 6 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 62.73
+max_acc:             0.4310 4 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.415
+max_pu:              0.3350 8 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g0.t.t0.log 0.336
 
 best m 0 0
-min_loss:            86.7750 57 ./simple.m.m0.u.rms.r.0.001.ur.-1.c.free.bl.0.0.gm.g0.t.t0.log 88.843
+min_loss:            61.0020 15 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 64.563
+max_acc:             0.4200 13 ./simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.36
+max_pu:              0.2930 15 ./simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.269
 
 best m 1 0
-min_loss:            76.7810 46 ./simple.m.m1.u.rms.r.0.01.ur.-1.c.free.bl.0.0.gm.g0.t.t0.log 82.153
+min_loss:            54.0650 16 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 58.203
+max_acc:             0.4790 16 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.43
+max_pu:              0.3480 18 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.327
 
 best m 3 0
-min_loss:            65.2830 9 ./simple.m.m3.u.rms.r.0.001.ur.-1.c.free.bl.0.0.gm.g0.t.t0.log 67.83
-
-best m 0 2
-min_loss:            86.7750 56 ./simple.m.m0.u.rms.r.0.001.ur.-1.c.free.bl.0.0.gm.g0.t.t2.log 88.843
-
-best m 1 2
-min_loss:            76.5860 37 ./simple.m.m1.u.rms.r.0.001.ur.-1.c.free.bl.0.0.gm.g0.t.t2.log 81.578
-
-best m 3 2
-min_loss:            64.8670 7 ./simple.m.m3.u.rms.r.0.01.ur.-1.c.free.bl.0.0.gm.g0.t.t2.log 66.734
+min_loss:            53.2640 6 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 57.755
+max_acc:             0.4880 8 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.452
+max_pu:              0.3700 8 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.351
 """
 
 if __name__ == '__main__':
@@ -58,12 +51,12 @@ if __name__ == '__main__':
     #colors = sns.color_palette("Set2", n_colors=3).as_hex() #palette="Set2"
     colors = sns.color_palette(n_colors=8).as_hex() #palette="Set2"
     colors.pop(3)
-    #d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.001.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.4", colors[0], "m2")
-    #d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.13", colors[1], "m1")
-    #d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.ur.0.0.c.free.bl.0.0.gm.g0.t.t2.ut.iter.50", colors[2], "m0")
-    d_m2 = ("logs/results/traces.m3_t2.dev.traces.iter.0",colors[2], "m3")
+    d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.8", colors[0], "m2")
+    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.16", colors[1], "m1")
+    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.13", colors[2], "m0")
+    #d_m2 = ("logs/results/traces.m3_t2.dev.traces.iter.0",colors[2], "m3")
     #d_m1 = ("logs/results/traces.m1_t0.dev.traces.iter.0", colors[1], "m1")
-    d_m0 = ("logs/results/traces.m0_t0.dev.traces.iter.0", colors[0], "m0")
+    #d_m0 = ("logs/results/traces.m0_t0.dev.traces.iter.0", colors[0], "m0")
     file_data2users = {}
     users2p_data = {}
     for file_path,color,mod in [d_m0, d_m2]:
@@ -129,13 +122,13 @@ if __name__ == '__main__':
             #plt.plot(x_line, _yt_line, lw=0.5, ls=':', c = color)
             min_x_line = min(x_line)
             x_line = [x_ - min_x_line for x_ in x_line]
-            pl, = plt.plot(x_line, _yu_line, lw=1.0, c = color, label=mod)
+            pl, = plt.plot(x_line, _yu_line, lw=2.0, c = color, label=mod)
             lines.append(pl)
             for _s, _x, _y in zip(_yu_markers, x_line, _yu_line):
-                plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=7, mew=1.0)
+                plt.plot(_x, _y,marker=_s[0], c=color, markeredgecolor=color, markerfacecolor=_s[1], markersize=7, mew=2.0)
 
         plt.legend(handles=lines, loc=2)
-        plt.plot(x_line, _chance_line, lw=0.5, ls='-', c = 'black')
+        plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
         #plt.show()
         plt.xlim(xmin=0)
         plt.ylabel("P(u) over chance")

@@ -27,7 +27,7 @@ if __name__ == '__main__':
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
-    opt.add_argument('--ur', action='store', dest='learner_reg', default=0.1, type=float, required=True)
+    opt.add_argument('--gt', action='store', dest='grad_transform', default="0", required=True)
     opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float, required=True)
     opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=False)
     opt.add_argument('-m', action='store', dest='model', default="m0", required=True)
@@ -51,14 +51,16 @@ if __name__ == '__main__':
     sll = SimpleLoglinear(dh, 
                         u = options.grad_update,
                         reg = (options.reg / len(TRAINING_SEQ)), 
-                        learner_reg = options.learner_reg,
+                        grad_transform = options.grad_transform,
                         learning_model = options.model,
                         grad_model = options.grad_model,
                         clip = _clip,
                         temp_model = options.temp,
                         interpolate_bin_loss = options.interpolate_bin_loss)
     prev_dl = 1000000.0000
+    prev_dacc = 0.0
     best_dl = 1000000.000
+    best_dacc = 0.0
     prev_dpu = 0.0
     improvement = []
     for epoch_idx in xrange(100):
@@ -81,18 +83,18 @@ if __name__ == '__main__':
                 if np.isnan(_p).any():
                     raise Exception("_params is nan")
                 _max_p.append(np.max(_p))
-        msg,dl,dpu = disp_eval(DEV_SEQ, sll, dh, options.save_trace, epoch_idx) 
+        msg,dl,dpu,dacc = disp_eval(DEV_SEQ, sll, dh, options.save_trace, epoch_idx) 
         print 'dev:', msg
-        msg, tl, tpu = disp_eval(TRAINING_SEQ[:20], sll, dh, None, None)
+        msg, tl, tpu, train_acc = disp_eval(TRAINING_SEQ[:20], sll, dh, None, None)
         print 'train:', msg
-        msg,testl,testpu = disp_eval(T_SEQ, sll, dh, options.save_trace + '.test', epoch_idx) 
+        msg,testl,testpu,tacc = disp_eval(T_SEQ, sll, dh, options.save_trace + '.test', epoch_idx) 
         print 'test:', msg
-        if dl < best_dl and options.save_model is not None:
+        if dacc > best_dacc and options.save_model is not None:
             save_obj(sll, options.save_model) 
-            best_dl = dl
-        improvement.append((1 if dl < prev_dl else 0))
+            best_dacc = dacc
+        improvement.append((1 if dacc > prev_dacc else 0))
         if np.sum(improvement[-2:]) == 0 and len(improvement) > 5:
             break
         else:
             pass
-        prev_dl = dl
+        prev_dacc = dacc
