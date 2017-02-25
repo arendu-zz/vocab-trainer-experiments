@@ -32,6 +32,7 @@ def eval_losses(SEQ, seq_model, dh):
     l_per_user_guess_ic = []
     l_per_user_guess_tp = []
     l_per_user_guess_mc = []
+    acc_instances = []
 
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     for idx in xrange(len(SEQ)):
@@ -39,10 +40,12 @@ def eval_losses(SEQ, seq_model, dh):
         _devSM1 = pad_start(_devS)
         #seq_model = SimpleLoglinear(dh, reg = options.reg / 100.0, x1=_x1, x2=_x2, adapt = _adapt)
         seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         u_losses = c_losses + ic_losses
         u_losses= u_losses[u_losses > 0.0]
         c_losses = c_losses[c_losses > 0.0]
         ic_losses = ic_losses[ic_losses > 0.0]
+        idx_u = np.arange(_devS.shape[0])[_devS[:,(4,5,6)].any(axis=1)] #index of col when 4,5,6 is 1
         tp_idx = np.where(np.logical_and(_devS[:,1] == 1, _devS[:,3] == 0)) 
         mc_idx = np.where(_devS[:,2] == 1) 
         tp_losses = seq_losses[tp_idx]
@@ -54,7 +57,13 @@ def eval_losses(SEQ, seq_model, dh):
         l_per_user_guess_ic += ic_losses.tolist()
         l_per_user_guess_tp += tp_losses.tolist()
         l_per_user_guess_mc += mc_losses.tolist()
-    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp
+        y_hat_argmax = np.argmax(y_hats, axis=1)
+        y_argmax = np.argmax(_devY, axis=1)
+        y_hat_argmax_u = y_hat_argmax[idx_u]
+        y_argmax_u = y_argmax[idx_u]
+        acc_match = [1 if i == j else 0 for i,j in zip(y_argmax_u, y_hat_argmax_u)]
+        acc_instances += acc_match
+    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp, acc_instances
 
 
 def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_model=False):
@@ -65,6 +74,8 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
     ave_p_y_u_c = []
     ave_p_y_u_ic = []
     ave_p_y_u_ict = []
+    acc = []
+    acc_instances = []
     _params = seq_model.get_params()
     _max_p = []
     _trace_file = None
@@ -101,6 +112,14 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
         p_y_u_c = p_y_u_all[idx_u_c] #models pron on all of users correct answers
         p_y_u_ic = p_y_u_all[idx_u_ic] #models prob on all of users incorrect answers
         p_y_u_ict = p_y_t_all[idx_u_ic] #models prob on all of users incorrect answers
+        y_hat_argmax = np.argmax(y_hats, axis=1)
+        y_argmax = np.argmax(_devY, axis=1)
+        y_hat_argmax_u = y_hat_argmax[idx_u]
+        y_argmax_u = y_argmax[idx_u]
+        common = [i for i,j in zip(y_argmax_u, y_hat_argmax_u) if i == j]
+        acc_match = [1 if i == j else 0 for i,j in zip(y_argmax_u, y_hat_argmax_u)]
+        acc_instances += acc_match
+        acc.append(len(common))
         if _trace_file is not None:
             _mc = _devS[:,2]
             tp_idx = np.where(np.logical_and(_devS[:,1] == 1, _devS[:,3] == 0)) 
@@ -130,16 +149,18 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
         ave_p_y_u_ict+=p_y_u_ict.tolist()
         #ave_total_loss.append(total_loss)
         ave_total_loss.append(model_loss)
+    assert len(acc_instances) == len(ave_p_y_u)
     msg = "ave model loss:"  + "%.3f" % np.mean(ave_total_loss) + ",%.3f" % np.std(ave_total_loss) + "," + str(len(ave_total_loss)) + "," + str(len(ave_p_y_u)) +\
         " p_u:" +"%.3f" % np.mean(ave_p_y_u) + ",%.3f" % np.std(ave_p_y_u) + "," + str(len(ave_p_y_u)) + \
         " p_c:" + "%.3f" % np.mean(ave_p_y_u_c)+ ",%.3f" % np.std(ave_p_y_u_c) + "," + str(len(ave_p_y_u_c)) + \
         " p_ic:" + "%.3f" % np.mean(ave_p_y_u_ic)+ ",%.3f" % np.std(ave_p_y_u_ic) + "," + str(len(ave_p_y_u_ic)) + \
         " p_ict:" + "%.3f" % np.mean(ave_p_y_u_ict)+ ",%.3f" % np.std(ave_p_y_u_ict) + "," + str(len(ave_p_y_u_ict)) + \
-        " params:" + ' '.join(_max_p)
+        " acc:" + "%.3f" % (np.sum(acc) / float(len(ave_p_y_u))) + \
+        " params:" + str(len(_max_p))
     #print _params
     #sys.stdout.write(msg +'\n')
     sys.stdout.flush()
     if _trace_file is not None:
         _trace_file.flush()
         _trace_file.close()
-    return msg, np.mean(ave_total_loss), np.mean(ave_p_y_u)
+    return msg, np.mean(ave_total_loss), np.mean(ave_p_y_u), np.sum(acc) #, acc_instances

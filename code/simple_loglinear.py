@@ -26,12 +26,13 @@ def ortho_weight(ndim):
 """
 
 class SimpleLoglinear(object):
-    def __init__(self, dh, u = "sgd", reg = 0.1, grad_transform= "0", grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, temp_model = "t0"):
+    def __init__(self, dh, u = "sgd", reg = 0.1, grad_transform= "0", grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, temp_model = "t0", grad_top_k = "top_all"):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
         self.grad_model = grad_model
         self.low_rank = 100
         self.context_size = 10
+        self.grad_top_k = grad_top_k
         self.clip = clip
         self._update = None
         if u == "sgd":
@@ -280,6 +281,16 @@ class SimpleLoglinear(object):
             else:
                 raise BaseException("unknown user ul")
             theta_t_grad = T.reshape(theta_t_grad, theta_t.shape) #(D,)
+            if self.grad_top_k == "top_all":
+                pass
+            elif self.grad_top_k.startswith("top_"):
+                print 'here'
+                k = int(self.grad_top_k.split("_")[1])
+                theta_t_grad_abs = T.abs_(theta_t_grad)
+                theta_t_grad_abs_argsort = T.argsort(theta_t_grad_abs)
+                theta_t_grad = T.set_subtensor(theta_t_grad[theta_t_grad_abs_argsort[:self.dh.FEAT_SIZE - k]],0)
+            else:
+                raise BaseException("unknown grad top k")
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
             return theta_t_grad, y_hat, model_loss, model_bin_loss
 

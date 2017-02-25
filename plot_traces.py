@@ -131,6 +131,7 @@ if __name__ == '__main__':
         plt.plot(x_line, _chance_line, lw=1.0, ls='-', c = 'black')
         #plt.show()
         plt.xlim(xmin=0)
+        plt.yscale("log")
         plt.ylabel("P(u) over chance")
         plt.xlabel("training steps")
         plt.title("Model Comparison (single user)")

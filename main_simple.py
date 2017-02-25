@@ -26,6 +26,7 @@ if __name__ == '__main__':
     sys.setrecursionlimit(50000)
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
+    opt.add_argument('-k', action='store', dest='top_k', default='top_k_all', required = True)
     opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
     opt.add_argument('--gt', action='store', dest='grad_transform', default="0", required=True)
     opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float, required=True)
@@ -44,7 +45,9 @@ if __name__ == '__main__':
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
     DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
     T_SEQ = read_data('./data/data_splits/test.data', dh)
-    _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
+    _theta_0 = 0.0001 * np.random.rand(dh.FEAT_SIZE).astype(floatX)
+
+    #_theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     _decay = 0.001
     _learning_rate = 0.1 #only used for sgd
     _clip = options.clip == "clip"
@@ -56,16 +59,16 @@ if __name__ == '__main__':
                         grad_model = options.grad_model,
                         clip = _clip,
                         temp_model = options.temp,
+                        grad_top_k = options.top_k,
                         interpolate_bin_loss = options.interpolate_bin_loss)
     prev_dl = 1000000.0000
     prev_dacc = 0.0
     best_dl = 1000000.000
-    best_dacc = 0.0
     prev_dpu = 0.0
     improvement = []
     for epoch_idx in xrange(100):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
-        lr = lr if options.grad_update == "sgd" else (0.5 / len(TRAINING_SEQ))
+        lr = lr if options.grad_update == "sgd" else (0.05 / len(TRAINING_SEQ))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
         sys.stderr.write('-')
         for r_idx in shuffle_ids[:]:
@@ -89,9 +92,8 @@ if __name__ == '__main__':
         print 'train:', msg
         msg,testl,testpu,tacc = disp_eval(T_SEQ, sll, dh, options.save_trace + '.test', epoch_idx) 
         print 'test:', msg
-        if dacc > best_dacc and options.save_model is not None:
+        if dacc > prev_dacc and options.save_model is not None:
             save_obj(sll, options.save_model) 
-            best_dacc = dacc
         improvement.append((1 if dacc > prev_dacc else 0))
         if np.sum(improvement[-2:]) == 0 and len(improvement) > 5:
             break

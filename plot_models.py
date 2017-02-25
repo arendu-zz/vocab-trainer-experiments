@@ -18,8 +18,7 @@ def autolabel(rects):
 
 if __name__ == '__main__':
     sns.set_style('whitegrid')
-    colors = sns.color_palette(n_colors=8).as_hex() #palette="Set2"
-    colors.pop(3)
+    colors = sns.color_palette("Paired",n_colors=6).as_hex() #palette="Set2"
     stats = open('./logs/results/stats.log').read()
     stats = stats.split('done')[0]
     devs = stats.strip().split('DEV mean_losses')
@@ -30,7 +29,7 @@ if __name__ == '__main__':
     devs = [d for d in devs if d.strip() != '']
     tests = [t for t in tests if t.strip() != '']
     for _set_name, _set in [("dev",devs), ("test",tests)]:
-        width = 0.2
+        width = 0.1
         N = 5
         conditions = [] # 5 conditions
         ind = np.arange(N)
@@ -40,6 +39,10 @@ if __name__ == '__main__':
         _10_cis = []
         _30_means = [] 
         _30_cis = []
+        _02_means = [] 
+        _02_cis = []
+        _12_means = [] 
+        _12_cis = []
         _32_means = [] 
         _32_cis = []
         for d in _set:
@@ -49,27 +52,35 @@ if __name__ == '__main__':
             _00 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[1]) if i not in [',', '(', ')', ' ', '']]
             _10 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[2]) if i not in [',', '(', ')', ' ', '']]
             _30 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[3]) if i not in [',', '(', ')', ' ', '']]
+            _02 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[4]) if i not in [',', '(', ')', ' ', '']]
+            _12 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[5]) if i not in [',', '(', ')', ' ', '']]
             _32 = [float(i) for i in re.split(r'(\s|,|\(|\))', d[6]) if i not in [',', '(', ')', ' ', '']]
             conditions.append(condition)
             _00_means.append(_00[1])
             _10_means.append(_10[1])
             _30_means.append(_30[1])
+            _02_means.append(_02[1])
+            _12_means.append(_12[1])
             _32_means.append(_32[1])
 
             _00_cis.append(0.5 * (_00[4] - _00[3]))
             _10_cis.append(0.5 * (_10[4] - _10[3]))
             _30_cis.append(0.5 * (_30[4] - _30[3]))
+            _02_cis.append(0.5 * (_02[4] - _02[3]))
+            _12_cis.append(0.5 * (_12[4] - _12[3]))
             _32_cis.append(0.5 * (_32[4] - _32[3]))
 
         fig, ax = plt.subplots()
         _00_rects = ax.bar(ind, _00_means, width, color= colors[0], yerr=_00_cis)
-        _10_rects = ax.bar(ind + width, _10_means, width, color= colors[1], yerr=_10_cis)
-        _30_rects = ax.bar(ind + 2 * width, _30_means, width, color= colors[3], yerr=_30_cis)
-        _32_rects = ax.bar(ind + 3 * width, _32_means, width, color= colors[2], yerr=_32_cis)
+        _02_rects = ax.bar(ind + width, _02_means, width, color= colors[1], yerr=_02_cis)
+        _10_rects = ax.bar(ind + 2 * width, _10_means, width, color= colors[2], yerr=_10_cis)
+        _12_rects = ax.bar(ind + 3 * width, _12_means, width, color= colors[3], yerr=_12_cis)
+        _30_rects = ax.bar(ind + 4 * width, _30_means, width, color= colors[4], yerr=_30_cis)
+        _32_rects = ax.bar(ind + 5 * width, _32_means, width, color= colors[5], yerr=_32_cis)
         ax.set_ylabel('Ave. Loss per user guess')
         ax.set_xticks(ind + (1.5 * width))
         ax.set_xticklabels(tuple(conditions))
-        ax.legend((_00_rects[0], _10_rects[0], _30_rects[0], _32_rects[0]), ('m0', 'm1', 'm2', 'm3'))
+        ax.legend((_00_rects[0], _10_rects[0], _30_rects[0]), ('m0', 'm1', 'm2'))
         #autolabel(_00_rects)
         #autolabel(_10_rects)
         #autolabel(_30_rects)
