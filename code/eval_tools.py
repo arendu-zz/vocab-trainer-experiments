@@ -33,6 +33,10 @@ def eval_losses(SEQ, seq_model, dh):
     l_per_user_guess_tp = []
     l_per_user_guess_mc = []
     acc_instances = []
+    acc_instances_c = []
+    acc_instances_ic = []
+    acc_instances_mc = []
+    acc_instances_tp = []
 
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     for idx in xrange(len(SEQ)):
@@ -48,6 +52,8 @@ def eval_losses(SEQ, seq_model, dh):
         idx_u = np.arange(_devS.shape[0])[_devS[:,(4,5,6)].any(axis=1)] #index of col when 4,5,6 is 1
         tp_idx = np.where(np.logical_and(_devS[:,1] == 1, _devS[:,3] == 0)) 
         mc_idx = np.where(_devS[:,2] == 1) 
+        idx_c = np.where(np.logical_or(_devS[:,4] == 1, _devS[:,7] == 1))
+        idx_ic = np.where(np.logical_or(_devS[:,5] == 1, _devS[:,8] == 1))
         tp_losses = seq_losses[tp_idx]
         mc_losses = seq_losses[mc_idx]
         sum_u_losses = np.sum(u_losses)
@@ -59,11 +65,28 @@ def eval_losses(SEQ, seq_model, dh):
         l_per_user_guess_mc += mc_losses.tolist()
         y_hat_argmax = np.argmax(y_hats, axis=1)
         y_argmax = np.argmax(_devY, axis=1)
+        assert y_argmax.shape[0] == seq_losses.shape[0]
         y_hat_argmax_u = y_hat_argmax[idx_u]
         y_argmax_u = y_argmax[idx_u]
+        y_argmax_c = y_argmax[idx_c]
+        y_argmax_ic = y_argmax[idx_ic]
+        y_argmax_mc = y_argmax[mc_idx]
+        y_argmax_tp = y_argmax[tp_idx]
+        y_hat_argmax_c = y_hat_argmax[idx_c]
+        y_hat_argmax_ic = y_hat_argmax[idx_ic]
+        y_hat_argmax_mc = y_hat_argmax[mc_idx]
+        y_hat_argmax_tp = y_hat_argmax[tp_idx]
+        acc_match_c = [1 if i == j else 0 for i,j in zip(y_argmax_c, y_hat_argmax_c)]
+        acc_instances_c += acc_match_c
+        acc_match_ic = [1 if i == j else 0 for i,j in zip(y_argmax_ic, y_hat_argmax_ic)]
+        acc_instances_ic += acc_match_ic
+        acc_match_mc = [1 if i == j else 0 for i,j in zip(y_argmax_mc, y_hat_argmax_mc)]
+        acc_instances_mc += acc_match_mc
+        acc_match_tp = [1 if i == j else 0 for i,j in zip(y_argmax_tp, y_hat_argmax_tp)]
+        acc_instances_tp += acc_match_tp
         acc_match = [1 if i == j else 0 for i,j in zip(y_argmax_u, y_hat_argmax_u)]
         acc_instances += acc_match
-    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp, acc_instances
+    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp, acc_instances, acc_instances_c, acc_instances_ic, acc_instances_mc, acc_instances_tp
 
 
 def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_model=False):

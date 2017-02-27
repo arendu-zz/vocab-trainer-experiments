@@ -38,7 +38,59 @@ best m 3 0
 min_loss:            53.2640 6 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 57.755
 max_acc:             0.4880 8 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.452
 max_pu:              0.3700 8 ./simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.log 0.351
+==================================================================================================
+all
+best m 0 0
+min_loss:            99.3360 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 103.892
+max_acc:             0.2150 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.214
+max_pu:              0.1990 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.193
+best m 1 0
+min_loss:            59.1320 41 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 62.799
+max_acc:             0.4530 41 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.409
+max_pu:              0.3060 41 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.286
+best m 3 0
+min_loss:            55.7200 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 59.827
+max_acc:             0.4870 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.433
+max_pu:              0.3480 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.334
+best m 0 0
+min_loss:            84.8320 21 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 83.797
+max_acc:             0.2010 21 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.17
+max_pu:              0.1600 21 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.162
+best m 1 0
+min_loss:            66.4370 39 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 67.763
+max_acc:             0.3900 39 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.376
+max_pu:              0.2770 39 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.279
+best m 3 0
+min_loss:            62.1550 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 65.107
+max_acc:             0.4230 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.398
+max_pu:              0.3280 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.328
+============================================================================================================
+best m 0 0
+min_loss:            117.2730 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 116.321
+max_acc:             0.1810 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.199
+max_pu:              0.1690 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.184
+best m 1 0
+min_loss:            70.4900 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 73.941
+max_acc:             0.4370 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.409
+max_pu:              0.2730 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.269
+best m 3 0
+min_loss:            58.8880 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 63.877
+max_acc:             0.4720 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.445
+max_pu:              0.3450 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.327
+best m 0 0
+min_loss:            90.6160 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 88.863
+max_acc:             0.1820 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.158
+max_pu:              0.1560 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.16
+best m 1 0
+min_loss:            65.1110 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 66.754
+max_acc:             0.3970 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.389
+max_pu:              0.2850 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.285
+best m 3 0
+min_loss:            62.2900 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 65.38
+max_acc:             0.4270 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.385
+max_pu:              0.3290 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.327
 """
+
 
 if __name__ == '__main__':
     opt= argparse.ArgumentParser(description="write program description here")
@@ -49,11 +101,12 @@ if __name__ == '__main__':
     #flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e", "#2ecc71"]
     sns.set_style("whitegrid")
     #colors = sns.color_palette("Set2", n_colors=3).as_hex() #palette="Set2"
-    colors = sns.color_palette(n_colors=8).as_hex() #palette="Set2"
-    colors.pop(3)
-    d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.8", colors[0], "m2")
-    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.16", colors[1], "m1")
-    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.01.gt.0.c.free.bl.0.0.gm.g1.t.t0.ut.iter.13", colors[2], "m0")
+    #colors = sns.color_palette(n_colors=8).as_hex() #palette="Set2"
+    colors = sns.color_palette("Paired",n_colors=6).as_hex() #palette="Set2"
+    #colors.pop(3)
+    d_m2 = ("logs/traces/simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.ut.iter.34", colors[5], "cm")
+    d_m1 = ("logs/traces/simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.ut.iter.70", colors[3], "vm")
+    d_m0 = ("logs/traces/simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.ut.iter.5", colors[1], "sm")
     #d_m2 = ("logs/results/traces.m3_t2.dev.traces.iter.0",colors[2], "m3")
     #d_m1 = ("logs/results/traces.m1_t0.dev.traces.iter.0", colors[1], "m1")
     #d_m0 = ("logs/results/traces.m0_t0.dev.traces.iter.0", colors[0], "m0")

@@ -91,6 +91,20 @@ class SimpleLoglinear(object):
             self.W_zc2 = theano.shared(floatX(u), name='W_zc2')
             self.params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2, self.b_r, self.b_z]
             self.reg_params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2]
+        elif self.learning_model == "m3.3":
+            _b_x = 0.0
+            #self.b_wr = theano.shared(floatX(np.zeros(self.context_size)), name="b_wr")
+            #self.b_wz = theano.shared(floatX(np.zeros(self.context_size)), name="b_wz")
+            W = np.random.randn(self.context_size, self.context_size)
+            u, s, v = np.linalg.svd(W)
+            self.b_z = theano.shared(floatX(_b_x), name="b_z") 
+            self.b_r = theano.shared(floatX(_b_x), name="b_r")
+            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
+            self.W_rc2 = theano.shared(floatX(u), name='W_rc1')
+            self.W_zc2 = theano.shared(floatX(u), name='W_zc2')
+            self.params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2, self.b_r, self.b_z] # self.b_wr, self.b_wz]
+            self.reg_params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2]
         elif self.learning_model == "m4":
             self.W_rt = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt')
             self.b_r_t = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="b_r_t")
@@ -253,20 +267,26 @@ class SimpleLoglinear(object):
                 y_target = create_target(y_t, y_hat, s_t)
                 theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
             elif self.grad_model == "g1":
-                theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
-                if s_t[5] == 1: #if s_t[5] is 1 then the student knows their answer is wrong... so we use the "reverse" gradient
-                    theta_t_grad = -theta_t_grad
-                else:
-                    pass
+                pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
+                theta_t_grad = T.switch(T.eq(s_t[5], 1.0), -pos_theta_t_grad, pos_theta_t_grad)
+                #if s_t[5] == 1: #if s_t[5] is 1 then the student knows their answer is wrong... so we use the "reverse" gradient
+                #    theta_t_grad = -theta_t_grad
+                #else:
+                #    pass
             elif self.grad_model == "g2":
-                theta_t_grad_c = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
-                if s_t[5] == 1:
-                    y_target = create_target(y_t, y_hat, s_t)
-                    theta_t_grad_g2 = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
-                    theta_t_grad_g1 = -theta_t_grad
-                    theta_t_grad = merge * theta_t_grad_g1 + (1.0 - merge) * theta_t_grad_g2
-                else:
-                    theta_t_grad = merge * theta_t_grad_c + (1.0 - merge) * theta_t_grad_c
+                pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
+                neg_theta_t_grad = -pos_theta_t_grad
+                y_target = create_target(y_t, y_hat, s_t)
+                redistribute_theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
+                merge_theta_t_grad = merge * neg_theta_t_grad + (1.0 - merge) * redistribute_theta_t_grad
+                theta_t_grad = T.switch(T.eq(s_t[5],1.0), merge_theta_t_grad, pos_theta_t_grad)
+                #if s_t[5] == 1:
+                #    y_target = create_target(y_t, y_hat, s_t)
+                #    theta_t_grad_g2 = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
+                #    theta_t_grad_g1 = -theta_t_grad
+                #    theta_t_grad = merge * theta_t_grad_g1 + (1.0 - merge) * theta_t_grad_g2
+                #else:
+                #    theta_t_grad = merge * theta_t_grad_c + (1.0 - merge) * theta_t_grad_c
             else:
                 raise BaseException("unknown user grad type")
 
@@ -284,7 +304,6 @@ class SimpleLoglinear(object):
             if self.grad_top_k == "top_all":
                 pass
             elif self.grad_top_k.startswith("top_"):
-                print 'here'
                 k = int(self.grad_top_k.split("_")[1])
                 theta_t_grad_abs = T.abs_(theta_t_grad)
                 theta_t_grad_abs_argsort = T.argsort(theta_t_grad_abs)
@@ -319,6 +338,7 @@ class SimpleLoglinear(object):
                 temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp + c_temp + t_temp), 0.1, 1.0)
             else:
                 raise BaseException("unknown temp model")
+
             if self.grad_model == "g2":
                 merge = T.nnet.sigmoid(self.b_m + self.W_m1.dot(self.W_m2.dot(s_t)))
             elif self.grad_model == "g0" or self.grad_model == "g1":
@@ -327,37 +347,40 @@ class SimpleLoglinear(object):
                 raise BaseException("unknown grad model")
             o_gtheta_t, y_hat, loss_t, bin_loss_t = log_linear_t(Phi_x_t, y_t, yt_t, o_t, s_t, merge, temp, theta_t) #(D,) and scalar
             r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, s_t)
-            if s_t[6] == 1: #nofeeback no knowledge change...
-                theta_tp1 = theta_t
+            gtheta_t = o_gtheta_t
+            c_t = s_t #T.set_subtensor(s_t[[6,7,8]],0)
+            c_tm1 = s_tm1 #T.set_subtensor(s_tm1[[6, 7,8]],0)
+            if self.learning_model == "m0":
+                theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * gtheta_t
+            elif self.learning_model == "m1":
+                theta_tp1 = T.nnet.sigmoid(self.W_r + self.b_r) * theta_t + T.nnet.sigmoid(self.W_z + self.b_z) * gtheta_t
+            elif self.learning_model == "m2":
+                g_r = T.nnet.sigmoid(self.W_rc.dot(c_tm1)  + self.b_r)  
+                g_z = T.nnet.sigmoid(self.W_zc.dot(c_t) + self.b_z)  
+                theta_tp1 = g_r * theta_t + g_z * gtheta_t
+            elif self.learning_model == "m3":
+                g_r = T.nnet.sigmoid(self.W_rc.dot(self.W_rc2.dot(c_tm1)) + self.b_r)
+                g_z = T.nnet.sigmoid(self.W_zc.dot(self.W_zc2.dot(c_t)) + self.b_z) #<--- everything but input x
+                theta_tp1 = g_r * theta_t + g_z * gtheta_t
+            elif self.learning_model == "m3.3":
+                g_r = T.nnet.sigmoid(self.W_rc.dot(T.nnet.relu(self.W_rc2.dot(c_tm1), 0.1)) + self.b_r)
+                g_z = T.nnet.sigmoid(self.W_zc.dot(T.nnet.relu(self.W_zc2.dot(c_t), 0.1)) + self.b_z) #<--- everything but input x
+                theta_tp1 = g_r * theta_t + g_z * gtheta_t
+            elif self.learning_model == "m4":
+                lr_theta_r = T.nnet.relu(self.W_rt.dot(theta_t) + self.b_r_t, 0.1) #(low_rank,)
+                lr_theta_z = T.nnet.relu(self.W_zt.dot(theta_t) + self.b_z_t, 0.1) #(low_rank,)
+                g_r = T.nnet.sigmoid(self.W_rm.dot(T.concatenate((lr_theta_r, c_tm1))) + self.b_r) 
+                g_z = T.nnet.sigmoid(self.W_zm.dot(T.concatenate((lr_theta_z, c_t))) + self.b_z) 
+                theta_tp1 = g_r * theta_t + g_z * gtheta_t
+            elif self.learning_model == "m5":
+                raise NotImplementedError("m5 not implemented")
+            elif self.learning_model == "m6":
+                g_r = T.nnet.sigmoid(self.W_rt1.dot(self.W_rt2.dot(theta_t)) + self.W_rc.dot(c_tm1) + self.W_rx.dot(Phi_x_t) + self.b_r)
+                g_z = T.nnet.sigmoid(self.W_zt1.dot(self.W_zt2.dot(theta_t)) + self.W_zc.dot(c_t) + self.W_zx.dot(Phi_x_t) + self.b_z) #<----- does not use gtheta
+                theta_tp1 = g_r * theta_t + g_z * gtheta_t
             else:
-                gtheta_t = o_gtheta_t
-                if self.learning_model == "m0":
-                    theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * gtheta_t
-                elif self.learning_model == "m1":
-                    theta_tp1 = T.nnet.sigmoid(self.W_r + self.b_r) * theta_t + T.nnet.sigmoid(self.W_z + self.b_z) * gtheta_t
-                elif self.learning_model == "m2":
-                    g_r = T.nnet.sigmoid(self.W_rc.dot(s_tm1)  + self.b_r)  
-                    g_z = T.nnet.sigmoid(self.W_zc.dot(s_t) + self.b_z)  
-                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
-                elif self.learning_model == "m3":
-                    g_r = T.nnet.sigmoid(self.W_rc.dot(self.W_rc2.dot(s_tm1)) + self.b_r)
-                    g_z = T.nnet.sigmoid(self.W_zc.dot(self.W_zc2.dot(s_t)) + self.b_z) #<--- everything but input x
-                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
-                elif self.learning_model == "m4":
-                    lr_theta_r = T.nnet.sigmoid(self.W_rt.dot(theta_t) + self.b_r_t) #(low_rank,)
-                    lr_theta_z = T.nnet.sigmoid(self.W_zt.dot(theta_t) + self.b_z_t) #(low_rank,)
-                    g_r = T.nnet.sigmoid(self.W_rm.dot(T.concatenate((lr_theta_r, s_tm1))) + self.b_r) 
-                    g_z = T.nnet.sigmoid(self.W_zm.dot(T.concatenate((lr_theta_z, s_t))) + self.b_z) 
-                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
-                elif self.learning_model == "m5":
-                    raise NotImplementedError("m5 not implemented")
-                elif self.learning_model == "m6":
-                    g_r = T.nnet.sigmoid(self.W_rt1.dot(self.W_rt2.dot(theta_t)) + self.W_rc.dot(s_tm1) + self.W_rx.dot(Phi_x_t) + self.b_r)
-                    g_z = T.nnet.sigmoid(self.W_zt1.dot(self.W_zt2.dot(theta_t)) + self.W_zc.dot(s_t) + self.W_zx.dot(Phi_x_t) + self.b_z) #<----- does not use gtheta
-                    theta_tp1 = g_r * theta_t + g_z * gtheta_t
-                else:
-                    raise BaseException("unknown learning model")
-
+                raise BaseException("unknown learning model")
+            theta_tp1 = T.switch(T.eq(s_t[6], 1.0), theta_t, theta_tp1) #if s_t has no feeback then  do not change theta...
             if self.clip:
                 theta_tp1 = T.clip(theta_tp1, -1.0, 1.0)
             else:

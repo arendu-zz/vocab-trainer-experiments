@@ -45,9 +45,9 @@ if __name__ == '__main__':
     TRAINING_SEQ = read_data('./data/data_splits/train.data', dh)
     DEV_SEQ = read_data('./data/data_splits/dev.data', dh)
     T_SEQ = read_data('./data/data_splits/test.data', dh)
-    _theta_0 = 0.0001 * np.random.rand(dh.FEAT_SIZE).astype(floatX)
+    #_theta_0 = 0.0001 * np.random.rand(dh.FEAT_SIZE).astype(floatX)
 
-    #_theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
+    _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     _decay = 0.001
     _learning_rate = 0.1 #only used for sgd
     _clip = options.clip == "clip"

@@ -76,6 +76,32 @@ best m 3 0
 min_loss:            62.1550 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 65.107
 max_acc:             0.4230 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.398
 max_pu:              0.3280 15 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.328
+=============================================================================================================
+all
+best m 0 0
+min_loss:            117.2730 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 116.321
+max_acc:             0.1810 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.199
+max_pu:              0.1690 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.184
+best m 1 0
+min_loss:            70.4900 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 73.941
+max_acc:             0.4370 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.409
+max_pu:              0.2730 70 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.269
+best m 3 0
+min_loss:            58.8880 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 63.877
+max_acc:             0.4720 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.445
+max_pu:              0.3450 34 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.log 0.327
+best m 0 0
+min_loss:            90.6160 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 88.863
+max_acc:             0.1820 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.158
+max_pu:              0.1560 5 ./simple.m.m0.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.16
+best m 1 0
+min_loss:            65.1110 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 66.754
+max_acc:             0.3970 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.389
+max_pu:              0.2850 40 ./simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.285
+best m 3 0
+min_loss:            62.2900 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 65.38
+max_acc:             0.4270 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.385
+max_pu:              0.3290 14 ./simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g0.t.t0.top_all.log 0.327
 """
 def ci(a):
     return st.t.interval(0.95, len(a) - 1, loc=np.mean(a), scale=st.sem(a))
@@ -126,12 +152,12 @@ if __name__ == '__main__':
     m1_g1_sll = load_obj('./logs/models/simple.m.m1.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.model')
     m3_g1_sll = load_obj('./logs/models/simple.m.m3.u.rms.r.0.001.gt.0.c.free.bl.0.0.gm.g1.t.t0.top_all.model')
     for seq_name, SEQ in [("DEV", DEV_SEQ), ("TEST", TEST_SEQ)]:
-        l00_ps, l00_ug, l00_ug_c, l00_ug_ic, l00_ug_mc, l00_ug_tp, l00_ug_acc = eval_losses(SEQ, m0_g0_sll, dh)
-        l10_ps, l10_ug, l10_ug_c, l10_ug_ic, l10_ug_mc, l10_ug_tp, l10_ug_acc = eval_losses(SEQ, m1_g0_sll, dh)
-        l30_ps, l30_ug, l30_ug_c, l30_ug_ic, l30_ug_mc, l30_ug_tp, l30_ug_acc = eval_losses(SEQ, m3_g0_sll, dh)
-        l02_ps, l02_ug, l02_ug_c, l02_ug_ic, l02_ug_mc, l02_ug_tp, l02_ug_acc = eval_losses(SEQ, m0_g1_sll, dh)
-        l12_ps, l12_ug, l12_ug_c, l12_ug_ic, l12_ug_mc, l12_ug_tp, l12_ug_acc = eval_losses(SEQ, m1_g1_sll, dh)
-        l32_ps, l32_ug, l32_ug_c, l32_ug_ic, l32_ug_mc, l32_ug_tp, l32_ug_acc = eval_losses(SEQ, m3_g1_sll, dh)
+        l00_ps, l00_ug, l00_ug_c, l00_ug_ic, l00_ug_mc, l00_ug_tp, l00_ug_acc, l00_c_acc, l00_ic_acc, l00_mc_acc, l00_tp_acc = eval_losses(SEQ, m0_g0_sll, dh)
+        l10_ps, l10_ug, l10_ug_c, l10_ug_ic, l10_ug_mc, l10_ug_tp, l10_ug_acc, l10_c_acc, l10_ic_acc, l10_mc_acc, l10_tp_acc = eval_losses(SEQ, m1_g0_sll, dh)
+        l30_ps, l30_ug, l30_ug_c, l30_ug_ic, l30_ug_mc, l30_ug_tp, l30_ug_acc, l30_c_acc, l30_ic_acc, l30_mc_acc, l30_tp_acc = eval_losses(SEQ, m3_g0_sll, dh)
+        l02_ps, l02_ug, l02_ug_c, l02_ug_ic, l02_ug_mc, l02_ug_tp, l02_ug_acc, l02_c_acc, l02_ic_acc, l02_mc_acc, l02_tp_acc = eval_losses(SEQ, m0_g1_sll, dh)
+        l12_ps, l12_ug, l12_ug_c, l12_ug_ic, l12_ug_mc, l12_ug_tp, l12_ug_acc, l12_c_acc, l12_ic_acc, l12_mc_acc, l12_tp_acc= eval_losses(SEQ, m1_g1_sll, dh)
+        l32_ps, l32_ug, l32_ug_c, l32_ug_ic, l32_ug_mc, l32_ug_tp, l32_ug_acc, l32_c_acc, l32_ic_acc, l32_mc_acc, l32_tp_acc = eval_losses(SEQ, m3_g1_sll, dh)
         assert np.shape(l00_ug) == np.shape(l32_ug)
         assert np.shape(l00_ug_c) == np.shape(l32_ug_c) == np.shape(l12_ug_c)
         assert np.shape(l00_ug_ic) == np.shape(l32_ug_ic) == np.shape(l12_ug_ic)
@@ -143,12 +169,12 @@ if __name__ == '__main__':
         #l12_ps, l12_ug = eval_losses(DEV_SEQ, m1_g1_sll, dh)
         #l32_ps, l32_ug = eval_losses(DEV_SEQ, m3_g1_sll, dh)
         print '\n', seq_name, 'mean_losses u'
-        print '00', np.mean(l00_ug), np.std(l00_ug), ci(l00_ug)
-        print '10', np.mean(l10_ug), np.std(l10_ug), ci(l10_ug)
-        print '30', np.mean(l30_ug), np.std(l30_ug), ci(l30_ug)
-        print '02', np.mean(l02_ug), np.std(l02_ug), ci(l02_ug)
-        print '12', np.mean(l12_ug), np.std(l12_ug), ci(l12_ug)
-        print '32', np.mean(l32_ug), np.std(l32_ug), ci(l32_ug)
+        print '00', np.mean(l00_ug), np.std(l00_ug), ci(l00_ug), np.mean(l00_ug_acc)
+        print '10', np.mean(l10_ug), np.std(l10_ug), ci(l10_ug), np.mean(l10_ug_acc)
+        print '30', np.mean(l30_ug), np.std(l30_ug), ci(l30_ug), np.mean(l30_ug_acc)
+        print '02', np.mean(l02_ug), np.std(l02_ug), ci(l02_ug), np.mean(l02_ug_acc)
+        print '12', np.mean(l12_ug), np.std(l12_ug), ci(l12_ug), np.mean(l12_ug_acc)
+        print '32', np.mean(l32_ug), np.std(l32_ug), ci(l32_ug), np.mean(l32_ug_acc)
         print 'pairwise sig tests u'
         print 'ug 00 vs 10:', st.ttest_rel(l00_ug, l10_ug), get_mcnemar(l00_ug_acc, l10_ug_acc)
         print 'ug 10 vs 30:', st.ttest_rel(l10_ug, l30_ug), get_mcnemar(l10_ug_acc, l30_ug_acc)
@@ -158,48 +184,48 @@ if __name__ == '__main__':
         print 'ug 10 vs 12:', st.ttest_rel(l10_ug, l12_ug), get_mcnemar(l10_ug_acc, l12_ug_acc)
         print 'ug 30 vs 32:', st.ttest_rel(l30_ug, l32_ug), get_mcnemar(l30_ug_acc, l32_ug_acc)
         print '\n', seq_name, 'mean_losses c'
-        print '00', np.mean(l00_ug_c), np.std(l00_ug_c), ci(l00_ug_c)
-        print '10', np.mean(l10_ug_c), np.std(l10_ug_c), ci(l10_ug_c)
-        print '30', np.mean(l30_ug_c), np.std(l30_ug_c), ci(l30_ug_c)
-        print '02', np.mean(l02_ug_c), np.std(l02_ug_c), ci(l02_ug_c)
-        print '12', np.mean(l12_ug_c), np.std(l12_ug_c), ci(l12_ug_c)
-        print '32', np.mean(l32_ug_c), np.std(l32_ug_c), ci(l32_ug_c)
+        print '00', np.mean(l00_ug_c), np.std(l00_ug_c), ci(l00_ug_c), np.mean(l00_c_acc)
+        print '10', np.mean(l10_ug_c), np.std(l10_ug_c), ci(l10_ug_c), np.mean(l10_c_acc)
+        print '30', np.mean(l30_ug_c), np.std(l30_ug_c), ci(l30_ug_c), np.mean(l30_c_acc)
+        print '02', np.mean(l02_ug_c), np.std(l02_ug_c), ci(l02_ug_c), np.mean(l02_c_acc)
+        print '12', np.mean(l12_ug_c), np.std(l12_ug_c), ci(l12_ug_c), np.mean(l12_c_acc)
+        print '32', np.mean(l32_ug_c), np.std(l32_ug_c), ci(l32_ug_c), np.mean(l32_c_acc)
         print 'pairwise sig tests c'
         print 'ug_c 00 vs 10:', st.ttest_rel(l00_ug_c, l10_ug_c)
         print 'ug_c 10 vs 30:', st.ttest_rel(l10_ug_c, l30_ug_c)
         print 'ug_c 10 vs 12:', st.ttest_rel(l10_ug_c, l12_ug_c)
         print 'ug_c 30 vs 32:', st.ttest_rel(l30_ug_c, l32_ug_c)
         print '\n', seq_name, 'mean_losses ic'
-        print '00', np.mean(l00_ug_ic), np.std(l00_ug_ic), ci(l00_ug_ic)
-        print '10', np.mean(l10_ug_ic), np.std(l10_ug_ic), ci(l10_ug_ic)
-        print '30', np.mean(l30_ug_ic), np.std(l30_ug_ic), ci(l30_ug_ic)
-        print '02', np.mean(l02_ug_ic), np.std(l02_ug_ic), ci(l02_ug_ic)
-        print '12', np.mean(l12_ug_ic), np.std(l12_ug_ic), ci(l12_ug_ic)
-        print '32', np.mean(l32_ug_ic), np.std(l32_ug_ic), ci(l32_ug_ic)
+        print '00', np.mean(l00_ug_ic), np.std(l00_ug_ic), ci(l00_ug_ic), np.mean(l00_ic_acc)
+        print '10', np.mean(l10_ug_ic), np.std(l10_ug_ic), ci(l10_ug_ic), np.mean(l10_ic_acc)
+        print '30', np.mean(l30_ug_ic), np.std(l30_ug_ic), ci(l30_ug_ic), np.mean(l30_ic_acc)
+        print '02', np.mean(l02_ug_ic), np.std(l02_ug_ic), ci(l02_ug_ic), np.mean(l02_ic_acc)
+        print '12', np.mean(l12_ug_ic), np.std(l12_ug_ic), ci(l12_ug_ic), np.mean(l12_ic_acc)
+        print '32', np.mean(l32_ug_ic), np.std(l32_ug_ic), ci(l32_ug_ic), np.mean(l32_ic_acc)
         print 'pairwise sig tests ic'
         print 'ug_ic 00 vs 10:', st.ttest_rel(l00_ug_ic, l10_ug_ic)
         print 'ug_ic 10 vs 30:', st.ttest_rel(l10_ug_ic, l30_ug_ic)
         print 'ug_ic 10 vs 12:', st.ttest_rel(l10_ug_ic, l12_ug_ic)
         print 'ug_ic 30 vs 32:', st.ttest_rel(l30_ug_ic, l32_ug_ic)
         print '\n', seq_name, 'mean_losses mc'
-        print '00', np.mean(l00_ug_mc), np.std(l00_ug_mc), ci(l00_ug_mc)
-        print '10', np.mean(l10_ug_mc), np.std(l10_ug_mc), ci(l10_ug_mc)
-        print '30', np.mean(l30_ug_mc), np.std(l30_ug_mc), ci(l30_ug_mc)
-        print '02', np.mean(l02_ug_mc), np.std(l02_ug_mc), ci(l02_ug_mc)
-        print '12', np.mean(l12_ug_mc), np.std(l12_ug_mc), ci(l12_ug_mc)
-        print '32', np.mean(l32_ug_mc), np.std(l32_ug_mc), ci(l32_ug_mc)
+        print '00', np.mean(l00_ug_mc), np.std(l00_ug_mc), ci(l00_ug_mc), np.mean(l00_mc_acc)
+        print '10', np.mean(l10_ug_mc), np.std(l10_ug_mc), ci(l10_ug_mc), np.mean(l10_mc_acc)
+        print '30', np.mean(l30_ug_mc), np.std(l30_ug_mc), ci(l30_ug_mc), np.mean(l30_mc_acc)
+        print '02', np.mean(l02_ug_mc), np.std(l02_ug_mc), ci(l02_ug_mc), np.mean(l02_mc_acc)
+        print '12', np.mean(l12_ug_mc), np.std(l12_ug_mc), ci(l12_ug_mc), np.mean(l12_mc_acc)
+        print '32', np.mean(l32_ug_mc), np.std(l32_ug_mc), ci(l32_ug_mc), np.mean(l32_mc_acc)
         print 'pairwise sig tests mc'
         print 'ug_mc 00 vs 10:', st.ttest_rel(l00_ug_mc, l10_ug_mc)
         print 'ug_mc 10 vs 30:', st.ttest_rel(l10_ug_mc, l30_ug_mc)
         print 'ug_mc 10 vs 12:', st.ttest_rel(l10_ug_mc, l12_ug_mc)
         print 'ug_mc 30 vs 32:', st.ttest_rel(l30_ug_mc, l32_ug_mc)
         print '\n', seq_name, 'mean_losses tp'
-        print '00', np.mean(l00_ug_tp), np.std(l00_ug_tp), ci(l00_ug_tp)
-        print '10', np.mean(l10_ug_tp), np.std(l10_ug_tp), ci(l10_ug_tp)
-        print '30', np.mean(l30_ug_tp), np.std(l30_ug_tp), ci(l30_ug_tp)
-        print '02', np.mean(l02_ug_tp), np.std(l02_ug_tp), ci(l02_ug_tp)
-        print '12', np.mean(l12_ug_tp), np.std(l12_ug_tp), ci(l12_ug_tp)
-        print '32', np.mean(l32_ug_tp), np.std(l32_ug_tp), ci(l32_ug_tp)
+        print '00', np.mean(l00_ug_tp), np.std(l00_ug_tp), ci(l00_ug_tp), np.mean(l00_tp_acc)
+        print '10', np.mean(l10_ug_tp), np.std(l10_ug_tp), ci(l10_ug_tp), np.mean(l10_tp_acc)
+        print '30', np.mean(l30_ug_tp), np.std(l30_ug_tp), ci(l30_ug_tp), np.mean(l30_tp_acc)
+        print '02', np.mean(l02_ug_tp), np.std(l02_ug_tp), ci(l02_ug_tp), np.mean(l02_tp_acc)
+        print '12', np.mean(l12_ug_tp), np.std(l12_ug_tp), ci(l12_ug_tp), np.mean(l12_tp_acc)
+        print '32', np.mean(l32_ug_tp), np.std(l32_ug_tp), ci(l32_ug_tp), np.mean(l32_tp_acc)
         print 'pairwise sig tests mc'
         print 'ug_tp 00 vs 10:', st.ttest_rel(l00_ug_tp, l10_ug_tp)
         print 'ug_tp 10 vs 30:', st.ttest_rel(l10_ug_tp, l30_ug_tp)
@@ -209,7 +235,16 @@ if __name__ == '__main__':
     m_names = ["m0_g0", "m1_g0", "m3_g0", "m0_g1", "m1_g1", "m3_g1"]
     models = [m0_g0_sll, m1_g0_sll, m3_g0_sll, m0_g1_sll, m1_g1_sll, m3_g1_sll]
     for m_name, m in zip(m_names, models):
-        loaded_msg,loaded_dl,loaded_dpu, loaded_dacc = disp_eval(DEV_SEQ, m, dh, options.save_trace + '.' + m_name + '.dev.traces', 0) 
-        print 'loaded dev:', loaded_msg
-        loaded_msg,loaded_testl,loaded_testpu, loaded_tacc = disp_eval(TEST_SEQ, m, dh, options.save_trace + '.' + m_name + 'test.traces', 0) 
-        print 'loaded test:', loaded_msg
+        loaded_msg,loaded_dl,loaded_dpu, loaded_dacc, l_dacc_c, l_dacc_ic, l_dacc_mc, l_dacc_tp = disp_eval(DEV_SEQ, m, dh, options.save_trace + '.' + m_name + '.dev.traces', 0) 
+        print m_name, 'loaded dev:', loaded_msg
+        print ' c:', float(np.sum(l_dacc_c)) / len(l_dacc_c)
+        print 'ic:', float(np.sum(l_dacc_ic)) / len(l_dacc_ic)
+        print 'mc:', float(np.sum(l_dacc_mc)) / len(l_dacc_mc)
+        print 'tp:', float(np.sum(l_dacc_tp)) / len(l_dacc_tp)
+        loaded_msg,loaded_testl,loaded_testpu, loaded_tacc, l_tacc_c, l_tacc_ic, l_tacc_mp, l_tacc_tp = disp_eval(TEST_SEQ, m, dh, options.save_trace + '.' + m_name + 'test.traces', 0) 
+        print m_name, 'loaded test:', loaded_msg
+        print ' c:', float(np.sum(l_tacc_c)) / len(l_tacc_c)
+        print 'ic:', float(np.sum(l_tacc_ic)) / len(l_tacc_ic)
+        print 'mc:', float(np.sum(l_tacc_mc)) / len(l_tacc_mc)
+        print 'tp:', float(np.sum(l_tacc_tp)) / len(l_tacc_tp)
+
