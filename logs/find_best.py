@@ -15,6 +15,7 @@ def scan_file(fs):
     min_p_ict = (1000000, None, None)
     max_p_c_ict = (0, None, None)
     for f in glob.glob(fs):
+        print 'scaning', f
         content = open(f, 'r').readlines()
         dev_content = [c for c in content if c.startswith('dev:')]
         test_content = [c for c in content if c.startswith('test:')]
@@ -32,11 +33,14 @@ def scan_file(fs):
         test_items = [i.split(',')[0] for i in test_items]
         loss_on_test = float(test_items[3])
         acc_on_test = float(test_items[13])
-        min_loss = (loss_on_dev, len(dev_content) - 3, f, loss_on_test)
-        max_acc = (acc_on_dev, len(dev_content) - 3, f, acc_on_test)
+        if loss_on_dev < min_loss[0]:
+            min_loss = (loss_on_dev, len(dev_content) - 3, f, loss_on_test)
+        if acc_on_dev > max_acc[0]:
+            max_acc = (acc_on_dev, len(dev_content) - 3, f, acc_on_test)
         dev_p_u = float(items[5])
         test_p_u = float(test_items[5])
-        max_p_u = (dev_p_u, len(dev_content) - 3, f, test_p_u)
+        if dev_p_u > max_p_u[0]:
+            max_p_u = (dev_p_u, len(dev_content) - 3, f, test_p_u)
 
         """
         for idx,dc in enumerate(dev_content):
@@ -85,16 +89,30 @@ def scan_file(fs):
 
 
 if __name__ == '__main__':
-    for k in "all 100 90 80 70 60 50 40 30 20 10".split():
+    for k in ["all"]: #100 90 80 70 60 50 40 30 20 10".split():
         print '\n',k
-        for gm in [1, 0]:
+        for gm in [3, 1, 0]:
             for gt in ["0"]:
                 for t in [0]:
-                    for i in [0,1,3]:
-                        i = str(i)
+                    for i in "0 1 3".split():
                         t = str(t)
                         gm = str(gm)
                         #simple.m.m3.u.rms.r.0.001.gt.sign.c.free.bl.0.0.gm.g0.t.t0.log
-                        fs = "./simple.m.m" + i + ".*.r.*.gt." + gt + ".*bl.0.0.gm.g" + str(gm) + ".t.t" + t + ".top_" + k +".*log"
+                        fs = "./simple.m.m" + i + ".u.rms.r.0.001.gt." + gt + ".*bl.0.0.gm.g" + str(gm) + ".t.t" + t + ".top_" + k +".*log"
                         print 'best m', i, t
                         min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict, max_acc = scan_file(fs)
+    exit(0)
+    print "top k"
+    for k in "1500 800 400 200 100 90 80 70 60 50 40 30 20 10".split():
+        print '\n',k
+        for gm in [1]:
+            for gt in ["0"]:
+                for t in [0]:
+                    for i in "3".split():
+                        t = str(t)
+                        gm = str(gm)
+                        #simple.m.m3.u.rms.r.0.001.gt.sign.c.free.bl.0.0.gm.g0.t.t0.log
+                        fs = "./simple.m.m" + i + ".u.*.r.*.gt." + gt + ".*bl.0.0.gm.g" + str(gm) + ".t.t" + t + ".top_" + k +".*log"
+                        print 'best m', i, t
+                        min_loss, max_p_u, max_p_c, max_p_ic, min_p_ict, max_p_c_ict, max_acc = scan_file(fs)
+
