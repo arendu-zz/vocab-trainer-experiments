@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import numpy as np
-from optimizers import sgd, rmsprop, momentum
+import json
+from optimizers import rmsprop
 import theano
 import theano.tensor as T
 
@@ -25,8 +26,8 @@ def ortho_weight(ndim):
     return u.astype(theano.config.floatX)
 """
 
-class SimpleLoglinear(object):
-    def __init__(self, dh, u = "sgd", reg = 0.1, grad_transform= "0", grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, temp_model = "t0", grad_top_k = "top_all"):
+class RecurrentLoglinear(object):
+    def __init__(self, dh, u = "rms", reg = 0.1, grad_transform= "0", grad_model = "g0", learning_model = "m1", clip = False, interpolate_bin_loss = 0, temp_model = "t0", grad_top_k = "top_all", saved_weights = None):
         self.dh = dh #DataHelper(event2feats_file, feat2id_file, actions_file)
         self.learning_model = learning_model
         self.grad_model = grad_model
@@ -34,15 +35,7 @@ class SimpleLoglinear(object):
         self.context_size = 10
         self.grad_top_k = grad_top_k
         self.clip = clip
-        self._update = None
-        if u == "sgd":
-            self._update = sgd
-        elif u == "rms":
-            self._update = rmsprop
-        elif u == 'mom':
-            self._update = momentum
-        else:
-            raise Exception("unknown grad update:" + u)
+        self._update = rmsprop
         self.l = reg #reg parameter
         self.interpolate_bin_loss = interpolate_bin_loss
         self.use_sum_loss = 1
@@ -54,133 +47,106 @@ class SimpleLoglinear(object):
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
         if self.learning_model == "m0":
-            x = 0.0 #0.1  * np.random.rand(1,)
-            self.W_r = theano.shared(floatX(x), name='W_r')
-            self.W_z = theano.shared(floatX(x), name='W_z')
-            self.params = [self.W_r, self.W_z] #self.context_size is the size of the s_t context vector
-            self.reg_params = [self.W_r, self.W_z]
+            #scalar retention and update gate
+            if saved_weights is None:
+                #print 'init random weight'
+                x = 0.0 #0.1  * np.random.rand(1,)
+                W_r = theano.shared(floatX(x), name='W_r')
+                W_z = theano.shared(floatX(x), name='W_z')
+            else:
+                _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
+                #print '_params in load', _params
+                W_r = theano.shared(floatX(_params[0]), name='W_r')
+                W_z = theano.shared(floatX(_params[1]), name='W_z')
+            self.params = [W_r, W_z] 
+            self.reg_params = [W_r, W_z]
+
         elif self.learning_model == "m1":
+            #vector retention and update gate
             #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE,)
-            x = 0.01 * np.random.rand(self.dh.FEAT_SIZE,) 
-            b_x = 0.0 #0.01 * np.random.rand(1,)
-            self.b_z = theano.shared(floatX(b_x), name='b_z')
-            self.b_r = theano.shared(floatX(b_x), name='b_r')
-            self.W_r = theano.shared(floatX(x), name='W_r')
-            self.W_z = theano.shared(floatX(x), name='W_z')
-            self.params = [self.W_r, self.b_r, self.W_z, self.b_z]
-            self.reg_params = [self.W_r, self.W_z]
+            if saved_weights is None:
+                #print 'init random weight'
+                x = 0.01 * np.random.rand(self.dh.FEAT_SIZE,) 
+                b_x = 0.0 #0.01 * np.random.rand(1,)
+                b_z = theano.shared(floatX(b_x), name='b_z')
+                b_r = theano.shared(floatX(b_x), name='b_r')
+                W_r = theano.shared(floatX(x), name='W_r')
+                W_z = theano.shared(floatX(x), name='W_z')
+            else:
+                _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
+                #print '_params in load', _params
+                W_r = theano.shared(_params[0], name='W_r')
+                W_z = theano.shared(_params[1], name='W_z')
+                b_z = theano.shared(_params[2], name='b_z')
+                b_r = theano.shared(_params[3], name='b_r')
+            self.params = [W_r, W_z, b_z, b_r]
+            self.reg_params = [W_r, W_z]
         elif self.learning_model == "m2":
-            #x = 0.1 * np.random.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
-            x = 0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size) #self.context_size is the size of the s_t context vector 
-            b_x = 0.0 #0.01 * np.random.rand(1,))
-            self.b_z = theano.shared(floatX(b_x), name='b_z')
-            self.b_r = theano.shared(floatX(b_x), name='b_r')
-            self.W_rc = theano.shared(floatX(x), name='W_rc') 
-            self.W_zc = theano.shared(floatX(x), name='W_zc') 
-            self.params = [self.W_rc, self.b_r, self.W_zc, self.b_z]
-            self.reg_params = [self.W_rc, self.W_zc]
+            raise BaseException("model option removed.. see extra model file")
         elif self.learning_model == "m3":
-            _b_x = 0.0
-            W = np.random.randn(self.context_size, self.context_size)
-            u, s, v = np.linalg.svd(W)
-            self.b_z = theano.shared(floatX(_b_x), name="b_z") 
-            self.b_r = theano.shared(floatX(_b_x), name="b_r")
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-            self.W_rc2 = theano.shared(floatX(u), name='W_rc1')
-            self.W_zc2 = theano.shared(floatX(u), name='W_zc2')
-            self.params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2, self.b_r, self.b_z]
-            self.reg_params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2]
+            # vector retention and update with context   
+            if saved_weights is None:
+                #print 'init random weight'
+                _b_x = 0.0
+                W = np.random.randn(self.context_size, self.context_size)
+                u, s, v = np.linalg.svd(W)
+                b_z = theano.shared(floatX(_b_x), name="b_z") 
+                b_r = theano.shared(floatX(_b_x), name="b_r")
+                W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+                W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
+                W_rc2 = theano.shared(floatX(u), name='W_rc1')
+                W_zc2 = theano.shared(floatX(u), name='W_zc2')
+            else:
+                _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
+                #print '_params in load', _params
+                W_zc = theano.shared(floatX(_params[0]), name='W_zc') 
+                W_rc = theano.shared(floatX(_params[1]), name='W_rc') 
+                W_zc2 = theano.shared(floatX(_params[2]), name='W_zc2')
+                W_rc2 = theano.shared(floatX(_params[3]), name='W_rc1')
+                b_z = theano.shared(floatX(_params[4]), name="b_z") 
+                b_r = theano.shared(floatX(_params[5]), name="b_r")
+            self.params = [W_zc, W_rc, W_zc2, W_rc2, b_z, b_r]
+            self.reg_params = [W_zc, W_rc, W_zc2, W_rc2]
         elif self.learning_model == "m3.3":
-            _b_x = 0.0
-            #self.b_wr = theano.shared(floatX(np.zeros(self.context_size)), name="b_wr")
-            #self.b_wz = theano.shared(floatX(np.zeros(self.context_size)), name="b_wz")
-            W = np.random.randn(self.context_size, self.context_size)
-            u, s, v = np.linalg.svd(W)
-            self.b_z = theano.shared(floatX(_b_x), name="b_z") 
-            self.b_r = theano.shared(floatX(_b_x), name="b_r")
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-            self.W_rc2 = theano.shared(floatX(u), name='W_rc1')
-            self.W_zc2 = theano.shared(floatX(u), name='W_zc2')
-            self.params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2, self.b_r, self.b_z] # self.b_wr, self.b_wz]
-            self.reg_params = [self.W_zc, self.W_rc, self.W_zc2, self.W_rc2]
+            raise BaseException("model option removed.. see extra model file")
         elif self.learning_model == "m4":
-            self.W_rt = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt')
-            self.b_r_t = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="b_r_t")
-
-            self.W_zt = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt')
-            self.b_z_t = theano.shared(floatX(0.01 * np.random.rand(self.low_rank,)), name="b_z_t")
-
-            self.W_rm = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_rm') 
-            self.W_zm = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank + self.context_size)), name='W_zm') 
-            _b_x = 0.0
-            self.b_z = theano.shared(floatX(_b_x), name="b_z") 
-            self.b_r = theano.shared(floatX(_b_x), name="b_r")
-
-            self.params = [self.W_rt, self.b_r_t, self.W_zt, self.b_z_t, self.W_rm, self.W_zm, self.b_r, self.b_z]
-            self.reg_params = [self.W_rt, self.W_zt, self.W_rm, self.W_zm]
+            raise BaseException("model option removed.. see extra model file")
         elif self.learning_model == "m5":
-            _b_x = 0.0
-            self.b_z = theano.shared(floatX(_b_x), name="b_z") 
-            self.b_r = theano.shared(floatX(_b_x), name="b_r")
-            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
-            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
-            self.W_zg1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zg1')
-            self.W_zg2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zg2')
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-            self.W_rx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_rx')
-            self.W_zx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_zx')
-            self.params = [self.W_rx, self.W_zx, self.W_rt1, self.W_rt2, self.W_zg1, self.W_zg2, self.W_zc, self.W_rc, self.b_r, self.b_z]
-            self.reg_params = [self.W_rx, self.W_zx, self.W_rt1, self.W_rt2, self.W_zg1, self.W_zg2, self.W_zc, self.W_rc]
+            raise BaseException("model option removed.. see extra model file")
         elif self.learning_model == "m6":
-            b_x = 0.0 
-            self.W_rt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_rt1')
-            self.W_rt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_rt2')
-            self.W_zt1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.low_rank)), name='W_zt1')
-            self.W_zt2 = theano.shared(floatX(0.01 * np.random.rand(self.low_rank, self.dh.FEAT_SIZE)), name='W_zt2')
-
-            self.W_rx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_rx1')
-            self.W_zx = theano.shared(floatX(0.01 * np.random.rand(self.dh.E_SIZE,)), name='W_zx1')
-
-            self.W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
-            self.W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
-
-            self.b_z = theano.shared(floatX(b_x), name='b_z')
-            self.b_r = theano.shared(floatX(b_x), name='b_r')
-            self.params = [self.W_rx, self.W_rt1, self.W_rt2, self.W_zt1, self.W_zt2, self.W_zx, self.W_zc, self.W_rc, self.b_r, self.b_z] 
-            self.reg_params = [self.W_rx, self.W_rt1, self.W_rt2, self.W_zt1, self.W_zt2, self.W_zx, self.W_zc, self.W_rc]
+            raise BaseException("model option removed.. see extra model file")
         else: 
             raise BaseException("unknown learning model")
 
         if self.temp_model == "t0":
             self.b_temp = theano.shared(floatX(1.0), name='b_temp')
         elif self.temp_model == "t1":
-            self.b_temp = theano.shared(floatX(0.0), name='b_temp')
-            self.params += [self.b_temp]
+            raise BaseException("temp option removed.. see extra model file")
         elif self.temp_model == "t2":
-            W = np.random.randn(4, 4)
-            u, s, v = np.linalg.svd(W)
-            self.W_temp_c = theano.shared(floatX(0.01 * np.random.rand(4,)), name="W_temp_c")
-            self.W_temp_c2 = theano.shared(floatX(u), name="W_temp_c2")
-            self.b_temp = theano.shared(floatX(0.0), name="b_temp")
-            self.params += [self.W_temp_c, self.W_temp_c2, self.b_temp]
-            self.reg_params += [self.W_temp_c, self.W_temp_c2]
+            raise BaseException("temp option removed.. see extra model file")
         else:
             raise BaseException("unknown temp model")
 
         if self.grad_model == "g2":
-            W = np.random.randn(self.context_size, self.context_size)
-            u, s, v = np.linalg.svd(W)
-            self.b_m = theano.shared(floatX(1.0), name = 'b_m')
-            self.W_m1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name= "W_m1")
-            self.W_m2 = theano.shared(floatX(u), name= "W_m2")
-            self.params += [self.W_m1, self.W_m2, self.b_m]
-            self.reg_params += [self.W_m1, self.W_m2]
+            if saved_weights is None:
+                W = np.random.randn(self.context_size, self.context_size)
+                u, s, v = np.linalg.svd(W)
+                b_m = theano.shared(floatX(1.0), name = 'b_m')
+                W_m1 = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name= "W_m1")
+                W_m2 = theano.shared(floatX(u), name= "W_m2")
+            else:
+                _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
+                #print '_params in load in g2', _params
+                b_m = theano.shared(floatX(_params[-1]), name = 'b_m')
+                W_m2 = theano.shared(floatX(_params[-2]), name= "W_m2")
+                W_m1 = theano.shared(floatX(_params[-3]), name= "W_m1")
+            self.params += [W_m1, W_m2, b_m]
+            self.reg_params += [W_m1, W_m2]
         elif self.grad_model == "g1":
             self.b_m = theano.shared(floatX(1.0), name = 'b_m')
         elif self.grad_model == "g0":
+            self.b_m = theano.shared(floatX(1.0), name = 'b_m')
+        elif self.grad_model == "g3":
             self.b_m = theano.shared(floatX(1.0), name = 'b_m')
         else:
             raise BaseException("unknown grad model")
@@ -198,6 +164,16 @@ class SimpleLoglinear(object):
             for e_idx in xrange(self.dh.E_SIZE):
                 p[f_idx, e_idx, :]  = self._phi(f_idx, e_idx)
         return p
+
+    def save_weights(self, save_path):
+        _tmp_params = self.get_params()
+        #print '_params in save', _tmp_params
+        _params = json.dumps([i.get_value().tolist() for i in self.params])
+        f = open(save_path, 'w')
+        f.write(_params)
+        f.flush()
+        f.close()
+        return _params
 
     def make_graph(self):
         lr = T.scalar('lr', dtype=theano.config.floatX) # learning rate scalar
@@ -264,9 +240,11 @@ class SimpleLoglinear(object):
             #user_loss = -T.sum(y_target * T.log(y_hat)) + self.grad_transform * T.sum(T.sqr(theta_t))
             #theta_t_grad = T.grad(user_loss, theta_t)
             if self.grad_model == "g0":
+                #Redistribution update scheme
                 y_target = create_target(y_t, y_hat, s_t)
                 theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
             elif self.grad_model == "g1":
+                #Negative update scheme
                 pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
                 theta_t_grad = T.switch(T.eq(s_t[5], 1.0), -pos_theta_t_grad, pos_theta_t_grad)
                 #if s_t[5] == 1: #if s_t[5] is 1 then the student knows their answer is wrong... so we use the "reverse" gradient
@@ -274,6 +252,7 @@ class SimpleLoglinear(object):
                 #else:
                 #    pass
             elif self.grad_model == "g2":
+                #Interpolated REDISTRIBUTION AND NEGATIVE update scheme
                 pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
                 neg_theta_t_grad = -pos_theta_t_grad
                 y_target = create_target(y_t, y_hat, s_t)
@@ -287,6 +266,14 @@ class SimpleLoglinear(object):
                 #    theta_t_grad = merge * theta_t_grad_g1 + (1.0 - merge) * theta_t_grad_g2
                 #else:
                 #    theta_t_grad = merge * theta_t_grad_c + (1.0 - merge) * theta_t_grad_c
+            elif self.grad_model == "g3":
+                #Feature Vector Update scheme
+                y_t_idx = T.argmax(y_t)
+                Phi_x_y = Phi_x_t[y_t_idx,:] #(D,)
+                Phi_x_y = T.reshape(Phi_x_y, (self.dh.FEAT_SIZE,)) #(Y,D)
+                theta_t_grad = T.switch(T.eq(s_t[5],1.0), Phi_x_y, -Phi_x_y)
+                norm = T.sum(theta_t_grad)
+                theta_t_grad = theta_t_grad / norm
             else:
                 raise BaseException("unknown user grad type")
 
@@ -327,22 +314,16 @@ class SimpleLoglinear(object):
 
             if self.temp_model == "t0":
                 temp = self.b_temp #always 1.0
-            elif self.temp_model == "t1":
-                temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp), 0.1, 1.0)
-            elif self.temp_model == "t2":
-                c_temp = self.W_temp_c.dot(self.W_temp_c2.dot(T.concatenate((s_t[:3], s_t[-1:]))))
-                temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp + c_temp), 0.1, 1.0)
-            elif self.temp_model == "t3":
-                c_temp = self.W_temp_c.dot(T.concatenate((s_t[:3], s_t[-1:])))
-                t_temp = self.W_temp_theta2.dot(T.nnet.sigmoid(self.b_temp_2 + self.W_temp_theta1.dot(theta_t)))
-                temp = 3 * T.clip(T.nnet.sigmoid(self.b_temp + c_temp + t_temp), 0.1, 1.0)
             else:
                 raise BaseException("unknown temp model")
 
             if self.grad_model == "g2":
-                merge = T.nnet.sigmoid(self.b_m + self.W_m1.dot(self.W_m2.dot(s_t)))
-            elif self.grad_model == "g0" or self.grad_model == "g1":
-                merge = self.b_m #always 1
+                b_m = self.params[-1]
+                W_m2 = self.params[-2]
+                W_m1 = self.params[-3]
+                merge = T.nnet.sigmoid(b_m + W_m1.dot(W_m2.dot(s_t)))
+            elif self.grad_model == "g0" or self.grad_model == "g1" or self.grad_model == "g3":
+                merge = theano.shared(floatX(1.0), name = 'b_m') # self.b_m #always 1
             else:
                 raise BaseException("unknown grad model")
             o_gtheta_t, y_hat, loss_t, bin_loss_t = log_linear_t(Phi_x_t, y_t, yt_t, o_t, s_t, merge, temp, theta_t) #(D,) and scalar
@@ -351,32 +332,24 @@ class SimpleLoglinear(object):
             c_t = s_t #T.set_subtensor(s_t[[6,7,8]],0)
             c_tm1 = s_tm1 #T.set_subtensor(s_tm1[[6, 7,8]],0)
             if self.learning_model == "m0":
-                theta_tp1 = T.nnet.sigmoid(self.W_r) * theta_t + T.nnet.sigmoid(self.W_z) * gtheta_t
+                W_r = self.params[0]
+                W_z = self.params[1]
+                theta_tp1 = T.nnet.sigmoid(W_r) * theta_t + T.nnet.sigmoid(W_z) * gtheta_t
             elif self.learning_model == "m1":
-                theta_tp1 = T.nnet.sigmoid(self.W_r + self.b_r) * theta_t + T.nnet.sigmoid(self.W_z + self.b_z) * gtheta_t
-            elif self.learning_model == "m2":
-                g_r = T.nnet.sigmoid(self.W_rc.dot(c_tm1)  + self.b_r)  
-                g_z = T.nnet.sigmoid(self.W_zc.dot(c_t) + self.b_z)  
-                theta_tp1 = g_r * theta_t + g_z * gtheta_t
+                W_r = self.params[0]
+                W_z = self.params[1]
+                b_z = self.params[2]
+                b_r = self.params[3]
+                theta_tp1 = T.nnet.sigmoid(W_r + b_r) * theta_t + T.nnet.sigmoid(W_z + b_z) * gtheta_t
             elif self.learning_model == "m3":
-                g_r = T.nnet.sigmoid(self.W_rc.dot(self.W_rc2.dot(c_tm1)) + self.b_r)
-                g_z = T.nnet.sigmoid(self.W_zc.dot(self.W_zc2.dot(c_t)) + self.b_z) #<--- everything but input x
-                theta_tp1 = g_r * theta_t + g_z * gtheta_t
-            elif self.learning_model == "m3.3":
-                g_r = T.nnet.sigmoid(self.W_rc.dot(T.nnet.relu(self.W_rc2.dot(c_tm1), 0.1)) + self.b_r)
-                g_z = T.nnet.sigmoid(self.W_zc.dot(T.nnet.relu(self.W_zc2.dot(c_t), 0.1)) + self.b_z) #<--- everything but input x
-                theta_tp1 = g_r * theta_t + g_z * gtheta_t
-            elif self.learning_model == "m4":
-                lr_theta_r = T.nnet.relu(self.W_rt.dot(theta_t) + self.b_r_t, 0.1) #(low_rank,)
-                lr_theta_z = T.nnet.relu(self.W_zt.dot(theta_t) + self.b_z_t, 0.1) #(low_rank,)
-                g_r = T.nnet.sigmoid(self.W_rm.dot(T.concatenate((lr_theta_r, c_tm1))) + self.b_r) 
-                g_z = T.nnet.sigmoid(self.W_zm.dot(T.concatenate((lr_theta_z, c_t))) + self.b_z) 
-                theta_tp1 = g_r * theta_t + g_z * gtheta_t
-            elif self.learning_model == "m5":
-                raise NotImplementedError("m5 not implemented")
-            elif self.learning_model == "m6":
-                g_r = T.nnet.sigmoid(self.W_rt1.dot(self.W_rt2.dot(theta_t)) + self.W_rc.dot(c_tm1) + self.W_rx.dot(Phi_x_t) + self.b_r)
-                g_z = T.nnet.sigmoid(self.W_zt1.dot(self.W_zt2.dot(theta_t)) + self.W_zc.dot(c_t) + self.W_zx.dot(Phi_x_t) + self.b_z) #<----- does not use gtheta
+                W_zc = self.params[0]
+                W_rc = self.params[1]
+                W_zc2 = self.params[2]
+                W_rc2 = self.params[3]
+                b_z = self.params[4]
+                b_r = self.params[5]
+                g_r = T.nnet.sigmoid(W_rc.dot(W_rc2.dot(c_tm1)) + b_r)
+                g_z = T.nnet.sigmoid(W_zc.dot(W_zc2.dot(c_t)) + b_z) #<--- everything but input x
                 theta_tp1 = g_r * theta_t + g_z * gtheta_t
             else:
                 raise BaseException("unknown learning model")
@@ -408,7 +381,7 @@ class SimpleLoglinear(object):
             reg_loss += T.sum(T.sqr(reg_param))
         model_loss = (self.use_sum_loss * sum_loss) + ((1.0 - self.use_sum_loss) * mean_loss)  
         total_loss = model_loss + (self.l * reg_loss)
-        self.get_params = theano.function(inputs = [], outputs = self.params)
+        self.get_params = theano.function(inputs = [], outputs = [T.as_tensor_variable(p) for p in self.params])
         self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
         self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])
         self.get_seq_y_hats = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_y_hats)
