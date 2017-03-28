@@ -51,7 +51,7 @@ def read_data(file_path, dh):
                     o[o_id] = 1.0
             o = o.astype(intX)
             y_selected = y_selected.astype(intX)
-            t = np.array([0,0,0,0,0,0,0,0,0,0]).astype(floatX)
+            t = [0,0,0,0,0,0,0,0,0,0]
             t[0] = 1 if ptype in ["EX"] else 0
             t[1] = 1 if ptype in ["TP", "TPR"] else 0
             t[2] = 1 if ptype in ["MC", "MCR"] else 0
@@ -62,6 +62,11 @@ def read_data(file_path, dh):
             t[7] = 1 if is_qc == 'test_correct' else 0
             t[8] = 1 if is_qc == 'test_incorrect' else 0
             t[9] = 1.0 / float(r_choice)
+            x_vec = np.zeros(dh.E_SIZE,)
+            x_vec[x] = 1.0
+            t = np.asarray(t)
+            t = np.concatenate((t.astype(floatX), x_vec.astype(floatX), o.astype(floatX), y_selected.astype(floatX)), axis=0)
+            t = t.astype(floatX)
             assert r_choice > 0.0
 
             X.append(x)
