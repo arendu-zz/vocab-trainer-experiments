@@ -15,6 +15,7 @@ class DataHelper(object):
         self.all_e_ids = None
         self.examples = []
         self.actions = []
+        self.action_vectors = []
         self.E_SIZE = 0
         self.F_SIZE = 0
         self.FEAT_SIZE = 0

@@ -117,6 +117,19 @@ def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_mode
         total_loss, model_loss, all_loss,c_loss,ic_loss,bin_loss = seq_model.get_loss(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         seq_losses,c_losses, ic_losses, bin_losses = seq_model.get_seq_losses(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
         y_hats = seq_model.get_seq_y_hats(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        #seq_thetas = seq_model.get_seq_thetas(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        #seq_updates = seq_model.get_seq_updates(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        #seq_g_r = seq_model.get_seq_g_r(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        #seq_g_z = seq_model.get_seq_g_z(_devX, _devY, _devYT, _devO, _devS, _devSM1, _theta_0)
+        #y_min_hats = np.min(y_hats, axis=1)
+        #y_max_hats = np.max(y_hats, axis=1)
+        #y_sum_hats = np.sum(y_hats, axis=1)
+        #print y_min_hats
+        #print y_max_hats
+        #print y_sum_hats
+        #print y_hats.shape
+        #print seq_thetas.shape
+        #pdb.set_trace()
         log_y_hats = np.log(y_hats)
         ll = -np.sum(_devY * log_y_hats, axis=1)
         unrevealed = -(_devS[:,3] - 1)
