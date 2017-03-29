@@ -224,7 +224,7 @@ class RecurrentLoglinear(object):
             a_m = T.switch(mask, a, val)
             return a_m
 
-        def new_softmax(v):
+        def softmax_temp(v):
             s_v = T.reshape(v, (1, self.dh.E_SIZE))
             e_v = T.exp(s_v / self.temp) #TEMP is fixed at 1
             return e_v / T.sum(e_v)
@@ -241,8 +241,8 @@ class RecurrentLoglinear(object):
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
             y_dot = Phi_x_t.dot(theta_tm1.T) #(Y,D,) dot (D,)
             y_dot_masked = masked(y_dot, o_t, -1e8) #(1,Y)
-            #y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(1,Y)
-            y_hat_unsafe  = new_softmax(y_dot_masked) #T.nnet.softmax(y_dot_masked) #(1,Y)
+            y_hat_unsafe  = T.nnet.softmax(y_dot_masked) #(1,Y)
+            #y_hat_unsafe  = softmax_temp(y_dot_masked) #T.nnet.softmax(y_dot_masked) #(1,Y)
             y_hat = T.clip(y_hat_unsafe, floatX(self._eps), floatX(1.0 - self._eps))
             return y_hat, Phi_x_t
 
@@ -428,7 +428,7 @@ class RecurrentLoglinear(object):
             reg_loss += T.sum(T.sqr(reg_param))
         model_loss = (self.use_sum_loss * sum_loss) + ((1.0 - self.use_sum_loss) * mean_loss)  
         total_loss = model_loss + (self.l * reg_loss)
-        self.get_step_y_hat = theano.function(inputs=[_x_t, _o_t, _theta_tm1], outputs=[_y_hat])
+        self.get_step_y_hat = theano.function(inputs=[_x_t, _o_t, _theta_tm1], outputs=_y_hat)
         self.get_params = theano.function(inputs = [], outputs = [T.as_tensor_variable(p) for p in self.params])
         self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
         self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])
