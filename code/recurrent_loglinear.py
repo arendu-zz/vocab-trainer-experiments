@@ -206,7 +206,11 @@ class RecurrentLoglinear(object):
         SM1 = T.fmatrix('SM1') #(sequence_size,self.context_size) # was the answer marked as correct or incorrect?
         theta_0 = T.fvector('theta_0') #(feature_size,)
         _x_t = T.iscalar('_x_t')
+        _y_t = T.fvector('_y_t')
+        _yt_t = T.iscalar('_yt_t')
         _o_t = T.fvector('_o_t')
+        _s_t = T.fvector('_s_t')
+        _s_tm1 = T.fvector('_s_tm1')
         _theta_tm1 = T.fvector('_theta_tm1')
 
         def create_target(y_selected, y_predicted, feedback):
@@ -335,7 +339,7 @@ class RecurrentLoglinear(object):
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
             return theta_t_grad, y_hat, model_loss, model_bin_loss
 
-        def transition_model(x_t, y_t, yt_t, o_t, s_t, s_tm1, theta_tm1):
+        def transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1):
             c_t = s_t[:10] #T.set_subtensor(s_t[[6,7,8]],0)
             c_tm1 = s_tm1[:10] #T.set_subtensor(s_tm1[[6, 7,8]],0)
             c_t = T.reshape(c_t, (self.context_size,))
@@ -400,7 +404,7 @@ class RecurrentLoglinear(object):
             c_tm1 = T.reshape(c_tm1, (self.context_size,))
             theta_tm1 = T.reshape(theta_tm1, (self.dh.FEAT_SIZE,))
             update_t, y_hat, loss_t, bin_loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
-            theta_t, g_r, g_z = transition_model(x_t, y_t, yt_t, o_t, s_t, s_tm1, theta_tm1)
+            theta_t, g_r, g_z = transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1)
             r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, c_t)
             return theta_t, y_hat, loss_t, r_loss_t, c_loss_t, ic_loss_t, bin_loss_t, update_t, g_r, g_z
 
@@ -412,6 +416,7 @@ class RecurrentLoglinear(object):
         #def log_linear_t(x_t, y_t, yt_t, o_t, c_t, merge, temp, theta_tm1):
 
         _y_hat, _phi_x_t = obs_model(_x_t, _o_t, _theta_tm1)
+        _theta_t, _g_r, _g_z = transition_model(_x_t, _y_t, _o_t, _s_t, _s_tm1, _theta_tm1)
         #r_loss_mean = T.mean(T.nonzero_values(r_losses))
         c_loss_mean = T.mean(T.nonzero_values(c_losses))
         ic_loss_mean = T.mean(T.nonzero_values(ic_losses))
@@ -429,6 +434,7 @@ class RecurrentLoglinear(object):
         model_loss = (self.use_sum_loss * sum_loss) + ((1.0 - self.use_sum_loss) * mean_loss)  
         total_loss = model_loss + (self.l * reg_loss)
         self.get_step_y_hat = theano.function(inputs=[_x_t, _o_t, _theta_tm1], outputs=_y_hat)
+        self.get_step_transition = theano.function(inputs=[_x_t, _y_t, _o_t, _s_t, _s_tm1, _theta_tm1], outputs=[_theta_t, _g_r, _g_z]) 
         self.get_params = theano.function(inputs = [], outputs = [T.as_tensor_variable(p) for p in self.params])
         self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
         self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])

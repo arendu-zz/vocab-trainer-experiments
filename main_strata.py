@@ -27,18 +27,18 @@ if __name__ == '__main__':
     s_list = "0 1 2 3 4".split()
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
-    opt.add_argument('-k', action='store', dest='top_k', default='top_k_all', required = True)
-    opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float, required=True)
-    opt.add_argument('--gt', action='store', dest='grad_transform', default="0", required=True)
-    opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float, required=True)
-    opt.add_argument('-u', action='store', dest='grad_update', default="sgd", required=False)
-    opt.add_argument('-m', action='store', dest='model', default="m0", required=True)
-    opt.add_argument('-g', action='store', dest='grad_model', default="g0", required=True)
-    opt.add_argument('-c', action='store', dest='clip', default="free", required=False)
-    opt.add_argument('-t', action='store', dest='temp', default="t1", required=True)
+    opt.add_argument('-k', action='store', dest='top_k', default='top_all')
+    opt.add_argument('-r', action='store', dest='reg', default=0.01, type=float)
+    opt.add_argument('--gt', action='store', dest='grad_transform', default="0")
+    opt.add_argument('--bl', action='store', dest='interpolate_bin_loss', default=0.5, type=float)
+    opt.add_argument('-u', action='store', dest='grad_update', default="rms")
+    opt.add_argument('-m', action='store', dest='model', default="m0")
+    opt.add_argument('-g', action='store', dest='grad_model', default="g0")
+    opt.add_argument('-c', action='store', dest='clip', default="free")
+    opt.add_argument('-t', action='store', dest='temp', default="t0")
     opt.add_argument('--st', action='store', dest='save_trace', default=None)
     opt.add_argument('--sm', action='store', dest='save_model', default=None)
-    opt.add_argument('--train', action='store', dest='training_data', default='./data/data_splits/strata.0.data', required=True)
+    opt.add_argument('--train', action='store', dest='training_data', default='./data/data_splits/train.strata.0.data', required=True)
     options = opt.parse_args()
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
     feats_file = './data/content/fake-en-medium.' + options.feature  +'.feat2id'
@@ -47,10 +47,16 @@ if __name__ == '__main__':
     print 'training strata', options.training_data
     TRAINING_SEQ = read_data(options.training_data, dh)
     s_num = options.training_data.split('.')[-2]
+    s_name = options.training_data.split('.')[-4].split('/')[-1]
+    s_rest = '/'.join(options.training_data.split('/')[:-1]) + '/'
+    print s_rest, 's_rest'
+    print s_name, 's_name'
+    print s_num, 's_num'
     s_dev_nums = s_list[s_list.index(s_num) - 1: s_list.index(s_num)] + s_list[s_list.index(s_num) + 1: s_list.index(s_num) +2]
     DEV_SEQ = []
     for s_dev_num in s_dev_nums:
-        d_f = './data/data_splits/strata.' + s_dev_num + '.data'
+        print s_rest, s_name, s_dev_num
+        d_f = s_rest + s_name + '.strata.' + s_dev_num + '.data'
         print 'using dev', d_f
         DEV_SEQ += read_data(d_f, dh)
 
@@ -101,7 +107,7 @@ if __name__ == '__main__':
         if dacc > prev_dacc and options.save_model is not None:
             save_obj(sll, options.save_model) 
             sll.save_weights(options.save_model + '.json_params')
-            if True:
+            if 0 == 1:
                 loaded_ll = RecurrentLoglinear(dh, 
                                 u = options.grad_update,
                                 reg = (options.reg / len(TRAINING_SEQ)), 
