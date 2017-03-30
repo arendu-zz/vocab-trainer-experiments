@@ -10,11 +10,13 @@ if __name__ == '__main__':
     opt= argparse.ArgumentParser(description="takes training data and stratifies based on score")
 
     #insert options here
-    opt.add_argument('-t', action='store', dest='training_data', default='./data_splits/train.data')
+    opt.add_argument('-t', action='store', dest='data2stratify', default='./data_splits/train.data', required=True)
+    opt.add_argument('-n', action='store', dest='data_name', default='train', required=True)
     options = opt.parse_args()
     user2scores = {}
-    training_data_lines = codecs.open(options.training_data, 'r', 'utf8').readlines()
-    for line in training_data_lines:
+    data_lines = codecs.open(options.data2stratify, 'r', 'utf8').readlines()
+    data_lines = [i for i in data_lines if i.strip() != '']
+    for line in data_lines:
         items = line.strip().split()
         u = items[0]
         ts = float(items[1])
@@ -51,16 +53,18 @@ if __name__ == '__main__':
     for r,u in rev2user:
         print u,r, list(user2scores[u])[-1]
 
-    sub_size = 16
+    sub_size = len(user2scores) / 5
+    print 'sub_size',  sub_size
     sublists = [rev2user[sub_size * i: sub_size * (i + 1)] for i in range(len(rev2user) / sub_size + 1)]
     strata = {}
     for sub_idx, sub in enumerate(sublists):
-        print len(sub), [u for s,u in sub]
-        user_set = set([u for s,u in sub])
-        f = codecs.open('./data_splits/strata.' +str(sub_idx) + '.data', 'w', 'utf8')
-        strata[sub_idx] = (user_set, f)
+        if len(sub) > 0:
+            print len(sub), [u for s,u in sub]
+            user_set = set([u for s,u in sub])
+            f = codecs.open('./data_splits/' + options.data_name + '.strata.' +str(sub_idx) + '.data', 'w', 'utf8')
+            strata[sub_idx] = (user_set, f)
 
-    for line in training_data_lines:
+    for line in data_lines:
         items = line.strip().split()
         u = items[0]
         for strata_idx, (user_set, f) in strata.iteritems():
@@ -71,7 +75,3 @@ if __name__ == '__main__':
                 pass
     for strata_idx, (user_set, f) in strata.iteritems():
         f.close()
-        
-    
-
-
