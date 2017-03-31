@@ -43,7 +43,7 @@ def load_json_model(file_path):
                     temp_model = temp,
                     grad_top_k = top_k,
                     interpolate_bin_loss = bl,
-                    saved_weights = options.saved_model)
+                    saved_weights = file_path)
     loaded_msg_d, loaded_dl, loaded_dpu, loaded_dacc = disp_eval(DEV_SEQ, recurrent_ll, dh, None, None)
     print 'loaded_dev:', loaded_msg_d
     return recurrent_ll
@@ -69,6 +69,7 @@ def get_observation(action_idx, theta_tm1_j):
     context_t = a_type
     return y_selected_j, context_t
 
+
 if __name__ == '__main__':
     np.random.seed(124)
     sys.setrecursionlimit(50000)
@@ -87,14 +88,19 @@ if __name__ == '__main__':
     TRAINING_SEQ = read_data(options.training_data, dh)
     DEV_SEQ = read_data(options.dev_data, dh)
     T_SEQ = read_data(options.test_data, dh)
-    rll_Ks = [load_json_model(l) for l in open(options.simulated_K_files, 'r', 'utf8').readlines() if l.strip() != '']
+    K_files = codecs.open(options.K_saved_models, 'r', 'utf8').readlines()
+    J_files = codecs.open(options.J_saved_models, 'r', 'utf8').readlines()
+    rll_Ks = [load_json_model(l.strip()) for l in K_files if l.strip() != '']
+    rll_Js = [load_json_model(l.strip()) for l in J_files if l.strip() != '']
     theta_tm1_Ks = [np.zeros((dh.FEAT_SIZE,)) for _ in rll_Ks]
     b_K = (1.0 / len(rll_Ks))  * np.ones(len(rll_Ks))
-    simulated_J_models = [load_json_model(l) for l in open(options.simulated_J_files, 'r', 'utf8').readlines() if l.strip() != '']
-    rll_j = np.random.choice(simulated_J_models, 1)[0]
+    #TODO: setup experience replay memory
+    #while not converged
+    rll_j = np.random.choice(rll_Js, 1)[0]
     theta_tm1_j = np.zeros(dh.FEAT_SIZE,).astype(floatX)
     context_tm1 = np.zeros(10,).astype(floatX)
-    for _ in range(4): #until convergence
+    for _ in range(4): # each training step t = [1:T]
+        print 'training step', _
         action_idx = int(raw_input('pick action 0-' + str(len(dh.actions) - 1))) #15 #np.random.choice(len(dh.action_vectors), 1)[0]
         a_type, _x_t, _yt_t, _o_t = dh.action_vectors[action_idx]
         y_selected_j, context_t = get_observation(action_idx, theta_tm1_j)
