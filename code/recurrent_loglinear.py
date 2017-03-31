@@ -42,6 +42,7 @@ class RecurrentLoglinear(object):
         self.temp_model = temp_model
         self.temp = 1.0
         self.merge = 1.0
+        self.saved_weights = saved_weights
         assert 0 <= self.interpolate_bin_loss <= 1 
         assert self.use_sum_loss == 0 or self.use_sum_loss == 1
         self.grad_transform = grad_transform 
@@ -173,6 +174,9 @@ class RecurrentLoglinear(object):
             raise BaseException("unknown grad model")
         self.make_graph()
 
+    def describe(self):
+        print "model", self.learning_model, "grad_model", self.grad_model
+
     def _phi(self, f_idx, e_idx):
         ff = np.zeros(self.dh.FEAT_SIZE)
         ff_idx, ff_vals = self.dh.event2feats[f_idx, e_idx]
@@ -207,7 +211,7 @@ class RecurrentLoglinear(object):
         theta_0 = T.fvector('theta_0') #(feature_size,)
         _x_t = T.iscalar('_x_t')
         _y_t = T.fvector('_y_t')
-        _yt_t = T.iscalar('_yt_t')
+        #_yt_t = T.iscalar('_yt_t')
         _o_t = T.fvector('_o_t')
         _s_t = T.fvector('_s_t')
         _s_tm1 = T.fvector('_s_tm1')
@@ -233,12 +237,12 @@ class RecurrentLoglinear(object):
             e_v = T.exp(s_v / self.temp) #TEMP is fixed at 1
             return e_v / T.sum(e_v)
 
-        def assign_losses(loss_t, bin_loss_t, c_t):
+        def assign_losses(loss_t, c_t):
             r_loss_t = T.switch(c_t[3], loss_t, 0)
-            bin_loss_t = T.switch(c_t[3], 0, bin_loss_t)
+            #bin_loss_t = T.switch(c_t[3], 0, bin_loss_t)
             c_loss_t = T.switch(T.any(c_t[[4,7]]), loss_t, 0)
             ic_loss_t = T.switch(T.any(c_t[[5,8]]), loss_t, 0)
-            return r_loss_t, c_loss_t, ic_loss_t, bin_loss_t
+            return r_loss_t, c_loss_t, ic_loss_t #, bin_loss_t
 
         def obs_model(x_t, o_t, theta_tm1):
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
@@ -250,8 +254,10 @@ class RecurrentLoglinear(object):
             y_hat = T.clip(y_hat_unsafe, floatX(self._eps), floatX(1.0 - self._eps))
             return y_hat, Phi_x_t
 
-        def compute_losses(y_hat, y_t, yt_t):
+        def compute_losses(y_hat, y_t): #, yt_t):
+            #yt_t is only used for the binary loss mode.. 
             model_loss = -T.sum(y_t * T.log(y_hat)) 
+            """
             m_t = T.argmax(y_hat) #model's prediction
             u_t = T.argmax(y_t)
             if m_t == u_t == yt_t:
@@ -266,7 +272,8 @@ class RecurrentLoglinear(object):
             else:
                 #both model and user is wrong, model put low mass on yt_t so gets less loss
                 model_bin_loss = -T.log(1.0 - y_hat[0, yt_t])
-            return model_loss, model_bin_loss
+            """
+            return model_loss #, model_bin_loss
 
         def compute_update(x_t, y_hat, y_t, c_t):
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
@@ -334,10 +341,12 @@ class RecurrentLoglinear(object):
 
         def log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1):
             y_hat, Phi_x_t = obs_model(x_t, o_t, theta_tm1)
-            model_loss, model_bin_loss = compute_losses(y_hat, y_t, yt_t)
+            #model_loss, model_bin_loss = compute_losses(y_hat, y_t, yt_t)
+            #model_loss = compute_losses(y_hat, y_t, yt_t)
+            model_loss = compute_losses(y_hat, y_t)
             theta_t_grad = compute_update(x_t, y_hat, y_t, c_t)
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
-            return theta_t_grad, y_hat, model_loss, model_bin_loss
+            return theta_t_grad, y_hat, model_loss #, model_bin_loss
 
         def transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1):
             c_t = s_t[:10] #T.set_subtensor(s_t[[6,7,8]],0)
@@ -403,14 +412,17 @@ class RecurrentLoglinear(object):
             c_t = T.reshape(c_t, (self.context_size,))
             c_tm1 = T.reshape(c_tm1, (self.context_size,))
             theta_tm1 = T.reshape(theta_tm1, (self.dh.FEAT_SIZE,))
-            update_t, y_hat, loss_t, bin_loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
+            #update_t, y_hat, loss_t, bin_loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
+            update_t, y_hat, loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
             theta_t, g_r, g_z = transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1)
-            r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, c_t)
-            return theta_t, y_hat, loss_t, r_loss_t, c_loss_t, ic_loss_t, bin_loss_t, update_t, g_r, g_z
+            #r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, c_t)
+            r_loss_t, c_loss_t, ic_loss_t = assign_losses(loss_t, c_t)
+            #return theta_t, y_hat, loss_t, r_loss_t, c_loss_t, ic_loss_t, bin_loss_t, update_t, g_r, g_z
+            return theta_t, y_hat, loss_t, r_loss_t, c_loss_t, ic_loss_t, update_t, g_r, g_z
 
-        [seq_thetas, seq_y_hats, all_losses, r_losses, c_losses, ic_losses, bin_losses, seq_updates, seq_g_r, seq_g_z], _ = theano.scan(fn=recurrence, 
+        [seq_thetas, seq_y_hats, all_losses, r_losses, c_losses, ic_losses, seq_updates, seq_g_r, seq_g_z], _ = theano.scan(fn=recurrence, 
                 sequences=[X,Y,YT,O,S,SM1], 
-                outputs_info=[theta_0, None, None, None, None, None, None, None, None, None])
+                outputs_info=[theta_0, None, None, None, None, None, None, None, None])
 
         all_loss = T.sum(all_losses)
         #def log_linear_t(x_t, y_t, yt_t, o_t, c_t, merge, temp, theta_tm1):
@@ -420,13 +432,15 @@ class RecurrentLoglinear(object):
         #r_loss_mean = T.mean(T.nonzero_values(r_losses))
         c_loss_mean = T.mean(T.nonzero_values(c_losses))
         ic_loss_mean = T.mean(T.nonzero_values(ic_losses))
-        bin_loss_mean = T.mean(T.nonzero_values(bin_losses))
-        mean_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss_mean + ic_loss_mean)) + (self.interpolate_bin_loss * bin_loss_mean)
+        #bin_loss_mean = T.mean(T.nonzero_values(bin_losses))
+        #mean_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss_mean + ic_loss_mean)) + (self.interpolate_bin_loss * bin_loss_mean)
+        mean_loss = c_loss_mean + ic_loss_mean
         #r_loss = T.sum(r_losses)
         c_loss = T.sum(c_losses)
         ic_loss = T.sum(ic_losses)
-        bin_loss = T.sum(bin_losses)
-        sum_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss + ic_loss)) + (self.interpolate_bin_loss * bin_loss)
+        #bin_loss = T.sum(bin_losses)
+        #sum_loss = ((1.0 - self.interpolate_bin_loss) * (c_loss + ic_loss)) + (self.interpolate_bin_loss * bin_loss)
+        sum_loss = c_loss + ic_loss
         reg_loss = 0.0
         for reg_param in self.reg_params:
             reg_loss += T.sum(T.abs_(reg_param + self._eps))
@@ -436,8 +450,8 @@ class RecurrentLoglinear(object):
         self.get_step_y_hat = theano.function(inputs=[_x_t, _o_t, _theta_tm1], outputs=_y_hat)
         self.get_step_transition = theano.function(inputs=[_x_t, _y_t, _o_t, _s_t, _s_tm1, _theta_tm1], outputs=[_theta_t, _g_r, _g_z]) 
         self.get_params = theano.function(inputs = [], outputs = [T.as_tensor_variable(p) for p in self.params])
-        self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, bin_losses])
-        self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, bin_loss])
+        self.get_seq_losses = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [all_losses, c_losses, ic_losses, all_losses])
+        self.get_loss = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = [total_loss, model_loss, all_loss, c_loss, ic_loss, model_loss])
         self.get_seq_y_hats = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_y_hats)
         self.get_seq_thetas = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_thetas)
         self.get_seq_updates = theano.function([X, Y, YT, O, S, SM1, theta_0], outputs = seq_updates)
