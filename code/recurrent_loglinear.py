@@ -48,7 +48,8 @@ class RecurrentLoglinear(object):
         self.grad_transform = grad_transform 
         self._eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
         self._mult_eps = np.finfo(np.float32).eps #1e-10 # for fixing divide by 0
-        self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
+        #self.phi = theano.shared(floatX(self.load_phi()), name='Phi') #(output_dim, feat_size)
+        self.phi = theano.shared(floatX(self.dh.phi), name='Phi') #(output_dim, feat_size)
         if self.learning_model == "m0":
             #scalar retention and update gate
             if saved_weights is None:

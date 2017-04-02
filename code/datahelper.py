@@ -32,8 +32,22 @@ class DataHelper(object):
             self.quiz_action_vectors  = self.load_action_vectors(self.quiz_actions)
         else:
             pass
+        self.phi = self.load_phi()
         assert len(self.actions) == len(self.action_vectors)
         assert len(self.quiz_actions) == len(self.quiz_action_vectors)
+
+    def _phi(self, f_idx, e_idx):
+        ff = np.zeros(self.FEAT_SIZE)
+        ff_idx, ff_vals = self.event2feats[f_idx, e_idx]
+        ff[ff_idx] = ff_vals
+        return ff
+
+    def load_phi(self):
+        p = np.zeros((self.F_SIZE, self.E_SIZE, self.FEAT_SIZE))
+        for f_idx in xrange(self.F_SIZE):
+            for e_idx in xrange(self.E_SIZE):
+                p[f_idx, e_idx, :]  = self._phi(f_idx, e_idx)
+        return p
     
     def load_action_vectors(self, action_list):
         action_vectors = []
