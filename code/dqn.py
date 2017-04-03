@@ -20,8 +20,8 @@ class DQNTheano(object):
         self.layer_bias = [] 
         self.l = reg_param 
         self.reg_type = reg_type 
-        self.eps = np.finfo(np.float32).eps
-        self.eta = 1e-2
+        self.eps = 1e-8 #np.finfo(np.float32).eps
+        self.gamma = 0.9
         self.reset()
         self._update = rmsprop
         self.__theano_init__()
@@ -65,8 +65,8 @@ class DQNTheano(object):
         a_t = T.lvector('a_t') # (batch_size,)
         r_t = T.fvector('r_t') # (batch_size,)
         B_tm1 = T.fmatrix('B_tm1') #(batch_size, input_dim,) #(input_dim is state space)
-        gamma_raised_t = T.lvector('gamma_raised_t') # (batch_size,) for discounting 
-        
+        #gamma_raised_t = T.lvector('gamma_raised_t') # (batch_size,) for discounting 
+
         def forward_pass(input_state):
             activation = None
             dot_prod = None
@@ -82,11 +82,11 @@ class DQNTheano(object):
                 else:
                     activation = T.nnet.relu(dot_prod)  # all other layers are relu activated
             return Q_hat #(batch_size, action_space)
-        
+
         max_a_Q_t = T.max(forward_pass(B_t), axis=1) 
-        reward_disounted_max_a_Q = r_t + (gamma_raised_t * max_a_Q_t)
+        reward_disounted_max_a_Q = r_t + (self.gamma * max_a_Q_t)
         Q_tm1 = forward_pass(B_tm1) #(batch_size, action_space)
-        a_t_Q_tm1 = Q_tm1[T.arange(self.batch_size), a_t] #(batch_size,)
+        a_t_Q_tm1 = Q_tm1[T.arange(a_t.shape[0]), a_t] #(batch_size,)
         pred_a_t = T.argmax(Q_tm1, axis=1)
         loss_vec = 0.5 * T.sqr(reward_disounted_max_a_Q - a_t_Q_tm1)
         batch_loss = T.mean(loss_vec)
@@ -97,6 +97,8 @@ class DQNTheano(object):
 
         total_loss = batch_loss + (self.l * reg_l2)
 
-        self.do_update = theano.function([B_t, a_t, r_t, B_tm1, gamma_raised_t], 
+        self.get_Q_hat = theano.function([B_tm1], Q_tm1)
+
+        self.do_update = theano.function([B_t, a_t, r_t, B_tm1, gamma_raised_t, lr], 
                 outputs= [total_loss, loss_vec, pred_a_t], 
-                updates = self._update(total_loss, self.params, lr))
+                updates = self._update(total_loss, self.layer_weights + self.layer_bias, lr))
