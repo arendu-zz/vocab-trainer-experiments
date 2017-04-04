@@ -14,14 +14,13 @@ else:
 
 
 class DQNTheano(object):
-    def __init__(self, layer_dims, reg_type='elastic',reg_param=0.1, gamma = 0.8):
+    def __init__(self, layer_dims, reg_type='elastic',reg_param=0.01):
         self.layer_dims = layer_dims
         self.layer_weights = []
         self.layer_bias = [] 
         self.l = reg_param 
         self.reg_type = reg_type 
         self.eps = 1e-8 #np.finfo(np.float32).eps
-        self.gamma = gamma
         self.reset()
         self._update = sgd
         self.__theano_init__()
@@ -46,9 +45,10 @@ class DQNTheano(object):
     def reset(self):
         idx = 1
         for layer_dim in self.layer_dims[1:]:
-            w = np.random.normal(0.0, 2.0 / (self.layer_dims[idx - 1] + self.layer_dims[idx]), (self.layer_dims[idx - 1], self.layer_dims[idx]))
-            W = theano.shared(w.astype(floatX), name='W' + str(idx))
-            b = theano.shared(np.random.uniform(-0.0, 0.0, (self.layer_dims[idx],)).astype(floatX), name = 'b' + str(idx))
+            _w = np.random.normal(0.0, 2.0 / (self.layer_dims[idx - 1] + self.layer_dims[idx]), (self.layer_dims[idx - 1], self.layer_dims[idx]))
+            W = theano.shared(_w.astype(floatX), name='W' + str(idx))
+            _b = np.ones(self.layer_dims[idx],)
+            b = theano.shared(_b.astype(floatX), name = 'b' + str(idx))
             self.layer_weights.append(W)
             self.layer_bias.append(b)
             idx += 1
@@ -65,6 +65,7 @@ class DQNTheano(object):
         r_t = T.fvector('r_t') # (batch_size,)
         B_tm1 = T.fmatrix('B_tm1') #(batch_size, input_dim,) #(input_dim is state space)
         term_t = T.lvector('term_t') #(batch_size,)
+        gamma = T.scalar('gamma', dtype=theano.config.floatX)
         #gamma_raised_t = T.lvector('gamma_raised_t') # (batch_size,) for discounting 
 
         def forward_pass(input_state):
@@ -80,11 +81,11 @@ class DQNTheano(object):
                 if idx == len(self.layer_weights) - 1:
                     Q_hat = dot_prod #last linear layer
                 else:
-                    activation = T.nnet.sigmoid(dot_prod)  # all other layers are relu activated
+                    activation = T.nnet.relu(dot_prod)  # all other layers are relu activated
             return Q_hat #(batch_size, action_space)
 
         max_a_Q_t = T.max(forward_pass(B_t), axis=1) 
-        target = T.switch(term_t, r_t, r_t + (self.gamma * max_a_Q_t)) #term_t = 1, terminal state = No future max_a_Q
+        target = T.switch(term_t, r_t, r_t + (gamma * max_a_Q_t)) #term_t = 1, terminal state = No future max_a_Q
         Q_tm1 = forward_pass(B_tm1) #(batch_size, action_space)
         a_t_Q_tm1 = Q_tm1[T.arange(a_t.shape[0]), a_t] #(batch_size,)
         pred_a_t = T.argmax(Q_tm1, axis=1)
@@ -100,7 +101,7 @@ class DQNTheano(object):
         self.get_Q_hat = theano.function([B_tm1], Q_tm1)
         self.get_reg = theano.function(inputs=[], outputs=reg_l2)
         self.get_a_t_prediction = theano.function([B_tm1], pred_a_t)
-        self.get_loss_vec = theano.function([term_t, B_t, a_t, r_t, B_tm1], outputs=[loss_vec, target, a_t_Q_tm1])
-        self.do_update = theano.function([term_t, B_t, a_t, r_t, B_tm1, lr], 
+        self.get_loss_vec = theano.function([gamma, term_t, B_t, a_t, r_t, B_tm1], outputs=[loss_vec, target, a_t_Q_tm1])
+        self.do_update = theano.function([gamma, term_t, B_t, a_t, r_t, B_tm1, lr], 
                 outputs= [total_loss, batch_loss, loss_vec], 
-                updates = self._update(batch_loss, self.layer_weights, lr))
+                updates = self._update(total_loss, self.layer_weights + self.layer_bias, lr))

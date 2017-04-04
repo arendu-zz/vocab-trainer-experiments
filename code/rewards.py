@@ -19,7 +19,7 @@ np.set_printoptions(precision=4)
 np.seterr(all = 'raise')
 
 class Reward(object):
-    def __init__(self, datahelper, reward_type='ll'):
+    def __init__(self, datahelper, reward_type):
         self.dh = datahelper
         self.reward_type = reward_type
 

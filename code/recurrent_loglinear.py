@@ -430,6 +430,9 @@ class RecurrentLoglinear(object):
 
         _y_hat, _phi_x_t = obs_model(_x_t, _o_t, _theta_tm1)
         _theta_t, _g_r, _g_z = transition_model(_x_t, _y_t, _o_t, _s_t, _s_tm1, _theta_tm1)
+        _theta_t = _theta_t * (T.abs_(_theta_t) > self._eps)
+        _g_r = _g_r * (T.abs_(_g_r) > self._eps)
+        _g_z = _g_z * (T.abs_(_g_z) > self._eps)
         #r_loss_mean = T.mean(T.nonzero_values(r_losses))
         c_loss_mean = T.mean(T.nonzero_values(c_losses))
         ic_loss_mean = T.mean(T.nonzero_values(ic_losses))
