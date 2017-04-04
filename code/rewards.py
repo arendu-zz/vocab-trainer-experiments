@@ -44,7 +44,7 @@ class Reward(object):
             feature_overlap = phi_max * phi_true 
             feature_overlap_ratio = np.sum(feature_overlap) / np.sum(phi_true)
             r += feature_overlap_ratio
-        return r / float(len(self.dh.quiz_action_vectors))
+        return r 
 
     def get_ll_reward(self, rll, theta_t):
         r = 0.0

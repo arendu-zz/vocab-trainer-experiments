@@ -30,6 +30,41 @@ A_t_exp = None
 R_t_exp = None
 B_tm1_exp = None
 
+np.set_printoptions(precision=3, suppress = True, linewidth=100)
+
+def save_plot(rpe_list, lpe_list, qs_list):
+    import matplotlib as mpl
+    mpl.use('Agg')
+    import matplotlib.pyplot as plt
+    font = {'size': 12}
+    mpl.rc('font', **font)
+    fig = plt.figure()
+    ax1 = fig.add_subplot(111)
+    ax1.plot(np.arange(len(rpe_list)), rpe_list, 'b', alpha=0.75)
+    ax1.set_ylabel('Rewards per Episode')
+    ax2 = ax1.twinx()
+    ax2.plot(np.arange(len(lpe_list)), lpe_list, 'g-', alpha=0.75)
+    ax2.set_ylabel('Loss (MSE)')
+    ax1.set_title(('eps_decay,' if options.eps_decay else ('eps=' + str(options.eps_fixed))) + ',a_size=' + str(len(dh.actions)) +'\n' +
+            'episode=' + str(options.MAX_EPISODE_LENGTH) + ',\n' +
+            'r_type=' + options.reward_type+ ('+imp' if options.reward_improvement else '') + ',\n' +
+            'nn_size=' + options.network_size)
+    ax1.set_xlabel('epochs') 
+    for tl in ax2.get_yticklabels():
+        tl.set_color('g')
+    ax3 = ax1.twinx()
+    ax3.plot(np.arange(len(qs_list)), qs_list, 'c', alpha=1.0)
+    ax3.yaxis.tick_left()
+    ax3.tick_params(axis='y', pad=20)
+    for tl in ax3.get_yticklabels():
+        tl.set_color('c')
+    for tl in ax1.get_yticklabels():
+        tl.set_color('b')
+    plt.subplots_adjust(top=0.85)
+    plt.savefig(options.save_fig)
+    return True
+
+
 def load_json_model(file_path):
     saved_model_attrs = file_path.split('/')[-1].split('.')
     grad_update = saved_model_attrs[saved_model_attrs.index('u') + 1]
@@ -164,17 +199,20 @@ if __name__ == '__main__':
     opt.add_argument('--dev', action='store', dest='dev_data', default='./data/data_splits/dev.data', required=False)
     opt.add_argument('--test', action='store', dest='test_data', default='./data/data_splits/test.data', required=False)
     opt.add_argument('--epochs', action='store', dest='EPOCHS', default=100, type=int)
-    opt.add_argument('--improvement', action='store_true', dest='IMPROVEMEMT', default=False)
+    opt.add_argument('--improvement', action='store_true', dest='IMPROVEMENT', default=False)
+    opt.add_argument('--bin_improvement', action='store_true', dest='BIN_IMPROVEMENT', default=False)
+    opt.add_argument('--reward_type', action='store', dest='REWARD_TYPE', default='ll', required = True)
+    opt.add_argument('--episode', action='store', dest='MAX_EPISODE_LENGTH', default=10, type=int)
     options = opt.parse_args()
 
     events_file = './data/content/fake-en-medium.' + options.feature  +'.event2feats'
     feats_file = './data/content/fake-en-medium.' + options.feature  +'.feat2id'
-    actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions'
-    quiz_actions_file = './data/content/fake-en-medium.mc.tp.mcr.tpr.actions.test'
+    actions_file = './data/content/fake-en-medium.mc.tp.actions'
+    quiz_actions_file = './data/content/fake-en-medium.mc.tp.actions.test'
 
     dh = DataHelper(events_file, feats_file, actions_file, quiz_actions_file)
-    reward = Reward(dh, reward_type='match')
-    dqn = DQN([dh.FEAT_SIZE, np.int64(0.33 * dh.FEAT_SIZE), np.int64(0.1 * dh.FEAT_SIZE), len(dh.actions)], gamma = 0.8)
+    reward = Reward(dh, reward_type=options.REWARD_TYPE)
+    dqn = DQN([dh.FEAT_SIZE, np.int64(0.25 * dh.FEAT_SIZE), np.int64(0.1 * dh.FEAT_SIZE), len(dh.actions)])
     TRAINING_SEQ = read_data(options.training_data, dh)
     DEV_SEQ = read_data(options.dev_data, dh)
     T_SEQ = read_data(options.test_data, dh)
@@ -184,53 +222,54 @@ if __name__ == '__main__':
     rll_Ks = [load_json_model(l.strip()) for l in K_files[:] if l.strip() != '']
     print 'loading Js'
     rll_Js = [load_json_model(l.strip()) for l in J_files[:] if l.strip() != '']
-     
-    eps = 0.9
-
-    rpe_list = np.zeros(options.EPOCHS)
-    qs_list = np.zeros(options.EPOCHS)
-    lpe_list = np.zeros(options.EPOCHS)
-    for epoch_idx in xrange(100):
+    eps = 0.99
+    gamma = 0.0
+    rpe_list = []
+    qs_list = []
+    lpe_list = []
+    for epoch_idx in xrange(options.EPOCHS):
+        sys.stderr.write('+')
         rll_j = np.random.choice(rll_Js, 1)[0]
-        print 'sampled:', rll_j.saved_weights, 'jth model'
+        #print 'sampled:', rll_j.saved_weights, 'jth model'
         theta_tm1_j = np.zeros(dh.FEAT_SIZE,).astype(floatX)
         context_tm1 = np.zeros(10,).astype(floatX)
         r_tm1 = reward.get_reward(rll_j, theta_tm1_j)
         rpe = 0.0
         lpe = 0.0 #loss per episode (accumilated over the episode)
         quiz_score = 0.0
-        eps = 0.3 if eps < 0.3 else np.power(eps, epoch_idx)
+        eps_threshold = 0.3 if np.power(eps, 0.5 * (epoch_idx + 1))  < 0.3 else np.power(eps, 0.5 * (epoch_idx + 1))  
         remove_from_experince()
         theta_tm1_Ks = [np.zeros((dh.FEAT_SIZE,)).astype(floatX) for _ in rll_Ks]
         theta_t_Ks = [None] * len(theta_tm1_Ks)
         belief_weight_Ks = (1.0 / len(rll_Ks))  * np.ones(len(rll_Ks))
         B_tm1 = merge(belief_weight_Ks, theta_tm1_Ks)
-        for t in range(35): # each training step t = [1:T]
-            if np.random.rand() < eps:
+        for t in xrange(options.MAX_EPISODE_LENGTH): # each training step t = [1:T]
+            if np.random.rand() < eps_threshold:
                 sys.stderr.write('.')
                 action_idx_t = np.random.choice(len(dh.actions), 1)[0] #int(raw_input('pick action 0-' + str(len(dh.actions) - 1))) #15 #np.random.choice(len(dh.action_vectors), 1)[0]
             else:
                 sys.stderr.write('*')
-                q_hat = dqn.get_Q_hat(B_tm1)
+                reshaped_B_tm1 = np.reshape(B_tm1, (1, B_tm1.shape[0]))
+                q_hat = dqn.get_Q_hat(reshaped_B_tm1.astype(floatX))
                 action_idx_t = np.argmax(q_hat)
 
             a_type, _x_t, _yt_t, _o_t = dh.action_vectors[action_idx_t]
 
-            y_sel_j, y_sel_j_vec, y_hat_j, context_t = get_observation(action_idx_t, rll_j, theta_tm1_j, disp=True)
+            y_sel_j, y_sel_j_vec, y_hat_j, context_t = get_observation(action_idx_t, rll_j, theta_tm1_j, disp=False)
             theta_t_j, g_r_j, g_z_j = rll_j.get_step_transition(_x_t, y_sel_j_vec.astype(floatX), _o_t.astype(floatX), context_t.astype(floatX), context_tm1.astype(floatX), theta_tm1_j.astype(floatX))
             term_t = None
-            if t < 34: 
+            if t < options.MAX_EPISODE_LENGTH - 1: 
                 # non-terminal state
                 term_t = 0
                 reward_Ks = np.zeros(len(rll_Ks),)
                 for k_idx, (rll_k, theta_tm1_k) in enumerate(zip(rll_Ks, theta_tm1_Ks)):
                     _, _, y_hat_k, _ = get_observation(action_idx_t, rll_k, theta_tm1_k)
-                    belief_weight_Ks[k_idx] = (y_hat_k[y_sel_j] * belief_weight_Ks[k_idx]) + 1e-8
+                    belief_weight_Ks[k_idx] = (y_hat_k[y_sel_j] * belief_weight_Ks[k_idx]) + 0.01
                     _theta_t_k, _g_r_k, _g_z_k = rll_k.get_step_transition(_x_t, y_sel_j_vec.astype(floatX), _o_t.astype(floatX), context_t.astype(floatX), context_tm1.astype(floatX), theta_tm1_k.astype(floatX))
                     theta_t_Ks[k_idx] = _theta_t_k
                     _reward_t_k = reward.get_reward(rll_k, _theta_t_k)
                     reward_Ks[k_idx] = _reward_t_k
-                    print '\t', '.'.join(rll_k.saved_weights.split('/')[-1].split('.')[-4:]), k_idx, ' prob on obs=', y_hat_k[y_sel_j], 'reward=', _reward_t_k
+                    #print '\t', '.'.join(rll_k.saved_weights.split('/')[-1].split('.')[-4:]), k_idx, ' prob on obs=', y_hat_k[y_sel_j], 'reward=', _reward_t_k
                 #end for k = 0 to K
                 belief_weight_Ks = belief_weight_Ks * (1.0 / np.sum(belief_weight_Ks))
                 assert np.abs(np.sum(belief_weight_Ks) - 1.0) < 1e-10
@@ -251,26 +290,38 @@ if __name__ == '__main__':
             for k_idx, _theta_t_k in enumerate(theta_t_Ks):
                 theta_tm1_Ks[k_idx] = _theta_t_k
 
-            if options.IMPROVEMEMT:
-                add_to_experince(term_t, B_t, action_idx_t, r_t - r_tm1, B_tm1)
-                rpe += (r_t - r_tm1)
+            if options.IMPROVEMENT:
+                improvement = r_t - r_tm1
+                if options.BIN_IMPROVEMENT:
+                    improvement = 1.0 if improvement > 0 else -1.0
+                else:
+                    pass
+                add_to_experince(term_t, B_t, action_idx_t, improvement, B_tm1)
+                rpe += improvement
                 r_tm1 = r_t
             else:
                 add_to_experince(term_t, B_t, action_idx_t, r_t, B_tm1)
                 rpe += r_t
-            term_t_minibatch, B_t_minibatch, A_t_minibatch, R_t_minibatch, B_tm1_minibatch = get_batch_experience()
-            total_loss, batch_loss, loss_vec = dqn.do_update(term_t_minibatch,
-                                                B_t_minibatch, 
-                                                A_t_minibatch, 
-                                                R_t_minibatch, 
-                                                B_tm1_minibatch,
-                                            0.001)
-            lpe += np.mean(loss_vec) 
-            #if np.isnan(total_loss):
-            #    raise Exception("total_loss is Nan")
-            #else:
-            #    pass
-        print epoch_idx, rpe, lpe, qs
-        rpe_list[epoch_idx] = rpe
-        qs_list[epoch_idx] = qs
-        lpe_list[epoch_idx] = lpe
+            if B_t_exp.shape[0] > 50:
+                term_t_minibatch, B_t_minibatch, A_t_minibatch, R_t_minibatch, B_tm1_minibatch = get_batch_experience()
+                total_loss, batch_loss, loss_vec = dqn.do_update(gamma,
+                                                    term_t_minibatch,
+                                                    B_t_minibatch, 
+                                                    A_t_minibatch, 
+                                                    R_t_minibatch, 
+                                                    B_tm1_minibatch,
+                                                    0.01)
+                lpe += np.mean(loss_vec) 
+                if np.isnan(total_loss):
+                    raise Exception("total_loss is Nan")
+                else:
+                    pass
+            else:
+                lpe = None
+        print epoch_idx, rpe, lpe, qs, B_t_exp.shape[0], eps_threshold
+        if lpe is not None:
+            rpe_list.append(rpe)
+            qs_list.append(qs)
+            lpe_list.append(lpe)
+        else:
+            pass
