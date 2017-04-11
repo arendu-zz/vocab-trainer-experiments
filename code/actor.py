@@ -3,6 +3,7 @@ import numpy as np
 import cPickle as pickle
 import theano
 import theano.tensor as T
+import theano.tensor.shared_randomstreams
 from optimizers import sgd, rmsprop
 
 __author__ = 'arenduchintala'
@@ -21,7 +22,7 @@ def huber(target, output):
     l = T.switch(T.lt(T.abs_(d + 1e-8), delta), a, b)
     return l
 
-class DQNTheano(object):
+class Actor(object):
     def __init__(self, layer_dims, reg_param=0.1, use_target_networks = False):
         self.layer_dims = layer_dims
         self.layer_weights = []
@@ -34,6 +35,7 @@ class DQNTheano(object):
         self.eps = 1e-8 #np.finfo(np.float32).eps
         self.reset()
         self._update = rmsprop
+        self.rng =T.shared_randomstreams.RandomStreams(seed=124)
         self.__theano_init__()
 
     def save(self, save_location):
@@ -77,15 +79,11 @@ class DQNTheano(object):
         B_t = T.fmatrix('B_t') #(batch_size, input_dim,) #(input_dim is state space)
         a_t = T.lvector('a_t') # (batch_size,)
         r_t = T.fvector('r_t') # (batch_size,)
-        B_tm1 = T.fmatrix('B_tm1') #(batch_size, input_dim,) #(input_dim is state space)
-        term_t = T.lvector('term_t') #(batch_size,)
-        gamma = T.scalar('gamma', dtype=theano.config.floatX)
-        #gamma_raised_t = T.lvector('gamma_raised_t') # (batch_size,) for discounting 
 
         def forward_pass(input_state, on_target = False):
             activation = None
             dot_prod = None
-            Q_hat = None
+            a_hat = None
             weights = self.target_layer_weights if on_target else self.layer_weights
             bias = self.target_layer_bias if on_target else self.layer_bias
             for idx, (W,b) in enumerate(zip(weights, bias)):
@@ -95,18 +93,18 @@ class DQNTheano(object):
                     dot_prod = T.dot(activation, W) + b 
 
                 if idx == len(self.layer_weights) - 1:
-                    Q_hat = dot_prod #last linear layer
+                    a_hat = T.nnet.softmax(dot_prod) #last linear layer
                 else:
                     activation = T.nnet.relu(dot_prod, 0.1)  # all other layers are relu activated
-            return Q_hat #(batch_size, action_space)
+                    #activation = T.tanh(dot_prod)  # all other layers are relu activated
+            return a_hat #(batch_size, action_space)
 
-        max_a_Q_t = T.max(forward_pass(B_t, on_target = self.use_target_networks), axis=1) 
-        target = T.switch(term_t, r_t, r_t + (gamma * max_a_Q_t)) #term_t = 1, terminal state = No future max_a_Q
-        Q_tm1 = forward_pass(B_tm1, on_target = False) #(batch_size, action_space)
-        Q_a_tm1 = Q_tm1[T.arange(a_t.shape[0]), a_t] #(batch_size,)
-        pred_a_t = T.argmax(Q_tm1, axis=1)
-        loss_vec = 0.5 * T.sqr(target - Q_a_tm1)
-        batch_loss = T.mean(loss_vec)
+        a_hat = forward_pass(B_t, on_target = self.use_target_networks)
+        #xent = T.nnet.categorical_crossentropy(a_hat, a_t)
+        xent = T.log(a_hat[T.arange(a_hat.shape[0]), a_t] + 1e-8)
+        #loss_vec = -T.log(a_hat[a_t])
+        loss_vec = xent * r_t
+        batch_loss = -T.mean(loss_vec)
 
         reg_l2 = 0.0 
         for wts in self.layer_weights:
@@ -114,12 +112,10 @@ class DQNTheano(object):
 
         total_loss = batch_loss + (self.l * reg_l2)
 
-        self.get_Q_hat = theano.function([B_tm1], Q_tm1)
-        self.get_Q_a_hat = theano.function([B_tm1, a_t], Q_a_tm1)
+        self.get_a_hat = theano.function([B_t], a_hat)
         self.get_reg = theano.function(inputs=[], outputs=reg_l2)
-        self.get_a_t_prediction = theano.function([B_tm1], pred_a_t)
-        self.get_loss_vec = theano.function([gamma, term_t, B_t, a_t, r_t, B_tm1], outputs=[loss_vec, target, Q_a_tm1])
+        self.get_loss_vec = theano.function([B_t, a_t, r_t], outputs=[total_loss, batch_loss, loss_vec])
         self.target_update = theano.function([], [], updates=[(tp, self.tau * p + (1.0 - self.tau) * tp) for tp,p in zip(self.target_layer_weights + self.target_layer_bias, self.layer_weights + self.layer_bias)])
-        self.do_update = theano.function([gamma, term_t, B_t, a_t, r_t, B_tm1, lr], 
+        self.do_update = theano.function([B_t, a_t, r_t, lr], 
                 outputs= [total_loss, batch_loss, loss_vec], 
                 updates = self._update(total_loss, self.layer_weights + self.layer_bias, lr))
