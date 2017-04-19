@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#python check_loader.py --st ../logs/results/s!/usr/bin/env python
 import numpy as np
 import sys
 import codecs
 import theano
-sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+#sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 np.set_printoptions(precision=2, suppress=True)
 
 __author__ = 'arenduchintala'
@@ -36,7 +36,11 @@ def eval_losses(SEQ, seq_model, dh):
     acc_instances_c = []
     acc_instances_ic = []
     acc_instances_mc = []
+    acc_instances_mc_c = []
+    acc_instances_mc_ic = []
     acc_instances_tp = []
+    acc_instances_tp_c = []
+    acc_instances_tp_ic = []
 
     _theta_0 = np.zeros((dh.FEAT_SIZE,)).astype(floatX)
     for idx in xrange(len(SEQ)):
@@ -54,6 +58,12 @@ def eval_losses(SEQ, seq_model, dh):
         mc_idx = np.where(_devS[:,2] == 1) 
         idx_c = np.where(np.logical_or(_devS[:,4] == 1, _devS[:,7] == 1))
         idx_ic = np.where(np.logical_or(_devS[:,5] == 1, _devS[:,8] == 1))
+        idx_mc_c = np.intersect1d(mc_idx[0], idx_c[0])
+        idx_mc_ic = np.intersect1d(mc_idx[0], idx_ic[0])
+        idx_mc_c = np.intersect1d(mc_idx[0], idx_c[0])
+        idx_mc_ic = np.intersect1d(mc_idx[0], idx_ic[0])
+        idx_tp_c = np.intersect1d(tp_idx[0], idx_c[0])
+        idx_tp_ic = np.intersect1d(tp_idx[0], idx_ic[0])
         tp_losses = seq_losses[tp_idx]
         mc_losses = seq_losses[mc_idx]
         sum_u_losses = np.sum(u_losses)
@@ -66,16 +76,27 @@ def eval_losses(SEQ, seq_model, dh):
         y_hat_argmax = np.argmax(y_hats, axis=1)
         y_argmax = np.argmax(_devY, axis=1)
         assert y_argmax.shape[0] == seq_losses.shape[0]
-        y_hat_argmax_u = y_hat_argmax[idx_u]
+        #true labels slice n diced
         y_argmax_u = y_argmax[idx_u]
         y_argmax_c = y_argmax[idx_c]
         y_argmax_ic = y_argmax[idx_ic]
         y_argmax_mc = y_argmax[mc_idx]
         y_argmax_tp = y_argmax[tp_idx]
+        y_argmax_mc_c = y_argmax[idx_mc_c]
+        y_argmax_tp_c = y_argmax[idx_tp_c]
+        y_argmax_mc_ic = y_argmax[idx_mc_ic]
+        y_argmax_tp_ic = y_argmax[idx_tp_ic]
+        #model prediction slice n diced
+        y_hat_argmax_u = y_hat_argmax[idx_u]
         y_hat_argmax_c = y_hat_argmax[idx_c]
         y_hat_argmax_ic = y_hat_argmax[idx_ic]
         y_hat_argmax_mc = y_hat_argmax[mc_idx]
         y_hat_argmax_tp = y_hat_argmax[tp_idx]
+        y_hat_argmax_mc_c = y_hat_argmax[idx_mc_c]
+        y_hat_argmax_tp_c = y_hat_argmax[idx_tp_c]
+        y_hat_argmax_mc_ic = y_hat_argmax[idx_mc_ic]
+        y_hat_argmax_tp_ic = y_hat_argmax[idx_tp_ic]
+
         acc_match_c = [1 if i == j else 0 for i,j in zip(y_argmax_c, y_hat_argmax_c)]
         acc_instances_c += acc_match_c
         acc_match_ic = [1 if i == j else 0 for i,j in zip(y_argmax_ic, y_hat_argmax_ic)]
@@ -84,9 +105,17 @@ def eval_losses(SEQ, seq_model, dh):
         acc_instances_mc += acc_match_mc
         acc_match_tp = [1 if i == j else 0 for i,j in zip(y_argmax_tp, y_hat_argmax_tp)]
         acc_instances_tp += acc_match_tp
+        acc_match_mc_c = [1 if i == j else 0 for i,j in zip(y_argmax_mc_c, y_hat_argmax_mc_c)]
+        acc_instances_mc_c += acc_match_mc_c
+        acc_match_mc_ic = [1 if i == j else 0 for i,j in zip(y_argmax_mc_ic, y_hat_argmax_mc_ic)]
+        acc_instances_mc_ic += acc_match_mc_ic
+        acc_match_tp_c = [1 if i == j else 0 for i,j in zip(y_argmax_tp_c, y_hat_argmax_tp_c)]
+        acc_instances_tp_c += acc_match_tp_c
+        acc_match_tp_ic = [1 if i == j else 0 for i,j in zip(y_argmax_tp_ic, y_hat_argmax_tp_ic)]
+        acc_instances_tp_ic += acc_match_tp_ic
         acc_match = [1 if i == j else 0 for i,j in zip(y_argmax_u, y_hat_argmax_u)]
         acc_instances += acc_match
-    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp, acc_instances, acc_instances_c, acc_instances_ic, acc_instances_mc, acc_instances_tp
+    return l_per_seq, l_per_user_guess, l_per_user_guess_c, l_per_user_guess_ic, l_per_user_guess_mc, l_per_user_guess_tp, acc_instances, acc_instances_c, acc_instances_ic, acc_instances_mc, acc_instances_tp, acc_instances_mc_c, acc_instances_mc_ic, acc_instances_tp_c, acc_instances_tp_ic 
 
 
 def disp_eval(SEQ, seq_model, dh, trace_file = None, epoch_idx = None, save_model=False):

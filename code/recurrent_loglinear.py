@@ -119,21 +119,17 @@ class RecurrentLoglinear(object):
                 _b_x = 0.0
                 b_z = theano.shared(floatX(_b_x), name="b_z") 
                 b_r = theano.shared(floatX(_b_x), name="b_r")
-                W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, 5 * self.context_size)), name='W_rc') 
-                W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, 5 * self.context_size)), name='W_zc') 
-                W_rc2 = theano.shared(floatX(0.01 * np.random.rand(self.context_size * 5, self.context_size + (3 * self.dh.E_SIZE))), name='W_rc2') 
-                W_zc2 = theano.shared(floatX(0.01 * np.random.rand(self.context_size * 5, self.context_size + (3 * self.dh.E_SIZE))), name='W_zc2') 
+                W_rc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_rc') 
+                W_zc = theano.shared(floatX(0.01 * np.random.rand(self.dh.FEAT_SIZE, self.context_size)), name='W_zc') 
             else:
                 _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
                 #print '_params in load', _params
                 W_zc = theano.shared(floatX(_params[0]), name='W_zc') 
                 W_rc = theano.shared(floatX(_params[1]), name='W_rc') 
-                W_zc2 = theano.shared(floatX(_params[2]), name='W_zc2')
-                W_rc2 = theano.shared(floatX(_params[3]), name='W_rc2')
-                b_z = theano.shared(floatX(_params[4]), name="b_z") 
-                b_r = theano.shared(floatX(_params[5]), name="b_r")
-            self.params = [W_zc, W_rc, W_zc2, W_rc2, b_z, b_r]
-            self.reg_params = [W_zc, W_rc, W_zc2, W_rc2]
+                b_z = theano.shared(floatX(_params[2]), name="b_z") 
+                b_r = theano.shared(floatX(_params[3]), name="b_r")
+            self.params = [W_zc, W_rc, b_z, b_r]
+            self.reg_params = [W_zc, W_rc]
         elif self.learning_model == "m5":
             raise BaseException("model option removed.. see extra model file")
         elif self.learning_model == "m6":
@@ -161,10 +157,10 @@ class RecurrentLoglinear(object):
                 _params = [floatX(np.asarray(i)) for i in json.loads(open(saved_weights, 'r').read())]
                 #print '_params in load in g2', _params
                 b_m = theano.shared(floatX(_params[-1]), name = 'b_m')
-                W_m2 = theano.shared(floatX(_params[-2]), name= "W_m2")
-                W_m1 = theano.shared(floatX(_params[-3]), name= "W_m1")
-            self.params += [W_m1, W_m2, b_m]
-            self.reg_params += [W_m1, W_m2]
+                W_m1 = theano.shared(floatX(_params[-2]), name= "W_m1")
+                W_m2 = theano.shared(floatX(_params[-3]), name= "W_m2")
+            self.params += [W_m2, W_m1, b_m]
+            self.reg_params += [W_m2, W_m1]
         elif self.grad_model == "g1":
             self.b_m = theano.shared(floatX(1.0), name = 'b_m')
         elif self.grad_model == "g0":
@@ -276,7 +272,7 @@ class RecurrentLoglinear(object):
             """
             return model_loss #, model_bin_loss
 
-        def compute_update(x_t, y_hat, y_t, c_t):
+        def compute_update(x_t, y_hat, y_t, c_t, merge):
             Phi_x_t = self.phi[x_t, :, :] #(1, Y, D)
             Phi_x_t = T.reshape(Phi_x_t, (self.dh.E_SIZE, self.dh.FEAT_SIZE)) #(Y,D)
             if self.grad_model == "g0":
@@ -293,12 +289,12 @@ class RecurrentLoglinear(object):
                 #    pass
             elif self.grad_model == "g2":
                 #Interpolated REDISTRIBUTION AND NEGATIVE update scheme
-                #pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
-                #neg_theta_t_grad = -pos_theta_t_grad
-                #y_target = create_target(y_t, y_hat, c_t)
-                #redistribute_theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
-                #merge_theta_t_grad = merge * neg_theta_t_grad + (1.0 - merge) * redistribute_theta_t_grad
-                #theta_t_grad = T.switch(T.eq(c_t[5],1.0), merge_theta_t_grad, pos_theta_t_grad)
+                pos_theta_t_grad = y_t.dot(Phi_x_t) - y_hat.dot(Phi_x_t)
+                neg_theta_t_grad = -pos_theta_t_grad
+                y_target = create_target(y_t, y_hat, c_t)
+                redistribute_theta_t_grad = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
+                merge_theta_t_grad = merge * neg_theta_t_grad + (1.0 - merge) * redistribute_theta_t_grad
+                theta_t_grad = T.switch(T.eq(c_t[5],1.0), merge_theta_t_grad, pos_theta_t_grad)
                 #if c_t[5] == 1:
                 #    y_target = create_target(y_t, y_hat, c_t)
                 #    theta_t_grad_g2 = y_target.dot(Phi_x_t) - y_hat.dot(Phi_x_t) 
@@ -340,23 +336,23 @@ class RecurrentLoglinear(object):
                 raise BaseException("unknown grad top k")
             return theta_t_grad
 
-        def log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1):
+        def log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1, merge = 1.0):
             y_hat, Phi_x_t = obs_model(x_t, o_t, theta_tm1)
             #model_loss, model_bin_loss = compute_losses(y_hat, y_t, yt_t)
             #model_loss = compute_losses(y_hat, y_t, yt_t)
             model_loss = compute_losses(y_hat, y_t)
-            theta_t_grad = compute_update(x_t, y_hat, y_t, c_t)
+            theta_t_grad = compute_update(x_t, y_hat, y_t, c_t, merge)
             y_hat = T.reshape(y_hat, (self.dh.E_SIZE,)) #(Y,)
             return theta_t_grad, y_hat, model_loss #, model_bin_loss
 
-        def transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1):
+        def transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1, merge = 1.0):
             c_t = s_t[:10] #T.set_subtensor(s_t[[6,7,8]],0)
             c_tm1 = s_tm1[:10] #T.set_subtensor(s_tm1[[6, 7,8]],0)
             c_t = T.reshape(c_t, (self.context_size,))
             c_tm1 = T.reshape(c_tm1, (self.context_size,))
             #update_t, y_hat, loss_t, bin_loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, merge, temp, theta_tm1) #(D,) and scalar
             y_hat, Phi_x_t = obs_model(x_t, o_t, theta_tm1)
-            update_t = compute_update(x_t, y_hat, y_t, c_t)
+            update_t = compute_update(x_t, y_hat, y_t, c_t, merge)
             if self.learning_model == "m0":
                 W_r = self.params[0]
                 W_z = self.params[1]
@@ -384,12 +380,10 @@ class RecurrentLoglinear(object):
             elif self.learning_model == 'm4':
                 W_zc = self.params[0]
                 W_rc = self.params[1]
-                W_zc2 = self.params[2]
-                W_rc2 = self.params[3]
-                b_z = self.params[4] 
-                b_r = self.params[5]
-                g_r = T.nnet.sigmoid(W_rc.dot(W_rc2.dot(s_tm1)) + b_r)
-                g_z = T.nnet.sigmoid(W_zc.dot(W_zc2.dot(s_t)) + b_z) #<--- everything but input x
+                b_z = self.params[2] 
+                b_r = self.params[3]
+                g_r = T.nnet.sigmoid(W_rc.dot(c_tm1) + b_r)
+                g_z = T.nnet.sigmoid(W_zc.dot(c_t) + b_z) #<--- everything but input x
                 theta_t = g_r * theta_tm1 + g_z * update_t
             else:
                 raise BaseException("unknown learning model")
@@ -414,8 +408,18 @@ class RecurrentLoglinear(object):
             c_tm1 = T.reshape(c_tm1, (self.context_size,))
             theta_tm1 = T.reshape(theta_tm1, (self.dh.FEAT_SIZE,))
             #update_t, y_hat, loss_t, bin_loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
-            update_t, y_hat, loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1) #(D,) and scalar
-            theta_t, g_r, g_z = transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1)
+            if self.grad_model == "g2":
+                b_m = self.params[-1]
+                W_m1 = self.params[-2]
+                W_m2 = self.params[-3]
+                merge = T.nnet.sigmoid(W_m1.dot(W_m2.dot(c_t)) + b_m)
+            elif self.grad_model == "g0" or self.grad_model == "g1" or self.grad_model == "g3":
+                merge = self.b_m #always 1
+            else:
+                raise BaseException("unknown grad model")
+
+            update_t, y_hat, loss_t = log_linear_t(x_t, y_t, yt_t, o_t, c_t, theta_tm1, merge) #(D,) and scalar
+            theta_t, g_r, g_z = transition_model(x_t, y_t, o_t, s_t, s_tm1, theta_tm1, merge)
             #r_loss_t, c_loss_t, ic_loss_t, bin_loss_t = assign_losses(loss_t, bin_loss_t, c_t)
             r_loss_t, c_loss_t, ic_loss_t = assign_losses(loss_t, c_t)
             #return theta_t, y_hat, loss_t, r_loss_t, c_loss_t, ic_loss_t, bin_loss_t, update_t, g_r, g_z

@@ -61,7 +61,7 @@ def read_data(file_path, dh):
             t[6] = 1 if fb == 'nofeedback' else 0
             t[7] = 1 if is_qc == 'test_correct' else 0
             t[8] = 1 if is_qc == 'test_incorrect' else 0
-            t[9] = 1.0 / float(r_choice)
+            t[9] = np.log(1.0 / float(r_choice))
             x_vec = np.zeros(dh.E_SIZE,)
             x_vec[x] = 1.0
             t = np.asarray(t)

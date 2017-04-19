@@ -3,7 +3,6 @@ __author__ = 'arenduchintala'
 import sys
 import pdb
 import numpy as np
-import random
 import codecs
 import argparse
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
@@ -15,7 +14,7 @@ if __name__ == '__main__':
     opt.add_argument('-o', action='store', dest='action_file_prefix', required = True)
     options = opt.parse_args()
     data = codecs.open(options.vocab_file, 'r', 'utf8').readlines()
-    data = [d.strip().split(',') for d in data]
+    data = [d.strip().split(',')[1:4] for d in data]
     categories = data[0]
     en2categories = {}
     categories2en = {}

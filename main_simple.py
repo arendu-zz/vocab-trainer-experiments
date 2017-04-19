@@ -22,7 +22,7 @@ else:
     intX = np.int64
 
 if __name__ == '__main__':
-    np.random.seed(124)
+    np.random.seed(1234)
     sys.setrecursionlimit(50000)
     opt= argparse.ArgumentParser(description="write program description here")
     opt.add_argument('-f', action='store', dest='feature', default='p.w.pre.suf.c')
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     best_dl = 1000000.000
     prev_dpu = 0.0
     improvement = []
-    for epoch_idx in xrange(100):
+    for epoch_idx in xrange(200):
         lr = _learning_rate * (1.0  / (1.0 + _decay * epoch_idx))
         lr = lr if options.grad_update == "sgd" else (0.05 / len(TRAINING_SEQ))
         shuffle_ids = np.random.choice(xrange(len(TRAINING_SEQ)), len(TRAINING_SEQ), False)
